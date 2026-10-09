@@ -225,8 +225,6 @@ section{position:relative}
 .datos>div:nth-child(3){grid-column:1/-1}
 .datos dt{font-weight:800;font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--crema-72)}
 .datos dd{margin:6px 0 0;color:var(--crema);font-size:1rem;line-height:1.35}
-.envivo{padding:0 0 var(--ritmo);background:var(--vino)}
-.envivo .env{max-width:600px}
 .llegar{padding:0 0 var(--ritmo);background:var(--vino)}
 .llegar .env{max-width:600px}
 .concurso{padding:0 0 48px;background:var(--vino)}
@@ -351,7 +349,13 @@ footer::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.12;mix-b
 @keyframes entra{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.entrada__caja>*{animation:none}}
 .dos{grid-template-columns:1fr 1fr;gap:12px;padding:0 var(--g) 32px}
-.dos__cabeza{grid-column:1/-1;padding:8px 0 16px}
+.dos__cabeza{grid-column:1/-1;position:relative;isolation:isolate;margin:0 calc(var(--g) * -1);padding:56px var(--g) 24px;text-align:center;overflow:hidden}
+.dos__fondo{position:absolute;inset:0;z-index:-1}
+.dos__fondo img,.dos__fondo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.dos__fondo video{opacity:0;transition:opacity .8s var(--ease)}
+.dos__fondo video.lista{opacity:1}
+.dos__fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,.55) 35%,rgba(26,11,11,.7) 70%,var(--vino))}
+.dos__cabeza .sec{display:flex;width:max-content;margin:12px auto 0}
 .artista{border-radius:var(--r)}
 .artista+.artista{border-top:0}
 .artista::before{height:40px}
@@ -415,7 +419,7 @@ footer p+p{margin-top:8px}
   .palcos__lista{grid-template-columns:1fr 1fr}
   .palco--rey{grid-column:1/-1}
   .dos{grid-template-columns:1fr 1fr;max-width:1120px;margin:0 auto;gap:24px}
-  .envivo .env,.llegar .env{max-width:680px}
+  .llegar .env{max-width:680px}
   .cierre .env{max-width:760px}
 }
 .barra{box-shadow:0 -14px 28px rgba(14,6,6,.65);position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;gap:10px;padding:10px var(--g) calc(10px + env(safe-area-inset-bottom));background:rgba(26,11,11,.92);border-top:1px solid var(--linea);transform:translateY(110%);transition:transform .3s var(--ease)}
@@ -595,7 +599,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
 
 <div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
 <section class="dos" aria-label="Los artistas">
-  <div class="env cabeza dos__cabeza rev"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">En tarima · 5 de diciembre</p><h2 class="rotulo">Dos nombres. Una sola noche.</h2></div>
+  <div class="dos__cabeza"><div class="dos__fondo" aria-hidden="true"><img src="assets/envivo-poster-720.webp" width="720" height="1280" alt="" loading="lazy"><video muted loop playsinline webkit-playsinline autoplay preload="none" data-src="assets/envivo-loop.mp4"></video></div><div class="env cabeza rev"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">En tarima · 5 de diciembre</p><h2 class="rotulo">Dos nombres. Una sola noche.</h2></div><button type="button" class="sec" data-teaser="assets/envivo-sonido.mp4" data-mide="EnVivo"><svg width="24" height="24" aria-hidden="true"><use href="#play"/></svg>Verlos en vivo · 0:30</button></div>
   <article class="artista">
     <picture><source type="image/avif" srcset="assets/castano-flyer-720.avif 720w, assets/castano-flyer-1000.avif 1000w" sizes="(min-width:860px) 50vw, 100vw"><img src="assets/castano-flyer-720.webp" srcset="assets/castano-flyer-720.webp 720w, assets/castano-flyer-1000.webp 1000w" sizes="(min-width:860px) 50vw, 100vw" width="720" height="900" alt="Jhon Alex Castaño, la misma foto del afiche." loading="lazy" style="object-position:50% 0"></picture>
     <div class="artista__texto"><h3 class="rotulo artista__nombre">Jhon Alex Castaño</h3></div>
@@ -607,13 +611,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
 </section>
 
 
-<section class="envivo escena" aria-labelledby="t-envivo">
-  <div class="escena__media telon foto" aria-hidden="true"><img src="assets/envivo-poster-720.webp" width="720" height="1280" alt="" loading="lazy"><video id="envivo-loop" muted loop playsinline webkit-playsinline autoplay preload="none" data-src="assets/envivo-loop.mp4"></video></div>
-  <div class="env">
-    <div class="cabeza rev"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">En vivo</p><h2 class="rotulo" id="t-envivo">Así suena frente a la tarima.</h2><p class="bajada">Imágenes de un show anterior. Súbele el volumen.</p></div>
-    <button type="button" class="sec" data-teaser="assets/envivo-sonido.mp4" data-mide="EnVivo"><svg width="24" height="24" aria-hidden="true"><use href="#play"/></svg>Ver con sonido · 0:30</button>
-  </div>
-</section>
+
 
 
 <section class="llegar escena" aria-labelledby="t-llegar">
@@ -887,9 +885,83 @@ listo(function(){
   document.addEventListener("visibilitychange", function(){ if (!document.hidden) mira(); });
   mira();
 });
+function quema(){
+  var img = document.querySelector(".entrada__fuego");
+  if (!img || !img.complete || !img.naturalWidth) return false;
+  var cv = document.createElement("canvas");
+  var gl = cv.getContext("webgl", {premultipliedAlpha: false, alpha: true});
+  if (!gl) return false;
+  var k = Math.min(devicePixelRatio || 1, 2) * .7;
+  cv.width = Math.round(innerWidth * k); cv.height = Math.round(innerHeight * k);
+  cv.style.cssText = "position:fixed;inset:0;width:100%;height:100%;z-index:46;pointer-events:none";
+  var vs = "attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}";
+  var fs = [
+    "precision mediump float;varying vec2 v;uniform vec2 r,ta,off;uniform float t,a,sc;uniform sampler2D tx;",
+    "float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}",
+    "float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}",
+    "float fb(vec2 p){float s=0.,w=.5;for(int k=0;k<5;k++){s+=w*n(p);p*=2.03;w*=.5;}return s;}",
+    "void main(){",
+    " vec2 px=vec2(v.x*r.x,(1.-v.y)*r.y);",
+    " vec2 tu=(px-off)/(ta*sc);",
+    " vec3 img=texture2D(tx,clamp(tu,0.,1.)).rgb;",
+    " float yt=1.-v.y; img*=mix(1.,.12,smoothstep(.52,.9,yt));",
+    " vec2 q=vec2(v.x*r.x/r.y,v.y);",
+    " float fr=mix(-.12,1.22,a);",
+    " float bord=(fb(q*3.2+vec2(0.,-t*.35))-.5)*.42+(fb(q*9.+t*.8)-.5)*.08;",
+    " float d=v.y-fr+bord;",
+    " float flick=.75+.25*n(vec2(q.x*8.,t*14.));",
+    " vec3 c; float al;",
+    " if(d>0.){",
+    "  float tost=1.-smoothstep(0.,.13,d);",
+    "  c=mix(img,img*vec3(.35,.18,.08),tost*.9);",
+    "  float filo=1.-smoothstep(0.,.022,d);",
+    "  c=mix(c,vec3(1.,.55,.12)*flick,filo*.95)+vec3(1.,.85,.5)*pow(filo,3.)*.8;",
+    "  al=1.;",
+    " } else {",
+    "  float ll=fb(vec2(q.x*5.,q.y*3.-t*3.));",
+    "  float cerca=1.-smoothstep(0.,.16,-d);",
+    "  float lengua=clamp(pow(ll,1.5)*1.9*cerca,0.,1.);",
+    "  c=mix(vec3(.75,.16,.02),vec3(1.,.72,.25),lengua);",
+    "  al=lengua*.9*step(.001,a);",
+    " }",
+    " vec2 cel=floor(vec2(q.x*70.,q.y*50.-t*22.));",
+    " float sp=step(.992,h(cel))*(1.-smoothstep(0.,.22,abs(d)));",
+    " c+=vec3(1.,.8,.4)*sp; al=max(al,sp);",
+    " gl_FragColor=vec4(c,al);}"
+  ].join("\n");
+  function sh(tp, src){ var o = gl.createShader(tp); gl.shaderSource(o, src); gl.compileShader(o); return o; }
+  var pr = gl.createProgram(); gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) return false;
+  gl.useProgram(pr);
+  var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+  var lp = gl.getAttribLocation(pr, "p"); gl.enableVertexAttribArray(lp); gl.vertexAttribPointer(lp, 2, gl.FLOAT, false, 0, 0);
+  var tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
+  [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(function(w){ gl.texParameteri(gl.TEXTURE_2D, w, gl.CLAMP_TO_EDGE); });
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img); } catch(e){ return false; }
+  var U = {}; ["r","ta","off","t","a","sc","tx"].forEach(function(x){ U[x] = gl.getUniformLocation(pr, x); });
+  var iw = img.naturalWidth, ih = img.naturalHeight, scl = Math.max(cv.width / iw, cv.height / ih);
+  var offx = (cv.width - iw * scl) * .5, offy = (cv.height - ih * scl) * .38;
+  gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  gl.viewport(0, 0, cv.width, cv.height);
+  document.body.appendChild(cv);
+  var t0 = 0, DUR = 1400;
+  function cuadro(now){
+    if (!t0) t0 = now;
+    var ms = now - t0, x = Math.min(1, ms / DUR), a = x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform2f(U.r, cv.width, cv.height); gl.uniform2f(U.ta, iw, ih); gl.uniform2f(U.off, offx, offy);
+    gl.uniform1f(U.sc, scl); gl.uniform1f(U.t, ms / 1000); gl.uniform1f(U.a, a); gl.uniform1i(U.tx, 0);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    if (ms < DUR + 250) requestAnimationFrame(cuadro); else cv.remove();
+  }
+  requestAnimationFrame(cuadro);
+  return true;
+}
 listo(function(){
   var en = document.getElementById("entrada"); if (!en) return;
   function entra(){
+    if (!quieto && quema()) { var hh0 = document.getElementById("hero"); if (hh0) hh0.classList.add("revela"); document.documentElement.classList.remove("intro", "entrando"); scrollTo(0, 0); en.hidden = true; return; }
     en.classList.add("sale");
     var hh = document.getElementById("hero"); if (hh) hh.classList.add("revela");
     document.documentElement.classList.remove("intro", "entrando");
