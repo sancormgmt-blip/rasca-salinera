@@ -12,6 +12,8 @@
 <meta property="og:image" content="assets/compartir.jpg">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#1A0B0B">
+<link rel="icon" type="image/png" href="assets/icono-64.png">
+<link rel="apple-touch-icon" href="assets/icono-180.png">
 <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/flyer-720.avif" type="image/avif" imagesrcset="assets/flyer-720.avif 720w, assets/flyer-1080.avif 1080w" imagesizes="100vw">
 <style>
@@ -81,10 +83,10 @@ p{margin:0}
 .hero.anima .hero__escena{position:sticky;top:0;height:100svh}
 .hero.anima .hero__flyer{position:absolute;inset:0;z-index:2;transform-origin:50% 40%;
   transform:scale(calc(1 - var(--p,0) * .16)) translateY(calc(var(--p,0) * -6%));
-  filter:blur(calc(var(--p,0) * 12px));opacity:calc(1 - var(--p,0) * 1.15);will-change:transform,opacity,filter}
+  filter:blur(calc(var(--p,0) * 14px));opacity:clamp(0,calc(1 - var(--p,0) * 2.1),1);will-change:transform,opacity,filter}
 .hero.anima .hero__flyer{background:radial-gradient(ellipse at 50% 40%,#3a1410,#140707 75%)}
 .hero.anima .hero__flyer img{width:100%;height:100%;object-fit:contain;object-position:50% 40%}
-.hero.anima .hero__texto{opacity:clamp(0,calc(var(--p,0) * 2.2 - .55),1);transform:translateY(calc((1 - clamp(0,var(--p,0) * 1.6,1)) * 48px))}
+.hero.anima .hero__texto{opacity:clamp(0,calc(var(--p,0) * 2.6 - 1.2),1);transform:translateY(calc((1 - clamp(0,var(--p,0) * 1.7 - .45,1)) * 56px))}
 .hero.anima .hero__marco{opacity:calc(var(--p,0) * 1.4)}
 .hero.anima .hero__desliza{display:flex;position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom));z-index:4;flex-direction:column;align-items:center;gap:6px;
   font-weight:800;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--crema);text-shadow:0 1px 10px rgba(0,0,0,.8);opacity:calc(1 - var(--p,0) * 5);pointer-events:none}
@@ -267,14 +269,16 @@ dialog video{width:100%;height:100%;object-fit:contain}
 .intro body{overflow:hidden}
 .intro #intro{display:block;position:fixed;inset:0;z-index:50;background:#120706;cursor:pointer;animation:introfuera .3s 6s forwards}
 #intro canvas{display:block;width:100%;height:100%}
-#intro video,#intro img{position:absolute;width:2px;height:2px;opacity:0;pointer-events:none}
+#intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
+#intro canvas{position:relative;z-index:1}
+#intro img{position:absolute;width:2px;height:2px;opacity:0;pointer-events:none}
 #intro.fuera{opacity:0;transition:opacity .45s var(--ease)}
 @keyframes introfuera{to{opacity:0;visibility:hidden}}
 </style>
 <script>(function(){try{var q=matchMedia("(prefers-reduced-motion: reduce)").matches,c=navigator.connection||{},v=sessionStorage.getItem("rs_intro");if(!q&&!c.saveData&&!v&&window.WebGLRenderingContext)document.documentElement.classList.add("intro")}catch(e){}})();</script>
 </head>
 <body>
-<div id="intro" aria-hidden="true"><canvas></canvas><video src="assets/hero-loop.mp4" muted playsinline preload="auto"></video><img src="assets/hero-poster-720.webp" alt="" width="720" height="1280"></div>
+<div id="intro" aria-hidden="true"><canvas></canvas><video src="assets/hero-loop.mp4" autoplay muted playsinline webkit-playsinline preload="auto"></video><img src="assets/hero-poster-720.webp" alt="" width="720" height="1280"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="rombos" viewBox="0 0 132 12"><path d="M0 6h48M84 6h48" stroke="#EBB314" stroke-width="1"/><path d="M54 6l6-5 6 5-6 5zM66 6l6-5 6 5-6 5z" fill="none" stroke="#EBB314" stroke-width="1"/></symbol>
@@ -293,7 +297,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
       <source type="image/avif" srcset="assets/hero-poster-720.avif 720w, assets/hero-poster-1080.avif 1080w" sizes="100vw">
       <img src="assets/hero-poster-720.webp" width="720" height="1280" alt="" loading="lazy">
     </picture>
-    <video id="hero-loop" muted playsinline loop preload="none" aria-hidden="true" data-src="assets/hero-loop.mp4"></video>
+    <video id="hero-loop" src="assets/hero-loop.mp4" autoplay muted loop playsinline webkit-playsinline preload="metadata" aria-hidden="true"></video>
   </div>
   <div class="hero__marco" aria-hidden="true"></div>
   <div class="hero__texto">
@@ -625,16 +629,21 @@ listo(function(){
 });
 listo(function(){
   var v = document.getElementById("hero-loop");
-  if (!v || quieto) return;
+  if (!v) return;
   var c = navigator.connection || {};
-  if (c.saveData || /2g/.test(c.effectiveType || "")) return;
-  var carga = function(){
-    v.src = v.getAttribute("data-src");
-    v.addEventListener("playing", function(){ v.classList.add("lista"); }, {once: true});
-    var p = v.play(); if (p && p.catch) p.catch(function(){});
+  if (quieto || c.saveData){ try { v.pause(); v.removeAttribute("autoplay"); } catch(e){} return; }
+  v.muted = true; v.defaultMuted = true;
+  var marca = function(){ v.classList.add("lista"); };
+  v.addEventListener("playing", marca);
+  var intenta = function(){
+    [].forEach.call(document.querySelectorAll("video[autoplay]"), function(x){
+      x.muted = true; if (x.paused){ var p = x.play(); if (p && p.catch) p.catch(function(){}); }
+    });
   };
-  if (document.readyState === "complete") setTimeout(carga, 300);
-  else addEventListener("load", function(){ setTimeout(carga, 300); });
+  intenta();
+  ["touchstart", "scroll", "click"].forEach(function(ev){
+    addEventListener(ev, function u(){ intenta(); removeEventListener(ev, u); }, {passive: true});
+  });
 });
 listo(function(){
   var d = document.getElementById("teaser"), v = document.getElementById("teaser-video");
