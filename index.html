@@ -265,6 +265,15 @@ dialog::backdrop{background:rgba(0,0,0,.9)}
 dialog video{width:100%;height:100%;object-fit:contain}
 .cerrar{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:48px;height:48px;border:0;border-radius:999px;background:rgba(26,11,11,.8);color:var(--crema);font:400 1.6rem/1 "Archivo",sans-serif;cursor:pointer}
 .cerrar:focus-visible{outline:2px solid var(--oro)}
+.sonido{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:30;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid var(--linea);border-radius:999px;background:rgba(26,11,11,.72);color:var(--crema);font:800 .8125rem/1 "Archivo",sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sonido:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.sonido .barras{display:inline-flex;gap:2px;align-items:flex-end;height:14px}
+.sonido .barras i{display:block;width:3px;height:4px;background:var(--oro);border-radius:1px}
+.sonido[aria-pressed=true] .barras i{animation:eq .9s var(--ease) infinite alternate}
+.sonido[aria-pressed=true] .barras i:nth-child(2){animation-delay:.2s}.sonido[aria-pressed=true] .barras i:nth-child(3){animation-delay:.4s}
+@keyframes eq{to{height:14px}}
+@media (prefers-reduced-motion:reduce){.sonido[aria-pressed=true] .barras i{animation:none;height:10px}}
+.intro .sonido{display:none}
 #intro{display:none}
 .intro body{overflow:hidden}
 .intro #intro{display:block;position:fixed;inset:0;z-index:50;background:#120706;cursor:pointer;animation:introfuera .3s 6s forwards}
@@ -515,6 +524,8 @@ dialog video{width:100%;height:100%;object-fit:contain}
   </div>
 </footer>
 
+<button type="button" class="sonido" id="sonido" aria-pressed="false" aria-label="Activar el sonido del reel"><span class="barras" aria-hidden="true"><i></i><i></i><i></i></span><span id="sonido-t">Sonido</span></button>
+<audio id="audio-reel" src="assets/sonido-reel.m4a" preload="none" loop></audio>
 <nav class="barra" id="barra" aria-label="Acción rápida">
   <a class="accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
   <a class="barra__wa" id="barra-wa" href="https://wa.me/573222045398" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp al 322 204 5398" data-mide="ClicWhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a>
@@ -753,7 +764,7 @@ listo(function(){
     requestAnimationFrame(cuadro);
   }
   requestAnimationFrame(cuadro);
-  caja.addEventListener("click", fin);
+  var toques = 0; caja.addEventListener("click", function(){ toques++; if (toques > 1) fin(); });
   try { sessionStorage.setItem("rs_intro", "1"); } catch(e){}
 });
 listo(function(){
@@ -769,6 +780,23 @@ listo(function(){
   }
   addEventListener("scroll", function(){ if (!pendiente){ pendiente = true; requestAnimationFrame(mide); } }, {passive: true});
   addEventListener("resize", mide); mide();
+});
+listo(function(){
+  var a = document.getElementById("audio-reel"), b = document.getElementById("sonido"), t = document.getElementById("sonido-t");
+  if (!a || !b) return;
+  a.volume = .75;
+  var quiere = true, lo_apago = false;
+  function pinta(on){ b.setAttribute("aria-pressed", on ? "true" : "false"); t.textContent = on ? "Sonando" : "Sonido"; b.setAttribute("aria-label", on ? "Silenciar el sonido del reel" : "Activar el sonido del reel"); }
+  function suena(){ var p = a.play(); if (p && p.then) p.then(function(){ pinta(true); }).catch(function(){ pinta(false); }); else pinta(true); }
+  function calla(){ a.pause(); pinta(false); }
+  b.addEventListener("click", function(ev){ ev.stopPropagation(); if (a.paused){ lo_apago = false; suena(); } else { lo_apago = true; calla(); } });
+  function primero(){ if (quiere && !lo_apago && a.paused) suena(); quiere = false; }
+  ["pointerdown", "touchend", "keydown"].forEach(function(ev){
+    addEventListener(ev, function u(e){ if (e.target === b || (b.contains && b.contains(e.target))) return; primero(); removeEventListener(ev, u, true); }, true);
+  });
+  document.addEventListener("visibilitychange", function(){ if (document.hidden) a.pause(); else if (!lo_apago && b.getAttribute("aria-pressed") === "true") a.play().catch(function(){}); });
+  var tv = document.getElementById("teaser-video");
+  if (tv){ tv.addEventListener("play", function(){ a.pause(); }); tv.addEventListener("pause", function(){ if (!lo_apago && b.getAttribute("aria-pressed") === "true") a.play().catch(function(){}); }); }
 });
 listo(function(){
   var f = document.getElementById("f");
