@@ -354,11 +354,11 @@ dialog video{width:100%;height:100%;object-fit:contain}
 #intro.fuera{opacity:0;transition:opacity .45s var(--ease)}
 @keyframes introfuera{to{opacity:0;visibility:hidden}}
 </style>
-<script>(function(){try{var q=matchMedia("(prefers-reduced-motion: reduce)").matches,c=navigator.connection||{},v=sessionStorage.getItem("rs_intro");if(!q&&!c.saveData&&!v&&window.WebGLRenderingContext)document.documentElement.classList.add("intro")}catch(e){}})();</script>
+<script>(function(){try{var q=matchMedia("(prefers-reduced-motion: reduce)").matches,c=navigator.connection||{};if(!q&&!c.saveData&&window.WebGLRenderingContext)document.documentElement.classList.add("intro")}catch(e){}})();</script>
 </head>
 <body>
 <div id="entrada" hidden role="dialog" aria-modal="true" aria-label="Entrar a la página"><div class="entrada__caja"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera"><p>Sábado 5 de diciembre · Zipaquirá</p><button type="button" class="accion entrada__si" id="entrada-si"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#1A0B0B"/><path d="M16 8.5c1.6 1.8 1.6 5.2 0 7M18.8 6c2.8 3.2 2.8 8.8 0 12" stroke="#1A0B0B" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>Continuar con sonido</button><button type="button" class="sec entrada__no" id="entrada-no">Entrar sin sonido</button></div></div>
-<script>(function(){var e=document.getElementById("entrada"),v=null;try{v=sessionStorage.getItem("rs_entrada")}catch(x){}if(!v){e.hidden=false;document.documentElement.classList.add("entrando")}})();</script>
+<script>(function(){var e=document.getElementById("entrada");e.hidden=false;document.documentElement.classList.add("entrando")})();</script>
 <div id="intro" aria-hidden="true"><canvas></canvas><video src="assets/hero-loop.mp4" autoplay muted playsinline webkit-playsinline preload="auto"></video><img src="assets/hero-poster-720.webp" alt="" width="720" height="1280"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
