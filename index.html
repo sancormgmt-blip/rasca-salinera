@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#1A0B0B">
 <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/hero-poster-720.avif" type="image/avif">
+<link rel="preload" as="image" href="assets/hero-poster-720.avif" type="image/avif" imagesrcset="assets/hero-poster-720.avif 720w, assets/hero-poster-1080.avif 1080w" imagesizes="100vw">
 <style>
 @font-face{font-family:"Archivo";src:url(fonts/archivo.woff2) format("woff2");font-weight:100 900;font-display:swap}
 :root{
@@ -23,9 +23,9 @@
   --vino-3:#390007;
   --oro:#EBB314;
   --oro-claro:#F4C232;
-  --crema:#F2E6DA;
-  --texto:#E9D6C6;
-  --tenue:#B39A87;
+  --crema:#F4EFE6;
+  --texto:#E6E1D8;
+  --tenue:#A39E95;
   --linea:rgba(235,179,20,.28);
   --linea-suave:rgba(233,214,198,.16);
   --error:#FF9C8A;
@@ -33,6 +33,9 @@
   --r:10px;
   --g:clamp(18px,5.5vw,44px);
   --barra:76px;
+  --t1:clamp(3.2rem,14vw,5.6rem);
+  --t2:clamp(2.2rem,9.5vw,3.6rem);
+  --t3:1.5rem;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -45,33 +48,36 @@ p{margin:0}
 .env{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--g)}
 .rotulo{font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.015em;line-height:.92;color:var(--crema)}
 .rombos{display:block;width:132px;height:12px;margin:0 0 18px}
-.accion{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:56px;padding:0 1.6rem;border:0;border-radius:var(--r);background:var(--oro);color:#1A0B0B;font:700 1.0625rem/1 "Archivo",sans-serif;text-decoration:none;cursor:pointer;transition:transform .16s var(--ease),background-color .2s var(--ease);-webkit-tap-highlight-color:transparent}
+.accion{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:56px;padding:0 1.6rem;border:0;border-radius:var(--r);background:var(--oro);color:#1A0B0B;font:800 1.0625rem/1 "Archivo",sans-serif;text-decoration:none;cursor:pointer;transition:transform .16s var(--ease),background-color .2s var(--ease);-webkit-tap-highlight-color:transparent}
 .accion:hover{background:var(--oro-claro)}
 .accion:active{transform:scale(.97)}
 .accion:focus-visible{outline:3px solid var(--crema);outline-offset:3px}
 .accion[disabled]{opacity:.6;cursor:progress}
 .ancha{width:100%}
-.sec{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0;border:0;background:none;color:var(--crema);font:600 1rem/1 "Archivo",sans-serif;cursor:pointer;text-decoration:underline;text-decoration-color:var(--oro);text-underline-offset:5px}
+.sec{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0;border:0;background:none;color:var(--crema);font:800 1rem/1 "Archivo",sans-serif;cursor:pointer;text-decoration:underline;text-decoration-color:var(--oro);text-underline-offset:5px}
 .sec:focus-visible{outline:2px solid var(--oro);outline-offset:4px;border-radius:2px}
 .sec svg{flex:none}
 .enlace{display:inline-block;padding:12px 0;margin:-12px 0;color:var(--oro);text-underline-offset:3px}
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate}
-.hero__fondo,.hero__fondo img,.hero__fondo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.hero__fondo{position:absolute;inset:0 0 auto 0;height:min(177.78vw,100svh)}
+.hero__fondo img,.hero__fondo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
 .hero__fondo{z-index:-2}
 .hero__fondo video{opacity:0;transition:opacity .8s var(--ease)}
 .hero__fondo video.lista{opacity:1}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,0) 40%,rgba(26,11,11,.85) 64%,var(--vino) 86%)}
 .hero__marco{position:absolute;inset:10px;border:1px solid var(--linea);pointer-events:none;z-index:1}
 .hero__texto{padding:0 var(--g) calc(28px + env(safe-area-inset-bottom))}
-.hero__lugar{text-shadow:0 1px 12px rgba(26,11,11,.9);font-weight:600;font-size:.9375rem;letter-spacing:.02em;color:var(--oro)}
-.hero h1{margin-top:8px;font-size:clamp(2.1rem,10vw,3.4rem)}
-.hero__quienes{margin-top:12px;font-size:1.0625rem;color:var(--crema)}
+.hero__lugar{text-shadow:0 1px 12px rgba(26,11,11,.9);font-weight:800;font-size:.9375rem;letter-spacing:.02em;color:var(--oro)}
+.hero__fecha{margin-top:10px;font-size:var(--t1)}
+.hero h1{margin-top:14px;font-weight:400}
+.hero h1 .principal{display:block;font-size:var(--t2)}
+.hero h1 .segundo{display:block;margin-top:6px;font-size:1.25rem;font-weight:400;color:var(--crema)}
 .hero__accion{margin-top:22px}
 .hero__sec{margin-top:10px}
 @media (min-width:860px){
   .hero{min-height:100vh}
-  .hero__fondo{left:auto;width:min(56vh,52%);}
-  .hero__fondo img,.hero__fondo video{object-position:50% 40%}
+  .hero__fondo{height:100%;}
+  .hero__fondo img,.hero__fondo video{object-position:65% 45%}
   .hero::after{background:linear-gradient(to right,var(--vino) 46%,rgba(26,11,11,.4) 62%,rgba(26,11,11,0) 80%),linear-gradient(to bottom,rgba(26,11,11,0) 70%,var(--vino))}
   .hero{justify-content:center}
   .hero__texto{max-width:620px;margin-left:max(var(--g),calc((100vw - 1120px)/2))}
@@ -80,14 +86,17 @@ p{margin:0}
 .palcos__foto{position:absolute;inset:0 0 auto 0;height:520px;z-index:-1}
 .palcos__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;opacity:.55}
 .palcos__foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(57,0,7,.2),var(--vino-3) 92%)}
-.palcos h2{font-size:clamp(2.6rem,13vw,4.6rem)}
+.palcos h2{font-size:var(--t2)}
 .palcos__bajada{margin-top:14px;max-width:30rem;color:var(--crema)}
 .cartel{list-style:none;margin:36px 0 0;padding:0}
 .cartel li{padding:22px 0;border-top:1px solid var(--linea)}
 .cartel li:last-child{border-bottom:1px solid var(--linea)}
+.cartel .primero .nombre{font-size:var(--t1)}
+.cartel .cerca{display:block;margin-top:6px;color:var(--oro);font-size:1rem}
+.cartel .puesto{display:block;margin-top:4px;color:var(--tenue);font-size:1rem}
 .cartel .nombre{display:block;font-size:clamp(2rem,10.5vw,3.6rem)}
 .cartel .fila{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px;margin-top:10px}
-.cartel .precio{font-weight:700;font-size:1.5rem;color:var(--oro)}
+.cartel .precio{font-weight:800;font-size:1.5rem;color:var(--oro)}
 .cartel .detalle{font-size:1rem;color:var(--texto)}
 .palcos__como{margin-top:24px;max-width:34rem}
 .palcos__como b{color:var(--crema)}
@@ -95,26 +104,29 @@ p{margin:0}
 .palcos__pie{margin-top:14px;font-size:1rem;color:var(--tenue)}
 @media (min-width:860px){.palcos .env{max-width:820px}.palcos__foto{height:640px}}
 .dos{display:grid;gap:0}
-.artista{position:relative;min-height:88svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.artista{position:relative;min-height:72svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
 .artista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;z-index:-2}
 .artista::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,0) 50%,rgba(26,11,11,.85) 80%,var(--vino))}
 .artista__texto{padding:0 var(--g) 40px}
-.artista h2{font-size:clamp(2.6rem,13vw,5rem)}
+.artista h2{font-size:var(--t2)}
+.artista--principal{min-height:96svh}
+.artista--principal h2{font-size:var(--t1)}
+.artista--principal .rol,.artista .rol{display:block;margin-bottom:8px;font-size:1rem;color:var(--oro)}
 .artista p{margin-top:10px;color:var(--crema);max-width:26rem}
-@media (min-width:860px){.dos{grid-template-columns:1fr 1fr}.artista{min-height:92vh}}
+@media (min-width:860px){.dos{grid-template-columns:1.6fr 1fr}.artista{min-height:92vh}}
 .mesa{position:relative;padding:80px 0 0}
 .mesa__intro{padding:0 var(--g) 36px;max-width:1120px;margin:0 auto}
-.mesa__intro h2{font-size:clamp(2.4rem,12vw,4.4rem)}
+.mesa__intro h2{font-size:var(--t2)}
 .mesa__intro p{margin-top:14px;max-width:30rem;color:var(--crema)}
 .escenario{display:none}
-.paso{position:relative;min-height:92svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.paso{position:relative;min-height:72svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
 .paso__foto,.paso__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .paso__foto{z-index:-2}
 .paso::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,0) 30%,rgba(26,11,11,.6) 60%,rgba(26,11,11,.97) 74%)}
 .paso__texto{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--g) 48px}
 .paso__n{font-size:clamp(6rem,34vw,11rem);color:var(--oro);line-height:.8}
-.paso__n small{font-size:1rem;font-weight:500;letter-spacing:0;text-transform:none;color:var(--texto);margin-left:10px}
-.paso h3{margin-top:14px;font-size:1.625rem;font-weight:700;color:var(--crema)}
+.paso__n small{font-size:1rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--texto);margin-left:10px}
+.paso h3{margin-top:14px;font-size:1.625rem;font-weight:800;color:var(--crema)}
 .paso__gana{margin-top:8px;font-size:1.0625rem}
 .paso__gana b{color:var(--oro)}
 .mesa.viva .escenario{display:block;position:sticky;top:0;height:100svh;z-index:0}
@@ -123,7 +135,7 @@ p{margin:0}
 .mesa.viva .escenario picture.activa{opacity:1}
 .mesa.viva .escenario img{width:100%;height:100%;object-fit:cover}
 .mesa.viva .escenario::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,11,11,.15),rgba(26,11,11,0) 30%,rgba(26,11,11,.55) 62%,rgba(26,11,11,.97) 74%)}
-.mesa.viva .paso{z-index:1}
+.mesa.viva .paso{z-index:1;min-height:85svh}
 .mesa.viva .paso:last-child{min-height:72svh}
 .mesa.viva .paso__foto,.mesa.viva .paso::after{display:none}
 .mesa.viva .paso__texto{padding-top:220px;background:linear-gradient(to top,rgba(26,11,11,.9) 25%,rgba(26,11,11,.5) 60%,rgba(26,11,11,0))}
@@ -132,12 +144,13 @@ p{margin:0}
   .mesa.viva .escenario{left:auto;width:min(56vh,50%);margin-left:auto}
   .mesa.viva .escenario::after{background:linear-gradient(to right,var(--vino),rgba(26,11,11,0) 40%)}
   .mesa.viva .paso{align-items:center}
+  .mesa.viva .paso__texto{background:none}
   .mesa.viva .paso__texto{padding-right:calc(min(56vh,50%) + var(--g))}
   .mesa:not(.viva) .paso__foto{left:auto;width:50%}
 }
 .registro{padding:88px 0 80px;background:var(--vino)}
 .registro__grid{display:grid;gap:36px}
-.registro h2{font-size:clamp(2.4rem,12vw,4.2rem)}
+.registro h2{font-size:var(--t2)}
 .registro__bajada{margin-top:14px;max-width:30rem;color:var(--crema)}
 .invitado{display:none;margin-bottom:24px;padding:16px 18px;border-radius:var(--r);background:var(--vino-2);border:1px solid var(--oro)}
 .invitado.vista{display:block}
@@ -146,12 +159,12 @@ p{margin:0}
 .pantalla img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;z-index:-2}
 .pantalla::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(26,11,11,.55)}
 .pantalla p{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}
-.pantalla small{font-size:.875rem;font-weight:600;letter-spacing:.04em;color:var(--oro)}
+.pantalla small{font-size:.875rem;font-weight:800;letter-spacing:.04em;color:var(--oro)}
 .pantalla strong{margin-top:6px;font-weight:800;text-transform:uppercase;font-size:clamp(1.4rem,7vw,2.2rem);line-height:1;color:var(--crema);word-break:break-word}
-form[data-quiere=mesa] ~ .pantalla,.registro[data-quiere=mesa] .pantalla{display:block}
+.pantalla{display:block}
 form{max-width:560px}
 .campo{margin-bottom:20px}
-.campo>label,.campo legend{display:block;margin-bottom:8px;font-weight:600;font-size:1rem;color:var(--crema)}
+.campo>label,.campo legend{display:block;margin-bottom:8px;font-weight:800;font-size:1rem;color:var(--crema)}
 .ayuda{display:block;margin-top:6px;font-size:1rem;color:var(--tenue)}
 fieldset{border:0;margin:0 0 20px;padding:0}
 input[type=text],input[type=tel],select{width:100%;min-height:54px;padding:0 14px;border:1px solid rgba(233,214,198,.5);border-radius:var(--r);background:var(--vino-2);color:var(--crema);font:400 1.0625rem/1 "Archivo",sans-serif;transition:border-color .2s var(--ease)}
@@ -161,7 +174,7 @@ input:hover,select:hover{border-color:rgba(233,214,198,.75)}
 input:focus-visible,select:focus-visible{outline:2px solid var(--oro);outline-offset:1px;border-color:var(--oro)}
 [aria-invalid=true]{border-color:var(--error)!important}
 .opciones{display:grid;gap:10px}
-.campo .opcion{display:flex;align-items:center;gap:12px;min-height:58px;margin:0;padding:12px 16px;border:1px solid rgba(233,214,198,.5);border-radius:var(--r);cursor:pointer;font-weight:500;color:var(--crema);transition:border-color .2s var(--ease),background-color .2s var(--ease)}
+.campo .opcion{display:flex;align-items:center;gap:12px;min-height:58px;margin:0;padding:12px 16px;border:1px solid rgba(233,214,198,.5);border-radius:var(--r);cursor:pointer;font-weight:400;color:var(--crema);transition:border-color .2s var(--ease),background-color .2s var(--ease)}
 .opcion input{width:20px;height:20px;margin:0;accent-color:var(--oro);flex:none}
 .opcion:has(input:checked){border-color:var(--oro);background:rgba(235,179,20,.1)}
 .opcion:has(input:focus-visible){outline:2px solid var(--oro);outline-offset:2px}
@@ -180,13 +193,13 @@ form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 .listo .accion{margin-top:18px}
 .compartir{margin-top:18px;padding-top:18px;border-top:1px solid var(--linea-suave)}
 .compartir code{display:block;margin-top:8px;padding:10px 12px;border-radius:8px;background:var(--vino);font:400 .875rem/1.4 ui-monospace,monospace;word-break:break-all}
-.boton-borde{display:inline-flex;align-items:center;min-height:48px;margin-top:12px;padding:0 1.2rem;border:1px solid var(--oro);border-radius:var(--r);background:none;color:var(--oro);font:700 1rem/1 "Archivo",sans-serif;cursor:pointer}
-@media (min-width:860px){.registro__grid{grid-template-columns:minmax(0,560px) 1fr;gap:64px;align-items:start}.registro__lado{position:sticky;top:12vh}}
+.boton-borde{display:inline-flex;align-items:center;min-height:48px;margin-top:12px;padding:0 1.2rem;border:1px solid var(--oro);border-radius:var(--r);background:none;color:var(--oro);font:800 1rem/1 "Archivo",sans-serif;cursor:pointer}
+@media (min-width:860px){.registro__grid{grid-template-columns:minmax(0,560px) 1fr;gap:64px;align-items:start}}
 .cuenta{position:relative;padding:120px 0 72px;overflow:hidden;isolation:isolate}
 .cuenta__foto,.cuenta__foto img{position:absolute;inset:0 0 auto 0;width:100%;height:440px;object-fit:cover}
 .cuenta__foto{z-index:-1}
 .cuenta__foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,11,11,.1),var(--vino) 95%)}
-.cuenta h2{font-size:clamp(2.2rem,11vw,3.8rem)}
+.cuenta h2{font-size:var(--t2)}
 .reloj{display:none;margin-top:14px;color:var(--oro)}
 .reloj.vista{display:block}
 .localidades{list-style:none;margin:28px 0 0;padding:0;max-width:560px}
@@ -194,16 +207,16 @@ form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 .localidades li:last-child{border-bottom:1px solid var(--linea)}
 .localidades .nombre{font-size:1.875rem}
 .localidades .detalle{display:block;margin-top:6px;font-size:1rem;color:var(--tenue)}
-.localidades .precio{font-weight:700;font-size:1.5rem;color:var(--oro);white-space:nowrap}
+.localidades .precio{font-weight:800;font-size:1.5rem;color:var(--oro);white-space:nowrap}
 .cuenta__accion{margin-top:24px;max-width:560px}
 .noche{padding:0 0 64px;background:var(--vino-2)}
 .noche__grid{display:grid;gap:36px}
-.noche__foto{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;aspect-ratio:9/12;overflow:hidden;color:inherit}
+.noche__foto{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;aspect-ratio:4/3;overflow:hidden;color:inherit}
 .noche__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transition:transform .6s var(--ease)}
 .noche__foto:hover img{transform:scale(1.02)}
 .noche__foto:focus-visible{outline:3px solid var(--oro);outline-offset:-3px}
-.noche__foto span{position:absolute;left:var(--g);bottom:20px;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border-radius:999px;background:rgba(26,11,11,.78);font-weight:700;color:var(--crema)}
-.noche h2{font-size:clamp(2.2rem,11vw,3.8rem)}
+.noche__foto span{position:absolute;left:var(--g);bottom:20px;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border-radius:999px;background:rgba(26,11,11,.78);font-weight:800;color:var(--crema)}
+.noche h2{font-size:var(--t2)}
 .datos{margin:22px 0 0;display:grid;grid-template-columns:auto 1fr;gap:12px 20px}
 .datos dt{color:var(--tenue)}
 .datos dd{margin:0;color:var(--crema)}
@@ -211,7 +224,7 @@ form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 .preguntas{margin-top:40px}
 .preguntas details{border-top:1px solid var(--linea-suave)}
 .preguntas details:last-child{border-bottom:1px solid var(--linea-suave)}
-.preguntas summary{display:flex;justify-content:space-between;gap:16px;min-height:58px;align-items:center;cursor:pointer;font-weight:600;color:var(--crema);list-style:none}
+.preguntas summary{display:flex;justify-content:space-between;gap:16px;min-height:58px;align-items:center;cursor:pointer;font-weight:800;color:var(--crema);list-style:none}
 .preguntas summary::-webkit-details-marker{display:none}
 .preguntas summary::after{content:"+";font-size:1.5rem;color:var(--oro);transition:transform .2s var(--ease)}
 .preguntas details[open] summary::after{transform:rotate(45deg)}
@@ -220,7 +233,7 @@ form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 @media (min-width:860px){.noche{padding-top:80px}.noche__grid{grid-template-columns:420px 1fr;gap:64px;align-items:start}.noche__foto{border-radius:6px}}
 footer{padding:40px 0 calc(var(--barra) + 40px);font-size:.8125rem;line-height:1.6;color:var(--tenue);background:var(--vino-2)}
 footer img{width:180px;height:auto;margin-bottom:18px}
-footer .legal{color:var(--texto);font-weight:600}
+footer .legal{color:var(--texto);font-weight:800}
 footer p+p{margin-top:8px}
 .barra{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;gap:10px;padding:10px var(--g) calc(10px + env(safe-area-inset-bottom));background:rgba(26,11,11,.92);border-top:1px solid var(--linea);transform:translateY(110%);transition:transform .3s var(--ease)}
 .barra.vista{transform:none}
@@ -247,16 +260,16 @@ dialog video{width:100%;height:100%;object-fit:contain}
 <header class="hero">
   <div class="hero__fondo">
     <picture>
-      <source type="image/avif" srcset="assets/hero-poster-720.avif">
+      <source type="image/avif" srcset="assets/hero-poster-720.avif 720w, assets/hero-poster-1080.avif 1080w" sizes="100vw">
       <img src="assets/hero-poster-720.webp" width="720" height="1280" alt="Rasca Salinera, una farra pa' borrar casete: el nombre en oro sobre el fuego." fetchpriority="high">
     </picture>
     <video id="hero-loop" muted playsinline loop preload="none" aria-hidden="true" data-src="assets/hero-loop.mp4"></video>
   </div>
   <div class="hero__marco" aria-hidden="true"></div>
   <div class="hero__texto">
-    <p class="hero__lugar">Sábado 5 de diciembre · La Fraguita, Zipaquirá</p>
-    <h1 class="rotulo">Una noche, los dos.</h1>
-    <p class="hero__quienes">Jhonny Rivera y Jhon Alex Castaño. Ingreso desde las 5:00 p. m.</p>
+    <p class="hero__lugar">La Fraguita · Zipaquirá · Ingreso 5:00 p. m.</p>
+    <p class="hero__fecha rotulo">Sáb 5 de dic.</p>
+    <h1><span class="principal rotulo">Jhonny Rivera</span><span class="segundo">con Jhon Alex Castaño</span></h1>
     <a class="accion ancha hero__accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
     <button type="button" class="sec hero__sec" data-teaser="assets/teaser-noche.mp4" data-mide="TeaserNoche"><svg width="24" height="24"><use href="#play"/></svg>Ver el teaser con sonido · 0:24</button>
   </div>
@@ -275,9 +288,9 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <h2 class="rotulo" id="t-palcos">Tu palco, para diez.</h2>
     <p class="palcos__bajada">La mejor vista de la noche, para tu gente o para el cierre de año de tu empresa.</p>
     <ul class="cartel">
-      <li><span class="nombre rotulo">El Rey del Chupe</span><span class="fila"><span class="precio" data-precio="reyDelChupe">$3.357.000</span><span class="detalle">10 personas · <span data-anticipo="reyDelChupe">apartas con $1.007.100</span></span></span></li>
-      <li><span class="nombre rotulo">El Intenso</span><span class="fila"><span class="precio" data-precio="elIntenso">$2.238.000</span><span class="detalle">10 personas · <span data-anticipo="elIntenso">apartas con $671.400</span></span></span></li>
-      <li><span class="nombre rotulo">El Pegao</span><span class="fila"><span class="precio" data-precio="elPegao">$1.454.700</span><span class="detalle">10 personas · <span data-anticipo="elPegao">apartas con $436.410</span></span></span></li>
+      <li class="primero"><span class="nombre rotulo">El Rey del Chupe</span><span class="cerca">El más cerca de la tarima</span><span class="fila"><span class="precio" data-precio="reyDelChupe">$3.357.000</span><span class="detalle">10 personas · <span data-anticipo="reyDelChupe">apartas con $1.007.100</span></span></span><span class="puesto">o tu puesto: $335.700 por persona, en Tickeo</span></li>
+      <li><span class="nombre rotulo">El Intenso</span><span class="fila"><span class="precio" data-precio="elIntenso">$2.238.000</span><span class="detalle">10 personas · <span data-anticipo="elIntenso">apartas con $671.400</span></span></span><span class="puesto">o tu puesto: $223.800 por persona, en Tickeo</span></li>
+      <li><span class="nombre rotulo">El Pegao</span><span class="fila"><span class="precio" data-precio="elPegao">$1.454.700</span><span class="detalle">10 personas · <span data-anticipo="elPegao">apartas con $436.410</span></span></span><span class="puesto">o tu puesto: $145.470 por persona, en Tickeo</span></li>
     </ul>
     <p class="palcos__como"><b>Apartas con el 30% y pagas el resto en 15 días.</b> Déjanos tus datos y te confirmamos el palco por WhatsApp, con el lugar exacto antes de pagar.</p>
     <a class="accion ancha palcos__accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
@@ -287,13 +300,13 @@ dialog video{width:100%;height:100%;object-fit:contain}
 
 
 <section class="dos" aria-label="Los artistas">
-  <article class="artista">
-    <picture><source type="image/avif" srcset="assets/jhonny-720.avif 720w, assets/jhonny-1000.avif 1000w" sizes="(min-width:860px) 50vw, 100vw"><img src="assets/jhonny-720.webp" srcset="assets/jhonny-720.webp 720w, assets/jhonny-1000.webp 1000w" sizes="(min-width:860px) 50vw, 100vw" width="720" height="658" alt="Jhonny Rivera cantando en tarima." loading="lazy"></picture>
-    <div class="artista__texto"><h2 class="rotulo">Jhonny Rivera</h2><p>Los clásicos que vas a cantar a grito herido.</p></div>
+  <article class="artista artista--principal">
+    <picture><source type="image/avif" srcset="assets/rivera-720.avif 720w, assets/rivera-1100.avif 1100w" sizes="(min-width:860px) 60vw, 100vw"><img src="assets/rivera-720.webp" srcset="assets/rivera-720.webp 720w, assets/rivera-1100.webp 1100w" sizes="(min-width:860px) 60vw, 100vw" width="720" height="599" alt="Jhonny Rivera cantando en tarima." loading="lazy"></picture>
+    <div class="artista__texto"><span class="rol">Artista principal</span><h2 class="rotulo">Jhonny Rivera</h2><p>Los clásicos que vas a cantar a grito herido.</p></div>
   </article>
   <article class="artista">
-    <picture><source type="image/avif" srcset="assets/jhonalex-720.avif 720w, assets/jhonalex-1000.avif 1000w" sizes="(min-width:860px) 50vw, 100vw"><img src="assets/jhonalex-720.webp" srcset="assets/jhonalex-720.webp 720w, assets/jhonalex-1000.webp 1000w" sizes="(min-width:860px) 50vw, 100vw" width="720" height="658" alt="Jhon Alex Castaño cantando con el micrófono." loading="lazy"></picture>
-    <div class="artista__texto"><h2 class="rotulo">Jhon Alex Castaño</h2><p>La misma tarima, la misma noche.</p></div>
+    <picture><source type="image/avif" srcset="assets/castano-720.avif 720w, assets/castano-1080.avif 1080w" sizes="(min-width:860px) 40vw, 100vw"><img src="assets/castano-720.webp" srcset="assets/castano-720.webp 720w, assets/castano-1080.webp 1080w" sizes="(min-width:860px) 40vw, 100vw" width="720" height="900" alt="Jhon Alex Castaño, foto oficial." loading="lazy" style="object-position:50% 0"></picture>
+    <div class="artista__texto"><span class="rol">Invitado</span><h2 class="rotulo">Jhon Alex Castaño</h2><p>La misma tarima, la misma noche.</p></div>
   </article>
 </section>
 
@@ -306,26 +319,26 @@ dialog video{width:100%;height:100%;object-fit:contain}
   </div>
 
   <div class="escenario" aria-hidden="true">
-    <picture class="activa"><source type="image/avif" srcset="assets/escalon-2-720.avif"><img src="assets/escalon-2-720.webp" alt="" loading="lazy"></picture>
-    <picture><source type="image/avif" srcset="assets/escalon-4-720.avif"><img src="assets/escalon-4-720.webp" alt="" loading="lazy"></picture>
-    <picture><source type="image/avif" srcset="assets/escalon-6-720.avif"><img src="assets/escalon-6-720.webp" alt="" loading="lazy"></picture>
-    <picture><source type="image/avif" srcset="assets/escalon-10-720.avif"><img src="assets/escalon-10-720.webp" alt="" loading="lazy"></picture>
+    <picture class="activa"><source type="image/avif" srcset="assets/escalon-2-720.avif 720w, assets/escalon-2-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-2-720.webp" alt="" loading="lazy"></picture>
+    <picture><source type="image/avif" srcset="assets/escalon-4-720.avif 720w, assets/escalon-4-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-4-720.webp" alt="" loading="lazy"></picture>
+    <picture><source type="image/avif" srcset="assets/escalon-6-720.avif 720w, assets/escalon-6-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-6-720.webp" alt="" loading="lazy"></picture>
+    <picture><source type="image/avif" srcset="assets/escalon-10-720.avif 720w, assets/escalon-10-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-10-720.webp" alt="" loading="lazy"></picture>
   </div>
 
   <article class="paso" data-paso="0">
-    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-2-720.avif"><img src="assets/escalon-2-720.webp" width="720" height="1280" alt="Una pica entre las brasas antes del amanecer." loading="lazy"></picture>
+    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-2-720.avif 720w, assets/escalon-2-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-2-720.webp" width="720" height="1280" alt="Una pica entre las brasas antes del amanecer." loading="lazy"></picture>
     <div class="paso__texto"><p class="paso__n rotulo">2<small>en la mesa</small></p><h3>Llegas con tu llave.</h3><p class="paso__gana">Ganan: <b>quedar juntos</b> toda la noche.</p></div>
   </article>
   <article class="paso" data-paso="1">
-    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-4-720.avif"><img src="assets/escalon-4-720.webp" width="720" height="1280" alt="Un trabajador con poncho frente al amanecer de la Sabana." loading="lazy"></picture>
+    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-4-720.avif 720w, assets/escalon-4-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-4-720.webp" width="720" height="1280" alt="Un trabajador con poncho frente al amanecer de la Sabana." loading="lazy"></picture>
     <div class="paso__texto"><p class="paso__n rotulo">4<small>en la mesa</small></p><h3>Juntaste a los tuyos.</h3><p class="paso__gana">Ganan: <b>entrada anticipada</b>, para llegar primero.</p></div>
   </article>
   <article class="paso" data-paso="2">
-    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-6-720.avif"><img src="assets/escalon-6-720.webp" width="720" height="1280" alt="Aguardiente cayendo en un vaso de cristal tallado." loading="lazy"></picture>
+    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-6-720.avif 720w, assets/escalon-6-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-6-720.webp" width="720" height="1280" alt="Aguardiente cayendo en un vaso de cristal tallado." loading="lazy"></picture>
     <div class="paso__texto"><p class="paso__n rotulo">6<small>en la mesa</small></p><h3>La mesa ya suena.</h3><p class="paso__gana">Ganan: <b>el nombre de su mesa en pantalla</b>.</p></div>
   </article>
   <article class="paso" data-paso="3">
-    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-10-720.avif"><img src="assets/escalon-10-720.webp" width="720" height="1280" alt="Silueta de un cantante en tarima bajo las luces." loading="lazy"></picture>
+    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-10-720.avif 720w, assets/escalon-10-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-10-720.webp" width="720" height="1280" alt="Silueta de un cantante en tarima bajo las luces." loading="lazy"></picture>
     <div class="paso__texto"><p class="paso__n rotulo">10<small>en la mesa</small></p><h3>Mesa completa.</h3><p class="paso__gana">Ganan: <b>mención desde la tarima</b> y <b>foto oficial</b>. Y con diez, ya les alcanza para <a class="enlace" href="#palcos">un palco</a>.</p></div>
   </article>
 </section>
@@ -364,6 +377,10 @@ dialog video{width:100%;height:100%;object-fit:contain}
           <label for="nm">Nombre de tu mesa</label>
           <input type="text" id="nm" name="nombreMesa" maxlength="28" placeholder="La Cuadrilla de los Beltrán">
           <span class="ayuda">Así saldría en la pantalla si la mesa llega a 6.</span>
+          <div class="pantalla" id="pantalla" aria-live="polite" style="margin-top:12px">
+            <img src="assets/escalon-10-720.webp" alt="" loading="lazy">
+            <p><small>En la pantalla de la tarima</small><strong id="pantalla-nombre">Tu mesa</strong></p>
+          </div>
         </div>
         <div class="campo si-mesa">
           <label for="tamano">¿Cuántos son en tu mesa?</label>
@@ -404,12 +421,6 @@ dialog video{width:100%;height:100%;object-fit:contain}
       </div>
     </div>
 
-    <div class="registro__lado">
-      <div class="pantalla" id="pantalla" aria-live="polite">
-        <img src="assets/escalon-10-720.webp" alt="" loading="lazy">
-        <p><small>En la pantalla de la tarima</small><strong id="pantalla-nombre">Tu mesa</strong></p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -431,7 +442,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
 <section class="noche" aria-labelledby="t-noche">
   <div class="noche__grid">
     <button type="button" class="noche__foto" data-teaser="assets/teaser-sabana.mp4" data-mide="TeaserSabana">
-      <picture><source type="image/avif" srcset="assets/sabana-720.avif"><img src="assets/sabana-720.webp" width="720" height="1280" alt="Zipaquirá desde el aire: el evento popular más grande de la Sabana." loading="lazy"></picture>
+      <picture><source type="image/avif" srcset="assets/arena-900.avif 900w, assets/arena-1600.avif 1600w" sizes="(min-width:860px) 420px, 100vw"><img src="assets/arena-900.webp" srcset="assets/arena-900.webp 900w, assets/arena-1600.webp 1600w" sizes="(min-width:860px) 420px, 100vw" width="900" height="503" alt="Una arena llena bajo luces cálidas." loading="lazy"></picture>
       <span><svg width="24" height="24" aria-hidden="true"><use href="#play"/></svg>De dónde viene la gente</span>
     </button>
     <div class="env">
@@ -440,7 +451,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
       <dl class="datos">
         <dt>Cuándo</dt><dd>Sábado 5 de diciembre de 2026</dd>
         <dt>Ingreso</dt><dd>5:00 p. m. · show 8:00 p. m.</dd>
-        <dt>Dónde</dt><dd>La Fraguita, Zipaquirá</dd>
+        <dt>Dónde</dt><dd>La Fraguita, km 1 vía Zipaquirá–Bogotá, junto al parqueadero de El Frigorífico · <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=La+Fraguita+km+1+v%C3%ADa+Zipaquir%C3%A1+Bogot%C3%A1" target="_blank" rel="noopener">Ver en el mapa</a></dd>
         <dt>Edad</dt><dd>Solo mayores de 18</dd>
         <dt>Dudas</dt><dd><a class="enlace" id="wa-dudas" href="https://wa.me/573222045398" target="_blank" rel="noopener" data-mide="ClicWhatsApp">322 204 5398</a></dd>
       </dl>
@@ -449,6 +460,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
         <details><summary>¿Cómo funciona apartar un palco?</summary><p>Te anotas, te escribimos por WhatsApp y te confirmamos el palco disponible. Pagas el 30% para apartarlo y el resto dentro de los 15 días siguientes. Si el saldo no llega en ese plazo, el palco se libera.</p></details>
         <details><summary>¿Cómo cuenta mi mesa?</summary><p>Cuando te anotas te damos un enlace. Cada persona que se anote con él queda en tu mesa, y cada una compra su boleta en Tickeo. Antes del evento te confirmamos por WhatsApp cuántos son y qué ganaron.</p></details>
         <details><summary>¿Puedo devolver mi boleta?</summary><p>Tienes derecho de retracto dentro de los 5 días hábiles siguientes a la compra (artículo 47 de la Ley 1480 de 2011). Se tramita ante Tickeo S.A.S.</p></details>
+        <details><summary>¿Qué no puedo entrar?</summary><p>Comida ni bebida, armas ni objetos cortopunzantes, camisetas de equipos de fútbol ni cámara profesional. Tampoco se entra en estado de embriaguez. Adentro hay venta de comida y licor.</p></details>
         <details><summary>¿Pueden entrar menores?</summary><p>No. El evento es solo para mayores de 18 años.</p></details>
       </div>
     </div>
@@ -566,9 +578,10 @@ listo(function(){
   var pasos = sec.querySelectorAll(".paso");
   var actual = 0;
   function mira(){
-    var linea = innerHeight * 0.55, i = 0;
+    var linea = innerHeight * 0.6, i = 0;
     for (var k = 0; k < pasos.length; k++){
-      if (pasos[k].getBoundingClientRect().top < linea) i = k;
+      var tx = pasos[k].querySelector(".paso__texto") || pasos[k];
+      if (tx.getBoundingClientRect().top < linea) i = k;
     }
     if (i === actual) return;
     actual = i;
