@@ -41,7 +41,9 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
 body{margin:0;background:var(--vino);color:var(--texto);font:400 1.0625rem/1.55 "Archivo",system-ui,sans-serif;font-feature-settings:"tnum" 1;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,video{display:block;max-width:100%}
 a{color:inherit}
@@ -85,6 +87,7 @@ p{margin:0}
   filter:blur(calc(var(--p,0) * 14px));opacity:clamp(0,calc(1 - var(--p,0) * 2.1),1);will-change:transform,opacity,filter}
 .hero.anima .hero__flyer{background:radial-gradient(ellipse at 50% 40%,#3a1410,#140707 75%)}
 .hero.anima .hero__flyer img{width:100%;height:100%;object-fit:contain;object-position:50% 40%}
+.hero.anima .hero__fondo{transform:translateY(calc(var(--p,0) * -24%));will-change:transform}
 .hero.anima .hero__texto{opacity:clamp(0,calc(var(--p,0) * 2.6 - 1.2),1);transform:translateY(calc((1 - clamp(0,var(--p,0) * 1.7 - .45,1)) * 56px))}
 .hero.anima .hero.anima .hero__desliza{display:flex;position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom));z-index:4;flex-direction:column;align-items:center;gap:6px;
   font-weight:800;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--crema);text-shadow:0 1px 10px rgba(0,0,0,.8);opacity:calc(1 - var(--p,0) * 5);pointer-events:none}
@@ -110,6 +113,8 @@ p{margin:0}
 .cartel .primero .nombre{font-size:var(--t1)}
 .cartel .cerca{display:block;margin-top:6px;color:var(--oro);font-size:1rem}
 .cartel .puesto{display:block;margin-top:4px;color:var(--tenue);font-size:1rem}
+.cartel .apartar{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;padding:0 16px;border:1px solid var(--oro);border-radius:var(--r);color:var(--oro);font-weight:800;text-decoration:none}
+.cartel .apartar:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
 .cartel .nombre{display:block;font-size:clamp(2rem,10.5vw,3.6rem)}
 .cartel .fila{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px;margin-top:10px}
 .cartel .precio{font-weight:800;font-size:1.5rem;color:var(--oro)}
@@ -118,7 +123,10 @@ p{margin:0}
 .palcos__como b{color:var(--crema)}
 .palcos__accion{margin-top:24px}
 .palcos__pie{margin-top:14px;font-size:1rem;color:var(--tenue)}
-@media (min-width:860px){.palcos .env{max-width:820px}.palcos__foto{height:640px}}
+@media (min-width:860px){
+  .palcos .env{max-width:820px}
+  .palcos__foto{height:640px}
+}
 .dos{display:grid;gap:0}
 .artista{position:relative;min-height:72svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
 .artista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;z-index:-2}
@@ -129,74 +137,21 @@ p{margin:0}
 .artista--principal h2{font-size:var(--t1)}
 .artista--principal .rol,.artista .rol{display:block;margin-bottom:8px;font-size:1rem;color:var(--oro)}
 .artista p{margin-top:10px;color:var(--crema);max-width:26rem}
-@media (min-width:860px){.dos{grid-template-columns:1.6fr 1fr}.artista{min-height:92vh}}
-.mesa{position:relative;padding:80px 0 0}
-.mesa__intro{padding:0 var(--g) 36px;max-width:1120px;margin:0 auto}
-.mesa__intro h2{font-size:var(--t2)}
-.mesa__intro p{margin-top:14px;max-width:30rem;color:var(--crema)}
-.escenario{display:none}
-.paso{position:relative;min-height:72svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.paso__foto,.paso__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.paso__foto{z-index:-2}
-.paso::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,0) 30%,rgba(26,11,11,.6) 60%,rgba(26,11,11,.97) 74%)}
-.paso__texto{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--g) 48px}
-.paso__n{font-size:clamp(6rem,34vw,11rem);color:var(--oro);line-height:.8}
-.paso__n small{font-size:1rem;font-weight:400;letter-spacing:0;text-transform:none;color:var(--texto);margin-left:10px}
-.paso h3{margin-top:14px;font-size:1.625rem;font-weight:800;color:var(--crema)}
-.paso__gana{margin-top:8px;font-size:1.0625rem}
-.paso__gana b{color:var(--oro)}
-.mesa.viva .escenario{display:block;position:sticky;top:0;height:100svh;z-index:0}
-.mesa.viva .escenario + .paso{margin-top:-100svh}
-.mesa.viva .escenario picture{position:absolute;inset:0;opacity:0;transition:opacity .9s var(--ease)}
-.mesa.viva .escenario picture.activa{opacity:1}
-.mesa.viva .escenario img{width:100%;height:100%;object-fit:cover}
-.mesa.viva .escenario::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,11,11,.15),rgba(26,11,11,0) 30%,rgba(26,11,11,.55) 62%,rgba(26,11,11,.97) 74%)}
-.mesa.viva .paso{z-index:1;min-height:76svh}
-.mesa.viva .paso:last-child{min-height:72svh}
-.mesa.viva .paso__foto,.mesa.viva .paso::after{display:none}
-.mesa.viva .paso__texto{padding-top:220px;background:linear-gradient(to top,rgba(26,11,11,.9) 25%,rgba(26,11,11,.5) 60%,rgba(26,11,11,0))}
-.paso__texto{text-shadow:0 1px 18px rgba(26,11,11,.8)}
 @media (min-width:860px){
-  .mesa.viva .escenario{left:auto;width:min(56vh,50%);margin-left:auto}
-  .mesa.viva .escenario::after{background:linear-gradient(to right,var(--vino),rgba(26,11,11,0) 40%)}
-  .mesa.viva .paso{align-items:center}
-  .mesa.viva .paso__texto{background:none}
-  .mesa.viva .paso__texto{padding-right:calc(min(56vh,50%) + var(--g))}
-  .mesa:not(.viva) .paso__foto{left:auto;width:50%}
+  .dos{grid-template-columns:1.6fr 1fr}
+  .artista{min-height:92vh}
 }
-.registro{padding:88px 0 80px;background:var(--vino)}
-.registro__grid{display:grid;gap:36px}
-.registro h2{font-size:var(--t2)}
-.registro__bajada{margin-top:14px;max-width:30rem;color:var(--crema)}
-.invitado{display:none;margin-bottom:24px;padding:16px 18px;border-radius:var(--r);background:var(--vino-2);border:1px solid var(--oro)}
-.invitado.vista{display:block}
-.invitado b{color:var(--oro)}
-.pantalla{position:relative;display:none;aspect-ratio:16/9;border-radius:6px;overflow:hidden;isolation:isolate;border:1px solid var(--linea)}
-.pantalla img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;z-index:-2}
-.pantalla::after{content:"";position:absolute;inset:0;z-index:-1;background:rgba(26,11,11,.55)}
-.pantalla p{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;text-align:center}
-.pantalla small{font-size:.875rem;font-weight:800;letter-spacing:.04em;color:var(--oro)}
-.pantalla strong{margin-top:6px;font-weight:800;text-transform:uppercase;font-size:clamp(1.4rem,7vw,2.2rem);line-height:1;color:var(--crema);word-break:break-word}
-.pantalla{display:block}
 form{max-width:560px}
 .campo{margin-bottom:20px}
 .campo>label,.campo legend{display:block;margin-bottom:8px;font-weight:800;font-size:1rem;color:var(--crema)}
 .ayuda{display:block;margin-top:6px;font-size:1rem;color:var(--tenue)}
 fieldset{border:0;margin:0 0 20px;padding:0}
-input[type=text],input[type=tel],select{width:100%;min-height:54px;padding:0 14px;border:1px solid rgba(233,214,198,.5);border-radius:var(--r);background:var(--vino-2);color:var(--crema);font:400 1.0625rem/1 "Archivo",sans-serif;transition:border-color .2s var(--ease)}
+input[type=text],input[type=tel],input[type=email],select{width:100%;min-height:54px;padding:0 14px;border:1px solid rgba(233,214,198,.5);border-radius:var(--r);background:var(--vino-2);color:var(--crema);font:400 1.0625rem/1 "Archivo",sans-serif;transition:border-color .2s var(--ease)}
 select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--oro) 50%),linear-gradient(135deg,var(--oro) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
 input::placeholder{color:#9A8270}
 input:hover,select:hover{border-color:rgba(233,214,198,.75)}
 input:focus-visible,select:focus-visible{outline:2px solid var(--oro);outline-offset:1px;border-color:var(--oro)}
 [aria-invalid=true]{border-color:var(--error)!important}
-.opciones{display:grid;gap:10px}
-.campo .opcion{display:flex;align-items:center;gap:12px;min-height:58px;margin:0;padding:12px 16px;border:1px solid rgba(233,214,198,.5);border-radius:var(--r);cursor:pointer;font-weight:400;color:var(--crema);transition:border-color .2s var(--ease),background-color .2s var(--ease)}
-.opcion input{width:20px;height:20px;margin:0;accent-color:var(--oro);flex:none}
-.opcion:has(input:checked){border-color:var(--oro);background:rgba(235,179,20,.1)}
-.opcion:has(input:focus-visible){outline:2px solid var(--oro);outline-offset:2px}
-.opcion small{display:block;font-weight:400;color:var(--tenue);font-size:.9375rem}
-.si-palco,.si-mesa{display:none}
-form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 .check{display:flex;gap:12px;align-items:center;min-height:44px;margin-bottom:12px;font-size:.9375rem;cursor:pointer}
 .check input{width:22px;height:22px;margin:0;accent-color:var(--oro);flex:none}
 .check a{color:var(--oro)}
@@ -207,15 +162,6 @@ form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 .listo h3{font-size:1.75rem}
 .listo p{margin-top:10px}
 .listo .accion{margin-top:18px}
-.compartir{margin-top:18px;padding-top:18px;border-top:1px solid var(--linea-suave)}
-.compartir code{display:block;margin-top:8px;padding:10px 12px;border-radius:8px;background:var(--vino);font:400 .875rem/1.4 ui-monospace,monospace;word-break:break-all}
-.boton-borde{display:inline-flex;align-items:center;min-height:48px;margin-top:12px;padding:0 1.2rem;border:1px solid var(--oro);border-radius:var(--r);background:none;color:var(--oro);font:800 1rem/1 "Archivo",sans-serif;cursor:pointer}
-@media (min-width:860px){.registro__grid{grid-template-columns:minmax(0,560px) 1fr;gap:64px;align-items:start}}
-.cuenta{position:relative;padding:120px 0 72px;overflow:hidden;isolation:isolate}
-.cuenta__foto,.cuenta__foto img{position:absolute;inset:0 0 auto 0;width:100%;height:440px;object-fit:cover}
-.cuenta__foto{z-index:-1}
-.cuenta__foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,11,11,.1),var(--vino) 95%)}
-.cuenta h2{font-size:var(--t2)}
 .reloj{display:none;margin-top:14px;color:var(--oro)}
 .reloj.vista{display:block}
 .localidades{list-style:none;margin:28px 0 0;padding:0;max-width:560px}
@@ -224,7 +170,6 @@ form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 .localidades .nombre{font-size:1.875rem}
 .localidades .detalle{display:block;margin-top:6px;font-size:1rem;color:var(--tenue)}
 .localidades .precio{font-weight:800;font-size:1.5rem;color:var(--oro);white-space:nowrap}
-.cuenta__accion{margin-top:24px;max-width:560px}
 .envivo{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
 .envivo__poster,.envivo__poster img,.envivo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .envivo__poster,.envivo video{z-index:-2}
@@ -242,6 +187,38 @@ form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 .saludo small{display:block;margin-top:4px;color:var(--tenue);font-size:.9375rem}
 .saludo svg{color:var(--oro);flex:none}
 .saludo:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.otras{position:relative;padding:0 0 64px;background:var(--vino)}
+.otras__foto{display:block;position:relative;height:36svh;min-height:220px}
+.otras__foto img{width:100%;height:100%;object-fit:cover}
+.otras__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(to bottom,rgba(26,11,11,0),var(--vino))}
+.otras .env{position:relative;margin-top:-56px}
+.otras h2{font-size:var(--t2)}
+.otra{margin-top:24px;padding:20px;border:1px solid var(--linea);border-radius:var(--r);background:var(--vino-2)}
+.otra .rol{display:block;color:var(--oro);font-size:1rem}
+.otra h3{margin-top:6px;font-size:var(--t3);font-weight:800;color:var(--crema)}
+.otra p{margin-top:8px}
+.otra .sec{margin-top:6px}
+.otras__accion{margin-top:20px;max-width:560px}
+.concurso{position:relative;padding:0 0 72px;background:var(--vino)}
+.concurso__foto{display:block;position:relative;height:40svh;min-height:240px}
+.concurso__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.concurso__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(to bottom,rgba(26,11,11,0),var(--vino))}
+.concurso .env{position:relative;margin-top:-64px}
+.concurso .rol{display:block;margin-bottom:8px;color:var(--oro);font-size:1rem}
+.concurso h2{font-size:var(--t2)}
+.concurso__bajada{margin-top:14px;max-width:32rem;color:var(--crema)}
+.concurso form{margin-top:28px;max-width:560px}
+textarea{width:100%;padding:14px;border:1px solid rgba(233,214,198,.5);border-radius:var(--r);background:var(--vino-2);color:var(--crema);font:400 1.0625rem/1.5 "Archivo",sans-serif;resize:vertical}
+textarea:focus-visible{outline:2px solid var(--oro);outline-offset:1px;border-color:var(--oro)}
+.terminos{margin-top:28px;text-align:left}
+.terminos details{border-top:1px solid var(--linea-suave)}
+.terminos details:last-child{border-bottom:1px solid var(--linea-suave)}
+.terminos summary{display:flex;justify-content:space-between;gap:16px;min-height:52px;align-items:center;cursor:pointer;font-weight:800;color:var(--tenue);list-style:none}
+.terminos summary::-webkit-details-marker{display:none}
+.terminos summary::after{content:"+";color:var(--oro)}
+.terminos summary:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.legal-txt{padding:0 0 16px;font-size:.9375rem;color:var(--texto)}
+.legal-txt p+p{margin-top:8px}
 .llegar{position:relative;min-height:96svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
 .llegar__foto,.llegar__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
 .llegar__foto{z-index:-2}
@@ -269,7 +246,19 @@ form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 .preguntas details[open] summary::after{transform:rotate(45deg)}
 .preguntas summary:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
 .preguntas details p{padding:0 0 18px;font-size:1rem}
-@media (min-width:860px){.cierre .env{max-width:760px}}
+@media (min-width:860px){
+  .cierre .env{max-width:760px}
+}
+.palcos{background:linear-gradient(to bottom,var(--vino),var(--vino-3) 14%,var(--vino-3) 86%,var(--vino))}
+.palcos .env,.otras .env,.concurso .env{max-width:600px;margin-inline:auto}
+.palcos .env>h2,.palcos__bajada,.otras h2,.otras .reloj,.concurso .rol,.concurso h2,.concurso__bajada{text-align:center;margin-inline:auto}
+.palcos__como,.palcos__pie{text-align:center;margin-inline:auto}
+.otra{text-align:center}
+.cartel li{text-align:left}
+.conector{display:flex;justify-content:center;padding:28px 0 0}
+.conector svg{width:132px;height:12px}
+.envivo,.llegar,.artista,.hero__escena{background:var(--vino)}
+.llegar::before,.envivo::before,.otras__foto::before,.concurso__foto::before{content:"";position:absolute;inset:0 0 auto 0;height:90px;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0));z-index:0;pointer-events:none}
 footer{padding:40px 0 calc(var(--barra) + 40px);font-size:.8125rem;line-height:1.6;color:var(--tenue);background:var(--vino-2)}
 footer img{width:180px;height:auto;margin-bottom:18px}
 footer .legal{color:var(--texto);font-weight:800}
@@ -279,8 +268,13 @@ footer p+p{margin-top:8px}
 .barra .accion{flex:1}
 .barra__wa{display:inline-flex;align-items:center;justify-content:center;width:56px;min-height:56px;border:1px solid var(--oro);border-radius:var(--r);color:var(--oro)}
 .barra__wa:focus-visible{outline:2px solid var(--crema);outline-offset:2px}
-@media (prefers-reduced-motion:reduce){.barra{transition:none}}
-@media (min-width:860px){.barra{justify-content:center}.barra .accion{flex:0 1 360px}}
+@media (prefers-reduced-motion:reduce){
+  .barra{transition:none}
+}
+@media (min-width:860px){
+  .barra{justify-content:center}
+  .barra .accion{flex:0 1 360px}
+}
 dialog{padding:0;border:0;background:#000;max-width:none;max-height:none;width:100vw;height:100svh;margin:0}
 dialog::backdrop{background:rgba(0,0,0,.9)}
 dialog video{width:100%;height:100%;object-fit:contain}
@@ -292,9 +286,12 @@ dialog video{width:100%;height:100%;object-fit:contain}
 .sonido .barras{display:inline-flex;gap:2px;align-items:flex-end;height:14px}
 .sonido .barras i{display:block;width:3px;height:4px;background:var(--oro);border-radius:1px}
 .sonido[aria-pressed=true] .barras i{animation:eq .9s var(--ease) infinite alternate}
-.sonido[aria-pressed=true] .barras i:nth-child(2){animation-delay:.2s}.sonido[aria-pressed=true] .barras i:nth-child(3){animation-delay:.4s}
+.sonido[aria-pressed=true] .barras i:nth-child(2){animation-delay:.2s}
+.sonido[aria-pressed=true] .barras i:nth-child(3){animation-delay:.4s}
 @keyframes eq{to{height:14px}}
-@media (prefers-reduced-motion:reduce){.sonido[aria-pressed=true] .barras i{animation:none;height:10px}}
+@media (prefers-reduced-motion:reduce){
+  .sonido[aria-pressed=true] .barras i{animation:none;height:10px}
+}
 .intro .sonido{display:none}
 .oculto-v{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 #entrada{position:fixed;inset:0;z-index:45;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 45%,rgba(26,11,11,.55),rgba(14,6,6,.88));-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:1;transition:opacity .5s var(--ease)}
@@ -345,7 +342,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <p class="hero__lugar">La Fraguita · Zipaquirá · 5:00&nbsp;p.&nbsp;m.</p>
     <p class="hero__fecha">Sábado 5 de diciembre</p>
     <h1><span class="principal rotulo">Jhonny Rivera</span><span class="segundo">con Jhon Alex Castaño</span></h1>
-    <a class="accion ancha hero__accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
+    <a class="accion ancha hero__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Aparta tu palco</a>
     <button type="button" class="sec hero__sec" data-teaser="assets/teaser-noche.mp4" data-mide="TeaserNoche"><svg width="24" height="24"><use href="#play"/></svg>Ver el teaser con sonido · 0:24</button>
   </div>
   <p class="hero__desliza" aria-hidden="true">Desliza<svg width="22" height="22" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="#EBB314" stroke-width="2"/></svg></p>
@@ -361,15 +358,16 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <img src="assets/brindis-720.webp" width="720" height="900" alt="" loading="lazy">
   </picture>
   <div class="env">
+    <div class="conector" aria-hidden="true"><svg><use href="#rombos"/></svg></div>
     <h2 class="rotulo" id="t-palcos">Tu palco, para diez.</h2>
     <p class="palcos__bajada">La mejor vista de la noche, para tu gente o para el cierre de año de tu empresa. <b style="color:var(--crema)">Las 10 sillas son de tu grupo</b>, con servicio de licor y comida en la localidad.</p>
     <ul class="cartel">
-      <li class="primero"><span class="nombre rotulo">El Rey del Chupe</span><span class="cerca">El más cerca de la tarima</span><span class="fila"><span class="precio" data-precio="reyDelChupe">$3.357.000</span><span class="detalle">10 personas · <span data-anticipo="reyDelChupe">apartas con $1.007.100</span></span></span><span class="puesto">o tu puesto: $335.700 por persona, en Tickeo</span></li>
-      <li><span class="nombre rotulo">El Intenso</span><span class="fila"><span class="precio" data-precio="elIntenso">$2.238.000</span><span class="detalle">10 personas · <span data-anticipo="elIntenso">apartas con $671.400</span></span></span><span class="puesto">o tu puesto: $223.800 por persona, en Tickeo</span></li>
-      <li><span class="nombre rotulo">El Pegao</span><span class="fila"><span class="precio" data-precio="elPegao">$1.454.700</span><span class="detalle">10 personas · <span data-anticipo="elPegao">apartas con $436.410</span></span></span><span class="puesto">o tu puesto: $145.470 por persona, en Tickeo</span></li>
+      <li class="primero"><span class="nombre rotulo">El Rey del Chupe</span><span class="cerca">El más cerca de la tarima</span><span class="fila"><span class="precio" data-precio="reyDelChupe">$3.357.000</span><span class="detalle">10 personas · <span data-anticipo="reyDelChupe">apartas con $1.007.100</span></span></span><span class="puesto">o tu puesto: $335.700 por persona, en Tickeo</span><a class="apartar" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Rey%20del%20Chupe%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Rey del Chupe para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar este palco</a></li>
+      <li><span class="nombre rotulo">El Intenso</span><span class="fila"><span class="precio" data-precio="elIntenso">$2.238.000</span><span class="detalle">10 personas · <span data-anticipo="elIntenso">apartas con $671.400</span></span></span><span class="puesto">o tu puesto: $223.800 por persona, en Tickeo</span><a class="apartar" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Intenso%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Intenso para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar este palco</a></li>
+      <li><span class="nombre rotulo">El Pegao</span><span class="fila"><span class="precio" data-precio="elPegao">$1.454.700</span><span class="detalle">10 personas · <span data-anticipo="elPegao">apartas con $436.410</span></span></span><span class="puesto">o tu puesto: $145.470 por persona, en Tickeo</span><a class="apartar" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Pegao%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Pegao para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar este palco</a></li>
     </ul>
-    <p class="palcos__como"><b>Apartas con el 30% y pagas el resto en 15 días.</b> Déjanos tus datos y te confirmamos el palco por WhatsApp, con el lugar exacto antes de pagar.</p>
-    <a class="accion ancha palcos__accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
+    <p class="palcos__como"><b>Lo apartas con el 30% por WhatsApp.</b> El saldo se paga a más tardar el <b>15 de noviembre</b>, 20 días antes del evento. Te confirmamos el palco y su lugar exacto antes de pagar. <a class="enlace" href="#terminos">Términos de la reserva</a></p>
+    <a class="accion ancha palcos__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Aparta tu palco</a>
     <p class="palcos__pie">Precio por palco completo, con servicio incluido. Sujeto a disponibilidad.</p>
   </div>
 </section>
@@ -403,129 +401,23 @@ dialog video{width:100%;height:100%;object-fit:contain}
 </section>
 
 
-<section class="mesa" id="mesa" aria-labelledby="t-mesa">
-  <div class="mesa__intro">
-    <svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg>
-    <h2 class="rotulo" id="t-mesa">Nadie viene solo a una farra.</h2>
-    <p>Arma tu mesa. Mientras más crece, más gana la noche de todos.</p>
-  </div>
-
-  <div class="escenario" aria-hidden="true">
-    <picture class="activa"><source type="image/avif" srcset="assets/escalon-2-720.avif 720w, assets/escalon-2-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-2-720.webp" alt="" loading="lazy"></picture>
-    <picture><source type="image/avif" srcset="assets/escalon-4-720.avif 720w, assets/escalon-4-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-4-720.webp" alt="" loading="lazy"></picture>
-    <picture><source type="image/avif" srcset="assets/escalon-6-720.avif 720w, assets/escalon-6-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-6-720.webp" alt="" loading="lazy"></picture>
-    <picture><source type="image/avif" srcset="assets/escalon-10-720.avif 720w, assets/escalon-10-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-10-720.webp" alt="" loading="lazy"></picture>
-  </div>
-
-  <article class="paso" data-paso="0">
-    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-2-720.avif 720w, assets/escalon-2-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-2-720.webp" width="720" height="1280" alt="Una pica entre las brasas antes del amanecer." loading="lazy"></picture>
-    <div class="paso__texto"><p class="paso__n rotulo">2<small>en la mesa</small></p><h3>Llegas con tu llave.</h3><p class="paso__gana">Ganan: <b>quedar juntos</b> toda la noche.</p></div>
-  </article>
-  <article class="paso" data-paso="1">
-    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-4-720.avif 720w, assets/escalon-4-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-4-720.webp" width="720" height="1280" alt="Un trabajador con poncho frente al amanecer de la Sabana." loading="lazy"></picture>
-    <div class="paso__texto"><p class="paso__n rotulo">4<small>en la mesa</small></p><h3>Juntaste a los tuyos.</h3><p class="paso__gana">Ganan: <b>entrada anticipada</b>, para llegar primero.</p></div>
-  </article>
-  <article class="paso" data-paso="2">
-    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-6-720.avif 720w, assets/escalon-6-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-6-720.webp" width="720" height="1280" alt="Aguardiente cayendo en un vaso de cristal tallado." loading="lazy"></picture>
-    <div class="paso__texto"><p class="paso__n rotulo">6<small>en la mesa</small></p><h3>La mesa ya suena.</h3><p class="paso__gana">Ganan: <b>el nombre de su mesa en pantalla</b>.</p></div>
-  </article>
-  <article class="paso" data-paso="3">
-    <picture class="paso__foto"><source type="image/avif" srcset="assets/escalon-10-720.avif 720w, assets/escalon-10-1080.avif 1080w" sizes="100vw"><img src="assets/escalon-10-720.webp" width="720" height="1280" alt="Silueta de un cantante en tarima bajo las luces." loading="lazy"></picture>
-    <div class="paso__texto"><p class="paso__n rotulo">10<small>en la mesa</small></p><h3>Mesa completa.</h3><p class="paso__gana">Ganan: <b>mención desde la tarima</b> y <b>foto oficial</b>. Y con diez, ya les alcanza para <a class="enlace" href="#palcos">un palco</a>.</p></div>
-  </article>
-</section>
-
-
-<section class="registro" id="registro" aria-labelledby="t-registro" data-quiere="mesa">
-  <div class="env registro__grid">
-    <div>
-      <div class="invitado" id="invitado" role="status"></div>
-      <h2 class="rotulo" id="t-registro">Anótate.</h2>
-      <p class="registro__bajada">Te escribimos por WhatsApp para confirmar. Cada persona compra su boleta en Tickeo; el palco se aparta aquí.</p>
-
-      <form id="f" novalidate data-quiere="mesa" style="margin-top:28px">
-        <p id="err" role="alert"></p>
-        <fieldset class="campo">
-          <legend>¿Qué quieres?</legend>
-          <div class="opciones">
-            <label class="opcion"><input type="radio" name="quiere" value="palco"><span>Apartar un palco<small>10 personas, con el 30%</small></span></label>
-            <label class="opcion"><input type="radio" name="quiere" value="mesa" checked><span>Armar mi mesa<small>Tú y tu gente, cada uno con su boleta</small></span></label>
-          </div>
-        </fieldset>
-        <div class="campo si-palco">
-          <label for="palco">¿Qué palco?</label>
-          <select id="palco" name="palco">
-            <option value="El Rey del Chupe">El Rey del Chupe · $3.357.000</option>
-            <option value="El Intenso">El Intenso · $2.238.000</option>
-            <option value="El Pegao">El Pegao · $1.454.700</option>
-          </select>
-        </div>
-        <div class="campo si-palco">
-          <label for="empresa">Empresa <span style="color:var(--tenue);font-weight:400">(si es para tu empresa)</span></label>
-          <input type="text" id="empresa" name="empresa" autocomplete="organization">
-        </div>
-        <div class="campo si-mesa">
-          <label for="nm">Nombre de tu mesa</label>
-          <input type="text" id="nm" name="nombreMesa" maxlength="28" placeholder="La Cuadrilla de los Beltrán">
-          <span class="ayuda">Así saldría en la pantalla si la mesa llega a 6.</span>
-          <div class="pantalla" id="pantalla" aria-live="polite" style="margin-top:12px">
-            <img src="assets/escalon-10-720.webp" alt="" loading="lazy">
-            <p><small>En la pantalla de la tarima</small><strong id="pantalla-nombre">Tu mesa</strong></p>
-          </div>
-        </div>
-        <div class="campo si-mesa">
-          <label for="tamano">¿Cuántos son en tu mesa?</label>
-          <select id="tamano" name="tamano"><option value="2">2</option><option value="4" selected>4</option><option value="6">6</option><option value="10">10</option></select>
-        </div>
-        <div class="campo">
-          <label for="n">Nombre y apellido</label>
-          <input type="text" id="n" name="nombre" autocomplete="name" required>
-        </div>
-        <div class="campo">
-          <label for="t">Celular con WhatsApp</label>
-          <input type="tel" id="t" name="celular" inputmode="numeric" autocomplete="tel-national" placeholder="300 123 4567" required>
-          <span class="ayuda">10 dígitos, sin el +57.</span>
-        </div>
-        <div class="campo">
-          <label for="m">¿De dónde vienes?</label>
-          <select id="m" name="municipio" required>
-            <option value="">Elige tu municipio</option>
-            <option>Zipaquirá</option><option>Cajicá</option><option>Chía</option><option>Tocancipá</option>
-            <option>Sopó</option><option>Cogua</option><option>Nemocón</option><option>Gachancipá</option>
-            <option>Tabio</option><option>Tenjo</option><option>Ubaté</option><option>Bogotá</option><option>Otro</option>
-          </select>
-        </div>
-        <label class="check"><input type="checkbox" id="edad"> <span>Soy mayor de 18 años.</span></label>
-        <label class="check"><input type="checkbox" id="hd"> <span>Autorizo a Dugoent Producciones S.A.S. a tratar mis datos para contactarme sobre este evento por WhatsApp, según la <a href="#datos">política de datos</a> (Ley 1581 de 2012).</span></label>
-        <button class="accion ancha" type="submit" style="margin-top:12px">Anotarme</button>
-      </form>
-
-      <div class="listo" id="ok" role="status" tabindex="-1">
-        <h3 class="rotulo" id="ok-t">Quedaste anotado.</h3>
-        <p id="ok-p">Toca el botón para mandarnos tu registro por WhatsApp. Así te confirmamos más rápido.</p>
-        <a class="accion ancha" id="ok-wa" href="#" target="_blank" rel="noopener" data-mide="ClicWhatsApp">Confirmar por WhatsApp</a>
-        <div class="compartir" id="ok-mesa" hidden>
-          <p><b style="color:var(--crema)">Ahora llama a tu mesa.</b> Mándales este enlace: cuando se anoten, quedan en tu mesa.</p>
-          <code id="ok-enlace"></code>
-          <button type="button" class="boton-borde" id="ok-compartir">Compartir mi mesa</button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<section class="cuenta" id="boletas" aria-labelledby="t-boletas">
-  <picture class="cuenta__foto" aria-hidden="true"><source type="image/avif" srcset="assets/publico-720.avif"><img src="assets/publico-720.webp" width="720" height="708" alt="" loading="lazy"></picture>
+<section class="otras" id="otras" aria-labelledby="t-otras">
+  <picture class="otras__foto" aria-hidden="true"><source type="image/avif" srcset="assets/publico-720.avif"><img src="assets/publico-720.webp" width="720" height="708" alt="" loading="lazy"></picture>
   <div class="env">
-    <h2 class="rotulo" id="t-boletas">¿Vienes por tu cuenta?</h2>
+    <div class="conector" aria-hidden="true"><svg><use href="#rombos"/></svg></div>
+    <h2 class="rotulo" id="t-otras">¿En grupo o por tu cuenta?</h2>
     <p class="reloj" id="reloj" aria-live="polite"></p>
+    <article class="otra">
+      <span class="rol">La Mesa</span>
+      <h3>Arma tu mesa de 2, 4, 6 o 10.</h3>
+      <p>Cada uno compra su boleta. Con 4 entran primero, con 6 el nombre de su mesa sale en pantalla y con 10 hay mención desde la tarima y foto oficial.</p>
+      <a class="sec" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20armar%20mi%20mesa%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero armar mi mesa para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicMesa">Arma tu mesa por WhatsApp</a>
+    </article>
     <ul class="localidades">
-      <li><span><span class="nombre rotulo">VIP</span><span class="detalle">Con silla. Servicio incluido.</span></span><span class="precio" data-precio="vip">$123.090</span></li>
+      <li><span><span class="nombre rotulo">VIP</span><span class="detalle">Servicio incluido.</span></span><span class="precio" data-precio="vip">$123.090</span></li>
       <li><span><span class="nombre rotulo">Platino</span><span class="detalle">De pie. Servicio incluido.</span></span><span class="precio" data-precio="platino">$100.710</span></li>
     </ul>
-    <a class="accion ancha cuenta__accion" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Comprar en Tickeo</a>
+    <a class="accion ancha otras__accion" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Comprar en Tickeo</a>
   </div>
 </section>
 
@@ -546,20 +438,64 @@ dialog video{width:100%;height:100%;object-fit:contain}
 </section>
 
 
+<section class="concurso" id="concurso" aria-labelledby="t-concurso">
+  <picture class="concurso__foto" aria-hidden="true"><source type="image/avif" srcset="assets/escalon-6-720.avif"><img src="assets/escalon-6-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
+  <div class="env">
+    <div class="conector" aria-hidden="true"><svg><use href="#rombos"/></svg></div>
+    <span class="rol">Concurso</span>
+    <h2 class="rotulo" id="t-concurso">Gánate un par de boletas VIP.</h2>
+    <p class="concurso__bajada">Cuéntanos con quién vendrías a la Rasca y por qué. Un jurado elige la mejor respuesta. Participas hasta el 25 de noviembre.</p>
+    <form id="f" novalidate>
+      <p id="err" role="alert"></p>
+      <div class="campo"><label for="n">Nombre y apellido</label><input type="text" id="n" name="nombre" autocomplete="name" required></div>
+      <div class="campo"><label for="c">Correo</label><input type="email" id="c" name="correo" autocomplete="email" inputmode="email" required></div>
+      <div class="campo"><label for="t">Celular con WhatsApp</label><input type="tel" id="t" name="celular" inputmode="numeric" autocomplete="tel-national" placeholder="300 123 4567" required><span class="ayuda">10 dígitos, sin el +57.</span></div>
+      <div class="campo"><label for="r">¿Con quién vendrías y por qué?</label><textarea id="r" name="respuesta" rows="4" maxlength="280" required></textarea><span class="ayuda">Máximo 280 caracteres. Esto es lo que lee el jurado.</span></div>
+      <label class="check"><input type="checkbox" id="edad"> <span>Soy mayor de 18 años.</span></label>
+      <label class="check"><input type="checkbox" id="hd"> <span>Acepto los <a href="#terminos">términos del concurso</a> y autorizo a Dugoent Producciones S.A.S. a tratar mis datos según la <a href="#datos">política de datos</a> (Ley 1581 de 2012).</span></label>
+      <button class="accion ancha" type="submit" style="margin-top:12px">Participar</button>
+    </form>
+    <div class="listo" id="ok" role="status" tabindex="-1">
+      <h3 class="rotulo" id="ok-t">Estás participando.</h3>
+      <p id="ok-p">El 27 de noviembre anunciamos al ganador por WhatsApp y por correo.</p>
+      <a class="accion ancha" id="ok-wa" href="#" target="_blank" rel="noopener" data-mide="ClicWhatsApp">Confirmar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+
 <section class="cierre" aria-labelledby="t-cierre">
   <picture class="cierre__fondo" aria-hidden="true"><source type="image/avif" srcset="assets/hero-poster-720.avif 720w, assets/hero-poster-1080.avif 1080w" sizes="100vw"><img src="assets/hero-poster-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
   <div class="env">
     <svg class="rombos" aria-hidden="true" style="margin:0 auto 18px"><use href="#rombos"/></svg>
     <h2 class="rotulo" id="t-cierre">Una farra pa' borrar casete.</h2>
     <p class="cierre__bajada">Sábado 5 de diciembre · Zipaquirá. Diciembre tiene dueño en la Sabana.</p>
-    <a class="accion ancha cierre__accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
-    <a class="enlace cierre__mesa" href="#registro" data-quiere="mesa" data-mide="ClicMesa">o arma tu mesa</a>
+    <a class="accion ancha cierre__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Aparta tu palco</a>
+    <a class="enlace cierre__mesa" href="#concurso">o participa por un par de VIP</a>
     <div class="preguntas">
-      <details><summary>¿Cómo funciona apartar un palco?</summary><p>Te anotas, te escribimos por WhatsApp y te confirmamos el palco disponible. Pagas el 30% para apartarlo y el resto dentro de los 15 días siguientes. Si el saldo no llega en ese plazo, el palco se libera.</p></details>
-      <details><summary>¿Cómo cuenta mi mesa?</summary><p>Cuando te anotas te damos un enlace. Cada persona que se anote con él queda en tu mesa, y cada una compra su boleta en Tickeo. Antes del evento te confirmamos por WhatsApp cuántos son y qué ganaron.</p></details>
+      <details><summary>¿Cómo funciona apartar un palco?</summary><p>Nos escribes por WhatsApp, te confirmamos el palco disponible y lo apartas con el 30%. El saldo se paga a más tardar el 15 de noviembre. Si no llega en ese plazo, el palco se libera.</p></details>
+      <details><summary>¿Cómo cuenta mi mesa?</summary><p>Nos escribes por WhatsApp con el nombre de tu mesa y cuántos son. Cada persona compra su boleta en Tickeo y antes del evento te confirmamos qué ganaron.</p></details>
       <details><summary>¿Puedo devolver mi boleta?</summary><p>Tienes derecho de retracto dentro de los 5 días hábiles siguientes a la compra (artículo 47 de la Ley 1480 de 2011). Se tramita ante Tickeo S.A.S.</p></details>
       <details><summary>¿Qué no puedo entrar?</summary><p>Comida ni bebida, armas ni objetos cortopunzantes, camisetas de equipos de fútbol ni cámara profesional. Tampoco se entra en estado de embriaguez. Adentro hay venta de comida y licor.</p></details>
       <details><summary>¿Pueden entrar menores?</summary><p>No. El evento es solo para mayores de 18 años.</p></details>
+    </div>
+    <div class="terminos" id="terminos">
+      <details><summary>Términos de la reserva de palcos</summary><div class="legal-txt">
+        <p>1. La reserva se hace por WhatsApp al 322 204 5398 y se confirma con el pago del 30% del valor total del palco, servicio incluido.</p>
+        <p>2. El saldo se paga a más tardar el 15 de noviembre de 2026, veinte días antes del evento. Si no se paga en ese plazo, la reserva se libera y el palco vuelve a la venta.</p>
+        <p>3. Las condiciones de devolución del anticipo se entregan por escrito al confirmar la reserva.</p>
+        <p>4. Cada palco es para 10 personas mayores de 18 años. Las boletas las emite Tickeo S.A.S.</p>
+        <p>5. El precio es el de la etapa vigente al momento de confirmar la reserva.</p>
+        <p>6. Organiza Dugoent Producciones S.A.S., NIT 902.092.798-4. PULEP HYW650.</p>
+      </div></details>
+      <details><summary>Términos del concurso</summary><div class="legal-txt">
+        <p>1. Organiza Dugoent Producciones S.A.S., NIT 902.092.798-4. Pueden participar personas naturales mayores de 18 años, residentes en Colombia.</p>
+        <p>2. Para participar hay que registrarse en esta página con nombre, correo y celular, y responder «¿Con quién vendrías y por qué?», entre la publicación de esta página y el 25 de noviembre de 2026 a las 11:59 p. m.</p>
+        <p>3. El ganador no se elige al azar: un jurado de tres personas del equipo organizador elige la respuesta más original y auténtica.</p>
+        <p>4. Hay un solo ganador y el premio es un par de boletas VIP para el 5 de diciembre de 2026. El premio no se cambia por dinero.</p>
+        <p>5. El ganador se anuncia el 27 de noviembre de 2026 por WhatsApp y por correo, y tiene 48 horas para aceptar. Si no responde, el jurado elige la siguiente respuesta.</p>
+        <p>6. Una sola participación por persona. Los datos se tratan según la política de datos de esta página.</p>
+      </div></details>
     </div>
   </div>
 </section>
@@ -571,7 +507,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <picture><source type="image/avif" srcset="assets/logo-560.avif"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera" loading="lazy"></picture>
     <p class="legal">LA RASCA SALINERA · PULEP HYW650 · Dugoent Producciones S.A.S. · NIT 902.092.798-4</p>
     <p>Boletería oficial: Tickeo S.A.S. Booking: 147 Presents · Sancor MGMT.</p>
-    <p id="datos">Tratamiento de datos: el responsable es Dugoent Producciones S.A.S. Usamos tu nombre, celular y municipio solo para contactarte sobre este evento. Puedes pedir que te borremos escribiendo al 322 204 5398.</p>
+    <p id="datos">Tratamiento de datos: el responsable es Dugoent Producciones S.A.S. Usamos tu nombre, correo, celular y tu respuesta solo para el concurso y para contactarte sobre este evento. Puedes pedir que te borremos escribiendo al 322 204 5398.</p>
     <p>El exceso de alcohol es perjudicial para la salud. Ley 30 de 1986. Prohíbase el expendio de bebidas embriagantes a menores de edad. Ley 124 de 1994.</p>
   </div>
 </footer>
@@ -579,7 +515,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
 <button type="button" class="sonido" id="sonido" aria-pressed="false" aria-label="Activar el sonido del reel"><svg class="parlante" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#EBB314"/><path d="M16 9.5c1.2 1.4 1.2 3.6 0 5" stroke="#EBB314" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg><span class="barras" aria-hidden="true"><i></i><i></i><i></i></span><span id="sonido-t" class="oculto-v">Sonido</span></button>
 <audio id="audio-reel" src="assets/sonido-reel.m4a" preload="none" loop></audio>
 <nav class="barra" id="barra" aria-label="Acción rápida">
-  <a class="accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
+  <a class="accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Aparta tu palco</a>
   <a class="barra__wa" id="barra-wa" href="https://wa.me/573222045398" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp al 322 204 5398" data-mide="ClicWhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.1.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3z"/></svg></a>
 </nav>
 
@@ -670,27 +606,6 @@ listo(function(){
   pinta(); setInterval(pinta, 30000);
 });
 listo(function(){
-  var sec = document.getElementById("mesa");
-  if (!sec || quieto) return;
-  sec.classList.add("viva");
-  var fotos = sec.querySelectorAll(".escenario picture");
-  var pasos = sec.querySelectorAll(".paso");
-  var actual = 0;
-  function mira(){
-    var linea = innerHeight * 0.6, i = 0;
-    for (var k = 0; k < pasos.length; k++){
-      var tx = pasos[k].querySelector(".paso__texto") || pasos[k];
-      if (tx.getBoundingClientRect().top < linea) i = k;
-    }
-    if (i === actual) return;
-    actual = i;
-    [].forEach.call(fotos, function(f, j){ f.classList.toggle("activa", j === i); });
-  }
-  addEventListener("scroll", mira, {passive: true});
-  addEventListener("resize", mira);
-  mira();
-});
-listo(function(){
   var v = document.getElementById("hero-loop");
   if (!v) return;
   var c = navigator.connection || {};
@@ -726,7 +641,7 @@ listo(function(){
   v.addEventListener("ended", cierra);
 });
 listo(function(){
-  var b = document.getElementById("barra"), h = document.querySelector(".hero"), r = document.getElementById("registro"), cu = document.getElementById("boletas");
+  var b = document.getElementById("barra"), h = document.querySelector(".hero"), r = document.getElementById("concurso"), cu = document.getElementById("otras");
   if (!b || !h) return;
   var wa = document.getElementById("barra-wa"); if (wa) wa.href = "https://wa.me/" + CFG.whatsapp;
   function mira(){
@@ -890,29 +805,14 @@ listo(function(){
   });
 });
 listo(function(){
+  [].forEach.call(document.querySelectorAll("a[data-wa]"), function(a){
+    a.href = "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(a.getAttribute("data-wa"));
+  });
+});
+listo(function(){
   var f = document.getElementById("f");
   if (!f) return;
   var err = document.getElementById("err"), ok = document.getElementById("ok");
-  var reg = document.getElementById("registro");
-  var nm = document.getElementById("nm"), pn = document.getElementById("pantalla-nombre");
-  if (nm && pn) nm.addEventListener("input", function(){ pn.textContent = nm.value.trim() || "Tu mesa"; });
-  function elige(q){
-    var r = f.querySelector("input[name=quiere][value=" + q + "]");
-    if (r){ r.checked = true; f.setAttribute("data-quiere", q); reg.setAttribute("data-quiere", q); }
-  }
-  [].forEach.call(f.querySelectorAll("input[name=quiere]"), function(r){
-    r.addEventListener("change", function(){ f.setAttribute("data-quiere", r.value); reg.setAttribute("data-quiere", r.value); });
-  });
-  [].forEach.call(document.querySelectorAll("a[data-quiere]"), function(a){
-    a.addEventListener("click", function(){ elige(a.getAttribute("data-quiere")); });
-  });
-  if (MESA_INVITA){
-    var inv = document.getElementById("invitado");
-    inv.innerHTML = "Te invitaron a la mesa de <b></b>. Anótate y quedas con ellos.";
-    inv.querySelector("b").textContent = MESA_INVITA.de || "tu gente";
-    inv.classList.add("vista");
-    elige("mesa");
-  }
   function fallo(msg, id){
     err.textContent = msg; err.classList.add("vista");
     var el = id && document.getElementById(id);
@@ -921,83 +821,44 @@ listo(function(){
     err.scrollIntoView({block: "center", behavior: quieto ? "auto" : "smooth"});
     return false;
   }
-  ["n","t","m","edad","hd"].forEach(function(id){
+  ["n","c","t","r","edad","hd"].forEach(function(id){
     var el = document.getElementById(id); if (!el) return;
     var limpia = function(){ el.removeAttribute("aria-invalid"); err.classList.remove("vista"); };
     el.addEventListener("input", limpia); el.addEventListener("change", limpia);
   });
-  function codigo(){
-    var a = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789", s = "";
-    var r = (window.crypto && crypto.getRandomValues) ? crypto.getRandomValues(new Uint8Array(5)) : [1,2,3,4,5].map(function(){ return Math.random() * 256; });
-    for (var i = 0; i < 5; i++) s += a[r[i] % a.length];
-    return s;
-  }
   f.addEventListener("submit", function(ev){
     ev.preventDefault();
-    var quiere = f.getAttribute("data-quiere");
     var nombre = document.getElementById("n").value.trim();
+    var correo = document.getElementById("c").value.trim();
     var tel = document.getElementById("t").value.replace(/\D/g, "").replace(/^57(?=\d{10}$)/, "");
-    var muni = document.getElementById("m").value;
+    var resp = document.getElementById("r").value.trim().slice(0, 280);
     if (nombre.length < 3) return fallo("Escribe tu nombre y tu apellido.", "n");
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(correo)) return fallo("Ese correo está incompleto. Revísalo.", "c");
     if (!/^3\d{9}$/.test(tel)) return fallo("El celular tiene 10 dígitos y empieza por 3.", "t");
-    if (!muni) return fallo("Elige de qué municipio vienes.", "m");
-    if (!document.getElementById("edad").checked) return fallo("El evento es solo para mayores de 18.", "edad");
-    if (!document.getElementById("hd").checked) return fallo("Falta marcar la autorización de datos.", "hd");
-    var palco = document.getElementById("palco").value;
-    var empresa = document.getElementById("empresa").value.trim();
-    var tamano = document.getElementById("tamano").value;
-    var nombreMesa = document.getElementById("nm").value.trim().slice(0, 28);
-    var propia = quiere === "mesa" && !MESA_INVITA ? codigo() : "";
-    var mesa = MESA_INVITA ? MESA_INVITA.codigo : propia;
-    var datos = {
-      fecha: new Date().toISOString(), quiere: quiere, nombre: nombre, celular: "+57" + tel,
-      municipio: muni, palco: quiere === "palco" ? palco : "", empresa: quiere === "palco" ? empresa : "",
-      tamano: quiere === "mesa" ? tamano : "", nombreMesa: quiere === "mesa" ? nombreMesa : "", mesa: quiere === "mesa" ? mesa : "",
-      armador: propia ? "si" : (MESA_INVITA ? "invitado" : ""), origen: ORIGEN,
-      autoriza: "Ley 1581/2012 · responsable Dugoent Producciones S.A.S. · texto v1 4-oct-2026"
-    };
-    var msg = quiere === "palco"
-      ? "RASCA SALINERA · Apartar palco\nPalco: " + palco + (empresa ? "\nEmpresa: " + empresa : "") +
-        "\nNombre: " + nombre + "\nCelular: +57" + tel + "\nMunicipio: " + muni
-      : "RASCA SALINERA · Mi mesa\nMesa: " + mesa + (MESA_INVITA ? " (invitado)" : " (la armo yo, " + tamano + " personas)") +
-        (nombreMesa ? "\nNombre de la mesa: " + nombreMesa : "") +
-        "\nNombre: " + nombre + "\nCelular: +57" + tel + "\nMunicipio: " + muni;
+    if (resp.length < 10) return fallo("Cuéntanos con quién vendrías y por qué: eso es lo que lee el jurado.", "r");
+    if (!document.getElementById("edad").checked) return fallo("El concurso es solo para mayores de 18.", "edad");
+    if (!document.getElementById("hd").checked) return fallo("Falta aceptar los términos y la autorización de datos.", "hd");
+    var datos = {fecha: new Date().toISOString(), tipo: "concurso VIP", nombre: nombre, correo: correo,
+                 celular: "+57" + tel, respuesta: resp, origen: ORIGEN,
+                 autoriza: "Ley 1581/2012 y términos del concurso · responsable Dugoent Producciones S.A.S. · v1 8-oct-2026"};
+    var msg = "RASCA SALINERA · Concurso VIP\nNombre: " + nombre + "\nCorreo: " + correo + "\nCelular: +57" + tel + "\n¿Con quién vendría y por qué?: " + resp;
     document.getElementById("ok-wa").href = "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(msg);
-    var b = f.querySelector("button[type=submit]");
-    b.disabled = true; b.textContent = "Guardando…";
+    var b = f.querySelector("button[type=submit]"); b.disabled = true; b.textContent = "Enviando…";
     var cerrado = false;
     function cierra(guardado){
       if (cerrado) return; cerrado = true;
-      mide(guardado ? "RegistroCompletado" : "RegistroSinHoja", {origen: ORIGEN, quiere: quiere});
-      if (quiere === "palco"){
-        document.getElementById("ok-t").textContent = "Tu palco está en lista.";
-        document.getElementById("ok-p").textContent = "Mándanos el registro por WhatsApp y te confirmamos el " + palco + " con el valor del anticipo.";
-      } else if (propia){
-        var url = location.origin + location.pathname + "?mesa=" + propia + "&de=" + encodeURIComponent(nombre.split(" ")[0]);
-        document.getElementById("ok-enlace").textContent = url;
-        document.getElementById("ok-mesa").hidden = false;
-        var c = document.getElementById("ok-compartir");
-        c.addEventListener("click", function(){
-          var t = "Armé mesa para la Rasca Salinera, 5 de diciembre en Zipaquirá. Anótate en mi mesa: " + url;
-          if (navigator.share){ navigator.share({text: t}).catch(function(){}); }
-          else { open("https://wa.me/?text=" + encodeURIComponent(t), "_blank", "noopener"); }
-          mide("CompartioMesa", {origen: ORIGEN});
-        });
+      mide(guardado ? "RegistroCompletado" : "RegistroSinHoja", {origen: ORIGEN, tipo: "concurso"});
+      if (!guardado){
+        document.getElementById("ok-t").textContent = "Falta un paso.";
+        document.getElementById("ok-p").textContent = "Mándanos tu participación por WhatsApp: hasta que llegue, no estás en el concurso.";
       }
       f.hidden = true; ok.classList.add("vista");
       try { ok.focus({preventScroll: true}); } catch(e){}
       ok.scrollIntoView({block: "start", behavior: quieto ? "auto" : "smooth"});
     }
-    if (!CFG.endpoint){
-      cierra(false);
-      document.getElementById("ok-t").textContent = "Falta un paso.";
-      if (quiere !== "palco") document.getElementById("ok-p").textContent = "Mándanos tu registro por WhatsApp: hasta que llegue, no quedas anotado.";
-      else document.getElementById("ok-p").textContent = "Mándanos el registro por WhatsApp: hasta que llegue, el " + palco + " no queda en lista.";
-      return;
-    }
-    var cuerpo = new URLSearchParams(datos);
+    if (!CFG.endpoint){ cierra(false); return; }
     var t0 = setTimeout(function(){ cierra(false); }, 6000);
-    fetch(CFG.endpoint, {method: "POST", mode: "no-cors", body: cuerpo})
+    fetch(CFG.endpoint, {method: "POST", mode: "no-cors", body: new URLSearchParams(datos)})
       .then(function(){ clearTimeout(t0); cierra(true); })
       .catch(function(){ clearTimeout(t0); cierra(false); });
   });
