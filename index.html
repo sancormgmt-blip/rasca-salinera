@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#1A0B0B">
 <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/hero-poster-720.avif" type="image/avif" imagesrcset="assets/hero-poster-720.avif 720w, assets/hero-poster-1080.avif 1080w" imagesizes="100vw">
+<link rel="preload" as="image" href="assets/flyer-720.avif" type="image/avif" imagesrcset="assets/flyer-720.avif 720w, assets/flyer-1080.avif 1080w" imagesizes="100vw">
 <style>
 @font-face{font-family:"Archivo";src:url(fonts/archivo.woff2) format("woff2");font-weight:100 900;font-display:swap}
 :root{
@@ -58,15 +58,15 @@ p{margin:0}
 .sec:focus-visible{outline:2px solid var(--oro);outline-offset:4px;border-radius:2px}
 .sec svg{flex:none}
 .enlace{display:inline-block;padding:12px 0;margin:-12px 0;color:var(--oro);text-underline-offset:3px}
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate}
-.hero__fondo{position:absolute;inset:0 0 auto 0;height:min(177.78vw,100svh)}
+.hero{position:relative}
+.hero__escena{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate}
+.hero__fondo{position:absolute;inset:0 0 auto 0;height:min(177.78vw,100svh);z-index:-2}
 .hero__fondo img,.hero__fondo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%}
-.hero__fondo{z-index:-2}
 .hero__fondo video{opacity:0;transition:opacity .8s var(--ease)}
 .hero__fondo video.lista{opacity:1}
-.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,0) 40%,rgba(26,11,11,.85) 64%,var(--vino) 86%)}
-.hero__marco{position:absolute;inset:10px;border:1px solid var(--linea);pointer-events:none;z-index:1}
-.hero__texto{padding:0 var(--g) calc(28px + env(safe-area-inset-bottom))}
+.hero__escena::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,0) 40%,rgba(26,11,11,.85) 64%,var(--vino) 86%)}
+.hero__marco{position:absolute;inset:10px;border:1px solid var(--linea);pointer-events:none;z-index:3}
+.hero__texto{position:relative;z-index:1;padding:0 var(--g) calc(28px + env(safe-area-inset-bottom))}
 .hero__lugar{text-shadow:0 1px 12px rgba(26,11,11,.9);font-weight:800;font-size:.9375rem;letter-spacing:.02em;color:var(--oro)}
 .hero__fecha{margin-top:10px;font-size:var(--t1)}
 .hero h1{margin-top:14px;font-weight:400}
@@ -74,13 +74,29 @@ p{margin:0}
 .hero h1 .segundo{display:block;margin-top:6px;font-size:1.25rem;font-weight:400;color:var(--crema)}
 .hero__accion{margin-top:22px}
 .hero__sec{margin-top:10px}
+.hero__flyer{display:block;position:relative;z-index:2}
+.hero__flyer img{width:100%;height:auto}
+.hero__desliza{display:none}
+.hero.anima{height:210svh}
+.hero.anima .hero__escena{position:sticky;top:0;height:100svh}
+.hero.anima .hero__flyer{position:absolute;inset:0;z-index:2;transform-origin:50% 40%;
+  transform:scale(calc(1 - var(--p,0) * .16)) translateY(calc(var(--p,0) * -6%));
+  filter:blur(calc(var(--p,0) * 12px));opacity:calc(1 - var(--p,0) * 1.15);will-change:transform,opacity,filter}
+.hero.anima .hero__flyer{background:radial-gradient(ellipse at 50% 40%,#3a1410,#140707 75%)}
+.hero.anima .hero__flyer img{width:100%;height:100%;object-fit:contain;object-position:50% 40%}
+.hero.anima .hero__texto{opacity:clamp(0,calc(var(--p,0) * 2.2 - .55),1);transform:translateY(calc((1 - clamp(0,var(--p,0) * 1.6,1)) * 48px))}
+.hero.anima .hero__marco{opacity:calc(var(--p,0) * 1.4)}
+.hero.anima .hero__desliza{display:flex;position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom));z-index:4;flex-direction:column;align-items:center;gap:6px;
+  font-weight:800;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--crema);text-shadow:0 1px 10px rgba(0,0,0,.8);opacity:calc(1 - var(--p,0) * 5);pointer-events:none}
+.hero__desliza svg{animation:baja 1.6s var(--ease) infinite}
+@keyframes baja{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(7px);opacity:1}}
 @media (min-width:860px){
-  .hero{min-height:100vh}
-  .hero__fondo{height:100%;}
+  .hero__escena{min-height:100vh;justify-content:center}
+  .hero__fondo{height:100%}
   .hero__fondo img,.hero__fondo video{object-position:65% 45%}
-  .hero::after{background:linear-gradient(to right,var(--vino) 46%,rgba(26,11,11,.4) 62%,rgba(26,11,11,0) 80%),linear-gradient(to bottom,rgba(26,11,11,0) 70%,var(--vino))}
-  .hero{justify-content:center}
+  .hero__escena::after{background:linear-gradient(to right,var(--vino) 46%,rgba(26,11,11,.4) 62%,rgba(26,11,11,0) 80%),linear-gradient(to bottom,rgba(26,11,11,0) 70%,var(--vino))}
   .hero__texto{max-width:620px;margin-left:max(var(--g),calc((100vw - 1120px)/2))}
+  .hero.anima .hero__flyer{inset:0 auto 0 50%;width:min(56.25vh,46vw);transform:translateX(-50%) scale(calc(1 - var(--p,0) * .16));transform-origin:50% 40%}
 }
 .palcos{position:relative;padding:72px 0 64px;overflow:hidden;isolation:isolate;background:var(--vino-3)}
 .palcos__foto{position:absolute;inset:0 0 auto 0;height:520px;z-index:-1}
@@ -249,16 +265,16 @@ dialog video{width:100%;height:100%;object-fit:contain}
 .cerrar:focus-visible{outline:2px solid var(--oro)}
 #intro{display:none}
 .intro body{overflow:hidden}
-.intro #intro{display:block;position:fixed;inset:0;z-index:50;background:var(--vino);cursor:pointer;animation:introfuera .3s 4.5s forwards}
+.intro #intro{display:block;position:fixed;inset:0;z-index:50;background:#120706;cursor:pointer;animation:introfuera .3s 6s forwards}
 #intro canvas{display:block;width:100%;height:100%}
-#intro img{position:absolute;left:50%;top:44%;width:min(78vw,560px);height:auto;transform:translate(-50%,-50%);pointer-events:none}
+#intro video,#intro img{position:absolute;width:2px;height:2px;opacity:0;pointer-events:none}
 #intro.fuera{opacity:0;transition:opacity .45s var(--ease)}
 @keyframes introfuera{to{opacity:0;visibility:hidden}}
 </style>
 <script>(function(){try{var q=matchMedia("(prefers-reduced-motion: reduce)").matches,c=navigator.connection||{},v=sessionStorage.getItem("rs_intro");if(!q&&!c.saveData&&!v&&window.WebGLRenderingContext)document.documentElement.classList.add("intro")}catch(e){}})();</script>
 </head>
 <body>
-<div id="intro" aria-hidden="true"><canvas></canvas><img src="assets/logo-560.webp" alt="" width="560" height="131"></div>
+<div id="intro" aria-hidden="true"><canvas></canvas><video src="assets/hero-loop.mp4" muted playsinline preload="auto"></video><img src="assets/hero-poster-720.webp" alt="" width="720" height="1280"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="rombos" viewBox="0 0 132 12"><path d="M0 6h48M84 6h48" stroke="#EBB314" stroke-width="1"/><path d="M54 6l6-5 6 5-6 5zM66 6l6-5 6 5-6 5z" fill="none" stroke="#EBB314" stroke-width="1"/></symbol>
@@ -266,11 +282,16 @@ dialog video{width:100%;height:100%;object-fit:contain}
 </svg>
 
 
-<header class="hero">
+<header class="hero" id="hero">
+  <div class="hero__escena">
+  <picture class="hero__flyer">
+    <source type="image/avif" srcset="assets/flyer-720.avif 720w, assets/flyer-1080.avif 1080w" sizes="(min-width:860px) 46vw, 100vw">
+    <img src="assets/flyer-720.webp" srcset="assets/flyer-720.webp 720w, assets/flyer-1080.webp 1080w" sizes="(min-width:860px) 46vw, 100vw" width="720" height="1280" alt="Flyer de Rasca Salinera: Jhon Alex Castaño y Jhonny Rivera, 5 de diciembre en Zipaquirá. PULEP HYW650." fetchpriority="high">
+  </picture>
   <div class="hero__fondo">
     <picture>
       <source type="image/avif" srcset="assets/hero-poster-720.avif 720w, assets/hero-poster-1080.avif 1080w" sizes="100vw">
-      <img src="assets/hero-poster-720.webp" width="720" height="1280" alt="Rasca Salinera, una farra pa' borrar casete: el nombre en oro sobre el fuego." fetchpriority="high">
+      <img src="assets/hero-poster-720.webp" width="720" height="1280" alt="" loading="lazy">
     </picture>
     <video id="hero-loop" muted playsinline loop preload="none" aria-hidden="true" data-src="assets/hero-loop.mp4"></video>
   </div>
@@ -281,6 +302,8 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <h1><span class="principal rotulo">Jhonny Rivera</span><span class="segundo">con Jhon Alex Castaño</span></h1>
     <a class="accion ancha hero__accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
     <button type="button" class="sec hero__sec" data-teaser="assets/teaser-noche.mp4" data-mide="TeaserNoche"><svg width="24" height="24"><use href="#play"/></svg>Ver el teaser con sonido · 0:24</button>
+  </div>
+  <p class="hero__desliza" aria-hidden="true">Desliza<svg width="22" height="22" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="#EBB314" stroke-width="2"/></svg></p>
   </div>
 </header>
 
@@ -647,30 +670,34 @@ listo(function(){
 listo(function(){
   var raiz = document.documentElement, caja = document.getElementById("intro");
   if (!caja || !raiz.classList.contains("intro")) return;
-  var cv = caja.querySelector("canvas"), logo = caja.querySelector("img");
+  var cv = caja.querySelector("canvas"), vid = caja.querySelector("video"), pos = caja.querySelector("img");
   var gl = cv.getContext("webgl", {premultipliedAlpha: false, alpha: true});
+  var listoYa = false;
   function fin(){
+    if (caja.classList.contains("fuera")) return;
+    listoYa = true;
     caja.classList.add("fuera");
-    setTimeout(function(){ raiz.classList.remove("intro"); caja.remove(); }, 450);
+    setTimeout(function(){ raiz.classList.remove("intro"); try { vid.pause(); } catch(e){} caja.remove(); }, 450);
   }
   if (!gl){ fin(); return; }
-  var vs = "attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}";
+  try { var p = vid.play(); if (p && p.catch) p.catch(function(){}); } catch(e){}
+  var vs = "attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}";
   var fs = [
-    "precision mediump float;uniform vec2 r;uniform float t,a;",
+    "precision mediump float;varying vec2 v;uniform vec2 r,ta;uniform float t,a;uniform sampler2D tx;",
     "float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}",
     "float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);",
     "return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}",
-    "float fb(vec2 p){float v=0.,w=.5;for(int k=0;k<5;k++){v+=w*n(p);p*=2.03;w*=.5;}return v;}",
-    "void main(){vec2 u=gl_FragCoord.xy/r;float asp=r.x/r.y;vec2 q=vec2(u.x*asp,u.y);",
+    "float fb(vec2 p){float s=0.,w=.5;for(int k=0;k<5;k++){s+=w*n(p);p*=2.03;w*=.5;}return s;}",
+    "void main(){vec2 u=v;float asp=r.x/r.y;vec2 q=vec2(u.x*asp,u.y);",
+    "float sc=max(r.x/ta.x,r.y/ta.y);vec2 tu=(u*r-.5*r)/(ta*sc)+.5;vec3 img=texture2D(tx,vec2(tu.x,1.-tu.y)).rgb;",
     "float frente=mix(-.06,1.25,a);float d=u.y-frente+(fb(q*3.+vec2(0.,-t*.5))-.5)*.38;",
     "float ll=fb(vec2(q.x*4.,q.y*2.6-t*2.4));ll=pow(ll,1.6)*smoothstep(-.42,0.,d)*(1.-smoothstep(0.,.02,d));",
-    "float brasa=1.-smoothstep(0.,.055,d);",
-    "vec3 vino=vec3(.102,.043,.043);",
+    "float l2=fb(vec2(q.x*5.,q.y*3.-t*3.2));l2=pow(l2,1.3)*(1.-smoothstep(0.,.3,d))*1.5*step(.001,a);",
+    "float brasa=(1.-smoothstep(0.,.05,d))*step(.001,a);",
     "vec3 fuego=mix(vec3(.55,.08,.0),vec3(1.,.62,.12),ll)+vec3(1.,.9,.6)*pow(ll,4.)*1.2;",
-    "vec3 c;float al;",
-    "float l2=fb(vec2(q.x*5.,q.y*3.-t*3.2));l2=pow(l2,1.3)*(1.-smoothstep(0.,.32,d))*1.5;",
     "vec3 f2=mix(vec3(.6,.1,.0),vec3(1.,.66,.15),clamp(l2,0.,1.))+vec3(1.,.92,.65)*pow(clamp(l2,0.,1.),5.);",
-    "if(d>0.){c=mix(vino,vec3(1.,.55,.12),brasa*brasa*1.4);c=mix(c,f2,clamp(l2*l2*1.6,0.,1.));al=1.;}",
+    "vec3 c;float al;",
+    "if(d>0.){c=img*(1.-brasa*.6)+vec3(1.,.55,.12)*brasa*brasa*1.3;c=mix(c,f2,clamp(l2*l2*1.4,0.,1.));al=1.;}",
     "else{c=fuego;al=clamp(ll*1.9,0.,1.);}",
     "gl_FragColor=vec4(c,al);}"
   ].join("\n");
@@ -683,31 +710,56 @@ listo(function(){
   var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
   var lp = gl.getAttribLocation(pr, "p"); gl.enableVertexAttribArray(lp); gl.vertexAttribPointer(lp, 2, gl.FLOAT, false, 0, 0);
-  var ur = gl.getUniformLocation(pr, "r"), ut = gl.getUniformLocation(pr, "t"), ua = gl.getUniformLocation(pr, "a");
+  var tex = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, tex);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  var U = {}; ["r", "ta", "t", "a", "tx"].forEach(function(k){ U[k] = gl.getUniformLocation(pr, k); });
   gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
   function tam(){
-    var k = Math.min(devicePixelRatio || 1, 1.5);
-    cv.width = Math.round(innerWidth * k * .6); cv.height = Math.round(innerHeight * k * .6);
+    var k = Math.min(devicePixelRatio || 1, 2);
+    cv.width = Math.round(innerWidth * k * .75); cv.height = Math.round(innerHeight * k * .75);
     gl.viewport(0, 0, cv.width, cv.height);
   }
   tam(); addEventListener("resize", tam);
-  var t0 = performance.now(), ENCIENDE = 800, QUEMA = 1700, listoYa = false;
+  var t0 = performance.now(), VER = 2800, QUEMA = 1600;
+  function fuente(){
+    if (vid && vid.readyState >= 2 && vid.videoWidth) return [vid, vid.videoWidth, vid.videoHeight];
+    if (pos && pos.complete && pos.naturalWidth) return [pos, pos.naturalWidth, pos.naturalHeight];
+    return null;
+  }
   function cuadro(ahora){
     if (listoYa) return;
-    var ms = ahora - t0;
-    var a = ms < ENCIENDE ? (ms / ENCIENDE) * .1 : .1 + Math.min(1, (ms - ENCIENDE) / QUEMA) * .9;
-    a = a < .1 ? a : .1 + (1 - Math.pow(1 - (a - .1) / .9, 2)) * .9;
-    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.uniform2f(ur, cv.width, cv.height); gl.uniform1f(ut, ms / 1000); gl.uniform1f(ua, a);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    if (!caja.dataset.pinto){ caja.dataset.pinto = "1"; caja.style.background = "transparent"; }
-    if (logo) logo.style.opacity = String(Math.min(1, Math.max(0, (.47 - a) / .07)));
-    if (ms > ENCIENDE + QUEMA + 150){ listoYa = true; fin(); return; }
+    var ms = ahora - t0, f = fuente();
+    var x = Math.max(0, Math.min(1, (ms - VER) / QUEMA));
+    var a = ms < VER ? 0 : 1 - Math.pow(1 - x, 2);
+    if (f){
+      try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, f[0]); } catch(e){}
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.uniform2f(U.r, cv.width, cv.height); gl.uniform2f(U.ta, f[1], f[2]);
+      gl.uniform1f(U.t, ms / 1000); gl.uniform1f(U.a, a); gl.uniform1i(U.tx, 0);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      if (!caja.dataset.pinto){ caja.dataset.pinto = "1"; caja.style.background = "transparent"; }
+    }
+    if (ms > VER + QUEMA + 150){ fin(); return; }
     requestAnimationFrame(cuadro);
   }
   requestAnimationFrame(cuadro);
-  caja.addEventListener("click", function(){ listoYa = true; fin(); });
+  caja.addEventListener("click", fin);
   try { sessionStorage.setItem("rs_intro", "1"); } catch(e){}
+});
+listo(function(){
+  var h = document.getElementById("hero");
+  if (!h || quieto) return;
+  h.classList.add("anima");
+  var pendiente = false;
+  function mide(){
+    pendiente = false;
+    var r = h.getBoundingClientRect(), largo = r.height - innerHeight;
+    var p = largo > 0 ? Math.min(1, Math.max(0, -r.top / largo)) : 1;
+    h.style.setProperty("--p", p.toFixed(3));
+  }
+  addEventListener("scroll", function(){ if (!pendiente){ pendiente = true; requestAnimationFrame(mide); } }, {passive: true});
+  addEventListener("resize", mide); mide();
 });
 listo(function(){
   var f = document.getElementById("f");
