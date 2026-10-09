@@ -247,9 +247,18 @@ dialog::backdrop{background:rgba(0,0,0,.9)}
 dialog video{width:100%;height:100%;object-fit:contain}
 .cerrar{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:48px;height:48px;border:0;border-radius:999px;background:rgba(26,11,11,.8);color:var(--crema);font:400 1.6rem/1 "Archivo",sans-serif;cursor:pointer}
 .cerrar:focus-visible{outline:2px solid var(--oro)}
+#intro{display:none}
+.intro body{overflow:hidden}
+.intro #intro{display:block;position:fixed;inset:0;z-index:50;background:var(--vino);cursor:pointer;animation:introfuera .3s 4.5s forwards}
+#intro canvas{display:block;width:100%;height:100%}
+#intro img{position:absolute;left:50%;top:44%;width:min(78vw,560px);height:auto;transform:translate(-50%,-50%);pointer-events:none}
+#intro.fuera{opacity:0;transition:opacity .45s var(--ease)}
+@keyframes introfuera{to{opacity:0;visibility:hidden}}
 </style>
+<script>(function(){try{var q=matchMedia("(prefers-reduced-motion: reduce)").matches,c=navigator.connection||{},v=sessionStorage.getItem("rs_intro");if(!q&&!c.saveData&&!v&&window.WebGLRenderingContext)document.documentElement.classList.add("intro")}catch(e){}})();</script>
 </head>
 <body>
+<div id="intro" aria-hidden="true"><canvas></canvas><img src="assets/logo-560.webp" alt="" width="560" height="131"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="rombos" viewBox="0 0 132 12"><path d="M0 6h48M84 6h48" stroke="#EBB314" stroke-width="1"/><path d="M54 6l6-5 6 5-6 5zM66 6l6-5 6 5-6 5z" fill="none" stroke="#EBB314" stroke-width="1"/></symbol>
@@ -634,6 +643,71 @@ listo(function(){
     b.classList.toggle("vista", pasoHero && !enRegistro && !enCuenta);
   }
   addEventListener("scroll", mira, {passive: true}); addEventListener("resize", mira); mira();
+});
+listo(function(){
+  var raiz = document.documentElement, caja = document.getElementById("intro");
+  if (!caja || !raiz.classList.contains("intro")) return;
+  var cv = caja.querySelector("canvas"), logo = caja.querySelector("img");
+  var gl = cv.getContext("webgl", {premultipliedAlpha: false, alpha: true});
+  function fin(){
+    caja.classList.add("fuera");
+    setTimeout(function(){ raiz.classList.remove("intro"); caja.remove(); }, 450);
+  }
+  if (!gl){ fin(); return; }
+  var vs = "attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}";
+  var fs = [
+    "precision mediump float;uniform vec2 r;uniform float t,a;",
+    "float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}",
+    "float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);",
+    "return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}",
+    "float fb(vec2 p){float v=0.,w=.5;for(int k=0;k<5;k++){v+=w*n(p);p*=2.03;w*=.5;}return v;}",
+    "void main(){vec2 u=gl_FragCoord.xy/r;float asp=r.x/r.y;vec2 q=vec2(u.x*asp,u.y);",
+    "float frente=mix(-.06,1.25,a);float d=u.y-frente+(fb(q*3.+vec2(0.,-t*.5))-.5)*.38;",
+    "float ll=fb(vec2(q.x*4.,q.y*2.6-t*2.4));ll=pow(ll,1.6)*smoothstep(-.42,0.,d)*(1.-smoothstep(0.,.02,d));",
+    "float brasa=1.-smoothstep(0.,.055,d);",
+    "vec3 vino=vec3(.102,.043,.043);",
+    "vec3 fuego=mix(vec3(.55,.08,.0),vec3(1.,.62,.12),ll)+vec3(1.,.9,.6)*pow(ll,4.)*1.2;",
+    "vec3 c;float al;",
+    "float l2=fb(vec2(q.x*5.,q.y*3.-t*3.2));l2=pow(l2,1.3)*(1.-smoothstep(0.,.32,d))*1.5;",
+    "vec3 f2=mix(vec3(.6,.1,.0),vec3(1.,.66,.15),clamp(l2,0.,1.))+vec3(1.,.92,.65)*pow(clamp(l2,0.,1.),5.);",
+    "if(d>0.){c=mix(vino,vec3(1.,.55,.12),brasa*brasa*1.4);c=mix(c,f2,clamp(l2*l2*1.6,0.,1.));al=1.;}",
+    "else{c=fuego;al=clamp(ll*1.9,0.,1.);}",
+    "gl_FragColor=vec4(c,al);}"
+  ].join("\n");
+  function sh(tipo, src){ var s = gl.createShader(tipo); gl.shaderSource(s, src); gl.compileShader(s); return s; }
+  var pr = gl.createProgram();
+  gl.attachShader(pr, sh(gl.VERTEX_SHADER, vs)); gl.attachShader(pr, sh(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(pr);
+  if (!gl.getProgramParameter(pr, gl.LINK_STATUS)){ fin(); return; }
+  gl.useProgram(pr);
+  var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+  var lp = gl.getAttribLocation(pr, "p"); gl.enableVertexAttribArray(lp); gl.vertexAttribPointer(lp, 2, gl.FLOAT, false, 0, 0);
+  var ur = gl.getUniformLocation(pr, "r"), ut = gl.getUniformLocation(pr, "t"), ua = gl.getUniformLocation(pr, "a");
+  gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+  function tam(){
+    var k = Math.min(devicePixelRatio || 1, 1.5);
+    cv.width = Math.round(innerWidth * k * .6); cv.height = Math.round(innerHeight * k * .6);
+    gl.viewport(0, 0, cv.width, cv.height);
+  }
+  tam(); addEventListener("resize", tam);
+  var t0 = performance.now(), ENCIENDE = 800, QUEMA = 1700, listoYa = false;
+  function cuadro(ahora){
+    if (listoYa) return;
+    var ms = ahora - t0;
+    var a = ms < ENCIENDE ? (ms / ENCIENDE) * .1 : .1 + Math.min(1, (ms - ENCIENDE) / QUEMA) * .9;
+    a = a < .1 ? a : .1 + (1 - Math.pow(1 - (a - .1) / .9, 2)) * .9;
+    gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.uniform2f(ur, cv.width, cv.height); gl.uniform1f(ut, ms / 1000); gl.uniform1f(ua, a);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    if (!caja.dataset.pinto){ caja.dataset.pinto = "1"; caja.style.background = "transparent"; }
+    if (logo) logo.style.opacity = String(Math.min(1, Math.max(0, (.47 - a) / .07)));
+    if (ms > ENCIENDE + QUEMA + 150){ listoYa = true; fin(); return; }
+    requestAnimationFrame(cuadro);
+  }
+  requestAnimationFrame(cuadro);
+  caja.addEventListener("click", function(){ listoYa = true; fin(); });
+  try { sessionStorage.setItem("rs_intro", "1"); } catch(e){}
 });
 listo(function(){
   var f = document.getElementById("f");
