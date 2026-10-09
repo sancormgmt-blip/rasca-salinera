@@ -20,8 +20,10 @@
 <link rel="apple-touch-icon" href="assets/icono-180.png">
 <link rel="preload" as="image" href="assets/teaser-v3.webp" fetchpriority="high">
 <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/flyer-720.avif" type="image/avif" imagesrcset="assets/flyer-720.avif 720w, assets/flyer-1080.avif 1080w" imagesizes="100vw">
 <style>
+@font-face{font-family:"Cartel";src:url(fonts/playfair.woff2) format("woff2");font-weight:700 900;font-display:swap}
 @font-face{font-family:"Archivo";src:url(fonts/archivo.woff2) format("woff2");font-weight:100 900;font-display:swap}
 :root{
   color-scheme:dark;
@@ -341,7 +343,7 @@ footer::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.12;mix-b
 @keyframes entra{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.entrada__caja>*{animation:none}}
 .dos{grid-template-columns:1fr;gap:0;padding:0 0 24px}
-.dos__cabeza{grid-column:1/-1;position:relative;isolation:isolate;margin:0 calc(var(--g) * -1);padding:56px var(--g) 24px;text-align:center;overflow:hidden}
+.dos__cabeza{grid-column:1/-1;position:relative;isolation:isolate;margin:0;padding:56px var(--g) 24px;text-align:center;overflow:hidden}
 .dos__fondo{position:absolute;inset:0;z-index:-1}
 .dos__fondo img,.dos__fondo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
 .dos__fondo video{opacity:0;transition:opacity .8s var(--ease)}
@@ -397,7 +399,23 @@ html .entrada__velo{background:linear-gradient(to bottom,rgba(14,6,6,0) 0,rgba(1
 .pasoig__n{display:flex;align-items:center;justify-content:center;gap:10px}
 .pasoig__num{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--oro);color:var(--vino);font-size:1rem;letter-spacing:0}
 .sueltas__foto img{filter:sepia(.15) saturate(1.05)}
-.mapa{margin-inline:calc(var(--g) * -1)}
+.cartelera__nombre,.artista__nombre,.palco__nombre,.cabeza h2,.cabeza .rotulo{font-family:"Cartel",Georgia,serif;font-weight:900;text-transform:none;letter-spacing:0;line-height:1}
+.cartelera__nombre,.artista__nombre,.palco--rey .palco__nombre,.hero__num{background:linear-gradient(175deg,#FFF1C2 0%,#F4C232 30%,#EBB314 52%,#BD6014 78%,#F4C232 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 rgba(57,0,7,.9)) drop-shadow(0 6px 14px rgba(14,6,6,.8))}
+.cartelera__nombre{font-size:clamp(2.1rem,10.5vw,3.6rem);white-space:normal}
+.hero__num{font-family:"Cartel",Georgia,serif;font-weight:900;font-size:clamp(4rem,22vw,7rem);line-height:.9}
+.hero__num small{font-size:.55em}
+.hero__fecha{margin-top:12px}
+.artista__nombre{font-size:clamp(2.6rem,13vw,4.2rem);text-shadow:none}
+.palco__nombre{font-size:clamp(2rem,9.6vw,2.8rem)}
+.palco--rey .palco__nombre{font-size:clamp(2.3rem,11vw,3.2rem)}
+.cabeza h2,.cabeza .rotulo{font-size:clamp(2rem,9.4vw,3.2rem)}
+.cierre .cabeza h2{font-size:clamp(2.6rem,12.5vw,4.4rem)}
+.palcos .cabeza h2{font-size:clamp(2.6rem,12.5vw,4.2rem)}
+.premio__boletas{display:block;width:220px;height:auto;margin:0 auto 8px}
+.premio__vip{font:900 22px "Cartel",Georgia,serif;fill:#EBB314;letter-spacing:.08em}
+.premio__vip--osc{fill:#390007}
+.premio__x{font:800 13px "Archivo",sans-serif;fill:#390007}
+html{overflow-x:clip}
 footer{padding:40px 0 calc(var(--barra) + 72px + env(safe-area-inset-bottom));font-size:.875rem;line-height:1.6;color:var(--tenue);background:var(--vino);border-top:1px solid var(--linea-suave)}
 footer{text-align:center}
 footer img{width:180px;height:auto;margin:0 auto 16px}
@@ -480,7 +498,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
   <div class="hero__fondo"><img class="hero__brasa" src="assets/flyer-brasa2.webp" width="540" height="960" alt="" aria-hidden="true" ></div>
   <div class="hero__texto">
     <h1 class="cartelera"><span class="cartelera__nombre rotulo"><span class="m">Jhon Alex Castaño</span></span><span class="cartelera__filete" aria-hidden="true"></span><span class="cartelera__nombre rotulo"><span class="m">Jhonny Rivera</span></span></h1>
-    <p class="hero__fecha"><span class="hero__dia">Sábado</span><span class="hero__num rotulo">5 de diciembre</span></p>
+    <p class="hero__fecha"><span class="hero__dia">Sábado</span><span class="hero__num">05 <small>Dic</small></span><span class="oculto-v">5 de diciembre</span></p>
     <p class="hero__lugar">Gran Pabellón (La Fraguita), Zipaquirá<br>Ingreso 5:00&nbsp;p.&nbsp;m. · Show 8:00&nbsp;p.&nbsp;m.</p>
     <a class="accion ancha hero__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Apartar palco por WhatsApp</a>
     <button type="button" class="sec hero__sec" data-teaser="assets/teaser-noche.mp4" data-mide="TeaserNoche"><svg width="24" height="24"><use href="#play"/></svg>Ver el teaser · 0:24</button>
@@ -500,7 +518,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
   <div class="env">
     <div class="cabeza rev"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Palco cubierto · 10 sillas</p><h2 class="rotulo" id="t-palcos">Frente a la tarima.</h2><p class="bajada"><b>Diez sillas para tu grupo</b>, bajo techo y de frente al show. Licor y comida se compran adentro y se pagan aparte.</p><p class="palcos__faltan">24 palcos por categoría · faltan <b id="faltan">57</b> días</p></div>
     <figure class="marco mapa telon">
-      <a class="mapa__zoom" href="assets/mapa-palcos-v2-660.webp" target="_blank" rel="noopener" aria-label="Ver el mapa de localidades en grande"><picture><source type="image/avif" srcset="assets/mapa-palcos-v2-660.avif"><img src="assets/mapa-palcos-v2-660.webp" width="660" height="300" alt="Mapa oficial de localidades: la tarima y, de frente, las filas de palcos El Rey del Chupe, El Intenso y El Pegao." loading="lazy"></picture></a>
+      <a class="mapa__zoom" href="assets/mapa-palcos-v3.webp" target="_blank" rel="noopener" aria-label="Ver el mapa de localidades en grande"><picture><source type="image/avif" srcset="assets/mapa-palcos-v3.avif"><img src="assets/mapa-palcos-v3.webp" width="840" height="520" alt="Mapa oficial de localidades: la tarima y, de frente, las filas de palcos El Rey del Chupe, El Intenso y El Pegao." loading="lazy"></picture></a>
       <figcaption>Mapa oficial · toca para ampliar.</figcaption>
     </figure>
     <div class="palcos__lista">
@@ -556,7 +574,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
   <div class="env">
     <div class="cabeza rev"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Concurso · hasta el 25 de noviembre</p><h2 class="rotulo" id="t-concurso">Gánate un par VIP.</h2><p class="bajada">Sigue a @dugoent_producciones y cuéntanos con quién vendrías y por qué. Un jurado elige la mejor respuesta: no es un sorteo.</p></div>
     <div class="marco concurso__tarjeta">
-    <p class="premio"><span>El premio</span><b>Un par de boletas VIP</b><span class="premio__valor">Valor $246.180</span></p>
+    <p class="premio"><svg class="premio__boletas" viewBox="0 0 260 120" aria-hidden="true"><defs><linearGradient id="bo" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#F8E3A0"/><stop offset=".45" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014"/></linearGradient></defs><g transform="translate(40 28) rotate(-8 90 32)"><path d="M0 0h180v22a10 10 0 0 0 0 20v22H0V42a10 10 0 0 0 0-20z" fill="#390007" stroke="url(#bo)" stroke-width="2"/><path d="M128 6v52" stroke="url(#bo)" stroke-dasharray="3 3"/><text x="64" y="41" text-anchor="middle" class="premio__vip">VIP</text></g><g transform="translate(40 34) rotate(5 90 32)"><path d="M0 0h180v22a10 10 0 0 0 0 20v22H0V42a10 10 0 0 0 0-20z" fill="url(#bo)"/><path d="M128 6v52" stroke="#390007" stroke-opacity=".5" stroke-dasharray="3 3"/><text x="64" y="42" text-anchor="middle" class="premio__vip premio__vip--osc">VIP</text><text x="154" y="37" text-anchor="middle" class="premio__x">×2</text></g></svg><span>El premio</span><b>Un par de boletas VIP</b><span class="premio__valor">Valor $246.180</span></p>
     <div class="pasoig">
       <p class="pasoig__n"><span class="pasoig__num">1</span>Paso uno</p>
       <p class="pasoig__t">Síguenos en Instagram</p>
