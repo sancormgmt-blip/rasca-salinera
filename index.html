@@ -148,9 +148,9 @@ section{position:relative}
 .marco::before{left:-1px;border-left:1px solid var(--oro);border-top-left-radius:var(--r)}
 .marco::after{right:-1px;border-right:1px solid var(--oro);border-top-right-radius:var(--r)}
 .palco{text-align:center}
-.palco__arriba{display:flex;flex-direction:column-reverse;align-items:center;gap:14px}
 .palco__fila{font-weight:800;font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--crema-72)}
-.plano{flex:none;width:180px;height:144px}
+.palco__plano{display:flex;justify-content:center;margin:16px 0}
+.plano{width:180px;height:144px}
 .plano .tarima{fill:rgba(244,239,230,.55)}
 .plano .publico{fill:rgba(244,239,230,.08)}
 .plano .tramo{fill:none;stroke:rgba(244,239,230,.28);stroke-width:1}
@@ -158,7 +158,7 @@ section{position:relative}
 .plano .activa{fill:var(--oro);stroke:none}
 .plano text{font:800 7px "Archivo",sans-serif;fill:rgba(26,11,11,.9);letter-spacing:.06em}
 .palco__nombre{margin-top:12px;font-size:var(--t2)}
-.palco__precio{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 12px;margin-top:12px}
+.palco__precio{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 12px;margin-top:0}
 .palco__precio .precio{font-weight:800;font-size:var(--t3);color:var(--oro)}
 .palco__precio small{font-size:.875rem;color:var(--crema-72)}
 .palco__anticipo{margin-top:8px;color:var(--crema)}
@@ -192,8 +192,11 @@ section{position:relative}
 .localidades .detalle{display:block;margin-top:4px;font-size:.875rem;color:var(--crema-72)}
 .localidades .precio{font-weight:800;font-size:var(--t3);color:var(--crema);white-space:nowrap}
 .sueltas__silla{margin:16px auto 0;color:var(--crema-72);text-align:center}
-.sueltas .sec{display:flex;width:max-content;margin-inline:auto}
-.sueltas .sec{margin-top:8px}
+.sueltas__tarjeta{margin-top:32px;padding:8px 20px 24px}
+.sueltas__tarjeta .localidades{margin-top:0}
+.sueltas__tarjeta .localidades li:first-child{border-top:0}
+.fantasma{display:flex;align-items:center;justify-content:center;min-height:56px;margin-top:16px;border:1px solid rgba(244,239,230,.45);border-radius:var(--r);color:var(--crema);font-weight:800;text-decoration:none}
+.fantasma:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
 .reloj{display:none;margin-top:14px;color:var(--crema)}
 .reloj.vista{display:block}
 .dos{display:grid;gap:0;background:var(--vino)}
@@ -205,7 +208,7 @@ section{position:relative}
 .artista__texto{position:relative;z-index:1;margin-top:-16px;padding:0 var(--g) var(--ritmo)}
 .artista .cabeza h2{font-size:var(--t1);line-height:.9}
 .artista .bajada{margin-top:10px}
-.escena{padding:0 0 var(--ritmo);background:var(--vino);text-align:center}
+.escena{padding:0 0 64px;background:var(--vino);text-align:center}
 .escena__media{position:relative;display:block;aspect-ratio:4/5;overflow:hidden}
 .escena__media--ancha{aspect-ratio:16/9}
 .escena__media img,.escena__media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -281,7 +284,7 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--oro);outline-
 .terminos{margin-top:40px}
 .legal-txt{padding:0 0 16px;font-size:.875rem;color:var(--texto)}
 .legal-txt p+p{margin-top:8px}
-footer{padding:40px 0 calc(var(--barra) + 40px);font-size:.875rem;line-height:1.6;color:var(--tenue);background:var(--vino);border-top:1px solid var(--linea-suave)}
+footer{padding:40px 0 calc(var(--barra) + 72px + env(safe-area-inset-bottom));font-size:.875rem;line-height:1.6;color:var(--tenue);background:var(--vino);border-top:1px solid var(--linea-suave)}
 footer{text-align:center}
 footer img{width:180px;height:auto;margin:0 auto 16px}
 footer p{max-width:46ch;margin-inline:auto}
@@ -404,9 +407,10 @@ dialog video{width:100%;height:100%;object-fit:contain}
     </figure>
     <div class="palcos__lista">
       <article class="palco marco palco--rey" data-fila="1" aria-labelledby="p-reyDelChupe"><span class="palco__rombo" aria-hidden="true"><svg viewBox="0 0 132 12"><use href="#rombos"/></svg></span><span class="palco__abajo" aria-hidden="true"></span>
-        <div class="palco__arriba"><p class="palco__fila">Fila 1 de 4</p><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Rey del Chupe está en la fila 1 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo activa" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
+        <p class="palco__fila">Fila 1 de 4</p>
         <h3 class="rotulo palco__nombre" id="p-reyDelChupe">El Rey del Chupe</h3>
         <p class="palco__cerca">El más cerca de la tarima</p>
+        <div class="palco__plano"><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Rey del Chupe está en la fila 1 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo activa" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
         <p class="palco__precio"><span class="precio" data-precio="reyDelChupe"></span><small>por palco · 10 sillas</small></p>
         <p class="palco__anticipo">Lo <span data-anticipo="reyDelChupe"></span> (30%)</p>
         <p class="palco__persona">≈ <span data-persona="reyDelChupe"></span> por persona</p>
@@ -414,8 +418,9 @@ dialog video{width:100%;height:100%;object-fit:contain}
         <a class="accion ancha" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Rey%20del%20Chupe%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Rey del Chupe para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar El Rey del Chupe</a>
       </article>
       <article class="palco marco" data-fila="2" aria-labelledby="p-elIntenso">
-        <div class="palco__arriba"><p class="palco__fila">Fila 2 de 4</p><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Intenso está en la fila 2 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo activa" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo activa" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
+        <p class="palco__fila">Fila 2 de 4</p>
         <h3 class="rotulo palco__nombre" id="p-elIntenso">El Intenso</h3>
+        <div class="palco__plano"><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Intenso está en la fila 2 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo activa" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo activa" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
         <p class="palco__precio"><span class="precio" data-precio="elIntenso"></span><small>por palco · 10 sillas</small></p>
         <p class="palco__anticipo">Lo <span data-anticipo="elIntenso"></span> (30%)</p>
         <p class="palco__persona">≈ <span data-persona="elIntenso"></span> por persona</p>
@@ -423,8 +428,9 @@ dialog video{width:100%;height:100%;object-fit:contain}
         <a class="accion ancha" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Intenso%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Intenso para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar El Intenso</a>
       </article>
       <article class="palco marco" data-fila="4" aria-labelledby="p-elPegao">
-        <div class="palco__arriba"><p class="palco__fila">Fila 4 de 4</p><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Pegao está en la fila 4 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo activa" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo activa" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo activa" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
+        <p class="palco__fila">Fila 4 de 4</p>
         <h3 class="rotulo palco__nombre" id="p-elPegao">El Pegao</h3>
+        <div class="palco__plano"><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Pegao está en la fila 4 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo activa" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo activa" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo activa" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
         <p class="palco__precio"><span class="precio" data-precio="elPegao"></span><small>por palco · 10 sillas</small></p>
         <p class="palco__anticipo">Lo <span data-anticipo="elPegao"></span> (30%)</p>
         <p class="palco__persona">≈ <span data-persona="elPegao"></span> por persona</p>
@@ -478,13 +484,15 @@ dialog video{width:100%;height:100%;object-fit:contain}
 <section class="sueltas" id="otras" aria-labelledby="t-sueltas">
   <div class="env">
     <div class="cabeza"><p class="rol">Entrada individual</p><h2 class="rotulo" id="t-sueltas">¿Vienes por tu cuenta?</h2></div>
+    <div class="marco sueltas__tarjeta">
     <p class="reloj" id="reloj" aria-live="polite"></p>
     <ul class="localidades">
       <li><span><span class="nombre rotulo">VIP</span><span class="detalle">Servicio incluido.</span></span><span class="precio" data-precio="vip">$123.090</span></li>
       <li><span><span class="nombre rotulo">Platino</span><span class="detalle">De pie. Servicio incluido.</span></span><span class="precio" data-precio="platino">$100.710</span></li>
     </ul>
     <p class="sueltas__silla">¿Una silla de palco? Desde $145.470, también en Tickeo.</p>
-    <a class="sec" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Comprar en Tickeo ↗</a>
+    <a class="fantasma" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Comprar en Tickeo ↗</a>
+    </div>
   </div>
 </section>
 
