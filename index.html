@@ -9,11 +9,16 @@
 <meta name="description" content="Jhonny Rivera y Jhon Alex Castaño. Sábado 5 de diciembre de 2026 en La Fraguita, Zipaquirá. Aparta tu palco o arma tu mesa.">
 <meta property="og:title" content="Rasca Salinera · 5 de diciembre · Zipaquirá">
 <meta property="og:description" content="Jhonny Rivera y Jhon Alex Castaño en una sola noche. Aparta tu palco o arma tu mesa.">
-<meta property="og:image" content="assets/compartir.jpg">
+<meta property="og:image" content="https://sancormgmt-blip.github.io/rasca-salinera/assets/compartir.jpg">
+<meta property="og:url" content="https://sancormgmt-blip.github.io/rasca-salinera/">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#1A0B0B">
 <link rel="icon" type="image/png" href="assets/icono-64.png">
 <link rel="apple-touch-icon" href="assets/icono-180.png">
+<link rel="preload" as="image" href="assets/hero-poster-720.webp" fetchpriority="high">
 <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" as="image" href="assets/flyer-720.avif" type="image/avif" imagesrcset="assets/flyer-720.avif 720w, assets/flyer-1080.avif 1080w" imagesizes="100vw">
 <style>
@@ -259,6 +264,24 @@ textarea:focus-visible{outline:2px solid var(--oro);outline-offset:1px;border-co
 .conector svg{width:132px;height:12px}
 .envivo,.llegar,.artista,.hero__escena{background:var(--vino)}
 .llegar::before,.envivo::before,.otras__foto::before,.concurso__foto::before{content:"";position:absolute;inset:0 0 auto 0;height:90px;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0));z-index:0;pointer-events:none}
+.artista,.artista--principal{min-height:0;display:block;background:var(--vino)}
+.artista picture{display:block;position:relative;aspect-ratio:4/5}
+.artista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.artista::after{inset:auto 0 0 0;height:auto;aspect-ratio:4/5;background:linear-gradient(to bottom,rgba(26,11,11,0) 55%,var(--vino) 99%)}
+.artista__texto{position:relative;z-index:1;margin-top:-120px;padding:0 var(--g) 48px}
+.llegar{min-height:0;display:block}
+.llegar__foto{position:relative;display:block;aspect-ratio:9/16;max-height:100svh}
+.llegar__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.llegar::after{inset:0 0 auto 0;height:min(177.78vw,100svh);background:linear-gradient(to bottom,rgba(26,11,11,.1),rgba(26,11,11,0) 25%,rgba(26,11,11,.75) 72%,var(--vino) 99%)}
+.llegar__texto{position:relative;z-index:1;margin-top:-260px}
+@media (min-width:860px){.artista picture{aspect-ratio:auto;height:92vh}.artista::after{aspect-ratio:auto;height:92vh}.llegar__foto{aspect-ratio:auto;height:92vh;max-height:none}}
+b,strong{font-weight:800}
+.cartel .nombre{font-size:var(--t2)}
+.cartel .primero .nombre{font-size:var(--t1)}
+.localidades .nombre{font-size:var(--t3)}
+.otra h3,.listo h3{font-size:var(--t3)}
+main p,main dd{max-width:46ch}
+.palcos__bajada,.palcos__como,.palcos__pie,.concurso__bajada,.cierre__bajada,.otra p{margin-inline:auto}
 footer{padding:40px 0 calc(var(--barra) + 40px);font-size:.8125rem;line-height:1.6;color:var(--tenue);background:var(--vino-2)}
 footer img{width:180px;height:auto;margin-bottom:18px}
 footer .legal{color:var(--texto);font-weight:800}
@@ -305,7 +328,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
 .entrada__no{color:var(--tenue);text-decoration-color:var(--tenue)}
 #intro{display:none}
 .intro body{overflow:hidden}
-.intro #intro{display:block;position:fixed;inset:0;z-index:50;background:#120706;cursor:pointer;animation:introfuera .3s 6s forwards}
+.intro #intro{display:block;position:fixed;inset:0;z-index:50;background:#120706 url(assets/hero-poster-720.webp) 50% 50%/cover no-repeat;cursor:pointer;animation:introfuera .3s 6s forwards}
 #intro canvas{display:block;width:100%;height:100%}
 #intro video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
 #intro canvas{position:relative;z-index:1}
@@ -650,7 +673,8 @@ listo(function(){
     var enRegistro = rr && rr.top < innerHeight * .6 && rr.bottom > innerHeight * .4;
     var cr = cu ? cu.getBoundingClientRect() : null;
     var enCuenta = cr && cr.top < innerHeight * .7 && cr.bottom > innerHeight * .3;
-    b.classList.toggle("vista", pasoHero && !enRegistro && !enCuenta);
+    var otroDorado = [].some.call(document.querySelectorAll("main .accion"), function(x){ var q = x.getBoundingClientRect(); return x.offsetParent && q.bottom > 0 && q.top < innerHeight; });
+    b.classList.toggle("vista", pasoHero && !enRegistro && !enCuenta && !otroDorado);
   }
   addEventListener("scroll", mira, {passive: true}); addEventListener("resize", mira); mira();
 });
@@ -709,7 +733,7 @@ listo(function(){
     gl.viewport(0, 0, cv.width, cv.height);
   }
   tam(); addEventListener("resize", tam);
-  var t0 = performance.now(), VER = 2800, QUEMA = 1600;
+  var inicio = performance.now(), t0 = 0, VER = 2800, QUEMA = 1600;
   function fuente(){
     if (vid && vid.readyState >= 2 && vid.videoWidth) return [vid, vid.videoWidth, vid.videoHeight];
     if (pos && pos.complete && pos.naturalWidth) return [pos, pos.naturalWidth, pos.naturalHeight];
@@ -717,7 +741,10 @@ listo(function(){
   }
   function cuadro(ahora){
     if (listoYa) return;
-    var ms = ahora - t0, f = fuente();
+    var f = fuente();
+    if (!f){ if (ahora - inicio > 1500){ fin(); return; } requestAnimationFrame(cuadro); return; }
+    if (!t0) t0 = ahora;
+    var ms = ahora - t0;
     var x = Math.max(0, Math.min(1, (ms - VER) / QUEMA));
     var a = ms < VER ? 0 : 1 - Math.pow(1 - x, 2);
     if (f){
