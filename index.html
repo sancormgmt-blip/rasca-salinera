@@ -106,7 +106,7 @@ p{margin:0}
   .hero__texto{max-width:620px;margin-left:max(var(--g),calc((100vw - 1120px)/2))}
   .hero.anima .hero__flyer{inset:0 auto 0 50%;width:min(56.25vh,46vw);transform:translateX(-50%) scale(calc(1 - var(--p,0) * .16));transform-origin:50% 40%}
 }
-.palcos{position:relative;padding:72px 0 64px;overflow:hidden;isolation:isolate;background:var(--vino-3)}
+.palcos{position:relative;padding:64px 0 64px;overflow:hidden;isolation:isolate;background:var(--vino-3)}
 .palcos__foto{display:block;position:relative;height:46svh;min-height:300px;margin:-72px 0 28px}
 .palcos__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
 .palcos__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(to bottom,rgba(57,0,7,0),var(--vino-3))}
@@ -181,7 +181,7 @@ input:focus-visible,select:focus-visible{outline:2px solid var(--oro);outline-of
 .envivo video{opacity:0;transition:opacity .8s var(--ease)}
 .envivo video.lista{opacity:1}
 .envivo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,.2),rgba(26,11,11,0) 30%,rgba(26,11,11,.7) 68%,var(--vino) 96%)}
-.envivo__texto{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--g) 44px}
+.envivo__texto{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--g) 40px}
 .envivo .rol,.llegar .rol{display:block;margin-bottom:8px;font-size:1rem;color:var(--oro)}
 .envivo h2{font-size:var(--t2)}
 .envivo .sec{margin-top:14px}
@@ -204,7 +204,7 @@ input:focus-visible,select:focus-visible{outline:2px solid var(--oro);outline-of
 .otra p{margin-top:8px}
 .otra .sec{margin-top:6px}
 .otras__accion{margin-top:20px;max-width:560px}
-.concurso{position:relative;padding:0 0 72px;background:var(--vino)}
+.concurso{position:relative;padding:0 0 64px;background:var(--vino)}
 .concurso__foto{display:block;position:relative;height:40svh;min-height:240px}
 .concurso__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
 .concurso__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(to bottom,rgba(26,11,11,0),var(--vino))}
@@ -228,12 +228,12 @@ textarea:focus-visible{outline:2px solid var(--oro);outline-offset:1px;border-co
 .llegar__foto,.llegar__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
 .llegar__foto{z-index:-2}
 .llegar::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,.1),rgba(26,11,11,0) 25%,rgba(26,11,11,.8) 58%,var(--vino) 80%)}
-.llegar__texto{padding-bottom:48px}
+.llegar__texto{padding-bottom:40px}
 .llegar h2{font-size:var(--t2)}
 .datos{margin:22px 0 0;display:grid;grid-template-columns:auto 1fr;gap:12px 20px}
 .datos dt{color:var(--tenue)}
 .datos dd{margin:0;color:var(--crema)}
-.cierre{position:relative;padding:120px 0 64px;overflow:hidden;isolation:isolate;text-align:center}
+.cierre{position:relative;padding:96px 0 64px;overflow:hidden;isolation:isolate;text-align:center}
 .cierre__fondo,.cierre__fondo img{position:absolute;inset:0 0 auto 0;width:100%;height:110svh;object-fit:cover;object-position:50% 40%}
 .cierre__fondo{z-index:-2}
 .cierre::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,.35) 22%,rgba(26,11,11,.55) 50%,var(--vino) 78%)}
@@ -282,6 +282,23 @@ b,strong{font-weight:800}
 .otra h3,.listo h3{font-size:var(--t3)}
 main p,main dd{max-width:46ch}
 .palcos__bajada,.palcos__como,.palcos__pie,.concurso__bajada,.cierre__bajada,.otra p{margin-inline:auto}
+.rol,.envivo .rol,.llegar .rol,.otra .rol,.concurso .rol,.artista--principal .rol,.artista .rol,.cartel .cerca{color:var(--crema);font-weight:800;letter-spacing:.04em}
+.hero__lugar{color:var(--crema)}
+.hero__texto{text-shadow:0 2px 18px rgba(14,6,6,.95),0 0 2px rgba(14,6,6,.6)}
+.artista::after{background:linear-gradient(to bottom,rgba(26,11,11,0) 40%,rgba(26,11,11,.9) 78%,var(--vino) 92%)}
+.artista__texto{margin-top:-72px}
+.artista--principal .artista__texto{margin-top:-28px}
+.artista__texto{text-shadow:0 2px 16px rgba(14,6,6,.9)}
+.artista .rol,.envivo .rol,.llegar .rol{display:inline-block;padding:5px 12px;border-radius:999px;background:rgba(14,6,6,.78)}
+#err{margin:8px 0 0}
+@media (min-width:860px){
+  .artista picture{aspect-ratio:4/5;height:auto}
+  .artista::after{aspect-ratio:4/5;height:auto}
+  .dos{grid-template-columns:1fr 1fr;max-width:1120px;margin:0 auto;gap:24px}
+  .llegar__foto{height:auto;aspect-ratio:16/9;max-height:80vh}
+  .llegar::after{height:80vh}
+  .palcos__foto{height:52vh}
+}
 footer{padding:40px 0 calc(var(--barra) + 40px);font-size:.8125rem;line-height:1.6;color:var(--tenue);background:var(--vino-2)}
 footer img{width:180px;height:auto;margin-bottom:18px}
 footer .legal{color:var(--texto);font-weight:800}
@@ -843,6 +860,8 @@ listo(function(){
   function fallo(msg, id){
     err.textContent = msg; err.classList.add("vista");
     var el = id && document.getElementById(id);
+    var caja = el && (el.closest(".campo") || el.closest("label"));
+    if (caja && caja.parentNode) caja.parentNode.insertBefore(err, caja.nextSibling);
     if (el){ el.setAttribute("aria-invalid", "true"); el.setAttribute("aria-describedby", "err");
              try { el.focus({preventScroll: true}); } catch(e){ el.focus(); } }
     err.scrollIntoView({block: "center", behavior: quieto ? "auto" : "smooth"});
