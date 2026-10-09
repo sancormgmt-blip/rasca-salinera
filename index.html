@@ -314,7 +314,6 @@ footer::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.12;mix-b
 .pasoig__n--2{margin-top:8px;text-align:center}
 .pasoig__t{font-size:var(--t3);font-weight:800;color:var(--crema);text-align:center;margin-bottom:12px}
 .pasoig .accion{margin-top:8px}
-.pasoig__ya{font-size:.875rem}
 .pasoig__cuenta{font-size:.875rem;color:var(--crema-72)}
 .concurso__plegado>summary{display:none}
 .concurso__plegado[open]{border-top:1px solid var(--linea-suave);padding-top:20px}
@@ -455,6 +454,10 @@ html .entrada__velo{background:linear-gradient(to bottom,rgba(14,6,6,0) 0,rgba(1
 .palco__sello{display:inline-block;margin:0 auto 10px;padding:4px 10px;border:1px solid var(--filete);border-radius:999px;font-size:.6875rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--oro);background:rgba(14,6,6,.6)}
 .palcos__faltan{margin-top:16px;color:var(--crema)}
 .palcos__faltan b{color:var(--oro)}
+.concurso__plegado[open]{margin-top:4px}
+input::placeholder,textarea::placeholder{color:rgba(244,239,230,.32)}
+.sonido{width:36px;height:36px;opacity:.75}
+.sonido:hover,.sonido:focus-visible{opacity:1}
 footer{padding:40px 0 calc(var(--barra) + 72px + env(safe-area-inset-bottom));font-size:.875rem;line-height:1.6;color:var(--tenue);background:var(--vino);border-top:1px solid var(--linea-suave)}
 footer{text-align:center}
 footer img{width:180px;height:auto;margin:0 auto 16px}
@@ -608,7 +611,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
   <picture class="concurso__fondo" aria-hidden="true"><source type="image/avif" srcset="assets/brindis-720.avif"><img src="assets/brindis-720.webp" width="720" height="900" alt="" loading="lazy"></picture>
   <picture class="concurso__foto foto" aria-hidden="true"><source type="image/avif" srcset="assets/escalon-6-720.avif"><img src="assets/escalon-6-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
   <div class="env">
-    <div class="cabeza rev"><p class="rol">Concurso · hasta el 25 de noviembre</p><h2 class="rotulo" id="t-concurso">Gánate un par VIP.</h2><p class="bajada">Sigue a @dugoent_producciones y cuéntanos con quién vendrías y por qué. Un jurado elige la mejor respuesta: no es un sorteo.</p></div>
+    <div class="cabeza rev"><p class="rol">Concurso · hasta el 25 de noviembre</p><h2 class="rotulo" id="t-concurso">Gánate un par VIP.</h2><p class="bajada">Cuéntanos con quién vendrías y por qué. Gana la mejor respuesta, no la suerte.</p></div>
     <div class="marco concurso__tarjeta">
     <p class="premio"><svg class="premio__boletas" viewBox="0 0 260 120" aria-hidden="true"><defs><linearGradient id="bo" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#F8E3A0"/><stop offset=".45" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014"/></linearGradient></defs><g transform="translate(40 28) rotate(-8 90 32)"><path d="M0 0h180v22a10 10 0 0 0 0 20v22H0V42a10 10 0 0 0 0-20z" fill="#390007" stroke="url(#bo)" stroke-width="2"/><path d="M128 6v52" stroke="url(#bo)" stroke-dasharray="3 3"/><text x="64" y="41" text-anchor="middle" class="premio__vip">VIP</text></g><g transform="translate(40 34) rotate(5 90 32)"><path d="M0 0h180v22a10 10 0 0 0 0 20v22H0V42a10 10 0 0 0 0-20z" fill="url(#bo)"/><path d="M128 6v52" stroke="#390007" stroke-opacity=".5" stroke-dasharray="3 3"/><text x="64" y="42" text-anchor="middle" class="premio__vip premio__vip--osc">VIP</text><text x="154" y="37" text-anchor="middle" class="premio__x">×2</text></g></svg><span>El premio</span><b>Un par de boletas VIP</b><span class="premio__valor">Valor $246.180</span></p>
     <div class="pasoig">
@@ -616,20 +619,18 @@ dialog video{width:100%;height:100%;object-fit:contain}
       <p class="pasoig__t">Síguenos en Instagram</p>
       <a class="accion ancha" id="seguir-ig" href="https://www.instagram.com/dugoent_producciones/" target="_blank" rel="noopener" data-mide="ClicInstagram">Seguir en Instagram</a>
       <p class="pasoig__cuenta">@dugoent_producciones</p>
-      <button type="button" class="sec pasoig__ya" id="ya-sigo">Ya los sigo</button>
     </div>
-    <details class="concurso__plegado" id="plegado"><summary>Quiero participar</summary>
+    <details class="concurso__plegado" id="plegado" open><summary>Quiero participar</summary>
     <p class="pasoig__n pasoig__n--2"><span class="pasoig__num">2</span>Paso dos</p>
     <p class="pasoig__t">Déjanos tus datos</p>
     <form id="f" novalidate>
       <p id="err" role="alert"></p>
       <div class="campo"><label for="n">Nombre y apellido</label><input type="text" id="n" name="nombre" autocomplete="name" required></div>
       <div class="campo"><label for="c">Correo</label><input type="email" id="c" name="correo" autocomplete="email" inputmode="email" required><span class="ayuda">Por aquí también te avisamos si ganas.</span></div>
-      <div class="campo"><label for="t">Celular con WhatsApp</label><input type="tel" id="t" name="celular" inputmode="numeric" autocomplete="tel-national" placeholder="300 123 4567" required><span class="ayuda">10 dígitos, sin el +57.</span></div>
-      <div class="campo"><label for="ig">Tu usuario de Instagram</label><input type="text" id="ig" name="instagram" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@tuusuario" required><span class="ayuda">Tienes que seguir a <a class="enlace" href="https://www.instagram.com/dugoent_producciones/" target="_blank" rel="noopener" data-mide="ClicInstagram">@dugoent_producciones</a>. Lo revisamos antes de anunciar al ganador.</span></div>
+      <div class="campo"><label for="t">Celular con WhatsApp</label><input type="tel" id="t" name="celular" inputmode="numeric" autocomplete="tel-national" placeholder="Ej.: 300 123 4567" required><span class="ayuda">10 dígitos, sin el +57.</span></div>
+      <div class="campo"><label for="ig">Tu usuario de Instagram</label><input type="text" id="ig" name="instagram" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Ej.: @tuusuario" required><span class="ayuda">Tienes que seguir a <a class="enlace" href="https://www.instagram.com/dugoent_producciones/" target="_blank" rel="noopener" data-mide="ClicInstagram">@dugoent_producciones</a>. Lo revisamos antes de anunciar.</span></div>
       <div class="campo"><label for="r">¿Con quién vendrías y por qué?</label><textarea id="r" name="respuesta" rows="4" maxlength="280" required></textarea><span class="ayuda">Máximo 280 caracteres. Es lo único que lee el jurado.</span></div>
-      <label class="check"><input type="checkbox" id="edad"> <span>Soy mayor de 18 años.</span></label>
-      <label class="check"><input type="checkbox" id="hd"> <span>Acepto los <a href="#terminos">términos del concurso</a> y autorizo a Dugoent Producciones S.A.S. a tratar mis datos para gestionar el concurso, según su <a href="#datos">política de datos</a> (Ley 1581 de 2012).</span></label>
+      <label class="check"><input type="checkbox" id="hd"> <span>Soy mayor de 18 años, acepto los <a href="#terminos">términos del concurso</a> y autorizo a Dugoent Producciones S.A.S. a tratar mis datos para gestionar el concurso, según su <a href="#datos">política de datos</a> (Ley 1581 de 2012).</span></label>
       <label class="check"><input type="checkbox" id="mk"> <span>Quiero recibir información de otros eventos de Dugoent. (Opcional)</span></label>
       <button class="accion ancha" type="submit" style="margin-top:12px">Enviar mi respuesta</button>
     </form>
@@ -1081,13 +1082,6 @@ listo(function(){
   [].forEach.call(document.querySelectorAll(".rev,.telon,.escalon"), function(el){ io.observe(el); });
 });
 listo(function(){
-  var d = document.getElementById("plegado"), ig = document.getElementById("seguir-ig"), ya = document.getElementById("ya-sigo");
-  if (!d || !ig) return;
-  function abre(){ d.open = true; if (ya) ya.hidden = true; setTimeout(function(){ try { d.scrollIntoView({behavior: "smooth", block: "start"}); } catch(e){} }, 400); }
-  ig.addEventListener("click", function(){ setTimeout(abre, 600); });
-  if (ya) ya.addEventListener("click", abre);
-});
-listo(function(){
   var d = document.getElementById("plegado"); if (!d) return;
   function abre(){  }
   [].forEach.call(document.querySelectorAll('a[href="#concurso"]'), function(a){ a.addEventListener("click", abre); });
@@ -1107,7 +1101,7 @@ listo(function(){
     err.scrollIntoView({block: "center", behavior: quieto ? "auto" : "smooth"});
     return false;
   }
-  ["n","c","t","ig","r","edad","hd"].forEach(function(id){
+  ["n","c","t","ig","r","hd"].forEach(function(id){
     var el = document.getElementById(id); if (!el) return;
     var limpia = function(){ el.removeAttribute("aria-invalid"); err.classList.remove("vista"); };
     el.addEventListener("input", limpia); el.addEventListener("change", limpia);
@@ -1124,8 +1118,7 @@ listo(function(){
     var ig = document.getElementById("ig").value.trim().replace(/^@+/, "");
     if (!/^[A-Za-z0-9._]{1,30}$/.test(ig)) return fallo("Escribe tu usuario de Instagram, sin espacios.", "ig");
     if (resp.length < 10) return fallo("Cuéntanos con quién vendrías y por qué: eso es lo que lee el jurado.", "r");
-    if (!document.getElementById("edad").checked) return fallo("El concurso es solo para mayores de 18.", "edad");
-    if (!document.getElementById("hd").checked) return fallo("Falta aceptar los términos y la autorización de datos.", "hd");
+    if (!document.getElementById("hd").checked) return fallo("Confirma que eres mayor de 18 y aceptas los términos.", "hd");
     var datos = {fecha: new Date().toISOString(), tipo: "concurso VIP", nombre: nombre, correo: correo,
                  celular: "+57" + tel, instagram: "@" + ig, respuesta: resp, origen: ORIGEN,
                  autoriza: "Ley 1581/2012 y términos del concurso · responsable Dugoent Producciones S.A.S. · v3 9-oct-2026", otrosEventos: document.getElementById("mk").checked ? "sí" : "no"};
