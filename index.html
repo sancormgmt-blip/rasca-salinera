@@ -174,32 +174,6 @@ section{position:relative}
 .pasos li::before{content:counter(paso);display:grid;place-items:center;width:32px;height:32px;border:1px solid var(--filete);border-radius:50%;font-weight:800;color:var(--crema)}
 .pasos li span{display:block;margin-top:2px;font-size:.875rem;color:var(--crema-72)}
 .palcos__como{margin:16px auto 0;font-size:.875rem;color:var(--crema-72);text-align:center}
-.sueltas{padding:0 0 var(--ritmo);background:var(--vino)}
-.sueltas .env{max-width:600px}
-.sueltas .cabeza{padding-top:40px;border-top:1px solid var(--linea-suave)}
-.sueltas .cabeza h2{font-size:var(--t3);line-height:1.15;text-transform:none;letter-spacing:0}
-.localidades{list-style:none;margin:24px 0 0;padding:0}
-.localidades li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;border-top:1px solid var(--linea-suave)}
-.localidades li:last-child{border-bottom:1px solid var(--linea-suave)}
-.localidades .nombre{font-size:var(--t3)}
-.localidades .detalle{display:block;margin-top:4px;font-size:.875rem;color:var(--crema-72)}
-.localidades .precio{font-weight:800;font-size:var(--t3);color:var(--crema);white-space:nowrap}
-.sueltas__silla{margin:16px auto 0;color:var(--crema-72);text-align:center}
-.sueltas__tarjeta{margin-top:32px;padding:8px 20px 24px}
-.sueltas__tarjeta .localidades{margin-top:0}
-.sueltas__tarjeta .localidades li:first-child{border-top:0}
-.fantasma{display:flex;align-items:center;justify-content:center;min-height:56px;margin-top:16px;border:1px solid rgba(244,239,230,.45);border-radius:var(--r);color:var(--crema);font-weight:800;text-decoration:none}
-.fantasma:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
-.reloj{display:none;margin-top:14px;color:var(--crema)}
-.reloj.vista{display:block}
-.dos{display:grid;gap:0;background:var(--vino)}
-.artista{position:relative;display:block;overflow:hidden;isolation:isolate;background:var(--vino)}
-.artista picture{display:block;position:relative;aspect-ratio:4/5}
-.artista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;z-index:0}
-.artista::before{content:"";position:absolute;inset:0 0 auto 0;height:120px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0))}
-.artista::after{content:"";position:absolute;inset:auto 0 0 0;aspect-ratio:4/5;z-index:0;pointer-events:none;background:linear-gradient(to bottom,rgba(26,11,11,0) 70%,rgba(26,11,11,.6) 100%)}
-.artista__texto{position:relative;z-index:1;margin-top:-96px;padding:0 var(--g) 40px}
-.artista+.artista{border-top:1px solid var(--linea-suave)}
 .escena{padding:0 0 48px;background:var(--vino);text-align:center}
 .escena__media{position:relative;display:block;aspect-ratio:4/5;overflow:hidden}
 .escena__media img,.escena__media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -278,8 +252,6 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--oro);outline-
 body{background:radial-gradient(120% 50% at 50% 0%,#2a0d0b 0,rgba(42,13,11,0) 60%),var(--vino)}
 body::after{content:none;position:fixed;inset:0;z-index:70;pointer-events:none;opacity:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/180px}
 .palcos{background:radial-gradient(70% 30% at 50% 22%,rgba(189,96,20,.18),rgba(189,96,20,0) 70%),linear-gradient(to bottom,var(--vino),var(--vino-3) 10%,var(--vino-3) 88%,var(--vino))}
-.corte{display:flex;justify-content:center;padding:8px 0}
-.corte svg{display:block;max-width:280px;width:72%;height:auto}
 .concurso{isolation:isolate;overflow:hidden}
 .concurso__fondo{position:absolute;inset:0;z-index:-1}
 .concurso__fondo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:sepia(.2) saturate(1.05)}
@@ -298,7 +270,6 @@ footer::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.08;backg
 .js-mov .concurso__tarjeta.visto .premio{opacity:1;transform:none}
 @media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){
   .palcos__foto img,.llegar .escena__media img{scale:1.12;animation:paralaje linear both;animation-timeline:view()}
-  .dos .artista img{animation:asienta linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
 }}
 @keyframes paralaje{from{transform:translateY(-5%)}to{transform:translateY(5%)}}
 @keyframes asienta{from{transform:scale(1.08)}to{transform:none}}
@@ -329,19 +300,6 @@ footer::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.08;backg
 .entrada__caja>:nth-child(5){animation-delay:.38s}
 @keyframes entra{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.entrada__caja>*{animation:none}}
-.dos{grid-template-columns:1fr;gap:0;padding:0 0 24px}
-.dos__cabeza{grid-column:1/-1;position:relative;isolation:isolate;margin:0;padding:56px var(--g) 24px;text-align:center;overflow:hidden}
-.dos__fondo{position:absolute;inset:0;z-index:-1}
-.dos__fondo img,.dos__fondo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.dos__fondo video{opacity:0;transition:opacity .8s var(--ease)}
-.dos__fondo video.lista{opacity:1}
-.dos__fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,.55) 35%,rgba(26,11,11,.7) 70%,var(--vino))}
-.dos__cabeza .sec{display:flex;width:max-content;margin:12px auto 0}
-.artista{border-radius:var(--r)}
-.artista+.artista{border-top:0}
-.artista::before{height:40px}
-.artista__texto{margin-top:-88px;padding:0 var(--g) 24px;text-align:center}
-.artista__nombre{font-size:var(--t1);line-height:.95;text-shadow:0 3px 18px rgba(14,6,6,.95)}
 .escena__media{aspect-ratio:1/1}
 .palcos__foto{height:44svh;min-height:300px}
 .marco{padding:20px 18px}
@@ -353,7 +311,6 @@ footer::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.08;backg
 .pie__plegado summary::-webkit-details-marker{display:none}
 .pie__plegado summary::after{content:"+";color:var(--tenue)}
 .pie__plegado[open] summary::after{content:"–"}
-@media (min-width:860px){.dos{grid-template-columns:1fr 1fr;gap:24px;padding:0 var(--g) 32px}.artista__nombre{font-size:3.4rem}}
 .hero__fondo{background:radial-gradient(90% 55% at 50% 38%,rgba(189,96,20,.22),rgba(189,96,20,0) 70%),var(--vino)}
 .hero__escena::after{background:radial-gradient(80% 45% at 50% 48%,rgba(26,11,11,.55),rgba(26,11,11,.2) 70%),linear-gradient(to bottom,rgba(26,11,11,0) 70%,var(--vino))}
 .hero.revela .hero__flyer img{animation:flyer-entra 1.2s var(--expo) both}
@@ -384,13 +341,12 @@ html .entrada__velo{background:linear-gradient(to bottom,rgba(14,6,6,0) 0,rgba(1
 .pasos__accion{margin-top:20px}
 .pasoig__n{display:flex;align-items:center;justify-content:center;gap:10px}
 .pasoig__num{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--oro);color:var(--vino);font-size:1rem;letter-spacing:0}
-.cartelera__nombre,.artista__nombre,.palco__nombre,.cabeza h2,.cabeza .rotulo{font-family:"Cartel",Georgia,serif;font-weight:900;text-transform:none;letter-spacing:0;line-height:1}
-.cartelera__nombre,.artista__nombre,.palco--rey .palco__nombre,.hero__num{background:linear-gradient(175deg,#FFF1C2 0%,#F4C232 30%,#EBB314 52%,#BD6014 78%,#F4C232 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.cartelera__nombre,.palco__nombre,.cabeza h2,.cabeza .rotulo{font-family:"Cartel",Georgia,serif;font-weight:900;text-transform:none;letter-spacing:0;line-height:1}
+.cartelera__nombre,.palco--rey .palco__nombre,.hero__num{background:linear-gradient(175deg,#FFF1C2 0%,#F4C232 30%,#EBB314 52%,#BD6014 78%,#F4C232 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
 .cartelera__nombre{font-size:clamp(2.1rem,10.5vw,3.6rem);white-space:normal}
 .hero__num{font-family:"Cartel",Georgia,serif;font-weight:900;font-size:clamp(4rem,22vw,7rem);line-height:.9}
 .hero__num small{font-size:.55em}
 .hero__fecha{margin-top:12px}
-.artista__nombre{font-size:clamp(2.6rem,13vw,4.2rem);text-shadow:none}
 .palco__nombre{font-size:clamp(2rem,9.6vw,2.8rem)}
 .palco--rey .palco__nombre{font-size:clamp(2.3rem,11vw,3.2rem)}
 .cabeza h2,.cabeza .rotulo{font-size:clamp(2rem,9.4vw,3.2rem)}
@@ -454,19 +410,12 @@ input::placeholder,textarea::placeholder{color:rgba(244,239,230,.32)}
 .js-mov .mapa-llegar.visto .ml-ruta{stroke-dashoffset:0}
 @media (prefers-reduced-motion:no-preference){.ml-pulso{transform-box:fill-box;transform-origin:center;animation:pulso 2.4s ease-in-out infinite}}
 @keyframes pulso{0%,100%{transform:scale(.85);opacity:.7}50%{transform:scale(1.15);opacity:1}}
-.artista__texto{margin-top:0;padding:14px var(--g) 36px}
-.artista__nombre{font-size:clamp(1.9rem,8.6vw,3.4rem);white-space:nowrap}
-.artista+.artista{border-top:1px solid var(--linea-suave)}
-.artista::after{background:linear-gradient(to bottom,rgba(26,11,11,0) 78%,var(--vino) 100%)}
-.dos__fondo::after{background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,.35) 35%,rgba(26,11,11,.5) 70%,var(--vino))}
 body{background:linear-gradient(to bottom,var(--vino) 0,#220d0d 30%,#2a0c0c 55%,#200c0c 80%,var(--vino) 100%)}
-main>section,.dos,.escena,.sueltas,.dudas,.concurso{background:transparent}
+main>section,.escena,.dudas,.concurso{background:transparent}
 .palcos{background:radial-gradient(90% 40% at 50% 30%,rgba(57,0,7,.85),rgba(57,0,7,0) 75%),radial-gradient(70% 25% at 50% 70%,rgba(57,0,7,.6),rgba(57,0,7,0) 75%)}
 main>section{padding-bottom:56px}
-.palcos,.concurso,.escena,.sueltas,.dudas{padding-bottom:56px}
-.corte{padding:20px 0 28px}
-.sueltas .cabeza{padding-top:0;border-top:0}
-.artista+.artista{border-top:0;margin-top:8px}
+.palcos,.concurso,.escena,.dudas{padding-bottom:56px}
+.palcos__sueltas .cabeza{padding-top:0;border-top:0}
 footer{border-top:0}
 .escena__media::before{height:28%}
 .escena__media::after{height:auto;inset:0;background:radial-gradient(80% 60% at 50% 40%,rgba(26,11,11,0) 50%,rgba(26,11,11,.55)),linear-gradient(to bottom,rgba(26,11,11,0) 60%,var(--vino))}
@@ -480,7 +429,6 @@ footer{padding-top:24px}
 .mapa{border:0;background:none;padding:0;margin-top:24px}
 .mapa img{border-radius:0;-webkit-mask-image:radial-gradient(120% 95% at 50% 50%,#000 62%,transparent 100%);mask-image:radial-gradient(120% 95% at 50% 50%,#000 62%,transparent 100%)}
 .hero__escena::after{background:radial-gradient(80% 45% at 50% 48%,rgba(26,11,11,.55),rgba(26,11,11,.2) 70%),linear-gradient(to bottom,rgba(26,11,11,0) 55%,var(--vino) 100%)}
-.hero+.corte,main>.corte:first-child{padding-top:0}
 html .entrada__velo{background:linear-gradient(to bottom,rgba(14,6,6,0) 0,rgba(14,6,6,0) 48%,rgba(14,6,6,.55) 66%,rgba(14,6,6,.9) 86%)}
 .entrada__caja{gap:14px}
 .entrada__suena{justify-content:center;font-family:"Cartel",Georgia,serif;font-style:italic;font-weight:700;font-size:1.75rem;letter-spacing:.01em;background:linear-gradient(175deg,#FFF1C2,#EBB314 55%,#BD6014);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -491,20 +439,62 @@ html .entrada__velo{background:linear-gradient(to bottom,rgba(14,6,6,0) 0,rgba(1
 @keyframes llama-btn{0%,100%{box-shadow:0 0 0 0 rgba(235,179,20,.35)}50%{box-shadow:0 0 22px 2px rgba(235,179,20,.35)}}
 @media (prefers-reduced-motion:reduce){.entrada__si{animation:none}}
 .entrada__no{font-size:.875rem;color:var(--crema-72);text-decoration-color:rgba(244,239,230,.3)}
-.sueltas--discreta{padding:8px 0 40px}
-.sueltas--discreta .cabeza .rol{font-size:.75rem}
-.sueltas--discreta .cabeza h2{font-size:1.25rem}
-.sueltas--discreta .sueltas__tarjeta{margin-top:14px}
-.sueltas--discreta .localidades li{padding:14px 8px}
-.sueltas--discreta .localidades .nombre{font-size:1.35rem}
-.sueltas--discreta .localidades .precio{font-size:1.05rem}
-.sueltas--discreta .fantasma{min-height:46px;font-size:.9375rem}
+.palcos__sueltas{padding:8px 0 40px}
+.palcos__sueltas .cabeza .rol{font-size:.75rem}
+.palcos__sueltas .cabeza h2{font-size:1.25rem}
+.palcos__sueltas .sueltas__tarjeta{margin-top:14px}
+.palcos__sueltas .localidades li{padding:14px 8px}
+.palcos__sueltas .localidades .nombre{font-size:1.35rem}
+.palcos__sueltas .localidades .precio{font-size:1.05rem}
+.palcos__sueltas .fantasma{min-height:46px;font-size:.9375rem}
 .terminos summary{font-size:.875rem;font-weight:700;min-height:46px}
 .terminos{margin-top:28px;padding-top:12px;border-top:1px solid var(--linea-suave)}
 .pie__redes{display:flex;justify-content:center;gap:14px;margin:0 0 16px}
 .pie__red{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--filete);border-radius:50%;color:var(--oro)}
 .pie__red:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
 .cierre__mesa{font-weight:800;color:var(--crema)}
+.programa{position:relative}
+.hilo{position:absolute;top:0;bottom:0;left:9px;width:1px;z-index:3;pointer-events:none;background:linear-gradient(to bottom,rgba(235,179,20,.0),rgba(235,179,20,.16) 4%,rgba(235,179,20,.16) 96%,rgba(235,179,20,0))}
+.hilo__luz{position:absolute;inset:0;transform-origin:50% 0;transform:scaleY(var(--hilo,0));background:linear-gradient(to bottom,#F4C232,#EBB314 60%,#BD6014)}
+.programa>section{position:relative}
+.nudo{position:absolute;left:5px;top:28px;z-index:4;width:9px;height:9px;transform:rotate(45deg) scale(.7);border:1px solid rgba(235,179,20,.5);background:var(--vino);transition:transform .6s var(--expo),background .6s var(--expo),box-shadow .6s var(--expo)}
+.nudo.vivo{transform:rotate(45deg) scale(1);background:#EBB314;box-shadow:0 0 12px rgba(235,179,20,.6)}
+.puente{display:flex;align-items:center;justify-content:center;gap:8px;width:max-content;margin:28px auto 0;padding:10px 4px;font-family:"Cartel",Georgia,serif;font-style:italic;font-weight:700;font-size:1.0625rem;color:var(--crema-72);text-decoration:none}
+.puente span{color:var(--oro);font-style:normal}
+.puente:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){.puente span{animation:baja 1.8s var(--ease) infinite}}
+body{background:
+  radial-gradient(70% 6% at 50% 14%,rgba(189,96,20,.20),rgba(189,96,20,0)),
+  radial-gradient(90% 7% at 50% 46%,rgba(235,179,20,.10),rgba(235,179,20,0)),
+  radial-gradient(80% 6% at 50% 92%,rgba(189,96,20,.22),rgba(189,96,20,0)),
+  linear-gradient(to bottom,var(--vino) 0,#250c0c 25%,#2b0d0b 48%,#1d0b0b 70%,#240c0b 90%,var(--vino) 100%)}
+.programa>section{padding-top:40px}
+.programa>.palcos{padding-top:0}
+@media (min-width:860px){.hilo{left:max(24px,calc(50% - 400px))}.nudo{left:calc(max(24px,calc(50vw - 400px)) - 4px)}}
+.hero__duo{position:absolute;inset:0 0 auto 0;height:64%;z-index:1;display:grid;grid-template-columns:1fr 1fr;opacity:clamp(0,calc(var(--p,0) * 4 - .9),1);transition:opacity .2s linear}
+.hero__duo picture{position:relative;display:block;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,#000 55%,transparent 100%)}
+.hero__duo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 8%}
+.hero__duo::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,11,11,.35),rgba(26,11,11,0) 25%),linear-gradient(to right,rgba(26,11,11,0) 46%,rgba(26,11,11,.6) 50%,rgba(26,11,11,0) 54%)}
+.hero.anima .hero__escena{justify-content:flex-end}
+.hero.anima .hero__texto{padding-bottom:calc(36px + env(safe-area-inset-bottom))}
+.palcos__sueltas{margin-top:40px}
+.palcos__sueltas .env{padding:0 var(--g)}
+.practico-sigue{padding-top:8px!important}
+.dudas.practico-sigue .cabeza .rombos{display:none}
+@media (min-width:860px){.hero__duo{left:50%;right:auto;width:min(760px,90vw);transform:translateX(-50%)}}
+.palcos{background:none!important}
+.programa>section{padding-top:56px!important;padding-bottom:56px!important}
+.programa>.palcos{padding-top:0!important}
+.programa>.practico-sigue{padding-top:0!important}
+.cabeza{margin-bottom:0}
+.cabeza+*{margin-top:28px}
+.marco,.datos>div,.palcos__sueltas .localidades li,.concurso__tarjeta{border:1px solid rgba(235,179,20,.32)!important;border-radius:var(--r)!important;background:linear-gradient(180deg,rgba(57,0,7,.55),rgba(26,11,11,.85))!important}
+.mapa,.mapa-llegar{border:0!important;background:none!important;padding:0!important}
+.palcos__foto::before,.concurso__fondo::before,.escena__media::before{content:"";position:absolute;left:0;right:0;top:0;height:35%;z-index:1;pointer-events:none;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0))}
+.palcos__foto::after,.escena__media::after{height:auto!important;inset:auto 0 0 0!important;top:auto!important;height:45%!important;background:linear-gradient(to bottom,rgba(26,11,11,0),var(--vino))!important}
+.concurso__fondo::after{background:linear-gradient(to bottom,rgba(26,11,11,.6),rgba(26,11,11,.9) 40%,var(--vino))!important}
+.concurso__fondo{position:absolute}
+.puente{margin-top:40px}
 footer{padding:40px 0 calc(var(--barra) + 72px + env(safe-area-inset-bottom));font-size:.875rem;line-height:1.6;color:var(--tenue);background:var(--vino);border-top:1px solid var(--linea-suave)}
 footer{text-align:center}
 footer img{width:180px;height:auto;margin:0 auto 16px}
@@ -519,10 +509,9 @@ footer p+p{margin-top:8px}
 .sonido.fuera{transform:translateY(-72px);opacity:0;pointer-events:none}
 @media (min-width:860px){
   .palcos__foto{height:72vh}
-  .palcos .env,.sueltas .env,.concurso .env,.dudas .env{max-width:680px}
+  .palcos .env,.palcos__sueltas .env,.concurso .env,.dudas .env{max-width:680px}
   .palcos__lista{grid-template-columns:1fr 1fr}
   .palco--rey{grid-column:1/-1}
-  .dos{grid-template-columns:1fr 1fr;max-width:1120px;margin:0 auto;gap:24px}
   .llegar .env{max-width:680px}
   .cierre .env{max-width:760px}
 }
@@ -584,7 +573,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <source type="image/avif" srcset="assets/flyer-720.avif 720w, assets/flyer-1080.avif 1080w" sizes="(min-width:860px) 46vw, 100vw">
     <img src="assets/flyer-720.webp" srcset="assets/flyer-720.webp 720w, assets/flyer-1080.webp 1080w" sizes="(min-width:860px) 46vw, 100vw" width="720" height="1280" alt="Flyer de Rasca Salinera: Jhon Alex Castaño y Jhonny Rivera, 5 de diciembre en Zipaquirá. PULEP HYW650." fetchpriority="high">
   </picture>
-  <div class="hero__fondo"><img class="hero__brasa" src="assets/flyer-fondo.webp" width="540" height="960" alt="" aria-hidden="true" ></div>
+  <div class="hero__fondo"><div class="hero__duo" aria-hidden="true"><picture><source type="image/avif" srcset="assets/castano-flyer-720.avif 720w, assets/castano-flyer-1000.avif 1000w" sizes="50vw"><img src="assets/castano-flyer-720.webp" srcset="assets/castano-flyer-720.webp 720w, assets/castano-flyer-1000.webp 1000w" sizes="50vw" width="720" height="900" alt="Jhon Alex Castaño, la misma foto del afiche."  style="object-position:50% 0"></picture><picture><source type="image/avif" srcset="assets/rivera-flyer-720.avif 720w, assets/rivera-flyer-1000.avif 1000w" sizes="50vw"><img src="assets/rivera-flyer-720.webp" srcset="assets/rivera-flyer-720.webp 720w, assets/rivera-flyer-1000.webp 1000w" sizes="50vw" width="720" height="900" alt="Jhonny Rivera, la misma foto del afiche."  style="object-position:50% 0"></picture></div><img class="hero__brasa" src="assets/flyer-fondo.webp" width="540" height="960" alt="" aria-hidden="true" ></div>
   <div class="hero__texto">
     <h1 class="cartelera"><span class="cartelera__nombre rotulo"><span class="m">Jhon Alex Castaño</span></span><span class="cartelera__filete" aria-hidden="true"></span><span class="cartelera__nombre rotulo"><span class="m">Jhonny Rivera</span></span></h1>
     <p class="hero__fecha"><span class="hero__dia">Sábado</span><span class="hero__num">05 <small>Dic</small></span><span class="oculto-v">5 de diciembre</span></p>
@@ -595,11 +584,11 @@ dialog video{width:100%;height:100%;object-fit:contain}
   </div>
 </header>
 
-<main>
+<main class="programa">
+<div class="hilo" aria-hidden="true"><span class="hilo__luz"></span></div>
 
 
-<div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
-<section class="palcos" id="palcos" aria-labelledby="t-palcos">
+<section class="palcos" id="palcos" aria-labelledby="t-palcos"><span class="nudo" aria-hidden="true"></span>
   <figure class="palcos__foto telon" aria-describedby="leyenda-pabellon">
     <picture><source type="image/avif" srcset="assets/pabellon-768.avif"><img src="assets/pabellon-768.webp" width="768" height="1376" alt="Ilustración de cómo se proyecta un palco cubierto frente a la tarima, dentro del pabellón." loading="lazy"></picture>
   <figcaption class="palcos__leyenda" id="leyenda-pabellon">Ilustración del montaje proyectado para el 5 de diciembre.</figcaption></figure>
@@ -649,10 +638,8 @@ dialog video{width:100%;height:100%;object-fit:contain}
       <a class="accion ancha pasos__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Apartar por WhatsApp</a>
     </div>
   </div>
-</section>
 
-
-<section class="sueltas sueltas--discreta" id="otras" aria-labelledby="t-sueltas">
+  <div class="palcos__sueltas" id="otras">
   <div class="env">
     <div class="cabeza rev"><p class="rol">Entrada individual</p><h2 class="rotulo" id="t-sueltas">¿Vienes por tu cuenta?</h2></div>
     <div class="marco sueltas__tarjeta">
@@ -666,11 +653,15 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <a class="fantasma" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Comprar en Tickeo ↗</a>
     </div>
   </div>
+  <a class="puente" href="#concurso">¿Sin palco? Gánate un par VIP <span aria-hidden="true">↓</span></a>
+</div>
 </section>
 
 
-<div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
-<section class="concurso" id="concurso" aria-labelledby="t-concurso">
+
+
+
+<section class="concurso" id="concurso" aria-labelledby="t-concurso"><span class="nudo" aria-hidden="true"></span>
   <picture class="concurso__fondo" aria-hidden="true"><source type="image/avif" srcset="assets/brindis-720.avif"><img src="assets/brindis-720.webp" width="720" height="900" alt="" loading="lazy"></picture>
   <picture class="concurso__foto foto" aria-hidden="true"><source type="image/avif" srcset="assets/escalon-6-720.avif"><img src="assets/escalon-6-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
   <div class="env">
@@ -705,28 +696,17 @@ dialog video{width:100%;height:100%;object-fit:contain}
       <a class="accion ancha" id="ok-wa" href="#" target="_blank" rel="noopener" data-mide="ClicWhatsApp">Confirmar por WhatsApp</a>
     </div>
   </div>
-</section>
-
-
-<div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
-<section class="dos" aria-label="Los artistas">
-  <div class="dos__cabeza"><div class="dos__fondo" aria-hidden="true"><img src="assets/envivo-poster-720.webp" width="720" height="1280" alt="" loading="lazy"><video muted loop playsinline webkit-playsinline autoplay preload="none" data-src="assets/envivo-loop.mp4"></video></div><div class="env cabeza rev"><p class="rol">En tarima · 5 de diciembre</p><h2 class="rotulo">Dos nombres. Una sola noche.</h2></div></div>
-  <article class="artista">
-    <picture><source type="image/avif" srcset="assets/castano-flyer-720.avif 720w, assets/castano-flyer-1000.avif 1000w" sizes="(min-width:860px) 50vw, 100vw"><img src="assets/castano-flyer-720.webp" srcset="assets/castano-flyer-720.webp 720w, assets/castano-flyer-1000.webp 1000w" sizes="(min-width:860px) 50vw, 100vw" width="720" height="900" alt="Jhon Alex Castaño, la misma foto del afiche." loading="lazy" style="object-position:50% 0"></picture>
-    <div class="artista__texto"><h3 class="rotulo artista__nombre">Jhon Alex Castaño</h3></div>
-  </article>
-  <article class="artista">
-    <picture><source type="image/avif" srcset="assets/rivera-flyer-720.avif 720w, assets/rivera-flyer-1000.avif 1000w" sizes="(min-width:860px) 50vw, 100vw"><img src="assets/rivera-flyer-720.webp" srcset="assets/rivera-flyer-720.webp 720w, assets/rivera-flyer-1000.webp 1000w" sizes="(min-width:860px) 50vw, 100vw" width="720" height="900" alt="Jhonny Rivera, la misma foto del afiche." loading="lazy" style="object-position:50% 0"></picture>
-    <div class="artista__texto"><h3 class="rotulo artista__nombre">Jhonny Rivera</h3></div>
-  </article>
+  <a class="puente" href="#llegar">Cómo llegar y lo que debes saber <span aria-hidden="true">↓</span></a>
 </section>
 
 
 
 
 
-<div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
-<section class="llegar escena" aria-labelledby="t-llegar">
+
+
+
+<section class="llegar escena" id="llegar" aria-labelledby="t-llegar"><span class="nudo" aria-hidden="true"></span>
   
   <div class="env">
     <div class="cabeza rev"><p class="rol">Cómo llegar</p><h2 class="rotulo" id="t-llegar">A un kilómetro de Zipaquirá.</h2><p class="bajada">Por la vía a Bogotá, junto a El Frigorífico. Con parqueadero.</p></div>
@@ -749,8 +729,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
 
 
 
-<div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
-<section class="dudas" aria-labelledby="t-dudas">
+<section class="dudas practico-sigue" id="dudas" aria-labelledby="t-dudas">
   <div class="env">
     <div class="cabeza rev"><p class="rol">Preguntas</p><h2 class="rotulo" id="t-dudas">Antes de venir.</h2></div>
     <div class="preguntas">
@@ -782,8 +761,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
   </div>
 </section>
 
-<div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
-<section class="cierre escena" aria-labelledby="t-cierre">
+<section class="cierre escena practico-sigue" aria-labelledby="t-cierre">
   <div class="escena__media telon foto" aria-hidden="true"><img src="assets/cierre-loop-poster.webp" width="720" height="768" alt="" loading="lazy"><video muted loop playsinline webkit-playsinline autoplay preload="none" data-src="assets/cierre-loop.mp4"></video></div>
   <div class="env">
     <div class="cabeza rev"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><h2 class="rotulo" id="t-cierre">Una farra pa' borrar casete.</h2><p class="bajada">Sábado 5 de diciembre, Zipaquirá. Tu palco se aparta con el 30%.</p></div>
@@ -1130,6 +1108,19 @@ listo(function(){
     es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("visto"); io.unobserve(e.target); } });
   }, {rootMargin: "0px 0px -12% 0px"});
   [].forEach.call(document.querySelectorAll(".rev,.telon,.escalon"), function(el){ io.observe(el); });
+});
+listo(function(){
+  var m = document.querySelector(".programa"); if (!m) return;
+  var nudos = [].slice.call(document.querySelectorAll(".nudo")), pend = false;
+  function mide(){
+    pend = false;
+    var r = m.getBoundingClientRect(), punto = innerHeight * .62;
+    var p = Math.max(0, Math.min(1, (punto - r.top) / r.height));
+    m.style.setProperty("--hilo", quieto ? 1 : p.toFixed(4));
+    nudos.forEach(function(n){ n.classList.toggle("vivo", n.getBoundingClientRect().top < punto); });
+  }
+  addEventListener("scroll", function(){ if (!pend){ pend = true; requestAnimationFrame(mide); } }, {passive: true});
+  addEventListener("resize", mide); mide();
 });
 listo(function(){
   var d = document.getElementById("plegado"); if (!d) return;
