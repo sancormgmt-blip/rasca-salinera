@@ -523,6 +523,17 @@ body{background:
 .palcos__sueltas .fantasma{display:flex;width:100%;max-width:420px;margin:14px auto 0;text-decoration:none}
 .mapa img{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%)}
 .mapa-llegar{margin-inline:0!important;padding:0 4px!important}
+html,body{background:var(--vino)!important}
+.palcos__foto::after{background:linear-gradient(to bottom,rgba(26,11,11,0),var(--vino))!important}
+.hero__escena::after{background:radial-gradient(80% 45% at 50% 48%,rgba(26,11,11,.5),rgba(26,11,11,.15) 70%),linear-gradient(to bottom,rgba(26,11,11,0) 60%,var(--vino) 97%)!important}
+.hero__fondo{background:var(--vino)!important}
+.concurso__fondo::after{background:linear-gradient(to bottom,var(--vino) 0,rgba(26,11,11,.82) 22%,rgba(26,11,11,.9) 60%,var(--vino) 100%)!important}
+.mapa img{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%),linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 82%,transparent 100%),linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%);mask-composite:intersect}
+footer{background:var(--vino)!important}
+footer::before{-webkit-mask-image:linear-gradient(to bottom,transparent,#000 40%);mask-image:linear-gradient(to bottom,transparent,#000 40%)}
+.mapa-llegar__svg{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 8%,#000 92%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 8%,#000 92%,transparent 100%)}
+.mapa img{-webkit-mask-image:none!important;mask-image:none!important}
+footer{border:0!important;box-shadow:none!important}
 footer{padding:40px 0 calc(var(--barra) + 72px + env(safe-area-inset-bottom));font-size:.875rem;line-height:1.6;color:var(--tenue);background:var(--vino);border-top:1px solid var(--linea-suave)}
 footer{text-align:center}
 footer img{width:180px;height:auto;margin:0 auto 16px}
@@ -623,7 +634,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
   <div class="env">
     <div class="cabeza rev"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Palco cubierto · 10 sillas</p><h2 class="rotulo" id="t-palcos">Frente a la tarima.</h2><p class="bajada"><b>Diez sillas para tu grupo</b>, bajo techo y de frente al show. Licor y comida se compran adentro y se pagan aparte.</p><p class="palcos__faltan"><b>Solo 24 palcos por categoría</b> · faltan <b id="faltan">57</b> días</p></div>
     <figure class="marco mapa telon">
-      <a class="mapa__zoom" href="assets/mapa-palcos-v3.webp" target="_blank" rel="noopener" aria-label="Ver el mapa de localidades en grande"><picture><source type="image/avif" srcset="assets/mapa-palcos-v3.avif"><img src="assets/mapa-palcos-v3.webp" width="840" height="520" alt="Mapa oficial de localidades: la tarima y, de frente, las filas de palcos El Rey del Chupe, El Intenso y El Pegao." loading="lazy"></picture></a>
+      <a class="mapa__zoom" href="assets/mapa-palcos-hd.webp" target="_blank" rel="noopener" aria-label="Ver el mapa de localidades en grande"><picture><source type="image/avif" srcset="assets/mapa-palcos-hd.avif"><img src="assets/mapa-palcos-hd.webp" width="1320" height="600" alt="Mapa oficial de localidades: la tarima y, de frente, las filas de palcos El Rey del Chupe, El Intenso y El Pegao." loading="lazy"></picture></a>
       <figcaption>Mapa oficial de palcos</figcaption>
     </figure>
     <div class="palcos__lista">
