@@ -564,6 +564,40 @@ footer{border:0!important;box-shadow:none!important}
   .hero__duo picture{width:52%}
   .hero__duo picture:first-child{left:2%}.hero__duo picture:last-child{right:2%}
 }
+.hero__duo{min-height:0!important}
+.hero__duo picture{position:relative!important;left:auto!important;right:auto!important;width:100%!important;aspect-ratio:1400/1120!important;margin:0!important}
+.hero__duo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;-webkit-mask-image:none!important;mask-image:none!important}
+@media (max-height:720px){.hero__duo{left:6%!important;right:6%!important}}
+.rotulo,.cabeza h2,.palco__nombre,.cartelera__nombre .m,.hero__num,.palco__hoy-v,.premio b{line-height:1.12!important;padding-bottom:.12em}
+.cartelera__nombre .m,.palco--rey .palco__nombre,.hero__num,.palco__hoy-v{display:inline-block}
+.hero.anima .cartelera__nombre{overflow:visible!important}
+.js-mov .rev .rombos,.js-mov .rev .rol,.js-mov .rev .bajada,.js-mov .rev h2,.js-mov .rev .rotulo{clip-path:none!important;transform:translateY(16px)!important;opacity:0!important;transition:opacity .8s var(--expo),transform .8s var(--expo)!important}
+.js-mov .rev .rol{transition-delay:.08s!important}.js-mov .rev h2,.js-mov .rev .rotulo{transition-delay:.16s!important}.js-mov .rev .bajada{transition-delay:.24s!important}
+.js-mov .rev.visto .rombos,.js-mov .rev.visto .rol,.js-mov .rev.visto .bajada,.js-mov .rev.visto h2,.js-mov .rev.visto .rotulo{transform:none!important;opacity:1!important}
+.js-mov .telon{clip-path:none!important;opacity:0;transform:translateY(16px);transition:opacity .8s var(--expo),transform .8s var(--expo)!important}
+.js-mov .telon>img,.js-mov .telon>picture,.js-mov .telon>svg,.js-mov .telon>a{transform:none!important}
+.js-mov .telon.visto{opacity:1;transform:none}
+.js-mov .escalon{transform:translateY(16px)!important;transition:opacity .8s var(--expo),transform .8s var(--expo)!important;transition-delay:calc(var(--i,0) * 80ms)!important}
+.js-mov .escalon.visto{transform:none!important}
+.palcos__foto img,.llegar .escena__media img{animation:none!important;scale:none!important}
+.puente span{animation:none!important}
+.entrada__si{animation:none!important}
+.hero__duo{transition:none}
+.hero__duo picture{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 58%,transparent 96%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 58%,transparent 96%);mask-composite:intersect}
+.hero__texto{display:flex;flex-direction:column;align-items:center;text-align:center}
+.cartelera{display:flex!important;flex-direction:column;align-items:center;gap:6px!important;margin:0}
+.cartelera__nombre{font-size:clamp(1.9rem,9vw,3.2rem)!important;letter-spacing:.005em!important}
+.cartelera__filete{width:auto!important;height:auto!important;background:none!important;line-height:0}
+.cartelera__filete svg{display:block}
+.hero__fecha{display:flex!important;flex-direction:column;align-items:center;gap:0!important;margin-top:14px!important}
+.hero__dia{font-family:"Archivo",sans-serif!important;font-style:normal!important;font-weight:800!important;font-size:.75rem!important;letter-spacing:.32em!important;text-transform:uppercase!important;color:var(--crema-72)!important}
+.hero__num{font-size:clamp(3.6rem,17vw,5.4rem)!important;line-height:1!important;letter-spacing:-.01em}
+.hero__num small{font-size:.5em}
+.hero__anio{font-size:.75rem;font-weight:800;letter-spacing:.32em;text-transform:uppercase;color:var(--crema-72);margin-top:2px}
+.hero__lugar{display:flex;flex-direction:column;gap:4px;margin-top:14px!important;font-size:.875rem!important;font-weight:400!important;color:var(--crema)!important;letter-spacing:.02em}
+.hero__lugar span+span{color:var(--crema-72);font-size:.8125rem}
+.hero__accion{margin-top:18px!important;width:100%;max-width:420px}
+@media (max-height:720px){.cartelera__nombre{font-size:clamp(1.6rem,7.8vw,2.4rem)!important}.hero__num{font-size:clamp(3rem,14vw,4.2rem)!important}.hero__lugar,.hero__fecha{margin-top:10px!important}}
 footer{padding:40px 0 calc(var(--barra) + 72px + env(safe-area-inset-bottom));font-size:.875rem;line-height:1.6;color:var(--tenue);background:var(--vino);border-top:1px solid var(--linea-suave)}
 footer{text-align:center}
 footer img{width:180px;height:auto;margin:0 auto 16px}
@@ -642,11 +676,11 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <source type="image/avif" srcset="assets/flyer-720.avif 720w, assets/flyer-1080.avif 1080w" sizes="(min-width:860px) 46vw, 100vw">
     <img src="assets/flyer-720.webp" srcset="assets/flyer-720.webp 720w, assets/flyer-1080.webp 1080w" sizes="(min-width:860px) 46vw, 100vw" width="720" height="1280" alt="Flyer de Rasca Salinera: Jhon Alex Castaño y Jhonny Rivera, 5 de diciembre en Zipaquirá. PULEP HYW650." fetchpriority="high">
   </picture>
-  <div class="hero__fondo"><div class="hero__duo" aria-hidden="true"><picture><source type="image/avif" srcset="assets/castano-flyer-720.avif 720w, assets/castano-flyer-1000.avif 1000w" sizes="50vw"><img src="assets/castano-flyer-720.webp" srcset="assets/castano-flyer-720.webp 720w, assets/castano-flyer-1000.webp 1000w" sizes="50vw" width="720" height="900" alt="Jhon Alex Castaño, la misma foto del afiche."  style="object-position:50% 0"></picture><picture><source type="image/avif" srcset="assets/rivera-flyer-720.avif 720w, assets/rivera-flyer-1000.avif 1000w" sizes="50vw"><img src="assets/rivera-flyer-720.webp" srcset="assets/rivera-flyer-720.webp 720w, assets/rivera-flyer-1000.webp 1000w" sizes="50vw" width="720" height="900" alt="Jhonny Rivera, la misma foto del afiche."  style="object-position:50% 0"></picture></div><img class="hero__brasa" src="assets/flyer-fondo.webp" width="540" height="960" alt="" aria-hidden="true" ></div>
+  <div class="hero__fondo"><div class="hero__duo" aria-hidden="true"><picture><source type="image/avif" srcset="assets/duo-780.avif 780w, assets/duo-1400.avif 1400w" sizes="100vw"><img src="assets/duo-780.webp" srcset="assets/duo-780.webp 780w, assets/duo-1400.webp 1400w" sizes="100vw" width="780" height="624" alt=""></picture></div><img class="hero__brasa" src="assets/flyer-fondo.webp" width="540" height="960" alt="" aria-hidden="true" ></div>
   <div class="hero__texto">
-    <h1 class="cartelera"><span class="cartelera__nombre rotulo"><span class="m">Jhon Alex Castaño</span></span><span class="cartelera__filete" aria-hidden="true"></span><span class="cartelera__nombre rotulo"><span class="m">Jhonny Rivera</span></span></h1>
-    <p class="hero__fecha"><span class="hero__dia">Sábado</span><span class="hero__num">05 <small>Dic</small></span><span class="oculto-v">5 de diciembre</span></p>
-    <p class="hero__lugar">Gran Pabellón (La Fraguita), Zipaquirá<br>Ingreso 5:00&nbsp;p.&nbsp;m. · Show 8:00&nbsp;p.&nbsp;m.</p>
+    <h1 class="cartelera"><span class="cartelera__nombre rotulo"><span class="m">Jhon Alex Castaño</span></span><span class="cartelera__filete" aria-hidden="true"><svg viewBox="0 0 120 12" width="120" height="12"><path d="M0 6H50M70 6H120" stroke="#EBB314" stroke-opacity=".7"/><path d="M60 1l5 5-5 5-5-5z" fill="#EBB314"/></svg></span><span class="cartelera__nombre rotulo"><span class="m">Jhonny Rivera</span></span></h1>
+    <p class="hero__fecha"><span class="hero__dia">Sábado</span><span class="hero__num">05 <small>Dic</small></span><span class="hero__anio">Diciembre 2026</span><span class="oculto-v">5 de diciembre</span></p>
+    <p class="hero__lugar"><span>Gran Pabellón · La Fraguita · Zipaquirá</span><span>Ingreso 5:00&nbsp;p.&nbsp;m. &nbsp;·&nbsp; Show 8:00&nbsp;p.&nbsp;m.</span></p>
     <a class="accion ancha hero__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Apartar palco por WhatsApp</a>
   </div>
   <p class="hero__desliza" aria-hidden="true">Desliza<svg width="22" height="22" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="#EBB314" stroke-width="2"/></svg></p>
