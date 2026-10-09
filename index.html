@@ -6,9 +6,9 @@
 
 <meta name="robots" content="noindex, nofollow">
 <title>Rasca Salinera · 5 de diciembre · Zipaquirá</title>
-<meta name="description" content="Jhonny Rivera y Jhon Alex Castaño. Sábado 5 de diciembre de 2026 en La Fraguita, Zipaquirá. Aparta tu palco o arma tu mesa.">
+<meta name="description" content="Jhonny Rivera y Jhon Alex Castaño. Sábado 5 de diciembre de 2026 en el Gran Pabellón (La Fraguita), Zipaquirá. Aparta tu palco frente a la tarima.">
 <meta property="og:title" content="Rasca Salinera · 5 de diciembre · Zipaquirá">
-<meta property="og:description" content="Jhonny Rivera y Jhon Alex Castaño en una sola noche. Aparta tu palco o arma tu mesa.">
+<meta property="og:description" content="Jhonny Rivera y Jhon Alex Castaño en una sola noche. Aparta tu palco frente a la tarima.">
 <meta property="og:image" content="https://sancormgmt-blip.github.io/rasca-salinera/assets/compartir.jpg">
 <meta property="og:url" content="https://sancormgmt-blip.github.io/rasca-salinera/">
 <meta property="og:image:width" content="1200">
@@ -107,8 +107,10 @@ p{margin:0}
   .hero.anima .hero__flyer{inset:0 auto 0 50%;width:min(56.25vh,46vw);transform:translateX(-50%) scale(calc(1 - var(--p,0) * .16));transform-origin:50% 40%}
 }
 .palcos{position:relative;padding:64px 0 64px;overflow:hidden;isolation:isolate;background:var(--vino-3)}
-.palcos__foto{display:block;position:relative;height:46svh;min-height:300px;margin:-72px 0 28px}
-.palcos__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.palcos__foto{display:block;position:relative;height:72svh;min-height:420px;margin:-64px 0 24px}
+.palcos__foto picture{display:block;height:100%}
+.palcos__foto figcaption{position:absolute;right:var(--g);bottom:16px;z-index:1;font-size:.75rem;color:var(--tenue)}
+.palcos__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
 .palcos__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(to bottom,rgba(57,0,7,0),var(--vino-3))}
 .palcos h2{font-size:var(--t2)}
 .palcos__bajada{margin-top:14px;max-width:30rem;color:var(--crema)}
@@ -192,18 +194,6 @@ input:focus-visible,select:focus-visible{outline:2px solid var(--oro);outline-of
 .saludo small{display:block;margin-top:4px;color:var(--tenue);font-size:.9375rem}
 .saludo svg{color:var(--oro);flex:none}
 .saludo:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
-.otras{position:relative;padding:0 0 64px;background:var(--vino)}
-.otras__foto{display:block;position:relative;height:36svh;min-height:220px}
-.otras__foto img{width:100%;height:100%;object-fit:cover}
-.otras__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(to bottom,rgba(26,11,11,0),var(--vino))}
-.otras .env{position:relative;margin-top:-56px}
-.otras h2{font-size:var(--t2)}
-.otra{margin-top:24px;padding:20px;border:1px solid var(--linea);border-radius:var(--r);background:var(--vino-2)}
-.otra .rol{display:block;color:var(--oro);font-size:1rem}
-.otra h3{margin-top:6px;font-size:var(--t3);font-weight:800;color:var(--crema)}
-.otra p{margin-top:8px}
-.otra .sec{margin-top:6px}
-.otras__accion{margin-top:20px;max-width:560px}
 .concurso{position:relative;padding:0 0 64px;background:var(--vino)}
 .concurso__foto{display:block;position:relative;height:40svh;min-height:240px}
 .concurso__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
@@ -255,15 +245,14 @@ textarea:focus-visible{outline:2px solid var(--oro);outline-offset:1px;border-co
   .cierre .env{max-width:760px}
 }
 .palcos{background:linear-gradient(to bottom,var(--vino),var(--vino-3) 14%,var(--vino-3) 86%,var(--vino))}
-.palcos .env,.otras .env,.concurso .env{max-width:600px;margin-inline:auto}
-.palcos .env>h2,.palcos__bajada,.otras h2,.otras .reloj,.concurso .rol,.concurso h2,.concurso__bajada{text-align:center;margin-inline:auto}
+.palcos .env,.concurso .env{max-width:600px;margin-inline:auto}
+.palcos .env>h2,.palcos__bajada,.concurso .rol,.concurso h2,.concurso__bajada{text-align:center;margin-inline:auto}
 .palcos__como,.palcos__pie{text-align:center;margin-inline:auto}
-.otra{text-align:center}
 .cartel li{text-align:left}
 .conector{display:flex;justify-content:center;padding:28px 0 0}
 .conector svg{width:132px;height:12px}
 .envivo,.llegar,.artista,.hero__escena{background:var(--vino)}
-.llegar::before,.envivo::before,.otras__foto::before,.concurso__foto::before{content:"";position:absolute;inset:0 0 auto 0;height:90px;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0));z-index:0;pointer-events:none}
+.llegar::before,.envivo::before,.concurso__foto::before{content:"";position:absolute;inset:0 0 auto 0;height:90px;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0));z-index:0;pointer-events:none}
 .artista,.artista--principal{min-height:0;display:block;background:var(--vino)}
 .artista picture{display:block;position:relative;aspect-ratio:4/5}
 .artista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
@@ -279,10 +268,10 @@ b,strong{font-weight:800}
 .cartel .nombre{font-size:var(--t2)}
 .cartel .primero .nombre{font-size:var(--t1)}
 .localidades .nombre{font-size:var(--t3)}
-.otra h3,.listo h3{font-size:var(--t3)}
+.listo h3{font-size:var(--t3)}
 main p,main dd{max-width:46ch}
-.palcos__bajada,.palcos__como,.palcos__pie,.concurso__bajada,.cierre__bajada,.otra p{margin-inline:auto}
-.rol,.envivo .rol,.llegar .rol,.otra .rol,.concurso .rol,.artista--principal .rol,.artista .rol,.cartel .cerca{color:var(--crema);font-weight:800;letter-spacing:.04em}
+.palcos__bajada,.palcos__como,.palcos__pie,.concurso__bajada,.cierre__bajada{margin-inline:auto}
+.rol,.envivo .rol,.llegar .rol,.concurso .rol,.artista--principal .rol,.artista .rol,.cartel .cerca{color:var(--crema);font-weight:800;letter-spacing:.04em}
 .hero__lugar{color:var(--crema)}
 .hero__texto{text-shadow:0 2px 18px rgba(14,6,6,.95),0 0 2px rgba(14,6,6,.6)}
 .artista::after{background:linear-gradient(to bottom,rgba(26,11,11,0) 40%,rgba(26,11,11,.9) 78%,var(--vino) 92%)}
@@ -299,6 +288,13 @@ main p,main dd{max-width:46ch}
   .llegar::after{height:80vh}
   .palcos__foto{height:52vh}
 }
+.urgencia{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:20px auto 0;max-width:none}
+.urgencia span{padding:8px 14px;border:1px solid var(--linea);border-radius:999px;background:rgba(14,6,6,.45);color:var(--crema);font-size:.9375rem}
+.urgencia b{color:var(--oro)}
+.entradas{margin-top:40px;padding:24px 20px;border:1px solid var(--linea);border-radius:var(--r);background:rgba(14,6,6,.35);text-align:center}
+.entradas__t{font-size:var(--t3);font-weight:800;color:var(--crema)}
+.entradas .localidades{margin:16px auto 0;text-align:left}
+.entradas__tickeo{margin-top:16px}
 footer{padding:40px 0 calc(var(--barra) + 40px);font-size:.8125rem;line-height:1.6;color:var(--tenue);background:var(--vino-2)}
 footer img{width:180px;height:auto;margin-bottom:18px}
 footer .legal{color:var(--texto);font-weight:800}
@@ -379,7 +375,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <video id="hero-loop" src="assets/hero-loop.mp4" autoplay muted loop playsinline webkit-playsinline preload="metadata" aria-hidden="true"></video>
   </div>
   <div class="hero__texto">
-    <p class="hero__lugar">La Fraguita · Zipaquirá · 5:00&nbsp;p.&nbsp;m.</p>
+    <p class="hero__lugar">Gran Pabellón (La Fraguita) · Zipaquirá · 5:00&nbsp;p.&nbsp;m.</p>
     <p class="hero__fecha">Sábado 5 de diciembre</p>
     <h1><span class="principal rotulo">Jhonny Rivera</span><span class="segundo">con Jhon Alex Castaño</span></h1>
     <a class="accion ancha hero__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Aparta tu palco</a>
@@ -393,14 +389,15 @@ dialog video{width:100%;height:100%;object-fit:contain}
 
 
 <section class="palcos" id="palcos" aria-labelledby="t-palcos">
-  <picture class="palcos__foto" aria-hidden="true">
-    <source type="image/avif" srcset="assets/brindis-720.avif">
-    <img src="assets/brindis-720.webp" width="720" height="900" alt="" loading="lazy">
-  </picture>
+  <figure class="palcos__foto">
+    <picture><source type="image/avif" srcset="assets/pabellon-768.avif"><img src="assets/pabellon-768.webp" width="768" height="1376" alt="Ilustración: un palco cubierto frente a la tarima, dentro del pabellón con carpa." loading="lazy"></picture>
+    <figcaption>Imagen de referencia del montaje</figcaption>
+  </figure>
   <div class="env">
     <div class="conector" aria-hidden="true"><svg><use href="#rombos"/></svg></div>
-    <h2 class="rotulo" id="t-palcos">Tu palco, para diez.</h2>
-    <p class="palcos__bajada">La mejor vista de la noche, para tu gente o para el cierre de año de tu empresa. <b style="color:var(--crema)">Las 10 sillas son de tu grupo</b>, con servicio de licor y comida en la localidad.</p>
+    <h2 class="rotulo" id="t-palcos">Tu palco cubierto, frente a la tarima.</h2>
+    <p class="palcos__bajada">La mejor vista de la noche, para tu gente o para el cierre de año de tu empresa. <b style="color:var(--crema)">Las 10 sillas son de tu grupo.</b> En la localidad hay venta de licor y comida, que se paga aparte.</p>
+    <p class="urgencia"><span><b>24</b> palcos por categoría</span><span>Faltan <b id="faltan">57</b> días</span></p>
     <ul class="cartel">
       <li class="primero"><span class="nombre rotulo">El Rey del Chupe</span><span class="cerca">El más cerca de la tarima</span><span class="fila"><span class="precio" data-precio="reyDelChupe">$3.357.000</span><span class="detalle">10 personas · <span data-anticipo="reyDelChupe">apartas con $1.007.100</span></span></span><span class="puesto">o tu puesto: $335.700 por persona, en Tickeo</span><a class="apartar" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Rey%20del%20Chupe%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Rey del Chupe para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar este palco</a></li>
       <li><span class="nombre rotulo">El Intenso</span><span class="fila"><span class="precio" data-precio="elIntenso">$2.238.000</span><span class="detalle">10 personas · <span data-anticipo="elIntenso">apartas con $671.400</span></span></span><span class="puesto">o tu puesto: $223.800 por persona, en Tickeo</span><a class="apartar" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Intenso%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Intenso para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar este palco</a></li>
@@ -408,6 +405,15 @@ dialog video{width:100%;height:100%;object-fit:contain}
     </ul>
     <p class="palcos__como"><b>Lo apartas con el 30% por WhatsApp.</b> El saldo se paga a más tardar el <b>15 de noviembre</b>, 20 días antes del evento. Te confirmamos el palco y su lugar exacto antes de pagar. <a class="enlace" href="#terminos">Términos de la reserva</a></p>
     <a class="accion ancha palcos__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Aparta tu palco</a>
+    <div class="entradas" id="otras">
+      <h3 class="entradas__t">¿Vienes por tu cuenta?</h3>
+      <p class="reloj" id="reloj" aria-live="polite"></p>
+      <ul class="localidades">
+        <li><span><span class="nombre rotulo">VIP</span><span class="detalle">Servicio incluido.</span></span><span class="precio" data-precio="vip">$123.090</span></li>
+        <li><span><span class="nombre rotulo">Platino</span><span class="detalle">De pie. Servicio incluido.</span></span><span class="precio" data-precio="platino">$100.710</span></li>
+      </ul>
+      <a class="sec entradas__tickeo" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Compra tu entrada en Tickeo</a>
+    </div>
     <p class="palcos__pie">Precio por palco completo, con servicio incluido. Sujeto a disponibilidad.</p>
   </div>
 </section>
@@ -441,27 +447,6 @@ dialog video{width:100%;height:100%;object-fit:contain}
 </section>
 
 
-<section class="otras" id="otras" aria-labelledby="t-otras">
-  <picture class="otras__foto" aria-hidden="true"><source type="image/avif" srcset="assets/publico-720.avif"><img src="assets/publico-720.webp" width="720" height="708" alt="" loading="lazy"></picture>
-  <div class="env">
-    <div class="conector" aria-hidden="true"><svg><use href="#rombos"/></svg></div>
-    <h2 class="rotulo" id="t-otras">¿En grupo o por tu cuenta?</h2>
-    <p class="reloj" id="reloj" aria-live="polite"></p>
-    <article class="otra">
-      <span class="rol">La Mesa</span>
-      <h3>Arma tu mesa de 2, 4, 6 o 10.</h3>
-      <p>Cada uno compra su boleta. Con 4 entran primero, con 6 el nombre de su mesa sale en pantalla y con 10 hay mención desde la tarima y foto oficial.</p>
-      <a class="sec" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20armar%20mi%20mesa%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero armar mi mesa para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicMesa">Arma tu mesa por WhatsApp</a>
-    </article>
-    <ul class="localidades">
-      <li><span><span class="nombre rotulo">VIP</span><span class="detalle">Servicio incluido.</span></span><span class="precio" data-precio="vip">$123.090</span></li>
-      <li><span><span class="nombre rotulo">Platino</span><span class="detalle">De pie. Servicio incluido.</span></span><span class="precio" data-precio="platino">$100.710</span></li>
-    </ul>
-    <a class="accion ancha otras__accion" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Comprar en Tickeo</a>
-  </div>
-</section>
-
-
 <section class="llegar" aria-labelledby="t-llegar">
   <picture class="llegar__foto" aria-hidden="true"><source type="image/avif" srcset="assets/llegar-720.avif 720w, assets/llegar-1080.avif 1080w" sizes="100vw"><img src="assets/llegar-720.webp" srcset="assets/llegar-720.webp 720w, assets/llegar-1080.webp 1080w" sizes="100vw" width="720" height="1280" alt="" loading="lazy"></picture>
   <div class="env llegar__texto">
@@ -470,7 +455,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <dl class="datos">
       <dt>Cuándo</dt><dd>Sábado 5 de diciembre de 2026</dd>
       <dt>Ingreso</dt><dd>5:00 p. m. · show 8:00 p. m.</dd>
-      <dt>Dónde</dt><dd>La Fraguita, km 1 vía Zipaquirá–Bogotá, junto al parqueadero de El Frigorífico · <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=La+Fraguita+km+1+v%C3%ADa+Zipaquir%C3%A1+Bogot%C3%A1" target="_blank" rel="noopener">Ver en el mapa</a></dd>
+      <dt>Dónde</dt><dd>Gran Pabellón (La Fraguita), km 1 vía Zipaquirá–Bogotá, junto al parqueadero de El Frigorífico. Con parqueadero. · <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=km+1+v%C3%ADa+Zipaquir%C3%A1+Bogot%C3%A1+El+Frigor%C3%ADfico" target="_blank" rel="noopener">Ver en el mapa</a></dd>
       <dt>Edad</dt><dd>Solo mayores de 18</dd>
       <dt>Dudas</dt><dd><a class="enlace" id="wa-dudas" href="https://wa.me/573222045398" target="_blank" rel="noopener" data-mide="ClicWhatsApp">322 204 5398</a></dd>
     </dl>
@@ -492,7 +477,8 @@ dialog video{width:100%;height:100%;object-fit:contain}
       <div class="campo"><label for="t">Celular con WhatsApp</label><input type="tel" id="t" name="celular" inputmode="numeric" autocomplete="tel-national" placeholder="300 123 4567" required><span class="ayuda">10 dígitos, sin el +57.</span></div>
       <div class="campo"><label for="r">¿Con quién vendrías y por qué?</label><textarea id="r" name="respuesta" rows="4" maxlength="280" required></textarea><span class="ayuda">Máximo 280 caracteres. Esto es lo que lee el jurado.</span></div>
       <label class="check"><input type="checkbox" id="edad"> <span>Soy mayor de 18 años.</span></label>
-      <label class="check"><input type="checkbox" id="hd"> <span>Acepto los <a href="#terminos">términos del concurso</a> y autorizo a Dugoent Producciones S.A.S. a tratar mis datos según la <a href="#datos">política de datos</a> (Ley 1581 de 2012).</span></label>
+      <label class="check"><input type="checkbox" id="hd"> <span>Acepto los <a href="#terminos">términos del concurso</a> y autorizo a Dugoent Producciones S.A.S. a tratar mis datos para gestionar el concurso, según su <a href="#datos">política de datos</a> (Ley 1581 de 2012).</span></label>
+      <label class="check"><input type="checkbox" id="mk"> <span>Quiero recibir información de otros eventos de Dugoent. (Opcional)</span></label>
       <button class="accion ancha" type="submit" style="margin-top:12px">Participar</button>
     </form>
     <div class="listo" id="ok" role="status" tabindex="-1">
@@ -514,27 +500,27 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <a class="enlace cierre__mesa" href="#concurso">o participa por un par de VIP</a>
     <div class="preguntas">
       <details><summary>¿Cómo funciona apartar un palco?</summary><p>Nos escribes por WhatsApp, te confirmamos el palco disponible y lo apartas con el 30%. El saldo se paga a más tardar el 15 de noviembre. Si no llega en ese plazo, el palco se libera.</p></details>
-      <details><summary>¿Cómo cuenta mi mesa?</summary><p>Nos escribes por WhatsApp con el nombre de tu mesa y cuántos son. Cada persona compra su boleta en Tickeo y antes del evento te confirmamos qué ganaron.</p></details>
-      <details><summary>¿Puedo devolver mi boleta?</summary><p>Tienes derecho de retracto dentro de los 5 días hábiles siguientes a la compra (artículo 47 de la Ley 1480 de 2011). Se tramita ante Tickeo S.A.S.</p></details>
+            <details><summary>¿Puedo devolver mi boleta?</summary><p>Las compras en Tickeo tienen derecho de retracto dentro de los 5 días hábiles siguientes, según el artículo 47 de la Ley 1480 de 2011 y los términos de Tickeo S.A.S. El anticipo de un palco también tiene retracto de 5 días hábiles.</p></details>
       <details><summary>¿Qué no puedo entrar?</summary><p>Comida ni bebida, armas ni objetos cortopunzantes, camisetas de equipos de fútbol ni cámara profesional. Tampoco se entra en estado de embriaguez. Adentro hay venta de comida y licor.</p></details>
       <details><summary>¿Pueden entrar menores?</summary><p>No. El evento es solo para mayores de 18 años.</p></details>
     </div>
     <div class="terminos" id="terminos">
       <details><summary>Términos de la reserva de palcos</summary><div class="legal-txt">
-        <p>1. La reserva se hace por WhatsApp al 322 204 5398 y se confirma con el pago del 30% del valor total del palco, servicio incluido.</p>
-        <p>2. El saldo se paga a más tardar el 15 de noviembre de 2026, veinte días antes del evento. Si no se paga en ese plazo, la reserva se libera y el palco vuelve a la venta.</p>
-        <p>3. Las condiciones de devolución del anticipo se entregan por escrito al confirmar la reserva.</p>
-        <p>4. Cada palco es para 10 personas mayores de 18 años. Las boletas las emite Tickeo S.A.S.</p>
-        <p>5. El precio es el de la etapa vigente al momento de confirmar la reserva.</p>
-        <p>6. Organiza Dugoent Producciones S.A.S., NIT 902.092.798-4. PULEP HYW650.</p>
+        <p>1. Vende Dugoent Producciones S.A.S., NIT 902.092.798-4, PULEP HYW650. Las boletas las emite Tickeo S.A.S.</p>
+        <p>2. Para apartar, escribe al 322 204 5398 por WhatsApp. El palco queda apartado cuando pagas el 30% del precio total, con el servicio de boletería incluido, y recibes el recibo escrito.</p>
+        <p>3. El precio queda fijo desde ese pago: los cambios de etapa no lo suben.</p>
+        <p>4. El saldo se paga a más tardar el 15 de noviembre de 2026. Si no se paga, el palco se libera; lo que pasa con el anticipo se informa por escrito antes de pagarlo.</p>
+        <p>5. Tienes derecho de retracto dentro de los 5 días hábiles después de pagar el anticipo. Te devolvemos el dinero en máximo 30 días calendario.</p>
+        <p>6. El palco es para 10 personas, todas mayores de 18 años y con documento original. El consumo se paga aparte.</p>
+        <p>7. Si el evento se cancela o cambia de fecha, se devuelve el 100% de lo pagado.</p>
       </div></details>
       <details><summary>Términos del concurso</summary><div class="legal-txt">
-        <p>1. Organiza Dugoent Producciones S.A.S., NIT 902.092.798-4. Pueden participar personas naturales mayores de 18 años, residentes en Colombia.</p>
-        <p>2. Para participar hay que registrarse en esta página con nombre, correo y celular, y responder «¿Con quién vendrías y por qué?», entre la publicación de esta página y el 25 de noviembre de 2026 a las 11:59 p. m.</p>
-        <p>3. El ganador no se elige al azar: un jurado de tres personas del equipo organizador elige la respuesta más original y auténtica.</p>
-        <p>4. Hay un solo ganador y el premio es un par de boletas VIP para el 5 de diciembre de 2026. El premio no se cambia por dinero.</p>
-        <p>5. El ganador se anuncia el 27 de noviembre de 2026 por WhatsApp y por correo, y tiene 48 horas para aceptar. Si no responde, el jurado elige la siguiente respuesta.</p>
-        <p>6. Una sola participación por persona. Los datos se tratan según la política de datos de esta página.</p>
+        <p>1. Organiza Dugoent Producciones S.A.S., NIT 902.092.798-4. Es un concurso de mérito: el ganador no se elige al azar y no hay que comprar nada.</p>
+        <p>2. Pueden participar personas naturales mayores de 18 años que vivan en Colombia. No participan empleados de Dugoent, Tickeo, 147 Presents ni Sancor MGMT, ni sus familiares cercanos.</p>
+        <p>3. Se participa desde la publicación de esta página hasta el 25 de noviembre de 2026 a las 11:59 p. m. Hay una participación por persona.</p>
+        <p>4. Un jurado de tres personas califica cada respuesta: originalidad 50%, autenticidad 30% y claridad 20%. Si hay empate, gana la respuesta que llegó primero.</p>
+        <p>5. El premio es un par de boletas VIP para el 5 de diciembre de 2026, con valor de $246.180. No se cambia por dinero y no incluye transporte. El acompañante también debe ser mayor de 18 años.</p>
+        <p>6. El ganador se anuncia el 27 de noviembre de 2026 y tiene 48 horas para aceptar. Si no acepta, gana la siguiente respuesta mejor calificada.</p>
       </div></details>
     </div>
   </div>
@@ -547,7 +533,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <picture><source type="image/avif" srcset="assets/logo-560.avif"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera" loading="lazy"></picture>
     <p class="legal">LA RASCA SALINERA · PULEP HYW650 · Dugoent Producciones S.A.S. · NIT 902.092.798-4</p>
     <p>Boletería oficial: Tickeo S.A.S. Booking: 147 Presents · Sancor MGMT.</p>
-    <p id="datos">Tratamiento de datos: el responsable es Dugoent Producciones S.A.S. Usamos tu nombre, correo, celular y tu respuesta solo para el concurso y para contactarte sobre este evento. Puedes pedir que te borremos escribiendo al 322 204 5398.</p>
+    <p id="datos">Tratamiento de datos. Responsable: Dugoent Producciones S.A.S., NIT 902.092.798-4, Carrera 10 # 7A-23, piso 2, Zipaquirá, dugoentproducciones@gmail.com, 322 204 5398. Usamos tu nombre, correo, celular y tu respuesta para gestionar el concurso y contactar al ganador; si lo autorizas, también para avisarte de otros eventos. Medimos las visitas con herramientas de terceros que pueden guardar datos fuera de Colombia. No pongas datos de otras personas en tu respuesta. Puedes conocer, actualizar, corregir o borrar tus datos, retirar tu autorización, pedir prueba de que la diste y quejarte ante la SIC: escribe al correo; respondemos consultas en 10 días hábiles y reclamos en 15.</p>
     <p>El exceso de alcohol es perjudicial para la salud. Ley 30 de 1986. Prohíbase el expendio de bebidas embriagantes a menores de edad. Ley 124 de 1994.</p>
   </div>
 </footer>
@@ -574,7 +560,7 @@ var CFG = {
   pixel: "",             
   subePrecio: null,
   anticipo: 0.30,
-  plazoSaldoDias: 15,
+  plazoSaldoDias: 20,
   precios: {
     reyDelChupe: 3357000, elIntenso: 2238000, elPegao: 1454700,
     vip: 123090, platino: 100710
@@ -597,14 +583,6 @@ var ORIGEN = (function(){
     if (!document.referrer) return "directo";
     return "referido | " + new URL(document.referrer).hostname.replace(/^www\./, "");
   } catch(e){ return "sin dato"; }
-})();
-var MESA_INVITA = (function(){
-  try {
-    var u = new URLSearchParams(location.search);
-    var m = (u.get("mesa") || "").replace(/[^A-Z0-9]/gi, "").slice(0, 8).toUpperCase();
-    var de = (u.get("de") || "").replace(/[<>"]/g, "").slice(0, 24);
-    return m ? {codigo: m, de: de} : null;
-  } catch(e){ return null; }
 })();
 var ESTANDAR = {Llegada:"PageView", RegistroCompletado:"Lead", ClicBoleteria:"InitiateCheckout", ClicWhatsApp:"Contact"};
 function mide(ev, d){
@@ -854,6 +832,11 @@ listo(function(){
   });
 });
 listo(function(){
+  var f = document.getElementById("faltan"); if (!f) return;
+  var d = Math.ceil((new Date("2026-12-05T17:00:00-05:00") - new Date()) / 86400000);
+  if (d > 0) f.textContent = d; else f.parentNode.hidden = true;
+});
+listo(function(){
   var f = document.getElementById("f");
   if (!f) return;
   var err = document.getElementById("err"), ok = document.getElementById("ok");
@@ -886,7 +869,7 @@ listo(function(){
     if (!document.getElementById("hd").checked) return fallo("Falta aceptar los términos y la autorización de datos.", "hd");
     var datos = {fecha: new Date().toISOString(), tipo: "concurso VIP", nombre: nombre, correo: correo,
                  celular: "+57" + tel, respuesta: resp, origen: ORIGEN,
-                 autoriza: "Ley 1581/2012 y términos del concurso · responsable Dugoent Producciones S.A.S. · v1 8-oct-2026"};
+                 autoriza: "Ley 1581/2012 y términos del concurso · responsable Dugoent Producciones S.A.S. · v2 9-oct-2026", otrosEventos: document.getElementById("mk").checked ? "sí" : "no"};
     var msg = "RASCA SALINERA · Concurso VIP\nNombre: " + nombre + "\nCorreo: " + correo + "\nCelular: +57" + tel + "\n¿Con quién vendría y por qué?: " + resp;
     document.getElementById("ok-wa").href = "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(msg);
     var b = f.querySelector("button[type=submit]"); b.disabled = true; b.textContent = "Enviando…";
