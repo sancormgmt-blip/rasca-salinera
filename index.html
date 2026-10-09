@@ -37,6 +37,7 @@
   --linea-suave:rgba(233,214,198,.16);
   --error:#FF9C8A;
   --ease:cubic-bezier(.23,1,.32,1);
+  --expo:cubic-bezier(.16,1,.3,1);
   --r:6px;
   --ritmo:96px;
   --crema-72:rgba(244,239,230,.72);
@@ -91,16 +92,21 @@ p{margin:0}
 .hero__flyer{display:block;position:relative;z-index:2}
 .hero__flyer img{width:100%;height:auto}
 .hero__desliza{display:none}
-.hero.anima{height:210svh}
+.hero.anima{height:170svh}
 .hero.anima .hero__escena{position:sticky;top:0;height:100svh}
-.hero.anima .hero__flyer{position:absolute;inset:0;z-index:2;transform-origin:50% 40%;
-  transform:scale(calc(1 - var(--p,0) * .16)) translateY(calc(var(--p,0) * -6%));
-  filter:blur(calc(var(--p,0) * 14px));opacity:clamp(0,calc(1 - var(--p,0) * 2.1),1);will-change:transform,opacity,filter}
-.hero.anima .hero__flyer{background:radial-gradient(ellipse at 50% 40%,#3a1410,#140707 75%)}
+.hero.anima .hero__flyer{position:absolute;inset:0;z-index:2;transform-origin:50% 40%;transform:scale(calc(1 - var(--p,0) * .12));opacity:clamp(0,calc(1 - var(--p,0) * 2.2),1);will-change:transform,opacity}
 .hero.anima .hero__flyer img{width:100%;height:100%;object-fit:contain;object-position:50% 40%}
-.hero.anima .hero__fondo{transform:translateY(calc(var(--p,0) * -24%));will-change:transform}
-.hero.anima .hero__texto{opacity:clamp(0,calc(var(--p,0) * 2.6 - 1.2),1);transform:translateY(calc((1 - clamp(0,var(--p,0) * 1.7 - .45,1)) * 56px))}
-.hero.anima .hero.anima .hero__desliza{display:flex;position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom));z-index:4;flex-direction:column;align-items:center;gap:6px;
+.hero.anima .hero__fondo{height:100svh}
+.hero.anima .cartelera__nombre{overflow:hidden;padding:.08em 0}
+.hero.anima .cartelera__nombre .m{display:block;transform:translateY(110%);transition:transform .9s var(--expo)}
+.hero.anima .cartelera__filete{transform:scaleX(0);transition:transform .8s var(--expo) .12s}
+.hero.anima :is(.hero__fecha,.hero__lugar,.hero__accion,.hero__sec){opacity:0;transform:translateY(20px);transition:opacity .7s var(--expo),transform .7s var(--expo)}
+.hero.anima .hero__fecha{transition-delay:.18s}
+.hero.anima .hero__lugar{transition-delay:.25s}
+.hero.anima .hero__accion{transition-delay:.32s}
+.hero.anima .hero__sec{transition-delay:.39s}
+.hero.anima.dentro .cartelera__nombre .m,.hero.anima.dentro .cartelera__filete,.hero.anima.dentro :is(.hero__fecha,.hero__lugar,.hero__accion,.hero__sec){opacity:1;transform:none}
+.hero.anima .hero__desliza{display:flex;position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom));z-index:4;flex-direction:column;align-items:center;gap:6px;
   font-weight:800;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--crema);text-shadow:0 1px 10px rgba(0,0,0,.8);opacity:calc(1 - var(--p,0) * 5);pointer-events:none}
 .hero__desliza svg{animation:baja 1.6s var(--ease) infinite}
 @keyframes baja{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(7px);opacity:1}}
@@ -110,7 +116,7 @@ p{margin:0}
   .hero__fondo img,.hero__fondo video{object-position:65% 45%}
   .hero__escena::after{background:linear-gradient(to right,var(--vino) 46%,rgba(26,11,11,.4) 62%,rgba(26,11,11,0) 80%),linear-gradient(to bottom,rgba(26,11,11,0) 70%,var(--vino))}
   .hero__texto{max-width:620px;margin-left:max(var(--g),calc((100vw - 1120px)/2))}
-  .hero.anima .hero__flyer{inset:0 auto 0 50%;width:min(56.25vh,46vw);transform:translateX(-50%) scale(calc(1 - var(--p,0) * .16));transform-origin:50% 40%}
+  .hero.anima .hero__flyer{inset:0 auto 0 50%;width:min(56.25vh,46vw);transform:translateX(-50%) scale(calc(1 - var(--p,0) * .12));transform-origin:50% 40%}
 }
 b,strong{font-weight:800}
 main p,main dd{max-width:46ch}
@@ -284,6 +290,41 @@ input:focus-visible,textarea:focus-visible{outline:2px solid var(--oro);outline-
 .terminos{margin-top:40px}
 .legal-txt{padding:0 0 16px;font-size:.875rem;color:var(--texto)}
 .legal-txt p+p{margin-top:8px}
+body{background:radial-gradient(120% 50% at 50% 0%,#2a0d0b 0,rgba(42,13,11,0) 60%),var(--vino)}
+body::after{content:"";position:fixed;inset:0;z-index:70;pointer-events:none;opacity:.07;mix-blend-mode:overlay;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0/180px}
+.palcos{background:radial-gradient(70% 30% at 50% 22%,rgba(189,96,20,.18),rgba(189,96,20,0) 70%),linear-gradient(to bottom,var(--vino),var(--vino-3) 10%,var(--vino-3) 88%,var(--vino))}
+.palco__precio .precio,.premio .premio__valor{background:linear-gradient(100deg,#BD6014 0%,#EBB314 38%,#F8E3A0 50%,#EBB314 62%,#BD6014 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.marco::before,.marco::after,.palco__abajo::before,.palco__abajo::after{filter:drop-shadow(0 0 6px rgba(235,179,20,.45))}
+.corte{display:flex;justify-content:center;padding:28px 0;background:radial-gradient(40% 100% at 50% 50%,rgba(235,179,20,.10),rgba(235,179,20,0))}
+.corte svg{display:block;max-width:280px;width:72%;height:auto}
+.concurso{isolation:isolate;overflow:hidden}
+.concurso__fondo{position:absolute;inset:0;z-index:-1}
+.concurso__fondo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;filter:sepia(.2) saturate(1.05)}
+.concurso__fondo::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(26,11,11,.55),rgba(26,11,11,.92) 45%,var(--vino))}
+.concurso__foto{display:none}
+.concurso .env{padding-top:64px}
+.concurso__tarjeta{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:linear-gradient(180deg,rgba(57,0,7,.6),rgba(26,11,11,.82))}
+.sueltas__foto{display:block;position:relative;aspect-ratio:16/9;margin:32px calc(var(--g) * -1) -32px;overflow:hidden}
+.sueltas__foto img{width:100%;height:100%;object-fit:cover;filter:sepia(.35) saturate(1.2) hue-rotate(-10deg)}
+.sueltas__foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,11,11,.3),rgba(26,11,11,0) 30%,var(--vino))}
+.sueltas__tarjeta{position:relative;z-index:1}
+.escena__media::after{height:auto;inset:0;background:radial-gradient(80% 60% at 50% 40%,rgba(26,11,11,0) 50%,rgba(26,11,11,.7)),linear-gradient(to bottom,rgba(26,11,11,0) 55%,var(--vino))}
+.cierre .escena__media::after{background:radial-gradient(50% 35% at 50% 30%,rgba(235,179,20,.16),rgba(235,179,20,0)),radial-gradient(80% 60% at 50% 40%,rgba(26,11,11,0) 50%,rgba(26,11,11,.7)),linear-gradient(to bottom,rgba(26,11,11,0) 55%,var(--vino))}
+footer{position:relative;isolation:isolate}
+footer::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.12;mix-blend-mode:luminosity;background:url(assets/publico-720.webp) 50% 0/cover no-repeat}
+.entrada__suena{font-weight:800;font-size:var(--t3);color:var(--crema)}
+.barra{transition:transform .6s var(--expo)}
+.js-mov .palco .tramo.activa{opacity:.2;transform:scaleY(.5);transform-box:fill-box;transform-origin:50% 100%;transition:opacity .7s var(--expo),transform .7s var(--expo)}
+.js-mov .palco.visto .tramo.activa{opacity:1;transform:none}
+.js-mov .premio{opacity:0;transform:translateY(24px);transition:opacity .8s var(--expo),transform .8s var(--expo)}
+.js-mov .concurso__tarjeta.visto .premio{opacity:1;transform:none}
+@media (prefers-reduced-motion:no-preference){@supports (animation-timeline:view()){
+  .palcos__foto img,.llegar .escena__media img{scale:1.12;animation:paralaje linear both;animation-timeline:view()}
+  .dos .artista img{animation:asienta linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+}}
+@keyframes paralaje{from{transform:translateY(-5%)}to{transform:translateY(5%)}}
+@keyframes asienta{from{transform:scale(1.08)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.js-mov .tramo.activa,.js-mov .premio{transition:none!important;opacity:1!important;transform:none!important}}
 footer{padding:40px 0 calc(var(--barra) + 72px + env(safe-area-inset-bottom));font-size:.875rem;line-height:1.6;color:var(--tenue);background:var(--vino);border-top:1px solid var(--linea-suave)}
 footer{text-align:center}
 footer img{width:180px;height:auto;margin:0 auto 16px}
@@ -334,7 +375,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
 }
 .intro .sonido{display:none}
 .oculto-v{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-#entrada{position:fixed;inset:0;z-index:45;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 45%,rgba(26,11,11,.35),rgba(14,6,6,.9)),#120706 url(assets/hero-poster-720.webp) 50% 50%/cover no-repeat;opacity:1;transition:opacity .5s var(--ease)}
+#entrada{position:fixed;inset:0;z-index:45;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 42%,rgba(18,7,6,.86),rgba(14,6,6,.55) 60%,rgba(14,6,6,.9)),#120706 url(assets/hero-poster-720.webp) 50% 85%/cover no-repeat;opacity:1;transition:opacity .5s var(--ease)}
 .entrando body{overflow:hidden}
 #entrada[hidden]{display:none}
 #entrada.sale{opacity:0}
@@ -357,7 +398,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
 <script>(function(){try{var q=matchMedia("(prefers-reduced-motion: reduce)").matches,c=navigator.connection||{};if(!q&&!c.saveData&&window.WebGLRenderingContext)document.documentElement.classList.add("intro")}catch(e){}})();</script>
 </head>
 <body>
-<div id="entrada" hidden role="dialog" aria-modal="true" aria-label="Entrar a la página"><div class="entrada__caja"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera"><p>Sábado 5 de diciembre · Zipaquirá</p><button type="button" class="accion entrada__si" id="entrada-si"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#1A0B0B"/><path d="M16 8.5c1.6 1.8 1.6 5.2 0 7M18.8 6c2.8 3.2 2.8 8.8 0 12" stroke="#1A0B0B" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>Continuar con sonido</button><button type="button" class="sec entrada__no" id="entrada-no">Entrar sin sonido</button></div></div>
+<div id="entrada" hidden role="dialog" aria-modal="true" aria-label="Entrar a la página"><div class="entrada__caja"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera"><p class="entrada__suena">Esta página suena.</p><p>Sábado 5 de diciembre · Zipaquirá</p><button type="button" class="accion entrada__si" id="entrada-si"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#1A0B0B"/><path d="M16 8.5c1.6 1.8 1.6 5.2 0 7M18.8 6c2.8 3.2 2.8 8.8 0 12" stroke="#1A0B0B" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>Entrar con sonido</button><button type="button" class="sec entrada__no" id="entrada-no">Entrar en silencio</button></div></div>
 <script>(function(){var e=document.getElementById("entrada");e.hidden=false;document.documentElement.classList.add("entrando")})();</script>
 <div id="intro" aria-hidden="true"><canvas></canvas><video src="assets/hero-loop.mp4" autoplay muted playsinline webkit-playsinline preload="auto"></video><img src="assets/hero-poster-720.webp" alt="" width="720" height="1280"></div>
 
@@ -381,11 +422,11 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <video id="hero-loop" src="assets/hero-loop.mp4" autoplay muted loop playsinline webkit-playsinline preload="metadata" aria-hidden="true"></video>
   </div>
   <div class="hero__texto">
-    <h1 class="cartelera"><span class="cartelera__nombre rotulo">Jhon Alex Castaño</span><span class="cartelera__filete" aria-hidden="true"></span><span class="cartelera__nombre rotulo">Jhonny Rivera</span></h1>
+    <h1 class="cartelera"><span class="cartelera__nombre rotulo"><span class="m">Jhon Alex Castaño</span></span><span class="cartelera__filete" aria-hidden="true"></span><span class="cartelera__nombre rotulo"><span class="m">Jhonny Rivera</span></span></h1>
     <p class="hero__fecha"><span class="hero__dia">Sábado</span><span class="hero__num rotulo">5 de diciembre</span></p>
-    <p class="hero__lugar">Zipaquirá · Gran Pabellón (La Fraguita) · 5:00&nbsp;p.&nbsp;m.</p>
-    <a class="accion ancha hero__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Aparta tu palco</a>
-    <button type="button" class="sec hero__sec" data-teaser="assets/teaser-noche.mp4" data-mide="TeaserNoche"><svg width="24" height="24"><use href="#play"/></svg>Ver el teaser con sonido · 0:24</button>
+    <p class="hero__lugar">Gran Pabellón (La Fraguita), Zipaquirá<br>Ingreso 5:00&nbsp;p.&nbsp;m. · Show 8:00&nbsp;p.&nbsp;m.</p>
+    <a class="accion ancha hero__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Apartar palco por WhatsApp</a>
+    <button type="button" class="sec hero__sec" data-teaser="assets/teaser-noche.mp4" data-mide="TeaserNoche"><svg width="24" height="24"><use href="#play"/></svg>Ver el teaser · 0:24</button>
   </div>
   <p class="hero__desliza" aria-hidden="true">Desliza<svg width="22" height="22" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="#EBB314" stroke-width="2"/></svg></p>
   </div>
@@ -394,22 +435,23 @@ dialog video{width:100%;height:100%;object-fit:contain}
 <main>
 
 
+<div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
 <section class="palcos" id="palcos" aria-labelledby="t-palcos">
   <figure class="palcos__foto" aria-describedby="leyenda-pabellon">
     <picture><source type="image/avif" srcset="assets/pabellon-768.avif"><img src="assets/pabellon-768.webp" width="768" height="1376" alt="Ilustración de cómo se proyecta un palco cubierto frente a la tarima, dentro del pabellón." loading="lazy"></picture>
   </figure>
   <div class="env">
-    <p class="palcos__leyenda" id="leyenda-pabellon">Así se proyecta el montaje del 5 de diciembre</p>
-    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Palco cubierto · 10 sillas</p><h2 class="rotulo" id="t-palcos">Frente a la tarima.</h2><p class="bajada">Tu gente, su palco y la mejor vista de la noche. <b>Diez sillas solo para tu grupo</b>, bajo techo y de frente a la tarima. Licor y comida se venden en la localidad y se pagan aparte.</p><p class="palcos__faltan">24 palcos por categoría · faltan <b id="faltan">57</b> días</p></div>
+    <p class="palcos__leyenda" id="leyenda-pabellon">Ilustración del montaje proyectado para el 5 de diciembre.</p>
+    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Palco cubierto · 10 sillas</p><h2 class="rotulo" id="t-palcos">Frente a la tarima.</h2><p class="bajada"><b>Diez sillas para tu grupo</b>, bajo techo y de frente al show. Licor y comida se compran adentro y se pagan aparte.</p><p class="palcos__faltan">24 palcos por categoría · faltan <b id="faltan">57</b> días</p></div>
     <figure class="marco mapa">
       <a class="mapa__zoom" href="assets/mapa-palcos-660.webp" target="_blank" rel="noopener" aria-label="Ver el mapa de localidades en grande"><picture><source type="image/avif" srcset="assets/mapa-palcos-660.avif"><img src="assets/mapa-palcos-660.webp" width="660" height="385" alt="Mapa oficial de localidades: la tarima y, de frente, los palcos El Rey del Chupe, El Intenso, Jure y El Pegao." loading="lazy"></picture></a>
-      <figcaption>Mapa oficial de localidades · toca para ampliar.<br>El palco Jure no está a la venta.</figcaption>
+      <figcaption>Mapa oficial · toca para ampliar.<br>El palco Jure no está a la venta.</figcaption>
     </figure>
     <div class="palcos__lista">
       <article class="palco marco palco--rey" data-fila="1" aria-labelledby="p-reyDelChupe"><span class="palco__rombo" aria-hidden="true"><svg viewBox="0 0 132 12"><use href="#rombos"/></svg></span><span class="palco__abajo" aria-hidden="true"></span>
         <p class="palco__fila">Fila 1 de 4</p>
         <h3 class="rotulo palco__nombre" id="p-reyDelChupe">El Rey del Chupe</h3>
-        <p class="palco__cerca">El más cerca de la tarima</p>
+        <p class="palco__cerca">La primera fila desde la tarima.</p>
         <div class="palco__plano"><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Rey del Chupe está en la fila 1 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo activa" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
         <p class="palco__precio"><span class="precio" data-precio="reyDelChupe"></span><small>por palco · 10 sillas</small></p>
         <p class="palco__anticipo">Lo <span data-anticipo="reyDelChupe"></span> (30%)</p>
@@ -420,6 +462,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
       <article class="palco marco" data-fila="2" aria-labelledby="p-elIntenso">
         <p class="palco__fila">Fila 2 de 4</p>
         <h3 class="rotulo palco__nombre" id="p-elIntenso">El Intenso</h3>
+        <p class="palco__cerca">Segunda fila, justo detrás de El Rey del Chupe.</p>
         <div class="palco__plano"><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Intenso está en la fila 2 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo activa" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo activa" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
         <p class="palco__precio"><span class="precio" data-precio="elIntenso"></span><small>por palco · 10 sillas</small></p>
         <p class="palco__anticipo">Lo <span data-anticipo="elIntenso"></span> (30%)</p>
@@ -430,6 +473,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
       <article class="palco marco" data-fila="4" aria-labelledby="p-elPegao">
         <p class="palco__fila">Fila 4 de 4</p>
         <h3 class="rotulo palco__nombre" id="p-elPegao">El Pegao</h3>
+        <p class="palco__cerca">El palco de menor precio, detrás del Jure.</p>
         <div class="palco__plano"><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Pegao está en la fila 4 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo activa" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo activa" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo activa" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
         <p class="palco__precio"><span class="precio" data-precio="elPegao"></span><small>por palco · 10 sillas</small></p>
         <p class="palco__anticipo">Lo <span data-anticipo="elPegao"></span> (30%)</p>
@@ -441,30 +485,32 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <div class="pasos">
       <h3>Así apartas tu palco</h3>
       <ol>
-        <li><p>Escríbenos por WhatsApp y elige tu palco.<span>Te confirmamos cuál está libre y su lugar exacto.</span></p></li>
-        <li><p>Paga el 30% y queda apartado.<span>A la cuenta de Dugoent Producciones, con recibo escrito. El precio ya no sube.</span></p></li>
+        <li><p>Escríbenos por WhatsApp.<span>Te confirmamos qué palco está libre y su lugar exacto.</span></p></li>
+        <li><p>Paga el 30%.<span>A la cuenta de Dugoent Producciones. Te enviamos el recibo por escrito y desde ese pago tu precio queda fijo.</span></p></li>
         <li><p>Paga el saldo antes del 15 de noviembre.<span>Si no llega, el palco se libera y el anticipo no se devuelve.</span></p></li>
       </ol>
-      <p class="palcos__como">Precios por palco completo, con servicio incluido y sujetos a disponibilidad. <a class="enlace" href="#terminos">Términos de la reserva</a></p>
+      <p class="palcos__como">Precio por palco completo, con servicio incluido. <a class="enlace" href="#terminos">Términos de la reserva</a></p>
     </div>
   </div>
 </section>
 
 
+<div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
 <section class="concurso" id="concurso" aria-labelledby="t-concurso">
+  <picture class="concurso__fondo" aria-hidden="true"><source type="image/avif" srcset="assets/brindis-720.avif"><img src="assets/brindis-720.webp" width="720" height="900" alt="" loading="lazy"></picture>
   <picture class="concurso__foto foto" aria-hidden="true"><source type="image/avif" srcset="assets/escalon-6-720.avif"><img src="assets/escalon-6-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
   <div class="env">
-    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Concurso · solo con tus datos</p><h2 class="rotulo" id="t-concurso">Gánate un par de boletas VIP.</h2><p class="bajada">Síguenos en Instagram y cuéntanos con quién vendrías y por qué. Un jurado elige la mejor respuesta; participas hasta el 25 de noviembre.</p></div>
+    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Concurso · cierra el 25 de noviembre</p><h2 class="rotulo" id="t-concurso">Un par de VIP para tu mejor historia.</h2><p class="bajada">Sigue a @dugoent_producciones y cuéntanos con quién vendrías y por qué. Un jurado elige la mejor respuesta: no es un sorteo.</p></div>
     <div class="marco concurso__tarjeta">
     <p class="premio"><span>El premio</span><b>Un par de boletas VIP</b><span class="premio__valor">Valor $246.180</span></p>
-    <details class="concurso__plegado" id="plegado" open><summary>Participar</summary>
+    <details class="concurso__plegado" id="plegado" open><summary>Quiero participar</summary>
     <form id="f" novalidate>
       <p id="err" role="alert"></p>
       <div class="campo"><label for="n">Nombre y apellido</label><input type="text" id="n" name="nombre" autocomplete="name" required></div>
-      <div class="campo"><label for="c">Correo</label><input type="email" id="c" name="correo" autocomplete="email" inputmode="email" required></div>
+      <div class="campo"><label for="c">Correo</label><input type="email" id="c" name="correo" autocomplete="email" inputmode="email" required><span class="ayuda">Por aquí también te avisamos si ganas.</span></div>
       <div class="campo"><label for="t">Celular con WhatsApp</label><input type="tel" id="t" name="celular" inputmode="numeric" autocomplete="tel-national" placeholder="300 123 4567" required><span class="ayuda">10 dígitos, sin el +57.</span></div>
       <div class="campo"><label for="ig">Tu usuario de Instagram</label><input type="text" id="ig" name="instagram" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@tuusuario" required><span class="ayuda">Tienes que seguir a <a class="enlace" href="https://www.instagram.com/dugoent_producciones/" target="_blank" rel="noopener" data-mide="ClicInstagram">@dugoent_producciones</a>. Lo revisamos antes de anunciar al ganador.</span></div>
-      <div class="campo"><label for="r">¿Con quién vendrías y por qué?</label><textarea id="r" name="respuesta" rows="4" maxlength="280" required></textarea><span class="ayuda">Máximo 280 caracteres. Esto es lo que lee el jurado.</span></div>
+      <div class="campo"><label for="r">¿Con quién vendrías y por qué?</label><textarea id="r" name="respuesta" rows="4" maxlength="280" required></textarea><span class="ayuda">Máximo 280 caracteres. Es lo único que lee el jurado.</span></div>
       <label class="check"><input type="checkbox" id="edad"> <span>Soy mayor de 18 años.</span></label>
       <label class="check"><input type="checkbox" id="hd"> <span>Acepto los <a href="#terminos">términos del concurso</a> y autorizo a Dugoent Producciones S.A.S. a tratar mis datos para gestionar el concurso, según su <a href="#datos">política de datos</a> (Ley 1581 de 2012).</span></label>
       <label class="check"><input type="checkbox" id="mk"> <span>Quiero recibir información de otros eventos de Dugoent. (Opcional)</span></label>
@@ -481,30 +527,15 @@ dialog video{width:100%;height:100%;object-fit:contain}
 </section>
 
 
-<section class="sueltas" id="otras" aria-labelledby="t-sueltas">
-  <div class="env">
-    <div class="cabeza"><p class="rol">Entrada individual</p><h2 class="rotulo" id="t-sueltas">¿Vienes por tu cuenta?</h2></div>
-    <div class="marco sueltas__tarjeta">
-    <p class="reloj" id="reloj" aria-live="polite"></p>
-    <ul class="localidades">
-      <li><span><span class="nombre rotulo">VIP</span><span class="detalle">Servicio incluido.</span></span><span class="precio" data-precio="vip">$123.090</span></li>
-      <li><span><span class="nombre rotulo">Platino</span><span class="detalle">De pie. Servicio incluido.</span></span><span class="precio" data-precio="platino">$100.710</span></li>
-    </ul>
-    <p class="sueltas__silla">¿Una silla de palco? Desde $145.470, también en Tickeo.</p>
-    <a class="fantasma" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Comprar en Tickeo ↗</a>
-    </div>
-  </div>
-</section>
-
-
+<div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
 <section class="dos" aria-label="Los artistas">
   <article class="artista">
     <picture><source type="image/avif" srcset="assets/castano-flyer-720.avif 720w, assets/castano-flyer-1000.avif 1000w" sizes="(min-width:860px) 50vw, 100vw"><img src="assets/castano-flyer-720.webp" srcset="assets/castano-flyer-720.webp 720w, assets/castano-flyer-1000.webp 1000w" sizes="(min-width:860px) 50vw, 100vw" width="720" height="900" alt="Jhon Alex Castaño, la misma foto del afiche." loading="lazy" style="object-position:50% 0"></picture>
-    <div class="artista__texto cabeza sobre-foto"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">En tarima</p><h2 class="rotulo">Jhon Alex Castaño</h2><p class="bajada">Los éxitos que no pueden faltar en la farra.</p></div>
+    <div class="artista__texto cabeza sobre-foto"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">En tarima</p><h2 class="rotulo">Jhon Alex Castaño</h2><p class="bajada">En vivo el 5 de diciembre.</p></div>
   </article>
   <article class="artista">
     <picture><source type="image/avif" srcset="assets/rivera-flyer-720.avif 720w, assets/rivera-flyer-1000.avif 1000w" sizes="(min-width:860px) 50vw, 100vw"><img src="assets/rivera-flyer-720.webp" srcset="assets/rivera-flyer-720.webp 720w, assets/rivera-flyer-1000.webp 1000w" sizes="(min-width:860px) 50vw, 100vw" width="720" height="900" alt="Jhonny Rivera, la misma foto del afiche." loading="lazy" style="object-position:50% 0"></picture>
-    <div class="artista__texto cabeza sobre-foto"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">En tarima</p><h2 class="rotulo">Jhonny Rivera</h2><p class="bajada">Los clásicos que vas a cantar a grito herido.</p></div>
+    <div class="artista__texto cabeza sobre-foto"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">En tarima</p><h2 class="rotulo">Jhonny Rivera</h2><p class="bajada">En vivo el 5 de diciembre.</p></div>
   </article>
 </section>
 
@@ -512,8 +543,8 @@ dialog video{width:100%;height:100%;object-fit:contain}
 <section class="envivo escena" aria-labelledby="t-envivo">
   <div class="escena__media foto" aria-hidden="true"><img src="assets/envivo-poster-720.webp" width="720" height="1280" alt="" loading="lazy"><video id="envivo-loop" muted loop playsinline webkit-playsinline autoplay preload="none" data-src="assets/envivo-loop.mp4"></video></div>
   <div class="env">
-    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">En vivo</p><h2 class="rotulo" id="t-envivo">Así se canta a grito herido.</h2><p class="bajada">Esto es lo que se vive frente a la tarima. Súbele y míralo con sonido.</p></div>
-    <button type="button" class="sec" data-teaser="assets/envivo-sonido.mp4" data-mide="EnVivo"><svg width="24" height="24" aria-hidden="true"><use href="#play"/></svg>Verlo con sonido · 0:30</button>
+    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">En vivo</p><h2 class="rotulo" id="t-envivo">Así suena frente a la tarima.</h2><p class="bajada">Imágenes de un show anterior. Súbele el volumen.</p></div>
+    <button type="button" class="sec" data-teaser="assets/envivo-sonido.mp4" data-mide="EnVivo"><svg width="24" height="24" aria-hidden="true"><use href="#play"/></svg>Ver con sonido · 0:30</button>
   </div>
 </section>
 
@@ -521,11 +552,11 @@ dialog video{width:100%;height:100%;object-fit:contain}
 <section class="llegar escena" aria-labelledby="t-llegar">
   <picture class="escena__media escena__media--ancha foto" aria-hidden="true"><source type="image/avif" srcset="assets/llegar-sitio-720.avif 720w, assets/llegar-sitio-1010.avif 1010w" sizes="100vw"><img src="assets/llegar-sitio-720.webp" srcset="assets/llegar-sitio-720.webp 720w, assets/llegar-sitio-1010.webp 1010w" sizes="100vw" width="720" height="384" alt="" loading="lazy"></picture>
   <div class="env">
-    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">La Sabana se une</p><h2 class="rotulo" id="t-llegar">Cómo llegar.</h2><p class="bajada">A un kilómetro de Zipaquirá por la vía a Bogotá, con parqueadero.</p></div>
+    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Cómo llegar</p><h2 class="rotulo" id="t-llegar">A un kilómetro de Zipaquirá.</h2><p class="bajada">Por la vía a Bogotá, junto al parqueadero de El Frigorífico. Hay parqueadero.</p></div>
     <dl class="datos">
       <div><dt>Cuándo</dt><dd>Sábado 5 de diciembre de 2026</dd></div>
       <div><dt>Ingreso</dt><dd>5:00 p. m. · show 8:00 p. m.</dd></div>
-      <div><dt>Dónde</dt><dd>Gran Pabellón (La Fraguita), km 1 vía Zipaquirá–Bogotá, junto al parqueadero de El Frigorífico. Con parqueadero. · <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=km+1+v%C3%ADa+Zipaquir%C3%A1+Bogot%C3%A1+El+Frigor%C3%ADfico" target="_blank" rel="noopener">Ver en el mapa</a></dd></div>
+      <div><dt>Dónde</dt><dd>Gran Pabellón (La Fraguita), km 1 vía Zipaquirá–Bogotá, junto al parqueadero de El Frigorífico.<br><a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=km+1+v%C3%ADa+Zipaquir%C3%A1+Bogot%C3%A1+El+Frigor%C3%ADfico" target="_blank" rel="noopener">Abrir en Google Maps</a></dd></div>
       <div><dt>Edad</dt><dd>Solo mayores de 18</dd></div>
       <div><dt>Dudas</dt><dd><a class="enlace" id="wa-dudas" href="https://wa.me/573222045398" target="_blank" rel="noopener" data-mide="ClicWhatsApp">322 204 5398</a></dd></div>
     </dl>
@@ -535,14 +566,24 @@ dialog video{width:100%;height:100%;object-fit:contain}
 
 
 
-<section class="cierre escena" aria-labelledby="t-cierre">
-  <div class="escena__media foto" aria-hidden="true"><img src="assets/cierre-loop-poster.webp" width="720" height="768" alt="" loading="lazy"><video muted loop playsinline webkit-playsinline autoplay preload="none" data-src="assets/cierre-loop.mp4"></video></div>
+
+<section class="sueltas" id="otras" aria-labelledby="t-sueltas">
   <div class="env">
-    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><h2 class="rotulo" id="t-cierre">Una farra pa' borrar casete.</h2><p class="bajada">Sábado 5 de diciembre en Zipaquirá. Diciembre tiene dueño en la Sabana. Aparta tu palco antes de que se acaben.</p></div>
-    <a class="accion ancha cierre__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Aparta tu palco</a>
-    <a class="enlace cierre__mesa" href="#concurso">o participa por un par de VIP</a>
+    <div class="cabeza"><p class="rol">Entrada individual</p><h2 class="rotulo" id="t-sueltas">¿Vienes por tu cuenta?</h2></div>
+    <picture class="sueltas__foto foto" aria-hidden="true"><source type="image/avif" srcset="assets/arena-900.avif"><img src="assets/arena-900.webp" width="900" height="503" alt="" loading="lazy"></picture>
+    <div class="marco sueltas__tarjeta">
+    <p class="reloj" id="reloj" aria-live="polite"></p>
+    <ul class="localidades">
+      <li><span><span class="nombre rotulo">VIP</span><span class="detalle">Servicio incluido.</span></span><span class="precio" data-precio="vip">$123.090</span></li>
+      <li><span><span class="nombre rotulo">Platino</span><span class="detalle">De pie. Servicio incluido.</span></span><span class="precio" data-precio="platino">$100.710</span></li>
+    </ul>
+    <p class="sueltas__silla">¿Una silla de palco? Desde $145.470 en Tickeo.</p>
+    <a class="fantasma" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Comprar en Tickeo ↗</a>
+    </div>
   </div>
 </section>
+
+
 
 <section class="dudas" aria-labelledby="t-dudas">
   <div class="env">
@@ -550,7 +591,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <div class="preguntas">
       <details><summary>¿Cómo funciona apartar un palco?</summary><p>Nos escribes por WhatsApp, te confirmamos el palco disponible y lo apartas con el 30%. El saldo se paga a más tardar el 15 de noviembre. Si no llega en ese plazo, el palco se libera y el anticipo no se devuelve, salvo retracto dentro de los 5 días hábiles o cancelación del evento.</p></details>
             <details><summary>¿Puedo devolver mi boleta?</summary><p>Las compras en Tickeo tienen derecho de retracto dentro de los 5 días hábiles siguientes, según el artículo 47 de la Ley 1480 de 2011 y los términos de Tickeo S.A.S. El anticipo de un palco también tiene retracto de 5 días hábiles.</p></details>
-      <details><summary>¿Qué no puedo entrar?</summary><p>Comida ni bebida, armas ni objetos cortopunzantes, camisetas de equipos de fútbol ni cámara profesional. Tampoco se entra en estado de embriaguez. Adentro hay venta de comida y licor.</p></details>
+      <details><summary>¿Qué no se puede ingresar?</summary><p>Comida ni bebida, armas ni objetos cortopunzantes, camisetas de equipos de fútbol ni cámara profesional. Tampoco se entra en estado de embriaguez. Adentro hay venta de comida y licor.</p></details>
       <details><summary>¿Pueden entrar menores?</summary><p>No. El evento es solo para mayores de 18 años.</p></details>
     </div>
     <div class="terminos" id="terminos">
@@ -573,6 +614,16 @@ dialog video{width:100%;height:100%;object-fit:contain}
         <p>7. Para participar hay que seguir la cuenta de Instagram @dugoent_producciones y escribir tu usuario en el formulario. Antes de anunciar al ganador revisamos que la sigue; si no, gana la siguiente respuesta mejor calificada. Instagram y Meta no patrocinan, avalan ni administran este concurso.</p>
       </div></details>
     </div>
+  </div>
+</section>
+
+<div class="corte" aria-hidden="true"><svg viewBox="0 0 280 24" width="280" height="24"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#BD6014" stop-opacity="0"/><stop offset=".5" stop-color="#EBB314"/><stop offset="1" stop-color="#BD6014" stop-opacity="0"/></linearGradient></defs><path d="M0 10.5H122M158 10.5H280" stroke="url(#cg)" stroke-width="1"/><path d="M14 14H122M158 14H266" stroke="url(#cg)" stroke-width=".5"/><path d="M140 3l8 9-8 9-8-9z" fill="none" stroke="#EBB314" stroke-width="1"/><path d="M140 8l3.5 4-3.5 4-3.5-4z" fill="#EBB314"/><path d="M132 12c-4-5-9-5-11 0M148 12c4-5 9-5 11 0" fill="none" stroke="#EBB314" stroke-width=".8" opacity=".7"/></svg></div>
+<section class="cierre escena" aria-labelledby="t-cierre">
+  <div class="escena__media foto" aria-hidden="true"><img src="assets/cierre-loop-poster.webp" width="720" height="768" alt="" loading="lazy"><video muted loop playsinline webkit-playsinline autoplay preload="none" data-src="assets/cierre-loop.mp4"></video></div>
+  <div class="env">
+    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><h2 class="rotulo" id="t-cierre">Una farra pa' borrar casete.</h2><p class="bajada">Sábado 5 de diciembre, Zipaquirá. Tu palco se aparta con el 30%.</p></div>
+    <a class="accion ancha cierre__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Apartar palco por WhatsApp</a>
+    <a class="enlace cierre__mesa" href="#concurso">o participa por un par de VIP</a>
   </div>
 </section>
 
@@ -825,6 +876,7 @@ listo(function(){
     var r = h.getBoundingClientRect(), largo = r.height - innerHeight;
     var p = largo > 0 ? Math.min(1, Math.max(0, -r.top / largo)) : 1;
     h.style.setProperty("--p", p.toFixed(3));
+    if (p > .34) h.classList.add("dentro"); else if (p < .2) h.classList.remove("dentro");
   }
   addEventListener("scroll", function(){ if (!pendiente){ pendiente = true; requestAnimationFrame(mide); } }, {passive: true});
   addEventListener("resize", mide); mide();
@@ -910,6 +962,17 @@ listo(function(){
       pend = false;
     });
   }, {passive: true});
+});
+listo(function(){
+  if (quieto || !("IntersectionObserver" in window)) return;
+  document.documentElement.classList.add("js-mov");
+  [].forEach.call(document.querySelectorAll(".palco"), function(c){
+    [].forEach.call(c.querySelectorAll(".tramo.activa"), function(r, i){ r.style.transitionDelay = (i * 80) + "ms"; });
+  });
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("visto"); io.unobserve(e.target); } });
+  }, {rootMargin: "0px 0px -35% 0px"});
+  [].forEach.call(document.querySelectorAll(".palco,.concurso__tarjeta"), function(el){ io.observe(el); });
 });
 listo(function(){
   var d = document.getElementById("plegado"); if (!d) return;
