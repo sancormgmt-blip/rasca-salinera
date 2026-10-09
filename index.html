@@ -998,9 +998,6 @@ listo(function(){
 listo(function(){
   if (quieto || !("IntersectionObserver" in window)) return;
   document.documentElement.classList.add("js-mov");
-  [].forEach.call(document.querySelectorAll(".palco"), function(c){
-    [].forEach.call(c.querySelectorAll(".tramo.activa"), function(r, i){ r.style.transitionDelay = (i * 80) + "ms"; });
-  });
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add("visto"); io.unobserve(e.target); } });
   }, {rootMargin: "0px 0px -35% 0px"});
