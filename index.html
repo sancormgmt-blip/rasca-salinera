@@ -67,12 +67,11 @@ p{margin:0}
 .hero__fondo video{opacity:0;transition:opacity .8s var(--ease)}
 .hero__fondo video.lista{opacity:1}
 .hero__escena::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,0) 40%,rgba(26,11,11,.85) 64%,var(--vino) 86%)}
-.hero__marco{position:absolute;inset:10px;border:1px solid var(--linea);pointer-events:none;z-index:3}
 .hero__texto{position:relative;z-index:1;padding:0 var(--g) calc(28px + env(safe-area-inset-bottom))}
 .hero__lugar{text-shadow:0 1px 12px rgba(26,11,11,.9);font-weight:800;font-size:.9375rem;letter-spacing:.02em;color:var(--oro)}
-.hero__fecha{margin-top:10px;font-size:var(--t1)}
+.hero__fecha{margin-top:8px;font-size:var(--t3);font-weight:800;letter-spacing:.02em;color:var(--crema);white-space:nowrap}
 .hero h1{margin-top:14px;font-weight:400}
-.hero h1 .principal{display:block;font-size:var(--t2)}
+.hero h1 .principal{display:block;font-size:var(--t1);line-height:.9}
 .hero h1 .segundo{display:block;margin-top:6px;font-size:1.25rem;font-weight:400;color:var(--crema)}
 .hero__accion{margin-top:22px}
 .hero__sec{margin-top:10px}
@@ -87,8 +86,7 @@ p{margin:0}
 .hero.anima .hero__flyer{background:radial-gradient(ellipse at 50% 40%,#3a1410,#140707 75%)}
 .hero.anima .hero__flyer img{width:100%;height:100%;object-fit:contain;object-position:50% 40%}
 .hero.anima .hero__texto{opacity:clamp(0,calc(var(--p,0) * 2.6 - 1.2),1);transform:translateY(calc((1 - clamp(0,var(--p,0) * 1.7 - .45,1)) * 56px))}
-.hero.anima .hero__marco{opacity:calc(var(--p,0) * 1.4)}
-.hero.anima .hero__desliza{display:flex;position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom));z-index:4;flex-direction:column;align-items:center;gap:6px;
+.hero.anima .hero.anima .hero__desliza{display:flex;position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom));z-index:4;flex-direction:column;align-items:center;gap:6px;
   font-weight:800;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--crema);text-shadow:0 1px 10px rgba(0,0,0,.8);opacity:calc(1 - var(--p,0) * 5);pointer-events:none}
 .hero__desliza svg{animation:baja 1.6s var(--ease) infinite}
 @keyframes baja{0%,100%{transform:translateY(0);opacity:.6}50%{transform:translateY(7px);opacity:1}}
@@ -101,9 +99,9 @@ p{margin:0}
   .hero.anima .hero__flyer{inset:0 auto 0 50%;width:min(56.25vh,46vw);transform:translateX(-50%) scale(calc(1 - var(--p,0) * .16));transform-origin:50% 40%}
 }
 .palcos{position:relative;padding:72px 0 64px;overflow:hidden;isolation:isolate;background:var(--vino-3)}
-.palcos__foto{position:absolute;inset:0 0 auto 0;height:520px;z-index:-1}
-.palcos__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;opacity:.55}
-.palcos__foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(57,0,7,.2),var(--vino-3) 92%)}
+.palcos__foto{display:block;position:relative;height:46svh;min-height:300px;margin:-72px 0 28px}
+.palcos__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+.palcos__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(to bottom,rgba(57,0,7,0),var(--vino-3))}
 .palcos h2{font-size:var(--t2)}
 .palcos__bajada{margin-top:14px;max-width:30rem;color:var(--crema)}
 .cartel{list-style:none;margin:36px 0 0;padding:0}
@@ -127,7 +125,7 @@ p{margin:0}
 .artista::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,0) 50%,rgba(26,11,11,.85) 80%,var(--vino))}
 .artista__texto{padding:0 var(--g) 40px}
 .artista h2{font-size:var(--t2)}
-.artista--principal{min-height:96svh}
+.artista--principal{min-height:100svh}
 .artista--principal h2{font-size:var(--t1)}
 .artista--principal .rol,.artista .rol{display:block;margin-bottom:8px;font-size:1rem;color:var(--oro)}
 .artista p{margin-top:10px;color:var(--crema);max-width:26rem}
@@ -153,7 +151,7 @@ p{margin:0}
 .mesa.viva .escenario picture.activa{opacity:1}
 .mesa.viva .escenario img{width:100%;height:100%;object-fit:cover}
 .mesa.viva .escenario::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,11,11,.15),rgba(26,11,11,0) 30%,rgba(26,11,11,.55) 62%,rgba(26,11,11,.97) 74%)}
-.mesa.viva .paso{z-index:1;min-height:85svh}
+.mesa.viva .paso{z-index:1;min-height:76svh}
 .mesa.viva .paso:last-child{min-height:72svh}
 .mesa.viva .paso__foto,.mesa.viva .paso::after{display:none}
 .mesa.viva .paso__texto{padding-top:220px;background:linear-gradient(to top,rgba(26,11,11,.9) 25%,rgba(26,11,11,.5) 60%,rgba(26,11,11,0))}
@@ -227,18 +225,41 @@ form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 .localidades .detalle{display:block;margin-top:6px;font-size:1rem;color:var(--tenue)}
 .localidades .precio{font-weight:800;font-size:1.5rem;color:var(--oro);white-space:nowrap}
 .cuenta__accion{margin-top:24px;max-width:560px}
-.noche{padding:0 0 64px;background:var(--vino-2)}
-.noche__grid{display:grid;gap:36px}
-.noche__foto{position:relative;display:block;width:100%;padding:0;border:0;background:none;cursor:pointer;aspect-ratio:4/3;overflow:hidden;color:inherit}
-.noche__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transition:transform .6s var(--ease)}
-.noche__foto:hover img{transform:scale(1.02)}
-.noche__foto:focus-visible{outline:3px solid var(--oro);outline-offset:-3px}
-.noche__foto span{position:absolute;left:var(--g);bottom:20px;display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border-radius:999px;background:rgba(26,11,11,.78);font-weight:800;color:var(--crema)}
-.noche h2{font-size:var(--t2)}
+.envivo{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.envivo__poster,.envivo__poster img,.envivo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.envivo__poster,.envivo video{z-index:-2}
+.envivo video{opacity:0;transition:opacity .8s var(--ease)}
+.envivo video.lista{opacity:1}
+.envivo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,.2),rgba(26,11,11,0) 30%,rgba(26,11,11,.7) 68%,var(--vino) 96%)}
+.envivo__texto{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--g) 44px}
+.envivo .rol,.llegar .rol{display:block;margin-bottom:8px;font-size:1rem;color:var(--oro)}
+.envivo h2{font-size:var(--t2)}
+.envivo .sec{margin-top:14px}
+.saludo{display:flex;align-items:center;gap:14px;width:100%;max-width:420px;margin-top:20px;padding:10px 14px 10px 10px;border:1px solid var(--linea);border-radius:var(--r);background:rgba(26,11,11,.7);color:var(--crema);font:400 1rem/1.3 "Archivo",sans-serif;text-align:left;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.saludo img{width:52px;height:92px;object-fit:cover;border-radius:6px;flex:none}
+.saludo span{flex:1}
+.saludo b{display:block;font-weight:800}
+.saludo small{display:block;margin-top:4px;color:var(--tenue);font-size:.9375rem}
+.saludo svg{color:var(--oro);flex:none}
+.saludo:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.llegar{position:relative;min-height:96svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.llegar__foto,.llegar__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.llegar__foto{z-index:-2}
+.llegar::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,.1),rgba(26,11,11,0) 25%,rgba(26,11,11,.8) 58%,var(--vino) 80%)}
+.llegar__texto{padding-bottom:48px}
+.llegar h2{font-size:var(--t2)}
 .datos{margin:22px 0 0;display:grid;grid-template-columns:auto 1fr;gap:12px 20px}
 .datos dt{color:var(--tenue)}
 .datos dd{margin:0;color:var(--crema)}
-.noche__accion{margin-top:28px}
+.cierre{position:relative;padding:120px 0 64px;overflow:hidden;isolation:isolate;text-align:center}
+.cierre__fondo,.cierre__fondo img{position:absolute;inset:0 0 auto 0;width:100%;height:110svh;object-fit:cover;object-position:50% 40%}
+.cierre__fondo{z-index:-2}
+.cierre::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,.35) 22%,rgba(26,11,11,.55) 50%,var(--vino) 78%)}
+.cierre h2{font-size:var(--t1);line-height:.92}
+.cierre__bajada{margin:16px auto 0;max-width:28rem;color:var(--crema)}
+.cierre__accion{margin-top:28px;max-width:420px}
+.cierre__mesa{margin-top:18px}
+.cierre .preguntas{margin-top:56px;text-align:left}
 .preguntas{margin-top:40px}
 .preguntas details{border-top:1px solid var(--linea-suave)}
 .preguntas details:last-child{border-bottom:1px solid var(--linea-suave)}
@@ -248,7 +269,7 @@ form[data-quiere=palco] .si-palco,form[data-quiere=mesa] .si-mesa{display:block}
 .preguntas details[open] summary::after{transform:rotate(45deg)}
 .preguntas summary:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
 .preguntas details p{padding:0 0 18px;font-size:1rem}
-@media (min-width:860px){.noche{padding-top:80px}.noche__grid{grid-template-columns:420px 1fr;gap:64px;align-items:start}.noche__foto{border-radius:6px}}
+@media (min-width:860px){.cierre .env{max-width:760px}}
 footer{padding:40px 0 calc(var(--barra) + 40px);font-size:.8125rem;line-height:1.6;color:var(--tenue);background:var(--vino-2)}
 footer img{width:180px;height:auto;margin-bottom:18px}
 footer .legal{color:var(--texto);font-weight:800}
@@ -265,8 +286,9 @@ dialog::backdrop{background:rgba(0,0,0,.9)}
 dialog video{width:100%;height:100%;object-fit:contain}
 .cerrar{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:48px;height:48px;border:0;border-radius:999px;background:rgba(26,11,11,.8);color:var(--crema);font:400 1.6rem/1 "Archivo",sans-serif;cursor:pointer}
 .cerrar:focus-visible{outline:2px solid var(--oro)}
-.sonido{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:30;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border:1px solid var(--linea);border-radius:999px;background:rgba(26,11,11,.72);color:var(--crema);font:800 .8125rem/1 "Archivo",sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.sonido{position:fixed;top:calc(12px + env(safe-area-inset-top));right:12px;z-index:30;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:44px;height:44px;padding:0;border:1px solid var(--linea);border-radius:999px;background:rgba(26,11,11,.72);color:var(--crema);font:800 .8125rem/1 "Archivo",sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .sonido:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.sonido[aria-pressed=false] .barras,.sonido[aria-pressed=true] .parlante{display:none}
 .sonido .barras{display:inline-flex;gap:2px;align-items:flex-end;height:14px}
 .sonido .barras i{display:block;width:3px;height:4px;background:var(--oro);border-radius:1px}
 .sonido[aria-pressed=true] .barras i{animation:eq .9s var(--ease) infinite alternate}
@@ -274,6 +296,16 @@ dialog video{width:100%;height:100%;object-fit:contain}
 @keyframes eq{to{height:14px}}
 @media (prefers-reduced-motion:reduce){.sonido[aria-pressed=true] .barras i{animation:none;height:10px}}
 .intro .sonido{display:none}
+.oculto-v{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#entrada{position:fixed;inset:0;z-index:45;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 45%,rgba(26,11,11,.55),rgba(14,6,6,.88));-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:1;transition:opacity .5s var(--ease)}
+#entrada[hidden]{display:none}
+#entrada.sale{opacity:0}
+.entrada__caja{display:grid;justify-items:center;gap:18px;width:100%;max-width:360px;text-align:center}
+.entrada__caja img{width:min(78vw,320px);height:auto}
+.entrada__caja p{color:var(--crema);font-size:1rem}
+.entrada__si{width:100%;gap:12px;font-size:1.125rem;min-height:60px}
+.entrada__si svg{flex:none}
+.entrada__no{color:var(--tenue);text-decoration-color:var(--tenue)}
 #intro{display:none}
 .intro body{overflow:hidden}
 .intro #intro{display:block;position:fixed;inset:0;z-index:50;background:#120706;cursor:pointer;animation:introfuera .3s 6s forwards}
@@ -287,6 +319,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
 <script>(function(){try{var q=matchMedia("(prefers-reduced-motion: reduce)").matches,c=navigator.connection||{},v=sessionStorage.getItem("rs_intro");if(!q&&!c.saveData&&!v&&window.WebGLRenderingContext)document.documentElement.classList.add("intro")}catch(e){}})();</script>
 </head>
 <body>
+<div id="entrada" hidden role="dialog" aria-modal="true" aria-label="Entrar a la página"><div class="entrada__caja"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera"><p>Sábado 5 de diciembre · Zipaquirá</p><button type="button" class="accion entrada__si" id="entrada-si"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#1A0B0B"/><path d="M16 8.5c1.6 1.8 1.6 5.2 0 7M18.8 6c2.8 3.2 2.8 8.8 0 12" stroke="#1A0B0B" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>Continuar con sonido</button><button type="button" class="sec entrada__no" id="entrada-no">Entrar sin sonido</button></div></div>
 <div id="intro" aria-hidden="true"><canvas></canvas><video src="assets/hero-loop.mp4" autoplay muted playsinline webkit-playsinline preload="auto"></video><img src="assets/hero-poster-720.webp" alt="" width="720" height="1280"></div>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -308,10 +341,9 @@ dialog video{width:100%;height:100%;object-fit:contain}
     </picture>
     <video id="hero-loop" src="assets/hero-loop.mp4" autoplay muted loop playsinline webkit-playsinline preload="metadata" aria-hidden="true"></video>
   </div>
-  <div class="hero__marco" aria-hidden="true"></div>
   <div class="hero__texto">
-    <p class="hero__lugar">La Fraguita · Zipaquirá · Ingreso 5:00 p. m.</p>
-    <p class="hero__fecha rotulo">Sáb 5 de dic.</p>
+    <p class="hero__lugar">La Fraguita · Zipaquirá · 5:00&nbsp;p.&nbsp;m.</p>
+    <p class="hero__fecha">Sábado 5 de diciembre</p>
     <h1><span class="principal rotulo">Jhonny Rivera</span><span class="segundo">con Jhon Alex Castaño</span></h1>
     <a class="accion ancha hero__accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
     <button type="button" class="sec hero__sec" data-teaser="assets/teaser-noche.mp4" data-mide="TeaserNoche"><svg width="24" height="24"><use href="#play"/></svg>Ver el teaser con sonido · 0:24</button>
@@ -329,9 +361,8 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <img src="assets/brindis-720.webp" width="720" height="900" alt="" loading="lazy">
   </picture>
   <div class="env">
-    <svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg>
     <h2 class="rotulo" id="t-palcos">Tu palco, para diez.</h2>
-    <p class="palcos__bajada">La mejor vista de la noche, para tu gente o para el cierre de año de tu empresa.</p>
+    <p class="palcos__bajada">La mejor vista de la noche, para tu gente o para el cierre de año de tu empresa. <b style="color:var(--crema)">Las 10 sillas son de tu grupo</b>, con servicio de licor y comida en la localidad.</p>
     <ul class="cartel">
       <li class="primero"><span class="nombre rotulo">El Rey del Chupe</span><span class="cerca">El más cerca de la tarima</span><span class="fila"><span class="precio" data-precio="reyDelChupe">$3.357.000</span><span class="detalle">10 personas · <span data-anticipo="reyDelChupe">apartas con $1.007.100</span></span></span><span class="puesto">o tu puesto: $335.700 por persona, en Tickeo</span></li>
       <li><span class="nombre rotulo">El Intenso</span><span class="fila"><span class="precio" data-precio="elIntenso">$2.238.000</span><span class="detalle">10 personas · <span data-anticipo="elIntenso">apartas con $671.400</span></span></span><span class="puesto">o tu puesto: $223.800 por persona, en Tickeo</span></li>
@@ -346,13 +377,29 @@ dialog video{width:100%;height:100%;object-fit:contain}
 
 <section class="dos" aria-label="Los artistas">
   <article class="artista artista--principal">
-    <picture><source type="image/avif" srcset="assets/rivera-720.avif 720w, assets/rivera-1100.avif 1100w" sizes="(min-width:860px) 60vw, 100vw"><img src="assets/rivera-720.webp" srcset="assets/rivera-720.webp 720w, assets/rivera-1100.webp 1100w" sizes="(min-width:860px) 60vw, 100vw" width="720" height="599" alt="Jhonny Rivera cantando en tarima." loading="lazy"></picture>
+    <picture><source type="image/avif" srcset="assets/rivera45-720.avif 720w, assets/rivera45-1000.avif 1000w" sizes="(min-width:860px) 60vw, 100vw"><img src="assets/rivera45-720.webp" srcset="assets/rivera45-720.webp 720w, assets/rivera45-1000.webp 1000w" sizes="(min-width:860px) 60vw, 100vw" width="720" height="677" alt="Jhonny Rivera cantando en tarima." loading="lazy" style="object-position:50% 15%"></picture>
     <div class="artista__texto"><span class="rol">Artista principal</span><h2 class="rotulo">Jhonny Rivera</h2><p>Los clásicos que vas a cantar a grito herido.</p></div>
   </article>
   <article class="artista">
     <picture><source type="image/avif" srcset="assets/castano-720.avif 720w, assets/castano-1080.avif 1080w" sizes="(min-width:860px) 40vw, 100vw"><img src="assets/castano-720.webp" srcset="assets/castano-720.webp 720w, assets/castano-1080.webp 1080w" sizes="(min-width:860px) 40vw, 100vw" width="720" height="900" alt="Jhon Alex Castaño, foto oficial." loading="lazy" style="object-position:50% 0"></picture>
     <div class="artista__texto"><span class="rol">Invitado</span><h2 class="rotulo">Jhon Alex Castaño</h2><p>La misma tarima, la misma noche.</p></div>
   </article>
+</section>
+
+
+<section class="envivo" aria-labelledby="t-envivo">
+  <picture class="envivo__poster" aria-hidden="true"><source type="image/avif" srcset="assets/envivo-poster-720.avif"><img src="assets/envivo-poster-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
+  <video id="envivo-loop" muted loop playsinline webkit-playsinline preload="none" aria-hidden="true" data-src="assets/envivo-loop.mp4"></video>
+  <div class="envivo__texto">
+    <span class="rol">En vivo</span>
+    <h2 class="rotulo" id="t-envivo">Así se canta a grito herido.</h2>
+    <button type="button" class="sec" data-teaser="assets/envivo-sonido.mp4" data-mide="EnVivo"><svg width="24" height="24" aria-hidden="true"><use href="#play"/></svg>Verlo con sonido · 0:30</button>
+    <button type="button" class="saludo" data-teaser="assets/rivera-saludo.mp4" data-mide="SaludoRivera">
+      <img src="assets/saludo-poster-720.webp" width="720" height="1280" alt="" loading="lazy">
+      <span><b>Jhonny Rivera te invita</b><small>Un saludo para Zipaquirá · 0:19</small></span>
+      <svg width="28" height="28" aria-hidden="true"><use href="#play"/></svg>
+    </button>
+  </div>
 </section>
 
 
@@ -393,7 +440,6 @@ dialog video{width:100%;height:100%;object-fit:contain}
   <div class="env registro__grid">
     <div>
       <div class="invitado" id="invitado" role="status"></div>
-      <svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg>
       <h2 class="rotulo" id="t-registro">Anótate.</h2>
       <p class="registro__bajada">Te escribimos por WhatsApp para confirmar. Cada persona compra su boleta en Tickeo; el palco se aparta aquí.</p>
 
@@ -484,30 +530,36 @@ dialog video{width:100%;height:100%;object-fit:contain}
 </section>
 
 
-<section class="noche" aria-labelledby="t-noche">
-  <div class="noche__grid">
-    <button type="button" class="noche__foto" data-teaser="assets/teaser-sabana.mp4" data-mide="TeaserSabana">
-      <picture><source type="image/avif" srcset="assets/arena-900.avif 900w, assets/arena-1600.avif 1600w" sizes="(min-width:860px) 420px, 100vw"><img src="assets/arena-900.webp" srcset="assets/arena-900.webp 900w, assets/arena-1600.webp 1600w" sizes="(min-width:860px) 420px, 100vw" width="900" height="503" alt="Una arena llena bajo luces cálidas." loading="lazy"></picture>
-      <span><svg width="24" height="24" aria-hidden="true"><use href="#play"/></svg>De dónde viene la gente</span>
-    </button>
-    <div class="env">
-      <svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg>
-      <h2 class="rotulo" id="t-noche">Una farra pa' borrar casete.</h2>
-      <dl class="datos">
-        <dt>Cuándo</dt><dd>Sábado 5 de diciembre de 2026</dd>
-        <dt>Ingreso</dt><dd>5:00 p. m. · show 8:00 p. m.</dd>
-        <dt>Dónde</dt><dd>La Fraguita, km 1 vía Zipaquirá–Bogotá, junto al parqueadero de El Frigorífico · <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=La+Fraguita+km+1+v%C3%ADa+Zipaquir%C3%A1+Bogot%C3%A1" target="_blank" rel="noopener">Ver en el mapa</a></dd>
-        <dt>Edad</dt><dd>Solo mayores de 18</dd>
-        <dt>Dudas</dt><dd><a class="enlace" id="wa-dudas" href="https://wa.me/573222045398" target="_blank" rel="noopener" data-mide="ClicWhatsApp">322 204 5398</a></dd>
-      </dl>
-      <a class="accion ancha noche__accion" href="#registro" data-quiere="mesa" data-mide="ClicMesa">Arma tu mesa</a>
-      <div class="preguntas">
-        <details><summary>¿Cómo funciona apartar un palco?</summary><p>Te anotas, te escribimos por WhatsApp y te confirmamos el palco disponible. Pagas el 30% para apartarlo y el resto dentro de los 15 días siguientes. Si el saldo no llega en ese plazo, el palco se libera.</p></details>
-        <details><summary>¿Cómo cuenta mi mesa?</summary><p>Cuando te anotas te damos un enlace. Cada persona que se anote con él queda en tu mesa, y cada una compra su boleta en Tickeo. Antes del evento te confirmamos por WhatsApp cuántos son y qué ganaron.</p></details>
-        <details><summary>¿Puedo devolver mi boleta?</summary><p>Tienes derecho de retracto dentro de los 5 días hábiles siguientes a la compra (artículo 47 de la Ley 1480 de 2011). Se tramita ante Tickeo S.A.S.</p></details>
-        <details><summary>¿Qué no puedo entrar?</summary><p>Comida ni bebida, armas ni objetos cortopunzantes, camisetas de equipos de fútbol ni cámara profesional. Tampoco se entra en estado de embriaguez. Adentro hay venta de comida y licor.</p></details>
-        <details><summary>¿Pueden entrar menores?</summary><p>No. El evento es solo para mayores de 18 años.</p></details>
-      </div>
+<section class="llegar" aria-labelledby="t-llegar">
+  <picture class="llegar__foto" aria-hidden="true"><source type="image/avif" srcset="assets/llegar-720.avif 720w, assets/llegar-1080.avif 1080w" sizes="100vw"><img src="assets/llegar-720.webp" srcset="assets/llegar-720.webp 720w, assets/llegar-1080.webp 1080w" sizes="100vw" width="720" height="1280" alt="" loading="lazy"></picture>
+  <div class="env llegar__texto">
+    <span class="rol">La Sabana se une</span>
+    <h2 class="rotulo" id="t-llegar">Cómo llegar.</h2>
+    <dl class="datos">
+      <dt>Cuándo</dt><dd>Sábado 5 de diciembre de 2026</dd>
+      <dt>Ingreso</dt><dd>5:00 p. m. · show 8:00 p. m.</dd>
+      <dt>Dónde</dt><dd>La Fraguita, km 1 vía Zipaquirá–Bogotá, junto al parqueadero de El Frigorífico · <a class="enlace" href="https://www.google.com/maps/search/?api=1&amp;query=La+Fraguita+km+1+v%C3%ADa+Zipaquir%C3%A1+Bogot%C3%A1" target="_blank" rel="noopener">Ver en el mapa</a></dd>
+      <dt>Edad</dt><dd>Solo mayores de 18</dd>
+      <dt>Dudas</dt><dd><a class="enlace" id="wa-dudas" href="https://wa.me/573222045398" target="_blank" rel="noopener" data-mide="ClicWhatsApp">322 204 5398</a></dd>
+    </dl>
+  </div>
+</section>
+
+
+<section class="cierre" aria-labelledby="t-cierre">
+  <picture class="cierre__fondo" aria-hidden="true"><source type="image/avif" srcset="assets/hero-poster-720.avif 720w, assets/hero-poster-1080.avif 1080w" sizes="100vw"><img src="assets/hero-poster-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
+  <div class="env">
+    <svg class="rombos" aria-hidden="true" style="margin:0 auto 18px"><use href="#rombos"/></svg>
+    <h2 class="rotulo" id="t-cierre">Una farra pa' borrar casete.</h2>
+    <p class="cierre__bajada">Sábado 5 de diciembre · Zipaquirá. Diciembre tiene dueño en la Sabana.</p>
+    <a class="accion ancha cierre__accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
+    <a class="enlace cierre__mesa" href="#registro" data-quiere="mesa" data-mide="ClicMesa">o arma tu mesa</a>
+    <div class="preguntas">
+      <details><summary>¿Cómo funciona apartar un palco?</summary><p>Te anotas, te escribimos por WhatsApp y te confirmamos el palco disponible. Pagas el 30% para apartarlo y el resto dentro de los 15 días siguientes. Si el saldo no llega en ese plazo, el palco se libera.</p></details>
+      <details><summary>¿Cómo cuenta mi mesa?</summary><p>Cuando te anotas te damos un enlace. Cada persona que se anote con él queda en tu mesa, y cada una compra su boleta en Tickeo. Antes del evento te confirmamos por WhatsApp cuántos son y qué ganaron.</p></details>
+      <details><summary>¿Puedo devolver mi boleta?</summary><p>Tienes derecho de retracto dentro de los 5 días hábiles siguientes a la compra (artículo 47 de la Ley 1480 de 2011). Se tramita ante Tickeo S.A.S.</p></details>
+      <details><summary>¿Qué no puedo entrar?</summary><p>Comida ni bebida, armas ni objetos cortopunzantes, camisetas de equipos de fútbol ni cámara profesional. Tampoco se entra en estado de embriaguez. Adentro hay venta de comida y licor.</p></details>
+      <details><summary>¿Pueden entrar menores?</summary><p>No. El evento es solo para mayores de 18 años.</p></details>
     </div>
   </div>
 </section>
@@ -524,7 +576,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
   </div>
 </footer>
 
-<button type="button" class="sonido" id="sonido" aria-pressed="false" aria-label="Activar el sonido del reel"><span class="barras" aria-hidden="true"><i></i><i></i><i></i></span><span id="sonido-t">Sonido</span></button>
+<button type="button" class="sonido" id="sonido" aria-pressed="false" aria-label="Activar el sonido del reel"><svg class="parlante" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#EBB314"/><path d="M16 9.5c1.2 1.4 1.2 3.6 0 5" stroke="#EBB314" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg><span class="barras" aria-hidden="true"><i></i><i></i><i></i></span><span id="sonido-t" class="oculto-v">Sonido</span></button>
 <audio id="audio-reel" src="assets/sonido-reel.m4a" preload="none" loop></audio>
 <nav class="barra" id="barra" aria-label="Acción rápida">
   <a class="accion" href="#registro" data-quiere="palco" data-mide="ClicPalco">Aparta tu palco</a>
@@ -678,7 +730,7 @@ listo(function(){
   if (!b || !h) return;
   var wa = document.getElementById("barra-wa"); if (wa) wa.href = "https://wa.me/" + CFG.whatsapp;
   function mira(){
-    var pasoHero = h.getBoundingClientRect().bottom < 0;
+    var dos = document.querySelector(".dos"); var pasoHero = dos ? dos.getBoundingClientRect().top < innerHeight * .6 : h.getBoundingClientRect().bottom < 0;
     var rr = r ? r.getBoundingClientRect() : null;
     var enRegistro = rr && rr.top < innerHeight * .6 && rr.bottom > innerHeight * .4;
     var cr = cu ? cu.getBoundingClientRect() : null;
@@ -697,7 +749,8 @@ listo(function(){
     if (caja.classList.contains("fuera")) return;
     listoYa = true;
     caja.classList.add("fuera");
-    setTimeout(function(){ raiz.classList.remove("intro"); try { vid.pause(); } catch(e){} caja.remove(); }, 450);
+    var en = document.getElementById("entrada"); if (en){ en.hidden = false; try { document.getElementById("entrada-si").focus({preventScroll: true}); } catch(e){} }
+    setTimeout(function(){ try { vid.pause(); } catch(e){} caja.remove(); if (!en) raiz.classList.remove("intro"); }, 450);
   }
   if (!gl){ fin(); return; }
   try { var p = vid.play(); if (p && p.catch) p.catch(function(){}); } catch(e){}
@@ -792,11 +845,49 @@ listo(function(){
   b.addEventListener("click", function(ev){ ev.stopPropagation(); if (a.paused){ lo_apago = false; suena(); } else { lo_apago = true; calla(); } });
   function primero(){ if (quiere && !lo_apago && a.paused) suena(); quiere = false; }
   ["pointerdown", "touchend", "keydown"].forEach(function(ev){
-    addEventListener(ev, function u(e){ if (e.target === b || (b.contains && b.contains(e.target))) return; primero(); removeEventListener(ev, u, true); }, true);
+    addEventListener(ev, function u(e){ if (e.target === b || (b.contains && b.contains(e.target)) || (e.target.closest && e.target.closest('#entrada'))) return; primero(); removeEventListener(ev, u, true); }, true);
   });
   document.addEventListener("visibilitychange", function(){ if (document.hidden) a.pause(); else if (!lo_apago && b.getAttribute("aria-pressed") === "true") a.play().catch(function(){}); });
   var tv = document.getElementById("teaser-video");
   if (tv){ tv.addEventListener("play", function(){ a.pause(); }); tv.addEventListener("pause", function(){ if (!lo_apago && b.getAttribute("aria-pressed") === "true") a.play().catch(function(){}); }); }
+});
+listo(function(){
+  var v = document.getElementById("envivo-loop");
+  if (!v) return;
+  var c = navigator.connection || {};
+  if (quieto || c.saveData) return;
+  var sec = v.parentNode, cargado = false, pend = false;
+  v.addEventListener("playing", function(){ v.classList.add("lista"); });
+  function mira(){
+    pend = false;
+    var r = sec.getBoundingClientRect(), cerca = r.top < innerHeight * 1.6 && r.bottom > -innerHeight * .5;
+    if (cerca && !cargado){ cargado = true; v.src = v.getAttribute("data-src"); }
+    if (!cargado) return;
+    var visible = r.top < innerHeight && r.bottom > 0;
+    if (visible && v.paused){ v.muted = true; var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); }
+    else if (!visible && !v.paused){ v.pause(); }
+  }
+  addEventListener("scroll", function(){ if (!pend){ pend = true; requestAnimationFrame(mira); } }, {passive: true});
+  mira();
+});
+listo(function(){
+  var en = document.getElementById("entrada"); if (!en) return;
+  function entra(){
+    en.classList.add("sale");
+    document.documentElement.classList.remove("intro");
+    scrollTo(0, 0);
+    setTimeout(function(){ en.hidden = true; en.classList.remove("sale"); }, 500);
+  }
+  document.getElementById("entrada-si").addEventListener("click", function(){
+    var a = document.getElementById("audio-reel"), b = document.getElementById("sonido");
+    if (a && a.paused && b) b.click();
+    entra();
+  });
+  document.getElementById("entrada-no").addEventListener("click", function(){
+    var a = document.getElementById("audio-reel"), b = document.getElementById("sonido");
+    if (a && !a.paused && b) b.click();
+    entra();
+  });
 });
 listo(function(){
   var f = document.getElementById("f");
