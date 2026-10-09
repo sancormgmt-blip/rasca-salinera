@@ -37,7 +37,10 @@
   --linea-suave:rgba(233,214,198,.16);
   --error:#FF9C8A;
   --ease:cubic-bezier(.23,1,.32,1);
-  --r:10px;
+  --r:6px;
+  --ritmo:96px;
+  --crema-72:rgba(244,239,230,.72);
+  --filete:rgba(235,179,20,.32);
   --g:clamp(18px,5.5vw,44px);
   --barra:76px;
   --t1:clamp(3.2rem,14vw,5.6rem);
@@ -63,10 +66,10 @@ p{margin:0}
 .accion:focus-visible{outline:3px solid var(--crema);outline-offset:3px}
 .accion[disabled]{opacity:.6;cursor:progress}
 .ancha{width:100%}
-.sec{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0;border:0;background:none;color:var(--crema);font:800 1rem/1 "Archivo",sans-serif;cursor:pointer;text-decoration:underline;text-decoration-color:var(--oro);text-underline-offset:5px}
+.sec{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0;border:0;background:none;color:var(--crema);font:800 1.0625rem/1 "Archivo",sans-serif;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(244,239,230,.4);text-underline-offset:5px}
 .sec:focus-visible{outline:2px solid var(--oro);outline-offset:4px;border-radius:2px}
 .sec svg{flex:none}
-.enlace{display:inline-block;padding:12px 0;margin:-12px 0;color:var(--oro);text-underline-offset:3px}
+.enlace{display:inline-block;padding:12px 0;margin:-12px 0;color:var(--crema);text-decoration-color:rgba(244,239,230,.4);text-underline-offset:3px}
 .hero{position:relative}
 .hero__escena{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate}
 .hero__fondo{position:absolute;inset:0 0 auto 0;height:min(177.78vw,100svh);z-index:-2}
@@ -106,203 +109,188 @@ p{margin:0}
   .hero__texto{max-width:620px;margin-left:max(var(--g),calc((100vw - 1120px)/2))}
   .hero.anima .hero__flyer{inset:0 auto 0 50%;width:min(56.25vh,46vw);transform:translateX(-50%) scale(calc(1 - var(--p,0) * .16));transform-origin:50% 40%}
 }
-.palcos{position:relative;padding:64px 0 64px;overflow:hidden;isolation:isolate;background:var(--vino-3)}
-.palcos__foto{display:block;position:relative;height:72svh;min-height:420px;margin:-64px 0 24px}
+b,strong{font-weight:800}
+main p,main dd{max-width:46ch}
+section{position:relative}
+.cabeza{display:block}
+.cabeza .rombos{margin:0 0 16px}
+.rol{display:block;font-weight:800;font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--crema-72)}
+.cabeza h2,.cabeza .rotulo{margin-top:8px;font-size:var(--t2)}
+.cabeza .bajada{margin-top:14px;max-width:34ch;color:var(--crema)}
+.sobre-foto{text-shadow:0 2px 16px rgba(14,6,6,.9)}
+.sobre-foto .rol{color:var(--crema)}
+.foto img,.foto video{filter:sepia(.22) saturate(1.1) contrast(1.05) brightness(.94)}
+.foto video{opacity:0;transition:opacity .8s var(--ease)}
+.foto video.lista{opacity:1}
+.palcos{padding:0 0 64px;background:linear-gradient(to bottom,var(--vino),var(--vino-3) 10%,var(--vino-3) 88%,var(--vino))}
+.palcos__foto{display:block;position:relative;height:64svh;min-height:400px;margin:0 0 -40px;overflow:hidden}
 .palcos__foto picture{display:block;height:100%}
-.palcos__foto figcaption{position:absolute;right:var(--g);bottom:16px;z-index:1;font-size:.75rem;color:var(--tenue)}
 .palcos__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
-.palcos__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:40%;background:linear-gradient(to bottom,rgba(57,0,7,0),var(--vino-3))}
-.palcos h2{font-size:var(--t2)}
-.palcos__bajada{margin-top:14px;max-width:30rem;color:var(--crema)}
-.cartel{list-style:none;margin:36px 0 0;padding:0}
-.cartel li{padding:22px 0;border-top:1px solid var(--linea)}
-.cartel li:last-child{border-bottom:1px solid var(--linea)}
-.cartel .primero .nombre{font-size:var(--t1)}
-.cartel .cerca{display:block;margin-top:6px;color:var(--oro);font-size:1rem}
-.cartel .puesto{display:block;margin-top:4px;color:var(--tenue);font-size:1rem}
-.cartel .apartar{display:inline-flex;align-items:center;min-height:44px;margin-top:8px;padding:0 16px;border:1px solid var(--oro);border-radius:var(--r);color:var(--oro);font-weight:800;text-decoration:none}
-.cartel .apartar:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
-.cartel .nombre{display:block;font-size:clamp(2rem,10.5vw,3.6rem)}
-.cartel .fila{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:4px 16px;margin-top:10px}
-.cartel .precio{font-weight:800;font-size:1.5rem;color:var(--oro)}
-.cartel .detalle{font-size:1rem;color:var(--texto)}
-.palcos__como{margin-top:24px;max-width:34rem}
+.palcos__foto::before,.palcos__foto::after{content:"";position:absolute;left:0;right:0;pointer-events:none;z-index:1}
+.palcos__foto::before{top:0;height:18%;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0))}
+.palcos__foto::after{bottom:0;height:45%;background:linear-gradient(to bottom,rgba(57,0,7,0),var(--vino-3))}
+.palcos__foto figcaption{position:absolute;left:var(--g);bottom:56px;z-index:2;font-size:.875rem;color:var(--crema-72)}
+.palcos .env{position:relative;z-index:2;max-width:600px}
+.palcos .cabeza h2{font-size:var(--t1);line-height:.9}
+.palcos__faltan{margin-top:14px;color:var(--crema-72)}
+.palcos__lista{display:grid;gap:16px;margin-top:32px}
+.marco{position:relative;padding:24px 20px;border:1px solid var(--filete);border-radius:var(--r);background:linear-gradient(180deg,rgba(57,0,7,.55),rgba(26,11,11,.9))}
+.marco::before,.marco::after{content:"";position:absolute;top:-1px;width:14px;height:14px;border-top:1px solid var(--oro);pointer-events:none}
+.marco::before{left:-1px;border-left:1px solid var(--oro);border-top-left-radius:var(--r)}
+.marco::after{right:-1px;border-right:1px solid var(--oro);border-top-right-radius:var(--r)}
+.palco__arriba{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.palco__fila{padding-top:4px;font-weight:800;font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--crema-72);max-width:16ch}
+.plano{flex:none;width:120px;height:96px}
+.plano .tarima{fill:rgba(244,239,230,.55)}
+.plano .publico{fill:rgba(244,239,230,.08)}
+.plano .tramo{fill:none;stroke:rgba(244,239,230,.28);stroke-width:1}
+.plano .jure{stroke-dasharray:2 2}
+.plano .activa{fill:var(--oro);stroke:none}
+.plano text{font:800 7px "Archivo",sans-serif;fill:rgba(26,11,11,.9);letter-spacing:.06em}
+.palco__nombre{margin-top:12px;font-size:var(--t2)}
+.palco__precio{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin-top:12px}
+.palco__precio .precio{font-weight:800;font-size:var(--t3);color:var(--oro)}
+.palco__precio small{font-size:.875rem;color:var(--crema-72)}
+.palco__anticipo{margin-top:8px;color:var(--crema)}
+.palco__persona{margin-top:2px;font-size:.875rem;color:var(--crema-72)}
+.palco__linea{height:1px;margin:20px 0;background:var(--linea-suave)}
+.palco--rey{border-color:var(--oro);background:radial-gradient(120% 80% at 50% 0%,rgba(235,179,20,.14),transparent 60%),linear-gradient(180deg,rgba(57,0,7,.7),rgba(26,11,11,.92))}
+.palco--rey .palco__nombre{font-size:var(--t1);line-height:.9}
+.palco--rey .palco__fila{color:var(--crema)}
+.palco__cerca{margin-top:8px;font-weight:800;color:var(--crema)}
+.palco__rombo{position:absolute;top:-6px;left:50%;width:56px;height:12px;transform:translateX(-50%);background:var(--vino-3);color:var(--oro)}
+.palco__rombo svg{display:block;width:56px;height:12px}
+.palco__abajo::before,.palco__abajo::after{content:"";position:absolute;bottom:-1px;width:14px;height:14px;border-bottom:1px solid var(--oro);pointer-events:none}
+.palco__abajo::before{left:-1px;border-left:1px solid var(--oro);border-bottom-left-radius:var(--r)}
+.palco__abajo::after{right:-1px;border-right:1px solid var(--oro);border-bottom-right-radius:var(--r)}
+.palcos__como{margin-top:32px;color:var(--crema-72)}
 .palcos__como b{color:var(--crema)}
-.palcos__accion{margin-top:24px}
-.palcos__pie{margin-top:14px;font-size:1rem;color:var(--tenue)}
-@media (min-width:860px){
-  .palcos .env{max-width:820px}
-  .palcos__foto{height:640px}
-}
-.dos{display:grid;gap:0}
-.artista{position:relative;min-height:72svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.artista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;z-index:-2}
-.artista::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,0) 50%,rgba(26,11,11,.85) 80%,var(--vino))}
-.artista__texto{padding:0 var(--g) 40px}
-.artista h2{font-size:var(--t2)}
-.artista--principal{min-height:100svh}
-.artista--principal h2{font-size:var(--t1)}
-.artista--principal .rol,.artista .rol{display:block;margin-bottom:8px;font-size:1rem;color:var(--oro)}
-.artista p{margin-top:10px;color:var(--crema);max-width:26rem}
-@media (min-width:860px){
-  .dos{grid-template-columns:1.6fr 1fr}
-  .artista{min-height:92vh}
-}
+.sueltas{padding:0 0 var(--ritmo);background:var(--vino)}
+.sueltas .env{max-width:600px}
+.sueltas .cabeza{padding-top:40px;border-top:1px solid var(--linea-suave)}
+.sueltas .cabeza h2{font-size:var(--t3);line-height:1.15;text-transform:none;letter-spacing:0}
+.localidades{list-style:none;margin:24px 0 0;padding:0}
+.localidades li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:16px 0;border-top:1px solid var(--linea-suave)}
+.localidades li:last-child{border-bottom:1px solid var(--linea-suave)}
+.localidades .nombre{font-size:var(--t3)}
+.localidades .detalle{display:block;margin-top:4px;font-size:.875rem;color:var(--crema-72)}
+.localidades .precio{font-weight:800;font-size:var(--t3);color:var(--crema);white-space:nowrap}
+.sueltas__silla{margin-top:16px;color:var(--crema-72)}
+.sueltas .sec{margin-top:8px}
+.reloj{display:none;margin-top:14px;color:var(--crema)}
+.reloj.vista{display:block}
+.dos{display:grid;gap:0;background:var(--vino)}
+.artista{position:relative;display:block;overflow:hidden;isolation:isolate;background:var(--vino)}
+.artista picture{display:block;position:relative;aspect-ratio:4/5}
+.artista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;z-index:0}
+.artista::before{content:"";position:absolute;inset:0 0 auto 0;height:120px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0))}
+.artista::after{content:"";position:absolute;inset:auto 0 0 0;aspect-ratio:4/5;z-index:0;pointer-events:none;background:linear-gradient(to bottom,rgba(26,11,11,0) 45%,rgba(26,11,11,.9) 80%,var(--vino) 94%)}
+.artista__texto{position:relative;z-index:1;margin-top:-96px;padding:0 var(--g) var(--ritmo)}
+.artista--principal .artista__texto{padding-bottom:64px}
+.artista--principal .cabeza h2{font-size:var(--t1);line-height:.9}
+.artista .bajada{margin-top:10px}
+.envivo{min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate;background:var(--vino)}
+.envivo__poster,.envivo__poster img,.envivo>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.envivo__poster,.envivo>video{z-index:-2}
+.envivo::before{content:"";position:absolute;inset:0 0 auto 0;height:120px;z-index:0;pointer-events:none;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0))}
+.envivo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,0) 30%,rgba(26,11,11,.7) 66%,var(--vino) 96%)}
+.envivo__texto{position:relative;z-index:1;width:100%;max-width:1120px;margin:0 auto;padding:0 var(--g) var(--ritmo)}
+.envivo .sec{margin-top:16px}
+.saludo{display:flex;align-items:center;gap:14px;width:100%;max-width:420px;margin-top:16px;padding:10px 14px 10px 10px;border:1px solid var(--linea-suave);border-radius:var(--r);background:rgba(26,11,11,.72);color:var(--crema);font:400 1.0625rem/1.3 "Archivo",sans-serif;text-align:left;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.saludo__mini{position:relative;flex:none;width:64px;height:80px;overflow:hidden;border-radius:4px;background:var(--vino-2)}
+.saludo__mini img,.saludo__mini video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.saludo__mini video{opacity:0;transition:opacity .6s var(--ease)}
+.saludo__mini video.lista{opacity:1}
+.saludo span{flex:1}
+.saludo b{display:block}
+.saludo small{display:block;margin-top:4px;color:var(--crema-72);font-size:.875rem}
+.saludo>svg{color:var(--oro);flex:none}
+.saludo:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.llegar{display:block;overflow:hidden;isolation:isolate;background:var(--vino)}
+.llegar__foto{position:relative;display:block;aspect-ratio:4/5;max-height:88svh;overflow:hidden}
+.llegar__foto img,.llegar__foto video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.llegar__foto::before,.llegar__foto::after{content:"";position:absolute;left:0;right:0;z-index:1;pointer-events:none}
+.llegar__foto::before{top:0;height:120px;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0))}
+.llegar__foto::after{bottom:0;height:55%;background:linear-gradient(to bottom,rgba(26,11,11,0),var(--vino))}
+.llegar__texto{position:relative;z-index:1;margin-top:-140px;padding-bottom:var(--ritmo)}
+.datos{margin:32px 0 0;display:grid;grid-template-columns:auto 1fr;gap:12px 20px}
+.datos dt{color:var(--crema-72)}
+.datos dd{margin:0;color:var(--crema)}
+.concurso{padding:0 0 var(--ritmo);background:var(--vino)}
+.concurso__foto{display:block;position:relative;height:200px;overflow:hidden}
+.concurso__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.concurso__foto::before,.concurso__foto::after{content:"";position:absolute;left:0;right:0;pointer-events:none;z-index:1}
+.concurso__foto::before{top:0;height:40%;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0))}
+.concurso__foto::after{bottom:0;height:60%;background:linear-gradient(to bottom,rgba(26,11,11,0),var(--vino))}
+.concurso .env{position:relative;z-index:2;max-width:600px;margin-top:-32px}
+.concurso__plegado{margin-top:32px}
+.concurso__plegado>summary{display:flex;align-items:center;justify-content:center;min-height:56px;border:1px solid rgba(244,239,230,.45);border-radius:var(--r);color:var(--crema);font-weight:800;cursor:pointer;list-style:none}
+.concurso__plegado>summary::-webkit-details-marker{display:none}
+.concurso__plegado>summary:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.concurso__plegado[open]>summary{display:none}
 form{max-width:560px}
 .campo{margin-bottom:20px}
-.campo>label,.campo legend{display:block;margin-bottom:8px;font-weight:800;font-size:1rem;color:var(--crema)}
-.ayuda{display:block;margin-top:6px;font-size:1rem;color:var(--tenue)}
-fieldset{border:0;margin:0 0 20px;padding:0}
-input[type=text],input[type=tel],input[type=email],select{width:100%;min-height:54px;padding:0 14px;border:1px solid rgba(233,214,198,.5);border-radius:var(--r);background:var(--vino-2);color:var(--crema);font:400 1.0625rem/1 "Archivo",sans-serif;transition:border-color .2s var(--ease)}
-select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--oro) 50%),linear-gradient(135deg,var(--oro) 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
-input::placeholder{color:#9A8270}
-input:hover,select:hover{border-color:rgba(233,214,198,.75)}
-input:focus-visible,select:focus-visible{outline:2px solid var(--oro);outline-offset:1px;border-color:var(--oro)}
-[aria-invalid=true]{border-color:var(--error)!important}
-.check{display:flex;gap:12px;align-items:center;min-height:44px;margin-bottom:12px;font-size:.9375rem;cursor:pointer}
-.check input{width:22px;height:22px;margin:0;accent-color:var(--oro);flex:none}
-.check a{color:var(--oro)}
-#err{display:none;margin:0 0 16px;padding:12px 14px;border-radius:var(--r);background:rgba(255,156,138,.1);color:var(--error);font-size:.9375rem}
-#err.vista{display:block}
-.listo{display:none;margin-top:28px;max-width:560px;padding:24px;border-radius:var(--r);background:var(--vino-2);border:1px solid var(--oro)}
-.listo.vista{display:block}
-.listo h3{font-size:1.75rem}
-.listo p{margin-top:10px}
-.listo .accion{margin-top:18px}
-.reloj{display:none;margin-top:14px;color:var(--oro)}
-.reloj.vista{display:block}
-.localidades{list-style:none;margin:28px 0 0;padding:0;max-width:560px}
-.localidades li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:18px 0;border-top:1px solid var(--linea)}
-.localidades li:last-child{border-bottom:1px solid var(--linea)}
-.localidades .nombre{font-size:1.875rem}
-.localidades .detalle{display:block;margin-top:6px;font-size:1rem;color:var(--tenue)}
-.localidades .precio{font-weight:800;font-size:1.5rem;color:var(--oro);white-space:nowrap}
-.envivo{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.envivo__poster,.envivo__poster img,.envivo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.envivo__poster,.envivo video{z-index:-2}
-.envivo video{opacity:0;transition:opacity .8s var(--ease)}
-.envivo video.lista{opacity:1}
-.envivo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,.2),rgba(26,11,11,0) 30%,rgba(26,11,11,.7) 68%,var(--vino) 96%)}
-.envivo__texto{width:100%;max-width:1120px;margin:0 auto;padding:0 var(--g) 40px}
-.envivo .rol,.llegar .rol{display:block;margin-bottom:8px;font-size:1rem;color:var(--oro)}
-.envivo h2{font-size:var(--t2)}
-.envivo .sec{margin-top:14px}
-.saludo{display:flex;align-items:center;gap:14px;width:100%;max-width:420px;margin-top:20px;padding:10px 14px 10px 10px;border:1px solid var(--linea);border-radius:var(--r);background:rgba(26,11,11,.7);color:var(--crema);font:400 1rem/1.3 "Archivo",sans-serif;text-align:left;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-.saludo img{width:52px;height:92px;object-fit:cover;border-radius:6px;flex:none}
-.saludo span{flex:1}
-.saludo b{display:block;font-weight:800}
-.saludo small{display:block;margin-top:4px;color:var(--tenue);font-size:.9375rem}
-.saludo svg{color:var(--oro);flex:none}
-.saludo:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
-.concurso{position:relative;padding:0 0 64px;background:var(--vino)}
-.concurso__foto{display:block;position:relative;height:40svh;min-height:240px}
-.concurso__foto img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
-.concurso__foto::after{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:linear-gradient(to bottom,rgba(26,11,11,0),var(--vino))}
-.concurso .env{position:relative;margin-top:-64px}
-.concurso .rol{display:block;margin-bottom:8px;color:var(--oro);font-size:1rem}
-.concurso h2{font-size:var(--t2)}
-.concurso__bajada{margin-top:14px;max-width:32rem;color:var(--crema)}
-.concurso form{margin-top:28px;max-width:560px}
+.campo>label{display:block;margin-bottom:8px;font-weight:800;color:var(--crema)}
+.ayuda{display:block;margin-top:6px;font-size:.875rem;color:var(--crema-72)}
+input[type=text],input[type=tel],input[type=email]{width:100%;min-height:54px;padding:0 14px;border:1px solid rgba(233,214,198,.5);border-radius:var(--r);background:var(--vino-2);color:var(--crema);font:400 1.0625rem/1 "Archivo",sans-serif;transition:border-color .2s var(--ease)}
 textarea{width:100%;padding:14px;border:1px solid rgba(233,214,198,.5);border-radius:var(--r);background:var(--vino-2);color:var(--crema);font:400 1.0625rem/1.5 "Archivo",sans-serif;resize:vertical}
-textarea:focus-visible{outline:2px solid var(--oro);outline-offset:1px;border-color:var(--oro)}
-.terminos{margin-top:28px;text-align:left}
-.terminos details{border-top:1px solid var(--linea-suave)}
-.terminos details:last-child{border-bottom:1px solid var(--linea-suave)}
-.terminos summary{display:flex;justify-content:space-between;gap:16px;min-height:52px;align-items:center;cursor:pointer;font-weight:800;color:var(--tenue);list-style:none}
-.terminos summary::-webkit-details-marker{display:none}
-.terminos summary::after{content:"+";color:var(--oro)}
-.terminos summary:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
-.legal-txt{padding:0 0 16px;font-size:.9375rem;color:var(--texto)}
-.legal-txt p+p{margin-top:8px}
-.llegar{position:relative;min-height:96svh;display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.llegar__foto,.llegar__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%}
-.llegar__foto{z-index:-2}
-.llegar::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(26,11,11,.1),rgba(26,11,11,0) 25%,rgba(26,11,11,.8) 58%,var(--vino) 80%)}
-.llegar__texto{padding-bottom:40px}
-.llegar h2{font-size:var(--t2)}
-.datos{margin:22px 0 0;display:grid;grid-template-columns:auto 1fr;gap:12px 20px}
-.datos dt{color:var(--tenue)}
-.datos dd{margin:0;color:var(--crema)}
-.cierre{position:relative;padding:96px 0 64px;overflow:hidden;isolation:isolate;text-align:center}
-.cierre__fondo,.cierre__fondo img{position:absolute;inset:0 0 auto 0;width:100%;height:110svh;object-fit:cover;object-position:50% 40%}
-.cierre__fondo{z-index:-2}
-.cierre::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,.35) 22%,rgba(26,11,11,.55) 50%,var(--vino) 78%)}
-.cierre h2{font-size:var(--t1);line-height:.92}
-.cierre__bajada{margin:16px auto 0;max-width:28rem;color:var(--crema)}
-.cierre__accion{margin-top:28px;max-width:420px}
-.cierre__mesa{margin-top:18px}
-.cierre .preguntas{margin-top:56px;text-align:left}
-.preguntas{margin-top:40px}
-.preguntas details{border-top:1px solid var(--linea-suave)}
-.preguntas details:last-child{border-bottom:1px solid var(--linea-suave)}
-.preguntas summary{display:flex;justify-content:space-between;gap:16px;min-height:58px;align-items:center;cursor:pointer;font-weight:800;color:var(--crema);list-style:none}
-.preguntas summary::-webkit-details-marker{display:none}
-.preguntas summary::after{content:"+";font-size:1.5rem;color:var(--oro);transition:transform .2s var(--ease)}
-.preguntas details[open] summary::after{transform:rotate(45deg)}
-.preguntas summary:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
-.preguntas details p{padding:0 0 18px;font-size:1rem}
-@media (min-width:860px){
-  .cierre .env{max-width:760px}
-}
-.palcos{background:linear-gradient(to bottom,var(--vino),var(--vino-3) 14%,var(--vino-3) 86%,var(--vino))}
-.palcos .env,.concurso .env{max-width:600px;margin-inline:auto}
-.palcos .env>h2,.palcos__bajada,.concurso .rol,.concurso h2,.concurso__bajada{text-align:center;margin-inline:auto}
-.palcos__como,.palcos__pie{text-align:center;margin-inline:auto}
-.cartel li{text-align:left}
-.conector{display:flex;justify-content:center;padding:28px 0 0}
-.conector svg{width:132px;height:12px}
-.envivo,.llegar,.artista,.hero__escena{background:var(--vino)}
-.llegar::before,.envivo::before,.concurso__foto::before{content:"";position:absolute;inset:0 0 auto 0;height:90px;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,0));z-index:0;pointer-events:none}
-.artista,.artista--principal{min-height:0;display:block;background:var(--vino)}
-.artista picture{display:block;position:relative;aspect-ratio:4/5}
-.artista img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.artista::after{inset:auto 0 0 0;height:auto;aspect-ratio:4/5;background:linear-gradient(to bottom,rgba(26,11,11,0) 55%,var(--vino) 99%)}
-.artista__texto{position:relative;z-index:1;margin-top:-120px;padding:0 var(--g) 48px}
-.llegar{min-height:0;display:block}
-.llegar__foto{position:relative;display:block;aspect-ratio:9/16;max-height:100svh}
-.llegar__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
-.llegar::after{inset:0 0 auto 0;height:min(177.78vw,100svh);background:linear-gradient(to bottom,rgba(26,11,11,.1),rgba(26,11,11,0) 25%,rgba(26,11,11,.75) 72%,var(--vino) 99%)}
-.llegar__texto{position:relative;z-index:1;margin-top:-260px}
-@media (min-width:860px){.artista picture{aspect-ratio:auto;height:92vh}.artista::after{aspect-ratio:auto;height:92vh}.llegar__foto{aspect-ratio:auto;height:92vh;max-height:none}}
-b,strong{font-weight:800}
-.cartel .nombre{font-size:var(--t2)}
-.cartel .primero .nombre{font-size:var(--t1)}
-.localidades .nombre{font-size:var(--t3)}
+input::placeholder{color:#9A8270}
+input:hover,textarea:hover{border-color:rgba(233,214,198,.75)}
+input:focus-visible,textarea:focus-visible{outline:2px solid var(--oro);outline-offset:1px;border-color:var(--oro)}
+[aria-invalid=true]{border-color:var(--error)!important}
+.check{display:flex;gap:12px;align-items:center;min-height:44px;margin-bottom:12px;font-size:.875rem;cursor:pointer}
+.check input{width:22px;height:22px;margin:0;accent-color:var(--oro);flex:none}
+.check a{color:var(--crema)}
+#err{display:none;margin:8px 0 0;padding:12px 14px;border-radius:var(--r);background:rgba(255,156,138,.1);color:var(--error);font-size:.875rem}
+#err.vista{display:block}
+.listo{display:none;margin-top:32px;max-width:560px;padding:24px;border-radius:var(--r);background:var(--vino-2);border:1px solid var(--filete)}
+.listo.vista{display:block}
 .listo h3{font-size:var(--t3)}
-main p,main dd{max-width:46ch}
-.palcos__bajada,.palcos__como,.palcos__pie,.concurso__bajada,.cierre__bajada{margin-inline:auto}
-.rol,.envivo .rol,.llegar .rol,.concurso .rol,.artista--principal .rol,.artista .rol,.cartel .cerca{color:var(--crema);font-weight:800;letter-spacing:.04em}
-.hero__lugar{color:var(--crema)}
-.hero__texto{text-shadow:0 2px 18px rgba(14,6,6,.95),0 0 2px rgba(14,6,6,.6)}
-.artista::after{background:linear-gradient(to bottom,rgba(26,11,11,0) 40%,rgba(26,11,11,.9) 78%,var(--vino) 92%)}
-.artista__texto{margin-top:-72px}
-.artista--principal .artista__texto{margin-top:-28px}
-.artista__texto{text-shadow:0 2px 16px rgba(14,6,6,.9)}
-.artista .rol,.envivo .rol,.llegar .rol{display:inline-block;padding:5px 12px;border-radius:999px;background:rgba(14,6,6,.78)}
-#err{margin:8px 0 0}
-@media (min-width:860px){
-  .artista picture{aspect-ratio:4/5;height:auto}
-  .artista::after{aspect-ratio:4/5;height:auto}
-  .dos{grid-template-columns:1fr 1fr;max-width:1120px;margin:0 auto;gap:24px}
-  .llegar__foto{height:auto;aspect-ratio:16/9;max-height:80vh}
-  .llegar::after{height:80vh}
-  .palcos__foto{height:52vh}
-}
-.urgencia{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:20px auto 0;max-width:none}
-.urgencia span{padding:8px 14px;border:1px solid var(--linea);border-radius:999px;background:rgba(14,6,6,.45);color:var(--crema);font-size:.9375rem}
-.urgencia b{color:var(--oro)}
-.entradas{margin-top:40px;padding:24px 20px;border:1px solid var(--linea);border-radius:var(--r);background:rgba(14,6,6,.35);text-align:center}
-.entradas__t{font-size:var(--t3);font-weight:800;color:var(--crema)}
-.entradas .localidades{margin:16px auto 0;text-align:left}
-.entradas__tickeo{margin-top:16px}
-footer{padding:40px 0 calc(var(--barra) + 40px);font-size:.8125rem;line-height:1.6;color:var(--tenue);background:var(--vino-2)}
-footer img{width:180px;height:auto;margin-bottom:18px}
+.listo p{margin-top:10px}
+.listo .accion{margin-top:16px}
+.cierre{padding:128px 0 var(--ritmo);overflow:hidden;isolation:isolate;text-align:center;background:var(--vino)}
+.cierre__fondo,.cierre__fondo img,.cierre__fondo video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.cierre__fondo{z-index:-2}
+.cierre::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,var(--vino),rgba(26,11,11,.15) 26%,rgba(26,11,11,.5) 60%,var(--vino) 96%)}
+.cierre .cabeza .rombos{margin-inline:auto}
+.cierre .cabeza h2{font-size:var(--t1);line-height:.92}
+.cierre .cabeza .bajada{margin-inline:auto}
+.cierre__accion{margin-top:32px;max-width:420px}
+.cierre__mesa{margin-top:16px}
+.dudas{padding:0 0 var(--ritmo);background:var(--vino)}
+.dudas .env{max-width:600px}
+.preguntas{margin-top:32px}
+.preguntas details,.terminos details{border-top:1px solid var(--linea-suave)}
+.preguntas details:last-child,.terminos details:last-child{border-bottom:1px solid var(--linea-suave)}
+.preguntas summary,.terminos summary{display:flex;justify-content:space-between;gap:16px;min-height:56px;align-items:center;cursor:pointer;font-weight:800;color:var(--crema);list-style:none}
+.terminos summary{color:var(--crema-72)}
+.preguntas summary::-webkit-details-marker,.terminos summary::-webkit-details-marker{display:none}
+.preguntas summary::after,.terminos summary::after{content:"+";font-size:1.5rem;font-weight:400;color:var(--tenue);transition:transform .2s var(--ease)}
+.preguntas details[open] summary::after,.terminos details[open] summary::after{transform:rotate(45deg)}
+.preguntas summary:focus-visible,.terminos summary:focus-visible{outline:2px solid var(--oro);outline-offset:2px}
+.preguntas details p{padding:0 0 16px}
+.terminos{margin-top:40px}
+.legal-txt{padding:0 0 16px;font-size:.875rem;color:var(--texto)}
+.legal-txt p+p{margin-top:8px}
+footer{padding:40px 0 calc(var(--barra) + 40px);font-size:.875rem;line-height:1.6;color:var(--tenue);background:var(--vino);border-top:1px solid var(--linea-suave)}
+footer img{width:180px;height:auto;margin-bottom:16px}
 footer .legal{color:var(--texto);font-weight:800}
 footer p+p{margin-top:8px}
+.sonido{transition:transform .3s var(--ease),opacity .3s var(--ease)}
+.sonido.fuera{transform:translateY(-72px);opacity:0;pointer-events:none}
+@media (min-width:860px){
+  .palcos__foto{height:72vh}
+  .palcos .env,.sueltas .env,.concurso .env,.dudas .env{max-width:680px}
+  .palcos__lista{grid-template-columns:1fr 1fr}
+  .palco--rey{grid-column:1/-1}
+  .dos{grid-template-columns:1fr 1fr;max-width:1120px;margin:0 auto;gap:24px}
+  .llegar__foto{aspect-ratio:16/9;max-height:80vh}
+  .cierre .env{max-width:760px}
+}
 .barra{position:fixed;left:0;right:0;bottom:0;z-index:20;display:flex;gap:10px;padding:10px var(--g) calc(10px + env(safe-area-inset-bottom));background:rgba(26,11,11,.92);border-top:1px solid var(--linea);transform:translateY(110%);transition:transform .3s var(--ease)}
 .barra.vista{transform:none}
 .barra .accion{flex:1}
-.barra__wa{display:inline-flex;align-items:center;justify-content:center;width:56px;min-height:56px;border:1px solid var(--oro);border-radius:var(--r);color:var(--oro)}
+.barra__wa{display:inline-flex;align-items:center;justify-content:center;width:56px;min-height:56px;border:1px solid rgba(244,239,230,.45);border-radius:var(--r);color:var(--crema)}
 .barra__wa:focus-visible{outline:2px solid var(--crema);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){
   .barra{transition:none}
@@ -390,56 +378,81 @@ dialog video{width:100%;height:100%;object-fit:contain}
 
 <section class="palcos" id="palcos" aria-labelledby="t-palcos">
   <figure class="palcos__foto">
-    <picture><source type="image/avif" srcset="assets/pabellon-768.avif"><img src="assets/pabellon-768.webp" width="768" height="1376" alt="Ilustración: un palco cubierto frente a la tarima, dentro del pabellón con carpa." loading="lazy"></picture>
-    <figcaption>Imagen de referencia del montaje</figcaption>
+    <picture><source type="image/avif" srcset="assets/pabellon-768.avif"><img src="assets/pabellon-768.webp" width="768" height="1376" alt="Ilustración de cómo se proyecta un palco cubierto frente a la tarima, dentro del pabellón." loading="lazy"></picture>
+    <figcaption>Así se proyecta el montaje del 5 de diciembre</figcaption>
   </figure>
   <div class="env">
-    <div class="conector" aria-hidden="true"><svg><use href="#rombos"/></svg></div>
-    <h2 class="rotulo" id="t-palcos">Tu palco cubierto, frente a la tarima.</h2>
-    <p class="palcos__bajada">La mejor vista de la noche, para tu gente o para el cierre de año de tu empresa. <b style="color:var(--crema)">Las 10 sillas son de tu grupo.</b> En la localidad hay venta de licor y comida, que se paga aparte.</p>
-    <p class="urgencia"><span><b>24</b> palcos por categoría</span><span>Faltan <b id="faltan">57</b> días</span></p>
-    <ul class="cartel">
-      <li class="primero"><span class="nombre rotulo">El Rey del Chupe</span><span class="cerca">El más cerca de la tarima</span><span class="fila"><span class="precio" data-precio="reyDelChupe">$3.357.000</span><span class="detalle">10 personas · <span data-anticipo="reyDelChupe">apartas con $1.007.100</span></span></span><span class="puesto">o tu puesto: $335.700 por persona, en Tickeo</span><a class="apartar" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Rey%20del%20Chupe%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Rey del Chupe para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar este palco</a></li>
-      <li><span class="nombre rotulo">El Intenso</span><span class="fila"><span class="precio" data-precio="elIntenso">$2.238.000</span><span class="detalle">10 personas · <span data-anticipo="elIntenso">apartas con $671.400</span></span></span><span class="puesto">o tu puesto: $223.800 por persona, en Tickeo</span><a class="apartar" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Intenso%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Intenso para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar este palco</a></li>
-      <li><span class="nombre rotulo">El Pegao</span><span class="fila"><span class="precio" data-precio="elPegao">$1.454.700</span><span class="detalle">10 personas · <span data-anticipo="elPegao">apartas con $436.410</span></span></span><span class="puesto">o tu puesto: $145.470 por persona, en Tickeo</span><a class="apartar" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Pegao%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Pegao para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar este palco</a></li>
-    </ul>
-    <p class="palcos__como"><b>Lo apartas con el 30% por WhatsApp.</b> El saldo se paga a más tardar el <b>15 de noviembre</b>, 20 días antes del evento; si no llega, el anticipo no se devuelve. Te confirmamos el palco y su lugar exacto antes de pagar. <a class="enlace" href="#terminos">Términos de la reserva</a></p>
-    <a class="accion ancha palcos__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Aparta tu palco</a>
-    <div class="entradas" id="otras">
-      <h3 class="entradas__t">¿Vienes por tu cuenta?</h3>
-      <p class="reloj" id="reloj" aria-live="polite"></p>
-      <ul class="localidades">
-        <li><span><span class="nombre rotulo">VIP</span><span class="detalle">Servicio incluido.</span></span><span class="precio" data-precio="vip">$123.090</span></li>
-        <li><span><span class="nombre rotulo">Platino</span><span class="detalle">De pie. Servicio incluido.</span></span><span class="precio" data-precio="platino">$100.710</span></li>
-      </ul>
-      <a class="sec entradas__tickeo" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Compra tu entrada en Tickeo</a>
+    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Palco cubierto · 10 sillas</p><h2 class="rotulo" id="t-palcos">Frente a la tarima.</h2><p class="bajada">La mejor vista de la noche, para ti y tu gente. <b>Las 10 sillas son de tu grupo.</b> En la localidad hay venta de licor y comida, que se paga aparte.</p><p class="palcos__faltan">24 palcos por categoría · faltan <b id="faltan">57</b> días</p></div>
+    <div class="palcos__lista">
+      <article class="palco marco palco--rey" data-fila="1" aria-labelledby="p-reyDelChupe"><span class="palco__rombo" aria-hidden="true"><svg viewBox="0 0 132 12"><use href="#rombos"/></svg></span><span class="palco__abajo" aria-hidden="true"></span>
+        <div class="palco__arriba"><p class="palco__fila">Fila 1 de 4</p><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Rey del Chupe está en la fila 1 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo activa" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
+        <h3 class="rotulo palco__nombre" id="p-reyDelChupe">El Rey del Chupe</h3>
+        <p class="palco__cerca">El más cerca de la tarima</p>
+        <p class="palco__precio"><span class="precio" data-precio="reyDelChupe"></span><small>por palco · 10 sillas</small></p>
+        <p class="palco__anticipo">Lo <span data-anticipo="reyDelChupe"></span> (30%)</p>
+        <p class="palco__persona">≈ <span data-persona="reyDelChupe"></span> por persona</p>
+        <div class="palco__linea" aria-hidden="true"></div>
+        <a class="accion ancha" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Rey%20del%20Chupe%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Rey del Chupe para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar El Rey del Chupe</a>
+      </article>
+      <article class="palco marco" data-fila="2" aria-labelledby="p-elIntenso">
+        <div class="palco__arriba"><p class="palco__fila">Fila 2 de 4</p><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Intenso está en la fila 2 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo activa" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo activa" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo activa" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
+        <h3 class="rotulo palco__nombre" id="p-elIntenso">El Intenso</h3>
+        <p class="palco__precio"><span class="precio" data-precio="elIntenso"></span><small>por palco · 10 sillas</small></p>
+        <p class="palco__anticipo">Lo <span data-anticipo="elIntenso"></span> (30%)</p>
+        <p class="palco__persona">≈ <span data-persona="elIntenso"></span> por persona</p>
+        <div class="palco__linea" aria-hidden="true"></div>
+        <a class="accion ancha" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Intenso%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Intenso para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar El Intenso</a>
+      </article>
+      <article class="palco marco" data-fila="4" aria-labelledby="p-elPegao">
+        <div class="palco__arriba"><p class="palco__fila">Fila 4 de 4</p><svg class="plano" viewBox="0 0 120 96" role="img" aria-label="Plano: El Pegao está en la fila 4 de 4 desde la tarima."><rect class="tarima" x="10" y="2" width="100" height="8" rx="1"/><text x="60" y="8.4" text-anchor="middle">TARIMA</text><rect class="tramo" x="22.0" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="48.7" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="75.3" y="22" width="22.7" height="10" rx="1"/><rect class="tramo" x="18.0" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="47.3" y="38" width="25.3" height="10" rx="1"/><rect class="tramo" x="76.7" y="38" width="25.3" height="10" rx="1"/><rect class="tramo jure" x="14.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="46.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo jure" x="78.0" y="54" width="28.0" height="10" rx="1"/><rect class="tramo activa" x="10.0" y="70" width="30.7" height="10" rx="1"/><rect class="tramo activa" x="44.7" y="70" width="30.7" height="10" rx="1"/><rect class="tramo activa" x="79.3" y="70" width="30.7" height="10" rx="1"/><rect class="publico" x="6" y="86" width="108" height="8" rx="1"/></svg></div>
+        <h3 class="rotulo palco__nombre" id="p-elPegao">El Pegao</h3>
+        <p class="palco__precio"><span class="precio" data-precio="elPegao"></span><small>por palco · 10 sillas</small></p>
+        <p class="palco__anticipo">Lo <span data-anticipo="elPegao"></span> (30%)</p>
+        <p class="palco__persona">≈ <span data-persona="elPegao"></span> por persona</p>
+        <div class="palco__linea" aria-hidden="true"></div>
+        <a class="accion ancha" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20el%20palco%20El%20Pegao%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29." target="_blank" rel="noopener" data-wa="Hola, quiero apartar el palco El Pegao para Rasca Salinera (sábado 5 de diciembre)." data-mide="ClicPalco">Apartar El Pegao</a>
+      </article>
     </div>
-    <p class="palcos__pie">Precio por palco completo, con servicio incluido. Sujeto a disponibilidad.</p>
+    <p class="palcos__como"><b>Lo apartas con el 30% por WhatsApp.</b> El saldo se paga a más tardar el <b>15 de noviembre</b>, 20 días antes del evento; si no llega, el anticipo no se devuelve. Te confirmamos el palco y su lugar exacto antes de pagar. Precio por palco completo, con servicio incluido, sujeto a disponibilidad. <a class="enlace" href="#terminos">Términos de la reserva</a></p>
+  </div>
+</section>
+
+
+<section class="sueltas" id="otras" aria-labelledby="t-sueltas">
+  <div class="env">
+    <div class="cabeza"><p class="rol">Entrada individual</p><h2 class="rotulo" id="t-sueltas">¿Vienes por tu cuenta?</h2></div>
+    <p class="reloj" id="reloj" aria-live="polite"></p>
+    <ul class="localidades">
+      <li><span><span class="nombre rotulo">VIP</span><span class="detalle">Servicio incluido.</span></span><span class="precio" data-precio="vip">$123.090</span></li>
+      <li><span><span class="nombre rotulo">Platino</span><span class="detalle">De pie. Servicio incluido.</span></span><span class="precio" data-precio="platino">$100.710</span></li>
+    </ul>
+    <p class="sueltas__silla">¿Una silla de palco? Desde $145.470, también en Tickeo.</p>
+    <a class="sec" href="https://tickeo.co/rasca-salinera" target="_blank" rel="noopener" data-mide="ClicBoleteria">Comprar en Tickeo ↗</a>
   </div>
 </section>
 
 
 <section class="dos" aria-label="Los artistas">
   <article class="artista artista--principal">
-    <picture><source type="image/avif" srcset="assets/rivera45-720.avif 720w, assets/rivera45-1000.avif 1000w" sizes="(min-width:860px) 60vw, 100vw"><img src="assets/rivera45-720.webp" srcset="assets/rivera45-720.webp 720w, assets/rivera45-1000.webp 1000w" sizes="(min-width:860px) 60vw, 100vw" width="720" height="677" alt="Jhonny Rivera cantando en tarima." loading="lazy" style="object-position:50% 15%"></picture>
-    <div class="artista__texto"><span class="rol">Artista principal</span><h2 class="rotulo">Jhonny Rivera</h2><p>Los clásicos que vas a cantar a grito herido.</p></div>
+    <picture><source type="image/avif" srcset="assets/rivera-flyer-720.avif 720w, assets/rivera-flyer-1000.avif 1000w" sizes="(min-width:860px) 60vw, 100vw"><img src="assets/rivera-flyer-720.webp" srcset="assets/rivera-flyer-720.webp 720w, assets/rivera-flyer-1000.webp 1000w" sizes="(min-width:860px) 60vw, 100vw" width="720" height="900" alt="Jhonny Rivera, la misma foto del afiche." loading="lazy" style="object-position:50% 0"></picture>
+    <div class="artista__texto cabeza sobre-foto"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Artista principal</p><h2 class="rotulo">Jhonny Rivera</h2><p class="bajada">Los clásicos que vas a cantar a grito herido.</p></div>
   </article>
   <article class="artista">
-    <picture><source type="image/avif" srcset="assets/castano-720.avif 720w, assets/castano-1080.avif 1080w" sizes="(min-width:860px) 40vw, 100vw"><img src="assets/castano-720.webp" srcset="assets/castano-720.webp 720w, assets/castano-1080.webp 1080w" sizes="(min-width:860px) 40vw, 100vw" width="720" height="900" alt="Jhon Alex Castaño, foto oficial." loading="lazy" style="object-position:50% 0"></picture>
-    <div class="artista__texto"><span class="rol">Invitado</span><h2 class="rotulo">Jhon Alex Castaño</h2><p>La misma tarima, la misma noche.</p></div>
+    <picture><source type="image/avif" srcset="assets/castano-flyer-720.avif 720w, assets/castano-flyer-1000.avif 1000w" sizes="(min-width:860px) 40vw, 100vw"><img src="assets/castano-flyer-720.webp" srcset="assets/castano-flyer-720.webp 720w, assets/castano-flyer-1000.webp 1000w" sizes="(min-width:860px) 40vw, 100vw" width="720" height="900" alt="Jhon Alex Castaño, la misma foto del afiche." loading="lazy" style="object-position:50% 0"></picture>
+    <div class="artista__texto cabeza sobre-foto"><p class="rol">Invitado</p><h2 class="rotulo">Jhon Alex Castaño</h2><p class="bajada">La misma tarima, la misma noche.</p></div>
   </article>
 </section>
 
 
 <section class="envivo" aria-labelledby="t-envivo">
   <picture class="envivo__poster" aria-hidden="true"><source type="image/avif" srcset="assets/envivo-poster-720.avif"><img src="assets/envivo-poster-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
-  <video id="envivo-loop" muted loop playsinline webkit-playsinline preload="none" aria-hidden="true" data-src="assets/envivo-loop.mp4"></video>
-  <div class="envivo__texto">
-    <span class="rol">En vivo</span>
+  <video id="envivo-loop" muted loop playsinline webkit-playsinline autoplay preload="none" aria-hidden="true" data-src="assets/envivo-loop.mp4"></video>
+  <div class="envivo__texto cabeza sobre-foto">
+    <svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">En vivo</p>
     <h2 class="rotulo" id="t-envivo">Así se canta a grito herido.</h2>
     <button type="button" class="sec" data-teaser="assets/envivo-sonido.mp4" data-mide="EnVivo"><svg width="24" height="24" aria-hidden="true"><use href="#play"/></svg>Verlo con sonido · 0:30</button>
     <button type="button" class="saludo" data-teaser="assets/rivera-saludo.mp4" data-mide="SaludoRivera">
-      <img src="assets/saludo-poster-720.webp" width="720" height="1280" alt="" loading="lazy">
+      <span class="saludo__mini" aria-hidden="true"><img src="assets/saludo-loop-poster.webp" width="240" height="300" alt="" loading="lazy"><video muted loop playsinline webkit-playsinline autoplay preload="none" data-src="assets/saludo-loop.mp4"></video></span>
       <span><b>Jhonny Rivera te invita</b><small>Un saludo para Zipaquirá · 0:19</small></span>
       <svg width="28" height="28" aria-hidden="true"><use href="#play"/></svg>
     </button>
@@ -448,9 +461,9 @@ dialog video{width:100%;height:100%;object-fit:contain}
 
 
 <section class="llegar" aria-labelledby="t-llegar">
-  <picture class="llegar__foto" aria-hidden="true"><source type="image/avif" srcset="assets/llegar-720.avif 720w, assets/llegar-1080.avif 1080w" sizes="100vw"><img src="assets/llegar-720.webp" srcset="assets/llegar-720.webp 720w, assets/llegar-1080.webp 1080w" sizes="100vw" width="720" height="1280" alt="" loading="lazy"></picture>
-  <div class="env llegar__texto">
-    <span class="rol">La Sabana se une</span>
+  <div class="llegar__foto foto" aria-hidden="true"><img src="assets/sal-loop-poster.webp" width="720" height="896" alt="" loading="lazy"><video muted loop playsinline webkit-playsinline autoplay preload="none" data-src="assets/sal-loop.mp4"></video></div>
+  <div class="env llegar__texto cabeza sobre-foto">
+    <svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">La Sabana se une</p>
     <h2 class="rotulo" id="t-llegar">Cómo llegar.</h2>
     <dl class="datos">
       <dt>Cuándo</dt><dd>Sábado 5 de diciembre de 2026</dd>
@@ -464,23 +477,23 @@ dialog video{width:100%;height:100%;object-fit:contain}
 
 
 <section class="concurso" id="concurso" aria-labelledby="t-concurso">
-  <picture class="concurso__foto" aria-hidden="true"><source type="image/avif" srcset="assets/escalon-6-720.avif"><img src="assets/escalon-6-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
+  <picture class="concurso__foto foto" aria-hidden="true"><source type="image/avif" srcset="assets/escalon-6-720.avif"><img src="assets/escalon-6-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
   <div class="env">
-    <div class="conector" aria-hidden="true"><svg><use href="#rombos"/></svg></div>
-    <span class="rol">Concurso</span>
-    <h2 class="rotulo" id="t-concurso">Gánate un par de boletas VIP.</h2>
-    <p class="concurso__bajada">Cuéntanos con quién vendrías a la Rasca y por qué. Un jurado elige la mejor respuesta. Participas hasta el 25 de noviembre.</p>
+    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Concurso</p><h2 class="rotulo" id="t-concurso">Gánate un par de boletas VIP.</h2><p class="bajada">Síguenos en Instagram y cuéntanos con quién vendrías y por qué. Un jurado elige. Hasta el 25 de noviembre.</p></div>
+    <details class="concurso__plegado" id="plegado"><summary>Participar</summary>
     <form id="f" novalidate>
       <p id="err" role="alert"></p>
       <div class="campo"><label for="n">Nombre y apellido</label><input type="text" id="n" name="nombre" autocomplete="name" required></div>
       <div class="campo"><label for="c">Correo</label><input type="email" id="c" name="correo" autocomplete="email" inputmode="email" required></div>
       <div class="campo"><label for="t">Celular con WhatsApp</label><input type="tel" id="t" name="celular" inputmode="numeric" autocomplete="tel-national" placeholder="300 123 4567" required><span class="ayuda">10 dígitos, sin el +57.</span></div>
+      <div class="campo"><label for="ig">Tu usuario de Instagram</label><input type="text" id="ig" name="instagram" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@tuusuario" required><span class="ayuda">Tienes que seguir a <a class="enlace" href="https://www.instagram.com/dugoent_producciones/" target="_blank" rel="noopener" data-mide="ClicInstagram">@dugoent_producciones</a>. Lo revisamos antes de anunciar al ganador.</span></div>
       <div class="campo"><label for="r">¿Con quién vendrías y por qué?</label><textarea id="r" name="respuesta" rows="4" maxlength="280" required></textarea><span class="ayuda">Máximo 280 caracteres. Esto es lo que lee el jurado.</span></div>
       <label class="check"><input type="checkbox" id="edad"> <span>Soy mayor de 18 años.</span></label>
       <label class="check"><input type="checkbox" id="hd"> <span>Acepto los <a href="#terminos">términos del concurso</a> y autorizo a Dugoent Producciones S.A.S. a tratar mis datos para gestionar el concurso, según su <a href="#datos">política de datos</a> (Ley 1581 de 2012).</span></label>
       <label class="check"><input type="checkbox" id="mk"> <span>Quiero recibir información de otros eventos de Dugoent. (Opcional)</span></label>
-      <button class="accion ancha" type="submit" style="margin-top:12px">Participar</button>
+      <button class="accion ancha" type="submit" style="margin-top:12px">Enviar mi respuesta</button>
     </form>
+    </details>
     <div class="listo" id="ok" role="status" tabindex="-1">
       <h3 class="rotulo" id="ok-t">Estás participando.</h3>
       <p id="ok-p">El 27 de noviembre anunciamos al ganador por WhatsApp y por correo.</p>
@@ -491,13 +504,17 @@ dialog video{width:100%;height:100%;object-fit:contain}
 
 
 <section class="cierre" aria-labelledby="t-cierre">
-  <picture class="cierre__fondo" aria-hidden="true"><source type="image/avif" srcset="assets/hero-poster-720.avif 720w, assets/hero-poster-1080.avif 1080w" sizes="100vw"><img src="assets/hero-poster-720.webp" width="720" height="1280" alt="" loading="lazy"></picture>
+  <div class="cierre__fondo foto" aria-hidden="true"><img src="assets/cierre-loop-poster.webp" width="720" height="768" alt="" loading="lazy"><video muted loop playsinline webkit-playsinline autoplay preload="none" data-src="assets/cierre-loop.mp4"></video></div>
   <div class="env">
-    <svg class="rombos" aria-hidden="true" style="margin:0 auto 18px"><use href="#rombos"/></svg>
-    <h2 class="rotulo" id="t-cierre">Una farra pa' borrar casete.</h2>
-    <p class="cierre__bajada">Sábado 5 de diciembre · Zipaquirá. Diciembre tiene dueño en la Sabana.</p>
+    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><h2 class="rotulo" id="t-cierre">Una farra pa' borrar casete.</h2><p class="bajada">Sábado 5 de diciembre · Zipaquirá. Diciembre tiene dueño en la Sabana.</p></div>
     <a class="accion ancha cierre__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Aparta tu palco</a>
     <a class="enlace cierre__mesa" href="#concurso">o participa por un par de VIP</a>
+  </div>
+</section>
+
+<section class="dudas" aria-labelledby="t-dudas">
+  <div class="env">
+    <div class="cabeza"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Preguntas</p><h2 class="rotulo" id="t-dudas">Antes de venir.</h2></div>
     <div class="preguntas">
       <details><summary>¿Cómo funciona apartar un palco?</summary><p>Nos escribes por WhatsApp, te confirmamos el palco disponible y lo apartas con el 30%. El saldo se paga a más tardar el 15 de noviembre. Si no llega en ese plazo, el palco se libera y el anticipo no se devuelve, salvo retracto dentro de los 5 días hábiles o cancelación del evento.</p></details>
             <details><summary>¿Puedo devolver mi boleta?</summary><p>Las compras en Tickeo tienen derecho de retracto dentro de los 5 días hábiles siguientes, según el artículo 47 de la Ley 1480 de 2011 y los términos de Tickeo S.A.S. El anticipo de un palco también tiene retracto de 5 días hábiles.</p></details>
@@ -521,6 +538,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
         <p>4. Un jurado de tres personas califica cada respuesta: originalidad 50%, autenticidad 30% y claridad 20%. Si hay empate, gana la respuesta que llegó primero.</p>
         <p>5. El premio es un par de boletas VIP para el 5 de diciembre de 2026, con valor de $246.180. No se cambia por dinero y no incluye transporte. El acompañante también debe ser mayor de 18 años.</p>
         <p>6. El ganador se anuncia el 27 de noviembre de 2026 y tiene 48 horas para aceptar. Si no acepta, gana la siguiente respuesta mejor calificada.</p>
+        <p>7. Para participar hay que seguir la cuenta de Instagram @dugoent_producciones y escribir tu usuario en el formulario. Antes de anunciar al ganador revisamos que la sigue; si no, gana la siguiente respuesta mejor calificada. Instagram y Meta no patrocinan, avalan ni administran este concurso.</p>
       </div></details>
     </div>
   </div>
@@ -533,7 +551,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <picture><source type="image/avif" srcset="assets/logo-560.avif"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera" loading="lazy"></picture>
     <p class="legal">LA RASCA SALINERA · PULEP HYW650 · Dugoent Producciones S.A.S. · NIT 902.092.798-4</p>
     <p>Boletería oficial: Tickeo S.A.S. Booking: 147 Presents · Sancor MGMT.</p>
-    <p id="datos">Tratamiento de datos. Responsable: Dugoent Producciones S.A.S., NIT 902.092.798-4, Carrera 10 # 7A-23, piso 2, Zipaquirá, dugoentproducciones@gmail.com, 322 204 5398. Usamos tu nombre, correo, celular y tu respuesta para gestionar el concurso y contactar al ganador; si lo autorizas, también para avisarte de otros eventos. Medimos las visitas con herramientas de terceros que pueden guardar datos fuera de Colombia. No pongas datos de otras personas en tu respuesta. Puedes conocer, actualizar, corregir o borrar tus datos, retirar tu autorización, pedir prueba de que la diste y quejarte ante la SIC: escribe al correo; respondemos consultas en 10 días hábiles y reclamos en 15.</p>
+    <p id="datos">Tratamiento de datos. Responsable: Dugoent Producciones S.A.S., NIT 902.092.798-4, Carrera 10 # 7A-23, piso 2, Zipaquirá, dugoentproducciones@gmail.com, 322 204 5398. Usamos tu nombre, correo, celular, usuario de Instagram y tu respuesta para gestionar el concurso y contactar al ganador; si lo autorizas, también para avisarte de otros eventos. Medimos las visitas con herramientas de terceros que pueden guardar datos fuera de Colombia. No pongas datos de otras personas en tu respuesta. Puedes conocer, actualizar, corregir o borrar tus datos, retirar tu autorización, pedir prueba de que la diste y quejarte ante la SIC: escribe al correo; respondemos consultas en 10 días hábiles y reclamos en 15.</p>
     <p>El exceso de alcohol es perjudicial para la salud. Ley 30 de 1986. Prohíbase el expendio de bebidas embriagantes a menores de edad. Ley 124 de 1994.</p>
   </div>
 </footer>
@@ -606,6 +624,9 @@ listo(function(){
     var p = CFG.precios[el.getAttribute("data-anticipo")];
     if (p) el.textContent = "apartas con " + pesos(p * CFG.anticipo);
   });
+  [].forEach.call(document.querySelectorAll("[data-persona]"), function(el){
+    var p = CFG.precios[el.getAttribute("data-persona")]; if (p) el.textContent = pesos(p / 10);
+  });
   var dudas = document.getElementById("wa-dudas");
   if (dudas) dudas.href = "https://wa.me/" + CFG.whatsapp;
 });
@@ -627,7 +648,7 @@ listo(function(){
   var v = document.getElementById("hero-loop");
   if (!v) return;
   var c = navigator.connection || {};
-  if (quieto || c.saveData){ try { v.pause(); v.removeAttribute("autoplay"); } catch(e){} return; }
+  if (c.saveData){ try { v.pause(); v.removeAttribute("autoplay"); } catch(e){} return; }
   v.muted = true; v.defaultMuted = true;
   var marca = function(){ v.classList.add("lista"); };
   v.addEventListener("playing", marca);
@@ -789,22 +810,26 @@ listo(function(){
   if (tv){ tv.addEventListener("play", function(){ a.pause(); }); tv.addEventListener("pause", function(){ if (!lo_apago && b.getAttribute("aria-pressed") === "true") a.play().catch(function(){}); }); }
 });
 listo(function(){
-  var v = document.getElementById("envivo-loop");
-  if (!v) return;
   var c = navigator.connection || {};
-  if (quieto || c.saveData) return;
-  var sec = v.parentNode, cargado = false, pend = false;
-  v.addEventListener("playing", function(){ v.classList.add("lista"); });
+  if (c.saveData) return;
+  var vs = [].slice.call(document.querySelectorAll("video[data-src]"));
+  if (!vs.length) return;
+  vs.forEach(function(v){ v.muted = true; v.defaultMuted = true; v.addEventListener("playing", function(){ v.classList.add("lista"); }); });
+  var pend = false;
   function mira(){
     pend = false;
-    var r = sec.getBoundingClientRect(), cerca = r.top < innerHeight * 1.6 && r.bottom > -innerHeight * .5;
-    if (cerca && !cargado){ cargado = true; v.src = v.getAttribute("data-src"); }
-    if (!cargado) return;
-    var visible = r.top < innerHeight && r.bottom > 0;
-    if (visible && v.paused){ v.muted = true; var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); }
-    else if (!visible && !v.paused){ v.pause(); }
+    vs.forEach(function(v){
+      var r = (v.closest("section,figure,div") || v).getBoundingClientRect();
+      if (!v.getAttribute("src") && r.top < innerHeight * 1.6 && r.bottom > -innerHeight * .5){ v.src = v.getAttribute("data-src"); v.load(); }
+      if (!v.getAttribute("src")) return;
+      var visible = r.top < innerHeight && r.bottom > 0;
+      if (visible && v.paused){ v.muted = true; var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); }
+      else if (!visible && !v.paused) v.pause();
+    });
   }
   addEventListener("scroll", function(){ if (!pend){ pend = true; requestAnimationFrame(mira); } }, {passive: true});
+  ["touchend", "click"].forEach(function(ev){ addEventListener(ev, mira, {passive: true}); });
+  document.addEventListener("visibilitychange", function(){ if (!document.hidden) mira(); });
   mira();
 });
 listo(function(){
@@ -837,6 +862,24 @@ listo(function(){
   if (d > 0) f.textContent = d; else f.parentNode.hidden = true;
 });
 listo(function(){
+  var b = document.getElementById("sonido"); if (!b) return;
+  var y0 = scrollY, pend = false;
+  addEventListener("scroll", function(){
+    if (pend) return; pend = true;
+    requestAnimationFrame(function(){
+      var y = scrollY;
+      if (Math.abs(y - y0) > 8){ b.classList.toggle("fuera", y > y0 && y > innerHeight); y0 = y; }
+      pend = false;
+    });
+  }, {passive: true});
+});
+listo(function(){
+  var d = document.getElementById("plegado"); if (!d) return;
+  function abre(){ d.open = true; var n = document.getElementById("n"); if (n) setTimeout(function(){ try { n.focus({preventScroll: true}); } catch(e){} }, 300); }
+  [].forEach.call(document.querySelectorAll('a[href="#concurso"]'), function(a){ a.addEventListener("click", abre); });
+  if (location.hash === "#concurso") abre();
+});
+listo(function(){
   var f = document.getElementById("f");
   if (!f) return;
   var err = document.getElementById("err"), ok = document.getElementById("ok");
@@ -850,7 +893,7 @@ listo(function(){
     err.scrollIntoView({block: "center", behavior: quieto ? "auto" : "smooth"});
     return false;
   }
-  ["n","c","t","r","edad","hd"].forEach(function(id){
+  ["n","c","t","ig","r","edad","hd"].forEach(function(id){
     var el = document.getElementById(id); if (!el) return;
     var limpia = function(){ el.removeAttribute("aria-invalid"); err.classList.remove("vista"); };
     el.addEventListener("input", limpia); el.addEventListener("change", limpia);
@@ -864,12 +907,14 @@ listo(function(){
     if (nombre.length < 3) return fallo("Escribe tu nombre y tu apellido.", "n");
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(correo)) return fallo("Ese correo está incompleto. Revísalo.", "c");
     if (!/^3\d{9}$/.test(tel)) return fallo("El celular tiene 10 dígitos y empieza por 3.", "t");
+    var ig = document.getElementById("ig").value.trim().replace(/^@+/, "");
+    if (!/^[A-Za-z0-9._]{1,30}$/.test(ig)) return fallo("Escribe tu usuario de Instagram, sin espacios.", "ig");
     if (resp.length < 10) return fallo("Cuéntanos con quién vendrías y por qué: eso es lo que lee el jurado.", "r");
     if (!document.getElementById("edad").checked) return fallo("El concurso es solo para mayores de 18.", "edad");
     if (!document.getElementById("hd").checked) return fallo("Falta aceptar los términos y la autorización de datos.", "hd");
     var datos = {fecha: new Date().toISOString(), tipo: "concurso VIP", nombre: nombre, correo: correo,
-                 celular: "+57" + tel, respuesta: resp, origen: ORIGEN,
-                 autoriza: "Ley 1581/2012 y términos del concurso · responsable Dugoent Producciones S.A.S. · v2 9-oct-2026", otrosEventos: document.getElementById("mk").checked ? "sí" : "no"};
+                 celular: "+57" + tel, instagram: "@" + ig, respuesta: resp, origen: ORIGEN,
+                 autoriza: "Ley 1581/2012 y términos del concurso · responsable Dugoent Producciones S.A.S. · v3 9-oct-2026", otrosEventos: document.getElementById("mk").checked ? "sí" : "no"};
     var msg = "RASCA SALINERA · Concurso VIP\nNombre: " + nombre + "\nCorreo: " + correo + "\nCelular: +57" + tel + "\n¿Con quién vendría y por qué?: " + resp;
     document.getElementById("ok-wa").href = "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(msg);
     var b = f.querySelector("button[type=submit]"); b.disabled = true; b.textContent = "Enviando…";
