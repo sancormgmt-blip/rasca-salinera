@@ -782,6 +782,7 @@ body::after{display:none!important}.hero__desliza,.entrada__suena{display:none!i
 </style>
 </head>
 <body>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2275483333229410&amp;ev=PageView&amp;noscript=1"></noscript>
 <div id="entrada" hidden role="dialog" aria-modal="true" aria-label="Entrar a la página"><video class="entrada__fuego" src="assets/teaser-hd2.mp4" poster="assets/teaser-poster.webp" width="720" height="1280" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video><div class="entrada__velo" aria-hidden="true"></div><div class="entrada__caja"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera"><p class="entrada__suena"><svg class="onda" viewBox="0 0 40 20" aria-hidden="true"><path d="M2 10h3M9 5v10M15 2v16M21 6v8M27 3v14M33 7v6M38 10h0" stroke="#EBB314" stroke-width="2.2" stroke-linecap="round"/></svg>Así va a sonar</p><p class="entrada__fecha">Sábado 5 de diciembre · Zipaquirá</p><button type="button" class="accion entrada__si" id="entrada-si"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#EBB314"/><path d="M16 8.5c1.6 1.8 1.6 5.2 0 7M18.8 6c2.8 3.2 2.8 8.8 0 12" stroke="#EBB314" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>Entrar con sonido</button><button type="button" class="sec entrada__no" id="entrada-no">Entrar en silencio</button></div></div>
 <script>
 (function(){var v=document.querySelector("video.entrada__fuego");if(!v)return;var hecho=false;
@@ -1037,7 +1038,7 @@ var CFG = {
   whatsapp: "573222045398",
   compra: "https://tickeo.co/rasca-salinera",
   endpoint: "https://script.google.com/macros/s/AKfycbxnNPJBsbwHfcp_DTmGihbZf0NrloAPGmiOBfMqELc6oYDTLb3arz-s18n2BSCoJAmX2Q/exec",  
-  pixel: "",             
+  pixel: "2275483333229410",             
   subePrecio: null,
   anticipo: 0.30,
   plazoSaldoDias: 20,
@@ -1064,7 +1065,7 @@ var ORIGEN = (function(){
     return "referido | " + new URL(document.referrer).hostname.replace(/^www\./, "");
   } catch(e){ return "sin dato"; }
 })();
-var ESTANDAR = {Llegada:"PageView", RegistroCompletado:"Lead", ClicBoleteria:"InitiateCheckout", ClicWhatsApp:"Contact"};
+var ESTANDAR = {Llegada:"PageView", RegistroCompletado:"Lead", ClicBoleteria:"InitiateCheckout", ClicWhatsApp:"Contact", ClicPalco:"Contact"};
 function mide(ev, d){
   try {
     if (window.fbq){ var e = ESTANDAR[ev]; e ? fbq("track", e, d || {}) : fbq("trackCustom", ev, d || {}); }
@@ -1418,7 +1419,7 @@ listo(function(){
       if (cerrado) return; cerrado = true;
       mide(guardado ? "RegistroCompletado" : "RegistroSinHoja", {origen: ORIGEN, tipo: "concurso"});
       if (!guardado){
-        document.getElementById("ok-t").textContent = "Falta un paso.";
+        document.getElementById("ok-t").textContent = "Falta un paso";
         document.getElementById("ok-p").textContent = "Mándanos tu participación por WhatsApp: hasta que llegue, no estás en el concurso.";
       }
       f.hidden = true; ok.classList.add("vista");
