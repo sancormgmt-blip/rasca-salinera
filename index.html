@@ -453,10 +453,7 @@ html .entrada__velo{background:linear-gradient(to bottom,rgba(14,6,6,0) 0,rgba(1
 .programa>section{position:relative}
 .nudo{position:absolute;left:5px;top:28px;z-index:4;width:9px;height:9px;transform:rotate(45deg) scale(.7);border:1px solid rgba(235,179,20,.5);background:var(--vino);transition:transform .6s var(--expo),background .6s var(--expo),box-shadow .6s var(--expo)}
 .nudo.vivo{transform:rotate(45deg) scale(1);background:#EBB314;box-shadow:0 0 12px rgba(235,179,20,.6)}
-.puente{display:flex;align-items:center;justify-content:center;gap:8px;width:max-content;margin:28px auto 0;padding:10px 4px;font-family:"Cartel",Georgia,serif;font-style:italic;font-weight:700;font-size:1.0625rem;color:var(--crema-72);text-decoration:none}
-.puente span{color:var(--oro);font-style:normal}
-.puente:focus-visible{outline:2px solid var(--oro);outline-offset:3px}
-@media (prefers-reduced-motion:no-preference){.puente span{animation:baja 1.8s var(--ease) infinite}}
+@media (prefers-reduced-motion:no-preference){}
 body{background:
   radial-gradient(70% 6% at 50% 14%,rgba(189,96,20,.20),rgba(189,96,20,0)),
   radial-gradient(90% 7% at 50% 46%,rgba(235,179,20,.10),rgba(235,179,20,0)),
@@ -492,7 +489,6 @@ body{background:
 .palcos__foto::after,.escena__media::after{height:auto!important;inset:auto 0 0 0!important;top:auto!important;height:45%!important;background:linear-gradient(to bottom,rgba(26,11,11,0),var(--vino))!important}
 .concurso__fondo::after{background:linear-gradient(to bottom,rgba(26,11,11,.6),rgba(26,11,11,.9) 40%,var(--vino))!important}
 .concurso__fondo{position:absolute}
-.puente{margin-top:40px}
 .sueltas__tarjeta{border:0!important;background:none!important;padding:0!important}
 .sueltas__tarjeta::before,.sueltas__tarjeta::after{display:none!important}
 .sueltas__nota,.sueltas__silla{text-align:center;margin-inline:auto}
@@ -513,7 +509,6 @@ footer{border:0!important;box-shadow:none!important}
 .datos .enlace{padding:4px 0;margin:-4px 0}
 .check a{display:inline-block;padding:4px 0}
 .programa>section{padding-top:32px!important;padding-bottom:40px!important}
-.puente{margin-top:28px}
 .palco__total{text-wrap:balance}
 .mapa-llegar__svg{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 6%,#000 97%,transparent 100%)!important;mask-image:linear-gradient(to bottom,transparent 0,#000 6%,#000 97%,transparent 100%)!important}
 .pasos__accion{margin-top:24px}
@@ -553,7 +548,6 @@ footer{border:0!important;box-shadow:none!important}
 .js-mov .escalon{transform:translateY(16px)!important;transition:opacity .8s var(--expo),transform .8s var(--expo)!important;transition-delay:calc(var(--i,0) * 80ms)!important}
 .js-mov .escalon.visto{transform:none!important}
 .palcos__foto img,.llegar .escena__media img{animation:none!important;scale:none!important}
-.puente span{animation:none!important}
 .entrada__si{animation:none!important}
 .hero__duo{transition:none}
 .hero__duo picture{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 58%,transparent 96%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 14%,#000 86%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 14%,#000 58%,transparent 96%);mask-composite:intersect}
@@ -576,7 +570,6 @@ footer{border:0!important;box-shadow:none!important}
 @media (prefers-reduced-motion:no-preference){}
 @keyframes vivo{0%{box-shadow:0 0 0 0 rgba(235,179,20,.55)}80%,100%{box-shadow:0 0 0 9px rgba(235,179,20,0)}}
 .palcos .cabeza h2{font-size:clamp(2.1rem,10vw,3.4rem)!important}
-.puente{width:auto!important;max-width:calc(100% - 2 * var(--g));flex-wrap:wrap;text-align:center;line-height:1.35;padding-inline:8px}
 .pasos li{display:flex!important;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:16px 0}
 .pasos li::before{margin:0 auto}
 .preguntas summary{flex-direction:column;justify-content:center!important;text-align:center;gap:6px;padding:12px 0}
@@ -674,7 +667,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
 @media (prefers-reduced-motion:reduce){}
 @media (max-width:400px){.hero__marcas{padding:0 52px;gap:9px}.hero__marcas img{height:18px}.hero__marcas img[src*=sancor]{height:22px}.hero__marcas img[src*=lakalle]{height:20px}}
 .campo>label,.concurso__plegado>summary,.preguntas summary,.terminos summary,.pie__plegado summary,.pasoig__t,.palco__cerca,.fantasma,.sec{font-weight:600}
-.hero__lugar,.hero__lugar br+*,footer .legal,.cierre__mesa,.puente,.entrada__suena{font-weight:400}
+.hero__lugar,.hero__lugar br+*,footer .legal,.cierre__mesa,.entrada__suena{font-weight:400}
 b,strong,.hero__urg-dias b,.palcos__cupo b{font-weight:700}
 .localidades .precio,.palco__total .precio{font-weight:600}
 .accion:not(.entrada__si){background:linear-gradient(180deg,#F7DA78 0%,#E9B532 42%,#C88A14 100%);color:#1A0B0B;font-weight:600;letter-spacing:.01em;
@@ -720,7 +713,6 @@ body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opa
 .sueltas__tarjeta .localidades .nombre{font-size:1.5rem!important}
 .entrada__suena{font-family:"Archivo",sans-serif!important;font-style:normal!important;font-weight:700!important;font-size:1rem!important;letter-spacing:.14em!important;text-transform:uppercase}
 .hero__dia{font-family:"Archivo",sans-serif!important;font-style:normal!important;font-weight:600!important;font-size:.75rem!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--crema-72)!important}
-.puente{font-family:"Archivo",sans-serif!important;font-style:normal!important;font-weight:500!important;font-size:.9375rem!important;letter-spacing:0}
 @media (max-height:700px){.entrada__suena{display:none!important}.entrada__caja{gap:10px!important}.entrada__fecha{font-size:.6875rem!important;letter-spacing:.1em!important}.entrada__si{min-height:52px!important}}
 .aliados__t,.datos dt,.entrada__fecha,.hero__anio,.hero__dia,.palco__hoy-t,.premio span,.pasos li::before{font-weight:600}
 .entrada__fecha,.hero__anio,.hero__dia,.palco__hoy-t{letter-spacing:.14em}
@@ -906,9 +898,20 @@ body::after{display:none!important}.hero__desliza,.entrada__suena{display:none!i
   .hero__accion::after,.concurso__ir::after,.cierre__accion::after,.palco--rey .accion::after{display:none}
   .hero.anima .cartelera__filete{transform:none;transition:none}
 }
+.trampa{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.saltar{position:fixed;left:12px;top:-60px;z-index:100;padding:10px 14px;border-radius:6px;background:#EBB314;color:#1A0B0B;font:600 .9375rem/1 "Archivo",sans-serif;text-decoration:none;transition:top .2s var(--ease)}
+.saltar:focus{top:12px}
+.legal-fecha{font-size:.8125rem;color:var(--crema-72);margin-bottom:8px}
+html{scrollbar-color:rgba(235,179,20,.45) #140808;scrollbar-width:thin}
+.preguntas summary,.terminos summary{display:block!important;text-align:center}
+.preguntas summary::after,.terminos summary::after{display:inline-block!important;margin:0 0 0 10px!important;vertical-align:baseline}
+.palco__plano text{font-size:9px!important;letter-spacing:.08em}
+.palco__plano .tarima{fill:rgba(244,239,230,.24)!important}
 </style>
 </head>
 <body>
+<script>window.__fT0=Date.now();</script>
+<a class="saltar" href="#palcos">Saltar al contenido</a>
 <div id="entrada" hidden role="dialog" aria-modal="true" aria-label="Entrar a la página"><video class="entrada__fuego" src="assets/teaser-hd2.mp4" poster="assets/teaser-poster.webp" width="720" height="1280" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video><div class="entrada__velo" aria-hidden="true"></div><div class="entrada__caja"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera"><p class="entrada__suena"><svg class="onda" viewBox="0 0 40 20" aria-hidden="true"><path d="M2 10h3M9 5v10M15 2v16M21 6v8M27 3v14M33 7v6M38 10h0" stroke="#EBB314" stroke-width="2.2" stroke-linecap="round"/></svg>Así va a sonar</p><p class="entrada__fecha">Sábado 5 de diciembre · Zipaquirá</p><button type="button" class="accion entrada__si" id="entrada-si"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#EBB314"/><path d="M16 8.5c1.6 1.8 1.6 5.2 0 7M18.8 6c2.8 3.2 2.8 8.8 0 12" stroke="#EBB314" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>Entrar con sonido</button><button type="button" class="sec entrada__no" id="entrada-no">Entrar en silencio</button></div></div>
 <script>
 (function(){var v=document.querySelector("video.entrada__fuego");if(!v)return;var hecho=false;
@@ -1035,6 +1038,7 @@ v.addEventListener("error",aWebp);})();
     <details class="concurso__plegado" id="plegado" open><summary>Quiero participar</summary>
     <p class="pasoig__t"><span class="pasoig__num">2</span>Déjanos tus datos</p>
     <form id="f" novalidate>
+      <div class="trampa" aria-hidden="true"><label for="sitio">Sitio web</label><input type="text" id="sitio" name="sitio" tabindex="-1" autocomplete="off"></div>
       <p id="err" role="alert"></p>
       <div class="campo"><label for="n">Nombre y apellido</label><input type="text" id="n" name="nombre" autocomplete="name" required></div>
       <div class="campo"><label for="c">Correo</label><input type="email" id="c" name="correo" autocomplete="email" inputmode="email" required><span class="ayuda">Por aquí también te avisamos si ganas.</span></div>
@@ -1054,7 +1058,7 @@ v.addEventListener("error",aWebp);})();
       <a class="accion ancha" id="ok-wa" href="#" target="_blank" rel="noopener" data-mide="ClicWhatsApp">Confirmar por WhatsApp</a>
     </div>
   </div>
-  <a class="puente" href="#llegar">Cómo llegar y lo que debes saber</a>
+  
 </section>
 
 
@@ -1098,6 +1102,7 @@ v.addEventListener("error",aWebp);})();
     </div>
     <div class="terminos" id="terminos">
       <details><summary>Términos de la reserva de palcos</summary><div class="legal-txt">
+        <p class="legal-fecha">Actualizados el 10 de octubre de 2026.</p>
         <p>1. Vende Dugoent Producciones S.A.S., NIT 902.092.798-4, PULEP HYW650. Las boletas las emite Tickeo S.A.S.</p>
         <p>2. Para apartar, escribe al 322 204 5398 por WhatsApp. El palco queda apartado cuando pagas el 30% del precio total, con el servicio de boletería incluido, a la cuenta de Dugoent Producciones S.A.S. que te indicamos por WhatsApp, y recibes el recibo escrito.</p>
         <p>3. El precio queda fijo desde ese pago: los cambios de etapa no lo suben.</p>
@@ -1107,6 +1112,7 @@ v.addEventListener("error",aWebp);})();
         <p>7. Si el evento se cancela, te devolvemos el 100% de lo pagado en máximo 30 días calendario, a la cuenta que nos indiques. Si cambia de fecha, eliges entre conservar tu palco para la nueva fecha o recibir el 100% de lo pagado en el mismo plazo.</p>
       </div></details>
       <details><summary>Términos del concurso</summary><div class="legal-txt">
+        <p class="legal-fecha">Actualizados el 10 de octubre de 2026.</p>
         <p>1. Organiza Dugoent Producciones S.A.S., NIT 902.092.798-4. Es un concurso de mérito: el ganador no se elige al azar y no hay que comprar nada.</p>
         <p>2. Pueden participar personas naturales mayores de 18 años que vivan en Colombia. No participan empleados de Dugoent, Tickeo, 147 Presents ni Sancor MGMT, ni sus parientes hasta el segundo grado de consanguinidad, segundo de afinidad o primero civil.</p>
         <p>3. Se participa desde la publicación de esta página hasta el 25 de noviembre de 2026 a las 11:59 p. m. Hay una participación por persona.</p>
@@ -1551,6 +1557,9 @@ listo(function(){
     var datos = {fecha: new Date().toISOString(), tipo: "concurso VIP", nombre: nombre, correo: correo,
                  celular: "+57" + tel, instagram: "@" + ig, respuesta: resp, origen: ORIGEN,
                  autoriza: "Ley 1581/2012, términos del concurso y Política de Tratamiento v1 10-oct-2026; responsable Dugoent Producciones S.A.S.; encargado Sancor MGMT autorizado en la casilla; casillas separadas edad-términos y datos", otrosEventos: document.getElementById("mk").checked ? "sí" : "no"};
+    Object.keys(datos).forEach(function(k){ var v = String(datos[k]); if (/^[=+\-@]/.test(v)) datos[k] = "'" + v; });
+    var trampa = document.getElementById("sitio");
+    if ((trampa && trampa.value) || (Date.now() - (window.__fT0 || 0)) < 4000){ f.hidden = true; ok.classList.add("vista"); return; }
     var msg = "RASCA SALINERA · Concurso VIP\nNombre: " + nombre + "\nCorreo: " + correo + "\nCelular: +57" + tel + "\n¿Con quién vendría y por qué?: " + resp;
     document.getElementById("ok-wa").href = "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(msg);
     var b = f.querySelector("button[type=submit]"); b.disabled = true; b.textContent = "Enviando…";
