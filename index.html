@@ -690,6 +690,23 @@ dialog video{width:100%;height:100%;object-fit:contain}
 .entrada__si{width:100%;gap:12px;font-size:1.125rem;min-height:60px}
 .entrada__si svg{flex:none}
 .entrada__no{color:var(--tenue);text-decoration-color:var(--tenue)}
+.hero__marcas{position:absolute;z-index:3;left:0;right:0;top:calc(env(safe-area-inset-top) + 16px);margin:0;display:flex;align-items:center;justify-content:center;gap:12px;opacity:0;transform:translateY(16px);transition:opacity .8s var(--expo),transform .8s var(--expo);pointer-events:none}
+.hero__marcas img{height:22px;width:auto;filter:drop-shadow(0 2px 8px rgba(0,0,0,.7))}
+.hero__marcas img[src*=sancor]{height:26px}.hero__marcas img[src*=lakalle]{height:24px}
+.hero__marcas i{width:4px;height:4px;background:var(--oro,#EBB314);opacity:.6;transform:rotate(45deg)}
+.hero.anima.dentro .hero__marcas,.hero:not(.anima) .hero__marcas{opacity:1;transform:none}
+@media (min-width:860px){.hero__marcas{top:28px;gap:18px}.hero__marcas img{height:30px}.hero__marcas img[src*=sancor]{height:34px}.hero__marcas img[src*=lakalle]{height:32px}}
+@media (prefers-reduced-motion:reduce){.hero__marcas{transition:none;transform:none}}
+.urgente{display:inline-flex;align-items:center;gap:10px;padding:9px 18px 9px 14px;border-radius:999px;border:1px solid rgba(235,179,20,.6);background:linear-gradient(180deg,rgba(90,8,12,.92),rgba(40,6,8,.92));box-shadow:0 0 0 1px rgba(0,0,0,.35),0 6px 24px -6px rgba(255,106,26,.45),inset 0 1px 0 rgba(255,241,194,.12);font-size:.8125rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#FFF1C2;white-space:nowrap}
+.urgente .hero__punto{width:9px;height:9px;flex:none;background:#FF6A1A;animation:brasa 1.6s ease-out infinite}
+@keyframes brasa{0%{box-shadow:0 0 0 0 rgba(255,106,26,.7)}75%,100%{box-shadow:0 0 0 10px rgba(255,106,26,0)}}
+.hero__urgencia{flex-direction:column;gap:8px;margin-top:14px}
+.hero__urg-dias,.palcos__cupo{font-size:.8125rem;font-weight:600;color:var(--crema-72)}
+.hero__urg-dias b,.palcos__cupo b{color:var(--oro);font-weight:800}
+.palcos__faltan{display:flex;flex-direction:column;align-items:center;gap:8px}
+@media (max-width:359px){.urgente{font-size:.75rem;letter-spacing:.05em;padding:8px 14px 8px 12px}}
+@media (prefers-reduced-motion:reduce){.urgente .hero__punto{animation:none}}
+@media (max-width:400px){.hero__marcas{padding:0 52px;gap:9px}.hero__marcas img{height:18px}.hero__marcas img[src*=sancor]{height:22px}.hero__marcas img[src*=lakalle]{height:20px}}
 </style>
 </head>
 <body>
@@ -708,13 +725,14 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <source type="image/avif" srcset="assets/flyer-720.avif 720w, assets/flyer-1080.avif 1080w" sizes="(min-width:860px) 46vw, 100vw">
     <img src="assets/flyer-720.webp" srcset="assets/flyer-720.webp 720w, assets/flyer-1080.webp 1080w" sizes="(min-width:860px) 46vw, 100vw" width="720" height="1280" alt="Flyer de Rasca Salinera: Jhon Alex Castaño y Jhonny Rivera, 5 de diciembre en Zipaquirá. PULEP HYW650." fetchpriority="high">
   </picture>
+  <p class="hero__marcas"><img src="assets/dugoent.webp" width="345" height="97" alt="Dugoent Producciones" loading="lazy" decoding="async"><i aria-hidden="true"></i><img src="assets/logo-sancor.webp" width="318" height="133" alt="Sancor MGMT" loading="lazy" decoding="async"><i aria-hidden="true"></i><img src="assets/logo-lakalle.webp" width="341" height="134" alt="La Kalle" loading="lazy" decoding="async"></p>
   <div class="hero__fondo"><div class="hero__duo" aria-hidden="true"><picture><source type="image/avif" srcset="assets/duo-780.avif 780w, assets/duo-1400.avif 1400w" sizes="100vw"><img src="assets/duo-780.webp" srcset="assets/duo-780.webp 780w, assets/duo-1400.webp 1400w" sizes="100vw" width="780" height="624" alt=""></picture></div><img class="hero__brasa" src="assets/flyer-fondo.webp" width="540" height="960" alt="" aria-hidden="true" ></div>
   <div class="hero__texto">
     <h1 class="cartelera"><span class="cartelera__nombre rotulo"><span class="m">Jhon Alex Castaño</span></span><span class="cartelera__filete" aria-hidden="true"><svg viewBox="0 0 120 12" width="120" height="12"><path d="M0 6H50M70 6H120" stroke="#EBB314" stroke-opacity=".7"/><path d="M60 1l5 5-5 5-5-5z" fill="#EBB314"/></svg></span><span class="cartelera__nombre rotulo"><span class="m">Jhonny Rivera</span></span></h1>
     <p class="hero__fecha"><span class="hero__dia">Sábado</span><span class="hero__num">05 <small>Dic</small></span><span class="hero__anio">Diciembre 2026</span><span class="oculto-v">5 de diciembre</span></p>
     <p class="hero__lugar"><span>Gran Pabellón · La Fraguita · Zipaquirá</span><span>Ingreso 5:00&nbsp;p.&nbsp;m. &nbsp;·&nbsp; Show 8:00&nbsp;p.&nbsp;m.</span></p>
     <a class="accion ancha hero__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Apartar palco por WhatsApp</a>
-    <p class="hero__urgencia"><span class="hero__punto" aria-hidden="true"></span>Ya se están apartando palcos · faltan <b data-faltan>57</b> días</p>
+    <p class="hero__urgencia"><span class="urgente"><span class="hero__punto" aria-hidden="true"></span>Se están acabando los palcos</span><span class="hero__urg-dias">Faltan <b data-faltan>57</b> días</span></p>
   </div>
   <p class="hero__desliza" aria-hidden="true">Desliza<svg width="22" height="22" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="#EBB314" stroke-width="2"/></svg></p>
   </div>
@@ -729,7 +747,7 @@ dialog video{width:100%;height:100%;object-fit:contain}
     <picture><source type="image/avif" srcset="assets/pabellon-768.avif"><img src="assets/pabellon-768.webp" width="768" height="1376" alt="Ilustración de cómo se proyecta un palco cubierto frente a la tarima, dentro del pabellón." loading="lazy"></picture>
   <figcaption class="palcos__leyenda" id="leyenda-pabellon">Ilustración del montaje proyectado para el 5 de diciembre.</figcaption></figure>
   <div class="env">
-    <div class="cabeza rev"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Palco cubierto · 10 sillas</p><h2 class="rotulo" id="t-palcos">La mejor vista es de quien la aparta primero.</h2><p class="bajada"><b>Diez sillas, tu gente y Castaño y Rivera de frente</b>, bajo techo. Cuando se acaba la fila 1, se acabó. Licor y comida se compran adentro.</p><p class="palcos__faltan"><b>Ya se están apartando palcos</b> · solo 60 por categoría · faltan <b id="faltan">57</b> días</p></div>
+    <div class="cabeza rev"><svg class="rombos" aria-hidden="true"><use href="#rombos"/></svg><p class="rol">Palco cubierto · 10 sillas</p><h2 class="rotulo" id="t-palcos">La mejor vista es de quien la aparta primero.</h2><p class="bajada"><b>Diez sillas, tu gente y Castaño y Rivera de frente</b>, bajo techo. Cuando se acaba la fila 1, se acabó. Licor y comida se compran adentro.</p><p class="palcos__faltan"><span class="urgente"><span class="hero__punto" aria-hidden="true"></span>Se están acabando los palcos</span><span class="palcos__cupo">Solo 60 por categoría · faltan <b id="faltan">57</b> días</span></p></div>
     <figure class="marco mapa telon">
       <a class="mapa__zoom" href="assets/mapa-palcos-g.webp" target="_blank" rel="noopener" aria-label="Ver el mapa de localidades en grande"><picture><source type="image/avif" srcset="assets/mapa-palcos-g.avif"><img src="assets/mapa-palcos-g.webp" width="1448" height="638" alt="Mapa oficial de localidades: la tarima y, de frente, las filas de palcos El Rey del Chupe, El Intenso y El Pegao." loading="lazy"></picture></a>
       <figcaption>Mapa oficial de palcos</figcaption>
