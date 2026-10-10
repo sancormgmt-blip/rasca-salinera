@@ -779,10 +779,19 @@ body::after{display:none!important}.hero__desliza,.entrada__suena{display:none!i
 #f .entra{animation:entra .5s var(--expo) both}
 @media (prefers-reduced-motion:reduce){#f .entra{animation:none}}
 .palcos__foto img{filter:sepia(.28) saturate(1.12) hue-rotate(-6deg) brightness(.96) contrast(1.04)}
+.cookies{position:fixed;left:12px;right:12px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:30;max-width:520px;margin:0 auto;padding:14px 16px;border-radius:8px;background:rgba(20,8,8,.97);border:1px solid rgba(244,239,230,.18);box-shadow:0 8px 24px rgba(0,0,0,.5);opacity:0;transform:translateY(12px);transition:opacity .25s var(--expo),transform .25s var(--expo)}
+.cookies.viva{opacity:1;transform:none}
+.cookies__t{margin:0;font-size:.875rem;line-height:1.45;color:var(--crema);text-align:left}
+.cookies__mas{color:var(--crema);text-decoration:underline;text-underline-offset:3px}
+.cookies__b{display:flex;gap:10px;margin-top:12px}
+.cookies__b button{flex:1;min-height:44px;border-radius:6px;font:600 .9375rem/1 "Archivo",sans-serif;cursor:pointer}
+.cookies__no,.cookies__si{background:transparent;color:var(--crema);border:1px solid rgba(244,239,230,.5)}
+.cookies__si{background:var(--crema);color:#1A0B0B;border-color:var(--crema)}
+.cookies-cambiar{background:none;border:0;padding:4px 0;color:var(--crema);font:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.cookies{transition:none}}
 </style>
 </head>
 <body>
-<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=2275483333229410&amp;ev=PageView&amp;noscript=1"></noscript>
 <div id="entrada" hidden role="dialog" aria-modal="true" aria-label="Entrar a la página"><video class="entrada__fuego" src="assets/teaser-hd2.mp4" poster="assets/teaser-poster.webp" width="720" height="1280" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video><div class="entrada__velo" aria-hidden="true"></div><div class="entrada__caja"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera"><p class="entrada__suena"><svg class="onda" viewBox="0 0 40 20" aria-hidden="true"><path d="M2 10h3M9 5v10M15 2v16M21 6v8M27 3v14M33 7v6M38 10h0" stroke="#EBB314" stroke-width="2.2" stroke-linecap="round"/></svg>Así va a sonar</p><p class="entrada__fecha">Sábado 5 de diciembre · Zipaquirá</p><button type="button" class="accion entrada__si" id="entrada-si"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#EBB314"/><path d="M16 8.5c1.6 1.8 1.6 5.2 0 7M18.8 6c2.8 3.2 2.8 8.8 0 12" stroke="#EBB314" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>Entrar con sonido</button><button type="button" class="sec entrada__no" id="entrada-no">Entrar en silencio</button></div></div>
 <script>
 (function(){var v=document.querySelector("video.entrada__fuego");if(!v)return;var hecho=false;
@@ -865,7 +874,7 @@ setTimeout(function(){if(v.isConnected&&(v.paused||v.currentTime===0))aWebp();},
       <ol>
         <li><p>Escríbenos por WhatsApp.<span>Te confirmamos qué palco está libre y su lugar exacto.</span></p></li>
         <li><p>Paga el 30%.<span>A la cuenta de Dugoent Producciones. Te enviamos el recibo por escrito y desde ese pago tu precio queda fijo.</span></p></li>
-        <li><p>Paga el saldo antes del 15 de noviembre.<span>Si no llega, el palco se libera y el anticipo no se devuelve.</span></p></li>
+        <li><p>Paga el saldo antes del 15 de noviembre.<span>Si no llega, el palco se libera. En los términos está qué pasa con el anticipo.</span></p></li>
       </ol>
       <p class="palcos__como">Precio por palco completo, con servicio incluido. <a class="enlace" href="#terminos">Términos de la reserva</a></p>
       <a class="accion ancha pasos__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Apartar por WhatsApp</a>
@@ -915,7 +924,8 @@ setTimeout(function(){if(v.isConnected&&(v.paused||v.currentTime===0))aWebp();},
       <div class="campo"><label for="t">Celular con WhatsApp</label><input type="tel" id="t" name="celular" inputmode="numeric" autocomplete="tel-national" placeholder="Ej.: 300 123 4567" required><span class="ayuda">10 dígitos, sin el +57.</span></div>
       <div class="campo"><label for="ig">Tu usuario de Instagram</label><input type="text" id="ig" name="instagram" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Ej.: @tuusuario" required><span class="ayuda">Tienes que seguir a <a class="enlace" href="https://www.instagram.com/dugoent_producciones/" target="_blank" rel="noopener" data-mide="ClicInstagram">@dugoent_producciones</a>. Lo revisamos antes de anunciar.</span></div>
       <div class="campo"><label for="r">¿Con quién vendrías y por qué?</label><textarea id="r" name="respuesta" rows="4" maxlength="280" required></textarea><span class="ayuda">Máximo 280 caracteres. Es lo único que lee el jurado.</span></div>
-      <label class="check"><input type="checkbox" id="hd"> <span>Soy mayor de 18 años, acepto los <a href="#terminos">términos del concurso</a> y autorizo a Dugoent Producciones S.A.S. a tratar mis datos para gestionar el concurso, según su <a href="#datos">política de datos</a> (Ley 1581 de 2012).</span></label>
+      <label class="check"><input type="checkbox" id="hd"> <span>Soy mayor de 18 años y acepto los <a href="#terminos">términos del concurso</a>.</span></label>
+      <label class="check"><input type="checkbox" id="da"> <span>Autorizo a Dugoent Producciones S.A.S. a tratar mis datos para gestionar el concurso, según su <a href="politica-datos.html" target="_blank" rel="noopener">Política de Tratamiento de Datos</a> (Ley 1581 de 2012). Sé que mi registro se guarda en servicios de Google y, si acepté las cookies, se reporta a Meta para medir el concurso, y que ambos pueden tratar los datos fuera de Colombia.</span></label>
       <label class="check"><input type="checkbox" id="mk"> <span>Quiero recibir información de otros eventos de Dugoent. (Opcional)</span></label>
       <button class="accion ancha" type="submit" style="margin-top:12px">Enviar mi respuesta</button>
     </form>
@@ -964,7 +974,7 @@ setTimeout(function(){if(v.isConnected&&(v.paused||v.currentTime===0))aWebp();},
   <div class="env">
     <div class="cabeza rev"><h2 class="rotulo" id="t-dudas">Antes de venir</h2></div>
     <div class="preguntas">
-      <details open><summary>¿Cómo funciona apartar un palco?</summary><p>Nos escribes por WhatsApp, te confirmamos el palco disponible y lo apartas con el 30%. El saldo se paga a más tardar el 15 de noviembre. Si no llega en ese plazo, el palco se libera y el anticipo no se devuelve, salvo retracto dentro de los 5 días hábiles o cancelación del evento.</p></details>
+      <details open><summary>¿Cómo funciona apartar un palco?</summary><p>Nos escribes por WhatsApp, te confirmamos el palco disponible y lo apartas con el 30%. El saldo se paga a más tardar el 15 de noviembre. Si no llega en ese plazo, el palco se libera: si lo revendemos, te devolvemos el anticipo menos un 10% del precio total; si no, Dugoent lo conserva como arras. Siempre tienes retracto dentro de los 5 días hábiles, y devolución total si se cancela el evento.</p></details>
             <details><summary>¿Puedo devolver mi boleta?</summary><p>Las compras en Tickeo tienen derecho de retracto dentro de los 5 días hábiles siguientes, según el artículo 47 de la Ley 1480 de 2011 y los términos de Tickeo S.A.S. El anticipo de un palco también tiene retracto de 5 días hábiles.</p></details>
       <details><summary>¿Qué no se puede ingresar?</summary><p>Comida ni bebida, armas ni objetos cortopunzantes, camisetas de equipos de fútbol ni cámara profesional. Tampoco se entra en estado de embriaguez. Adentro hay venta de comida y licor.</p></details>
       <details><summary>¿Pueden entrar menores?</summary><p>No. El evento es solo para mayores de 18 años.</p></details>
@@ -974,19 +984,23 @@ setTimeout(function(){if(v.isConnected&&(v.paused||v.currentTime===0))aWebp();},
         <p>1. Vende Dugoent Producciones S.A.S., NIT 902.092.798-4, PULEP HYW650. Las boletas las emite Tickeo S.A.S.</p>
         <p>2. Para apartar, escribe al 322 204 5398 por WhatsApp. El palco queda apartado cuando pagas el 30% del precio total, con el servicio de boletería incluido, a la cuenta de Dugoent Producciones S.A.S. que te indicamos por WhatsApp, y recibes el recibo escrito.</p>
         <p>3. El precio queda fijo desde ese pago: los cambios de etapa no lo suben.</p>
-        <p>4. El saldo se paga a más tardar el 15 de noviembre de 2026. Si no se paga, el palco se libera y Dugoent conserva el anticipo como arras (artículo 1859 del Código Civil). Esta condición se acepta por escrito, por WhatsApp, antes de pagar el anticipo, y no aplica si ejerciste el retracto del punto 5 o si el evento se cancela o cambia de fecha.</p>
+        <p>4. El saldo se paga a más tardar el 15 de noviembre de 2026. Si no lo pagas, el palco se libera. Si logramos vender ese palco a otra persona, te devolvemos el anticipo menos un 10% del precio total por gastos de gestión, dentro de los 30 días calendario siguientes al evento. Si no se vende, Dugoent conserva el anticipo como arras. Si quien incumple es Dugoent, te devuelve el doble del anticipo (artículo 1859 del Código Civil). Esta condición la aceptas por escrito, por WhatsApp, antes de pagar, y no aplica si ejerces el retracto del punto 5 o si el evento se cancela o cambia de fecha.</p>
         <p>5. Tienes derecho de retracto dentro de los 5 días hábiles después de pagar el anticipo. Te devolvemos el dinero en máximo 30 días calendario.</p>
-        <p>6. El palco es para 10 personas, todas mayores de 18 años y con documento original. El consumo se paga aparte.</p>
-        <p>7. Si el evento se cancela o cambia de fecha, se devuelve el 100% de lo pagado.</p>
+        <p>6. El palco es para 10 personas, todas mayores de 18 años y con documento original. El consumo se paga aparte. A quien no tenga 18 años o no presente su documento original no se le permite la entrada, y eso no da derecho a devolución.</p>
+        <p>7. Si el evento se cancela, te devolvemos el 100% de lo pagado en máximo 30 días calendario, a la cuenta que nos indiques. Si cambia de fecha, eliges entre conservar tu palco para la nueva fecha o recibir el 100% de lo pagado en el mismo plazo.</p>
       </div></details>
       <details><summary>Términos del concurso</summary><div class="legal-txt">
         <p>1. Organiza Dugoent Producciones S.A.S., NIT 902.092.798-4. Es un concurso de mérito: el ganador no se elige al azar y no hay que comprar nada.</p>
-        <p>2. Pueden participar personas naturales mayores de 18 años que vivan en Colombia. No participan empleados de Dugoent, Tickeo, 147 Presents ni Sancor MGMT, ni sus familiares cercanos.</p>
+        <p>2. Pueden participar personas naturales mayores de 18 años que vivan en Colombia. No participan empleados de Dugoent, Tickeo, 147 Presents ni Sancor MGMT, ni sus parientes hasta el segundo grado de consanguinidad, segundo de afinidad o primero civil.</p>
         <p>3. Se participa desde la publicación de esta página hasta el 25 de noviembre de 2026 a las 11:59 p. m. Hay una participación por persona.</p>
-        <p>4. Un jurado de tres personas califica cada respuesta: originalidad 50%, autenticidad 30% y claridad 20%. Si hay empate, gana la respuesta que llegó primero.</p>
+        <p>4. Un jurado de tres personas califica cada respuesta: originalidad 50%, autenticidad 30% y claridad 20%. Si hay empate, gana la respuesta que llegó primero. El jurado lo forman tres personas designadas por Dugoent, que dejan sus notas en un acta.</p>
         <p>5. El premio es un par de boletas VIP para el 5 de diciembre de 2026, con valor de $246.180. No se cambia por dinero y no incluye transporte. El acompañante también debe ser mayor de 18 años.</p>
         <p>6. El ganador se anuncia el 27 de noviembre de 2026 y tiene 48 horas para aceptar. Si no acepta, gana la siguiente respuesta mejor calificada.</p>
-        <p>7. Para participar hay que seguir la cuenta de Instagram @dugoent_producciones y escribir tu usuario en el formulario. Antes de anunciar al ganador revisamos que la sigue; si no, gana la siguiente respuesta mejor calificada. Instagram y Meta no patrocinan, avalan ni administran este concurso.</p>
+        <p>7. Para participar hay que seguir la cuenta de Instagram @dugoent_producciones y escribir tu usuario en el formulario. Antes de anunciar al ganador revisamos que la sigue; si no, gana la siguiente respuesta mejor calificada. Instagram y Meta no patrocinan, avalan ni administran este concurso. Al participar, liberas a Instagram y a Meta Platforms de toda responsabilidad relacionada con este concurso.</p>
+        <p>8. Anunciamos al ganador el 27 de noviembre de 2026 en @dugoent_producciones y lo contactamos al correo y al celular que registró. El ganador autoriza publicar su usuario de Instagram y su respuesta para anunciar el resultado.</p>
+        <p>9. Las boletas se entregan a nombre del ganador y de su acompañante, por Tickeo, después de verificar su documento.</p>
+        <p>10. Los impuestos que genere el premio, como la ganancia ocasional, corren por cuenta del ganador.</p>
+        <p>11. Si el evento se cancela, el premio se cancela sin compensación en dinero. Si cambia de fecha, el premio vale para la nueva fecha.</p>
       </div></details>
     </div>
   </div>
@@ -1012,8 +1026,9 @@ setTimeout(function(){if(v.isConnected&&(v.paused||v.currentTime===0))aWebp();},
     <p>Boletería oficial: Tickeo S.A.S.<br>Booking: 147 Presents y Sancor MGMT.</p>
     <details class="pie__plegado" id="datos"><summary>Tratamiento de datos</summary><div class="pie__datos">
       <p>Responsable: Dugoent Producciones S.A.S., NIT 902.092.798-4, Carrera 10 # 7A-23, piso 2, Zipaquirá · dugoentproducciones@gmail.com · 322 204 5398.</p>
-      <p>Usamos tu nombre, correo, celular, usuario de Instagram y tu respuesta para gestionar el concurso y contactar al ganador; si lo autorizas, también para avisarte de otros eventos. Medimos las visitas con herramientas de terceros que pueden guardar datos fuera de Colombia. No pongas datos de otras personas en tu respuesta.</p>
-      <p>Puedes conocer, actualizar, corregir o borrar tus datos, retirar tu autorización, pedir prueba de que la diste y quejarte ante la SIC: escribe al correo. Respondemos consultas en 10 días hábiles y reclamos en 15.</p>
+      <p>Usamos tu nombre, correo, celular, usuario de Instagram y tu respuesta para gestionar el concurso y contactar al ganador; si lo autorizas, también para avisarte de otros eventos. Los registros se guardan en Google Drive, administrado por Sancor MGMT como encargado, y se borran 6 meses después del evento, salvo los de quien autorizó recibir información de otros eventos. No pongas datos de otras personas en tu respuesta.</p>
+      <p>Si lo aceptas, usamos el píxel de Meta (Meta Platforms), que con cookies e identificadores de tu navegador registra las páginas que ves y si das clic en WhatsApp o Tickeo o te inscribes al concurso, para medir cómo funciona esta página y mostrarte publicidad del evento en Facebook e Instagram; Meta puede guardar y tratar esos datos fuera de Colombia. Puedes oponerte rechazando las cookies, bloqueándolas en tu navegador, cambiando tus preferencias de anuncios en tu cuenta de Meta o escribiéndonos al correo. <button type="button" class="enlace cookies-cambiar">Cambiar mi elección de cookies</button></p>
+      <p>Puedes conocer, actualizar, corregir o borrar tus datos gratis, retirar tu autorización y pedir prueba de que la diste escribiendo al correo. Respondemos consultas en 10 días hábiles y reclamos en 15. Si no quedas conforme, puedes quejarte ante la SIC. Consulta nuestra <a href="politica-datos.html" target="_blank" rel="noopener">Política de Tratamiento de Datos</a>.</p>
     </div></details>
     <p>El exceso de alcohol es perjudicial para la salud. Ley 30 de 1986. Prohíbase el expendio de bebidas embriagantes a menores de edad. Ley 124 de 1994.</p>
   </div>
@@ -1071,10 +1086,16 @@ function mide(ev, d){
     if (window.fbq){ var e = ESTANDAR[ev]; e ? fbq("track", e, d || {}) : fbq("trackCustom", ev, d || {}); }
   } catch(e){}
 }
-if (CFG.pixel){
+var COOKIE_K = "rasca-cookies-v1";
+function eleccionCookies(){ try { return localStorage.getItem(COOKIE_K); } catch(e){ return null; } }
+function cargaPixel(conVisita){
+  if (!CFG.pixel || window.fbq) return;
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
   fbq("init", CFG.pixel);
+  if (conVisita) fbq("track", "PageView", {origen: ORIGEN});
 }
+if (eleccionCookies() === "si") cargaPixel(false);
+window.cargaPixel = cargaPixel; window.eleccionCookies = eleccionCookies; window.COOKIE_K = COOKIE_K;
 listo(function(){
   mide("Llegada", {origen: ORIGEN});
   [].forEach.call(document.querySelectorAll("[data-mide]"), function(el){
@@ -1408,9 +1429,10 @@ listo(function(){
     if (!/^[A-Za-z0-9._]{1,30}$/.test(ig)) return fallo("Escribe tu usuario de Instagram, sin espacios.", "ig");
     if (resp.length < 10) return fallo("Cuéntanos con quién vendrías y por qué: eso es lo que lee el jurado.", "r");
     if (!document.getElementById("hd").checked) return fallo("Confirma que eres mayor de 18 y aceptas los términos.", "hd");
+    if (!document.getElementById("da").checked) return fallo("Para participar necesitamos tu autorización para tratar tus datos.", "da");
     var datos = {fecha: new Date().toISOString(), tipo: "concurso VIP", nombre: nombre, correo: correo,
                  celular: "+57" + tel, instagram: "@" + ig, respuesta: resp, origen: ORIGEN,
-                 autoriza: "Ley 1581/2012 y términos del concurso · responsable Dugoent Producciones S.A.S. · v3 9-oct-2026", otrosEventos: document.getElementById("mk").checked ? "sí" : "no"};
+                 autoriza: "Ley 1581/2012, términos del concurso y Política de Tratamiento v1 10-oct-2026; responsable Dugoent Producciones S.A.S.; casillas separadas edad-términos y datos", otrosEventos: document.getElementById("mk").checked ? "sí" : "no"};
     var msg = "RASCA SALINERA · Concurso VIP\nNombre: " + nombre + "\nCorreo: " + correo + "\nCelular: +57" + tel + "\n¿Con quién vendría y por qué?: " + resp;
     document.getElementById("ok-wa").href = "https://wa.me/" + CFG.whatsapp + "?text=" + encodeURIComponent(msg);
     var b = f.querySelector("button[type=submit]"); b.disabled = true; b.textContent = "Enviando…";
@@ -1451,6 +1473,21 @@ pasos.forEach(function(c,i){var el=c.querySelector("input,textarea");if(!el)retu
  function mira(){var fn=ok[el.id];if(fn&&fn(el.value)){if(i+1<pasos.length)abre(pasos[i+1]);else cola.forEach(abre);}}
  el.addEventListener("input",mira);el.addEventListener("change",mira);el.addEventListener("blur",mira);mira();});
 })();
+</script>
+<div class="cookies" id="cookies" role="dialog" aria-live="polite" aria-label="Cookies" hidden><p class="cookies__t">Usamos cookies del píxel de Meta para medir esta página y mostrarte publicidad del evento. <a href="#datos" class="cookies__mas">Más información</a></p><div class="cookies__b"><button type="button" class="cookies__no" id="cookies-no">Rechazar</button><button type="button" class="cookies__si" id="cookies-si">Aceptar</button></div></div>
+<script>
+(function(){var c=document.getElementById("cookies");if(!c)return;
+function guarda(v){try{localStorage.setItem(COOKIE_K,v);}catch(e){}}
+function abre(){c.hidden=false;requestAnimationFrame(function(){c.classList.add("viva");});}
+function cierra(){c.classList.remove("viva");setTimeout(function(){c.hidden=true;},250);}
+document.getElementById("cookies-si").addEventListener("click",function(){guarda("si");cierra();cargaPixel(true);});
+document.getElementById("cookies-no").addEventListener("click",function(){guarda("no");cierra();});
+[].forEach.call(document.querySelectorAll(".cookies-cambiar"),function(b){b.addEventListener("click",function(){
+  if(eleccionCookies()==="si"){guarda("no");location.reload();return;}abre();});});
+var e=eleccionCookies(); if(e!=="si"&&e!=="no"){
+  var en=document.getElementById("entrada"); if(en&&!en.hidden){var mo=new MutationObserver(function(){if(en.hidden){mo.disconnect();setTimeout(abre,900);}});mo.observe(en,{attributes:true,attributeFilter:["hidden"]});}
+  else setTimeout(abre,900);
+}})();
 </script>
 </body>
 </html>
