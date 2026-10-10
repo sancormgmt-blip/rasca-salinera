@@ -20,10 +20,10 @@
 <link rel="apple-touch-icon" href="assets/icono-180.png">
 <link rel="preload" as="image" href="assets/teaser-hd2.webp" fetchpriority="high">
 <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/playfair.woff2" as="font" type="font/woff2" crossorigin>
+
 <link rel="preload" as="image" href="assets/flyer-720.avif" type="image/avif" imagesrcset="assets/flyer-720.avif 720w, assets/flyer-1080.avif 1080w" imagesizes="100vw">
 <style>
-@font-face{font-family:"Cartel";src:url(fonts/playfair.woff2) format("woff2");font-weight:700 900;font-display:swap}
+@font-face{font-family:"Cartel";src:url(fonts/archivo.woff2) format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"Archivo";src:url(fonts/archivo.woff2) format("woff2");font-weight:100 900;font-display:swap}
 :root{
   color-scheme:dark;
@@ -743,10 +743,32 @@ body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opa
 #sonido{transition:opacity .4s var(--expo),transform .4s var(--expo)}
 #sonido.lejos{opacity:0;transform:scale(.85);pointer-events:none}
 .hero.anima .hero__desliza{bottom:calc(100px + env(safe-area-inset-bottom))}
+.cartelera__nombre,.palco__nombre,.cabeza h2,.cabeza .rotulo,.hero__num,.palco__hoy-v,.sueltas__tarjeta .localidades .nombre,.premio b{font-family:"Archivo",sans-serif!important;font-weight:800!important;font-style:normal!important;text-transform:uppercase!important;letter-spacing:-.02em!important}
+.cartelera__nombre{font-size:clamp(1.45rem,6.9vw,2.6rem)!important}
+.palcos .cabeza h2,.cierre .cabeza h2{font-size:clamp(1.85rem,8.4vw,3rem)!important;line-height:1!important}
+.concurso .cabeza h2,.llegar .cabeza h2,.dudas .cabeza h2{font-size:clamp(1.5rem,6.8vw,2.3rem)!important;line-height:1.02!important}
+.palcos__sueltas .cabeza h2{font-size:clamp(1.15rem,4.9vw,1.5rem)!important}
+.palco__nombre{font-size:clamp(1.7rem,7.8vw,2.4rem)!important;line-height:1!important}
+.palco--rey .palco__nombre{font-size:clamp(1.95rem,9vw,2.8rem)!important}
+.palco__hoy-v{font-size:clamp(2rem,9vw,2.6rem)!important;letter-spacing:-.03em!important}
+.hero__num{letter-spacing:-.04em!important}
+.sueltas__tarjeta .localidades .nombre{font-size:1.5rem!important}
+.entrada__suena{font-family:"Archivo",sans-serif!important;font-style:normal!important;font-weight:700!important;font-size:1rem!important;letter-spacing:.14em!important;text-transform:uppercase}
+.hero__dia{font-family:"Archivo",sans-serif!important;font-style:normal!important;font-weight:600!important;font-size:.75rem!important;letter-spacing:.14em!important;text-transform:uppercase!important;color:var(--crema-72)!important}
+.puente{font-family:"Archivo",sans-serif!important;font-style:normal!important;font-weight:500!important;font-size:.9375rem!important;letter-spacing:0}
+.premio__vip{font-family:"Archivo",sans-serif!important;font-weight:800!important}
+.entrada__velo{background:linear-gradient(to bottom,rgba(14,6,6,.92) 0,rgba(14,6,6,.92) 37.6%,rgba(14,6,6,0) 40.5%,rgba(14,6,6,0) 48%,rgba(14,6,6,.55) 66%,rgba(14,6,6,.9) 86%)!important}
+@media (max-height:700px){.entrada__suena{display:none!important}.entrada__caja{gap:10px!important}.entrada__fecha{font-size:.6875rem!important;letter-spacing:.1em!important}.entrada__si{min-height:52px!important}}
 </style>
 </head>
 <body>
-<div id="entrada" hidden role="dialog" aria-modal="true" aria-label="Entrar a la página"><img class="entrada__fuego" src="assets/teaser-hd2.webp" width="720" height="1280" alt="" aria-hidden="true" fetchpriority="high"><div class="entrada__velo" aria-hidden="true"></div><p class="entrada__presenta"><img src="assets/dugoent.webp" width="345" height="97" alt="Dugoent Producciones"><span>presenta</span></p><div class="entrada__caja"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera"><p class="entrada__suena"><svg class="onda" viewBox="0 0 40 20" aria-hidden="true"><path d="M2 10h3M9 5v10M15 2v16M21 6v8M27 3v14M33 7v6M38 10h0" stroke="#EBB314" stroke-width="2.2" stroke-linecap="round"/></svg>Así va a sonar</p><p class="entrada__fecha">Sábado 5 de diciembre · Zipaquirá</p><button type="button" class="accion entrada__si" id="entrada-si"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#EBB314"/><path d="M16 8.5c1.6 1.8 1.6 5.2 0 7M18.8 6c2.8 3.2 2.8 8.8 0 12" stroke="#EBB314" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>Entrar con sonido</button><button type="button" class="sec entrada__no" id="entrada-no">Entrar en silencio</button></div></div>
+<div id="entrada" hidden role="dialog" aria-modal="true" aria-label="Entrar a la página"><video class="entrada__fuego" src="assets/teaser-hd2.mp4" poster="assets/teaser-poster.webp" width="720" height="1280" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video><div class="entrada__velo" aria-hidden="true"></div><p class="entrada__presenta"><img src="assets/dugoent.webp" width="345" height="97" alt="Dugoent Producciones"><span>presenta</span></p><div class="entrada__caja"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera"><p class="entrada__suena"><svg class="onda" viewBox="0 0 40 20" aria-hidden="true"><path d="M2 10h3M9 5v10M15 2v16M21 6v8M27 3v14M33 7v6M38 10h0" stroke="#EBB314" stroke-width="2.2" stroke-linecap="round"/></svg>Así va a sonar</p><p class="entrada__fecha">Sábado 5 de diciembre · Zipaquirá</p><button type="button" class="accion entrada__si" id="entrada-si"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="#EBB314"/><path d="M16 8.5c1.6 1.8 1.6 5.2 0 7M18.8 6c2.8 3.2 2.8 8.8 0 12" stroke="#EBB314" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg>Entrar con sonido</button><button type="button" class="sec entrada__no" id="entrada-no">Entrar en silencio</button></div></div>
+<script>
+(function(){var v=document.querySelector("video.entrada__fuego");if(!v)return;var hecho=false;
+function aWebp(){if(hecho)return;hecho=true;var i=new Image();i.className="entrada__fuego";i.alt="";i.setAttribute("aria-hidden","true");i.width=720;i.height=1280;i.src="assets/teaser-hd2.webp";v.replaceWith(i);}
+var pr=v.play&&v.play();if(pr&&pr.catch)pr.catch(aWebp);
+setTimeout(function(){if(v.isConnected&&(v.paused||v.currentTime===0))aWebp();},2500);})();
+</script>
 <script>(function(){var e=document.getElementById("entrada");e.hidden=false;document.documentElement.classList.add("entrando")})();</script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -1166,7 +1188,8 @@ listo(function(){
 });
 function quema(){
   var img = document.querySelector(".entrada__fuego");
-  if (!img || !img.complete || !img.naturalWidth) return false;
+  var esV = img && img.tagName === "VIDEO";
+  if (!img || (esV ? img.readyState < 2 : (!img.complete || !img.naturalWidth))) return false;
   var cv = document.createElement("canvas");
   var gl = cv.getContext("webgl", {premultipliedAlpha: false, alpha: true});
   if (!gl) return false;
@@ -1219,7 +1242,7 @@ function quema(){
   gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
   try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img); } catch(e){ return false; }
   var U = {}; ["r","ta","off","t","a","sc","tx"].forEach(function(x){ U[x] = gl.getUniformLocation(pr, x); });
-  var iw = img.naturalWidth, ih = img.naturalHeight, scl = Math.max(cv.width / iw, cv.height / ih);
+  var iw = esV ? img.videoWidth : img.naturalWidth, ih = esV ? img.videoHeight : img.naturalHeight, scl = Math.max(cv.width / iw, cv.height / ih);
   var offx = (cv.width - iw * scl) * .5, offy = (cv.height - ih * scl) * .38;
   gl.enable(gl.BLEND); gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
   gl.viewport(0, 0, cv.width, cv.height);
