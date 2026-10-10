@@ -775,6 +775,10 @@ body::after{display:none!important}.hero__desliza,.entrada__suena{display:none!i
 .palco__plano{width:132px!important}.palco--rey .palco__plano{width:156px!important}.palco__plano text{font-size:7px}
 .palcos>.env::before,.concurso>.env::before,.dudas>.env::before{-webkit-mask-image:radial-gradient(closest-side,#000 45%,transparent 100%)!important;mask-image:radial-gradient(closest-side,#000 45%,transparent 100%)!important}
 @media (max-aspect-ratio:3/4){.entrada__fuego{object-fit:contain!important;object-position:50% 40%!important;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 88%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 9%,#000 88%,transparent 100%)}}
+#f .espera{display:none!important}
+#f .entra{animation:entra .5s var(--expo) both}
+@media (prefers-reduced-motion:reduce){#f .entra{animation:none}}
+.palcos__foto img{filter:sepia(.28) saturate(1.12) hue-rotate(-6deg) brightness(.96) contrast(1.04)}
 </style>
 </head>
 <body>
@@ -803,7 +807,7 @@ setTimeout(function(){if(v.isConnected&&(v.paused||v.currentTime===0))aWebp();},
   <div class="hero__fondo"><div class="hero__duo" aria-hidden="true"><picture><source type="image/avif" srcset="assets/duo-780.avif 780w, assets/duo-1400.avif 1400w" sizes="100vw"><img src="assets/duo-780.webp" srcset="assets/duo-780.webp 780w, assets/duo-1400.webp 1400w" sizes="100vw" width="780" height="624" alt=""></picture></div><img class="hero__brasa" src="assets/flyer-fondo.webp" width="540" height="960" alt="" aria-hidden="true" ></div>
   <div class="hero__texto">
     <h1 class="cartelera"><span class="cartelera__nombre rotulo"><span class="m">Jhon Alex Castaño</span></span><span class="cartelera__filete" aria-hidden="true"><svg viewBox="0 0 120 12" width="120" height="12"><path d="M0 6H50M70 6H120" stroke="#EBB314" stroke-opacity=".7"/><path d="M60 1l5 5-5 5-5-5z" fill="#EBB314"/></svg></span><span class="cartelera__nombre rotulo"><span class="m">Jhonny Rivera</span></span></h1>
-    <p class="hero__fecha"><span class="hero__dia">Sábado</span><span class="hero__num">05 <small>Dic</small></span><span class="hero__anio">Diciembre 2026</span><span class="oculto-v">5 de diciembre</span></p>
+    <p class="hero__fecha"><span class="hero__dia">Sábado</span><span class="hero__num">05 <small>Dic</small></span><span class="hero__anio">2026</span><span class="oculto-v">5 de diciembre</span></p>
     <p class="hero__lugar"><span>Gran Pabellón La Fraguita, Zipaquirá</span><span>Ingreso 5:00&nbsp;p.&nbsp;m. &nbsp;·&nbsp; Show 8:00&nbsp;p.&nbsp;m.</span></p>
     <a class="accion ancha hero__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Apartar palco por WhatsApp</a>
     <p class="hero__urgencia"><span class="sello">Se están acabando los palcos</span><span class="hero__urg-dias">Faltan <b data-faltan>57</b> días</span></p>
@@ -1003,8 +1007,8 @@ setTimeout(function(){if(v.isConnected&&(v.paused||v.currentTime===0))aWebp();},
     <picture><source type="image/avif" srcset="assets/logo-560.avif"><img src="assets/logo-560.webp" width="560" height="131" alt="Rasca Salinera" loading="lazy"></picture>
     <div class="aliados" aria-label="Aliados del evento"><div class="aliados__g"><p class="aliados__t">Produce</p><img src="assets/aliados-produce.webp" width="823" height="142" alt="Dugoent Producciones y Sancor MGMT" loading="lazy"></div><div class="aliados__g"><p class="aliados__t">Apoya</p><img src="assets/aliados-apoya.webp" width="1395" height="193" alt="OSA, Aguardiente Amarillo de Manzanares, G y La Kalle en Movimiento" loading="lazy"></div><div class="aliados__g"><p class="aliados__t">Booking</p><img src="assets/aliados-booking.webp" width="216" height="145" alt="147 Presents" loading="lazy"></div></div>
     <div class="pie__redes"><a class="pie__red" href="https://www.instagram.com/dugoent_producciones/" target="_blank" rel="noopener" aria-label="Instagram de Dugoent Producciones" data-mide="ClicInstagram"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg></a><a class="pie__red" href="https://wa.me/573222045398" target="_blank" rel="noopener" aria-label="WhatsApp 322 204 5398" data-mide="ClicWhatsApp"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 19z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9.5c.4 2 2 3.6 4 4.3l1.2-1.1 1.8.9c-.2 1-1 1.6-2 1.5-3-.3-5.5-2.8-5.8-5.8-.1-1 .5-1.8 1.5-2l.9 1.8z" fill="currentColor"/></svg></a></div>
-    <p class="legal">LA RASCA SALINERA · PULEP HYW650 · Dugoent Producciones S.A.S. · NIT 902.092.798-4</p>
-    <p>Boletería oficial: Tickeo S.A.S. Booking: 147 Presents · Sancor MGMT.</p>
+    <p class="legal">La Rasca Salinera, PULEP HYW650.<br>Dugoent Producciones S.A.S., NIT 902.092.798-4.</p>
+    <p>Boletería oficial: Tickeo S.A.S.<br>Booking: 147 Presents y Sancor MGMT.</p>
     <details class="pie__plegado" id="datos"><summary>Tratamiento de datos</summary><div class="pie__datos">
       <p>Responsable: Dugoent Producciones S.A.S., NIT 902.092.798-4, Carrera 10 # 7A-23, piso 2, Zipaquirá · dugoentproducciones@gmail.com · 322 204 5398.</p>
       <p>Usamos tu nombre, correo, celular, usuario de Instagram y tu respuesta para gestionar el concurso y contactar al ganador; si lo autorizas, también para avisarte de otros eventos. Medimos las visitas con herramientas de terceros que pueden guardar datos fuera de Colombia. No pongas datos de otras personas en tu respuesta.</p>
@@ -1375,6 +1379,7 @@ listo(function(){
   if (!f) return;
   var err = document.getElementById("err"), ok = document.getElementById("ok");
   function fallo(msg, id){
+    var fx = document.getElementById("f"); if (fx) [].forEach.call(fx.querySelectorAll(".espera"), function(x){ x.classList.remove("espera"); });
     err.textContent = msg; err.classList.add("vista");
     var el = id && document.getElementById(id);
     var caja = el && (el.closest(".campo") || el.closest("label"));
@@ -1433,6 +1438,18 @@ listo(function(){
 (function(){var b=document.getElementById("sonido"),h=document.querySelector(".hero"),c=document.querySelector(".cierre");if(!b||!h)return;
 function m(){var vh=innerHeight,hr=h.getBoundingClientRect(),cr=c?c.getBoundingClientRect():null;var ver=hr.bottom>vh*.35||(cr&&cr.top<vh*.6&&cr.bottom>vh*.4);b.classList.toggle("lejos",!ver);}
 addEventListener("scroll",m,{passive:true});addEventListener("resize",m);m();})();
+</script>
+<script>
+(function(){var f=document.getElementById("f");if(!f)return;
+var pasos=[].slice.call(f.querySelectorAll(".campo"));var cola=[].slice.call(f.querySelectorAll(".check, button[type=submit]"));if(pasos.length<2)return;
+var ok={n:function(v){return v.trim().split(/\s+/).length>=2&&v.trim().length>=5},c:function(v){return /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(v.trim())},
+t:function(v){return v.replace(/\D/g,"").length===10},ig:function(v){return v.replace(/^@/,"").trim().length>=2},r:function(v){return v.trim().length>=12}};
+pasos.slice(1).concat(cola).forEach(function(x){x.classList.add("espera")});
+function abre(x){if(x&&x.classList.contains("espera")){x.classList.remove("espera");x.classList.add("entra");}}
+pasos.forEach(function(c,i){var el=c.querySelector("input,textarea");if(!el)return;
+ function mira(){var fn=ok[el.id];if(fn&&fn(el.value)){if(i+1<pasos.length)abre(pasos[i+1]);else cola.forEach(abre);}}
+ el.addEventListener("input",mira);el.addEventListener("change",mira);el.addEventListener("blur",mira);mira();});
+})();
 </script>
 </body>
 </html>
