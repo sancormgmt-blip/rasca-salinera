@@ -867,6 +867,45 @@ body::after{display:none!important}.hero__desliza,.entrada__suena{display:none!i
   .js-mov .rev>*,.js-mov .telon,.js-mov .escalon{opacity:1!important;transform:none!important;transition:none!important}
   .js-mov .rev.visto .sello,.hero.anima.dentro .sello{animation:none!important}
 }
+.foto img,.foto video,.concurso__fondo img,.cierre .escena__media img,.cierre .escena__media video,.palcos__foto img,.aliados img,.hero__marcas img{filter:none!important}
+.hero__duo picture,.hero__duo picture img,.hero__duo picture:first-child img,.hero__duo picture:last-child img,.mapa img,.mapa-llegar__svg,footer::before,.entrada__fuego{-webkit-mask-image:none!important;mask-image:none!important}
+.concurso .cabeza h2,.hero.anima .hero__desliza{text-shadow:none!important}
+.hero.anima .hero__flyer{will-change:auto!important}
+#entrada::before,#entrada::after{content:"";position:absolute;left:0;right:0;z-index:-1;pointer-events:none}
+#entrada::before{top:0;height:14%;background:linear-gradient(to bottom,#0e0606,rgba(14,6,6,0))}
+#entrada::after{bottom:0;height:16%;background:linear-gradient(to top,#0e0606,rgba(14,6,6,0))}
+.mapa-llegar{position:relative}
+.mapa-llegar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:18%;pointer-events:none;background:linear-gradient(to top,rgba(26,11,11,.9),rgba(26,11,11,0))}
+#llegar,#dudas,.cierre,footer{content-visibility:auto;contain-intrinsic-size:auto 1100px}
+.cartelera{width:72vw!important;max-width:620px!important;grid-template-columns:1fr 2px 1fr!important;column-gap:14px!important;margin-left:auto!important;margin-right:auto!important}
+.cartelera__nombre{font-size:min(5.7vw,2.4rem)!important;letter-spacing:-.025em!important;line-height:.98!important}
+.cartelera__filete{display:block!important;width:2px!important;height:3.1em!important;align-self:center;background:linear-gradient(to bottom,rgba(235,179,20,0),#EBB314 22%,#F7DA78 50%,#EBB314 78%,rgba(235,179,20,0))!important;border:0!important;font-size:min(5.7vw,2.4rem)}
+.cartelera{width:78vw!important;column-gap:14px!important}
+.cartelera__nombre{font-size:min(5.4vw,2.3rem)!important;white-space:nowrap!important;text-wrap:nowrap}
+.cartelera__filete{height:2.3em!important;font-size:min(5.4vw,2.3rem)!important}
+.cartelera{width:72vw!important;column-gap:12px!important}
+@supports (animation-timeline: view()){
+  @keyframes hondo{from{transform:translate3d(0,-7%,0) scale(1.12)}to{transform:translate3d(0,7%,0) scale(1.12)}}
+  .palcos__foto img,.concurso__fondo img,.cierre .escena__media img,.cierre .escena__media video{animation:hondo linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+}
+.hero__accion,.concurso__ir,.cierre__accion,.palco--rey .accion{position:relative;overflow:hidden}
+.hero__accion::after,.concurso__ir::after,.cierre__accion::after,.palco--rey .accion::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:35%;pointer-events:none;
+  background:linear-gradient(100deg,rgba(255,248,222,0) 0,rgba(255,248,222,.55) 50%,rgba(255,248,222,0) 100%);transform:translate3d(-100%,0,0) skewX(-18deg);opacity:0}
+@keyframes destello{0%{transform:translate3d(-100%,0,0) skewX(-18deg);opacity:0}15%{opacity:1}100%{transform:translate3d(520%,0,0) skewX(-18deg);opacity:0}}
+.hero.anima.dentro .hero__accion::after{animation:destello 1.1s cubic-bezier(.4,0,.2,1) 1s both}
+.rev.visto .concurso__ir::after,.cabeza.rev.visto ~ .cierre__accion::after{animation:destello 1.1s cubic-bezier(.4,0,.2,1) .9s both}
+.cierre.vivo .cierre__accion::after,.palco--rey.visto .accion::after{animation:destello 1.1s cubic-bezier(.4,0,.2,1) .8s both}
+.hero.anima .cartelera__filete{transform:scaleY(0);transition:transform .9s var(--expo) .25s}
+.hero.anima.dentro .cartelera__filete{transform:scaleY(1)}
+.cabeza{position:relative}
+.cabeza::before{content:"";position:absolute;z-index:-1;left:50%;top:40%;width:min(120%,640px);aspect-ratio:2/1;transform:translate(-50%,-50%);pointer-events:none;
+  background:radial-gradient(closest-side,rgba(189,96,20,.22),rgba(189,96,20,0))}
+.concurso .cabeza::before{top:62%}
+@media (prefers-reduced-motion:reduce){
+  .palcos__foto img,.concurso__fondo img,.cierre .escena__media img,.cierre .escena__media video{animation:none!important;transform:none!important}
+  .hero__accion::after,.concurso__ir::after,.cierre__accion::after,.palco--rey .accion::after{display:none}
+  .hero.anima .cartelera__filete{transform:none;transition:none}
+}
 </style>
 </head>
 <body>
@@ -894,7 +933,7 @@ v.addEventListener("error",aWebp);})();
   <p class="hero__marcas"><img src="assets/dugoent.webp" width="345" height="97" alt="Dugoent Producciones" loading="lazy" decoding="async"><img src="assets/logo-sancor.webp" width="318" height="133" alt="Sancor MGMT" loading="lazy" decoding="async"><img src="assets/logo-lakalle.webp" width="341" height="134" alt="La Kalle" loading="lazy" decoding="async"></p>
   <div class="hero__fondo"><div class="hero__duo" aria-hidden="true"><picture><source type="image/avif" srcset="assets/duo-780.avif 780w, assets/duo-1400.avif 1400w" sizes="100vw"><img src="assets/duo-780.webp" srcset="assets/duo-780.webp 780w, assets/duo-1400.webp 1400w" sizes="100vw" width="780" height="624" alt=""></picture></div><img class="hero__brasa" src="assets/flyer-fondo.webp" width="540" height="960" alt="" aria-hidden="true" ></div>
   <div class="hero__texto">
-    <h1 class="cartelera"><span class="cartelera__nombre rotulo"><span class="m">Jhon Alex Castaño</span></span><span class="cartelera__filete" aria-hidden="true"><svg viewBox="0 0 120 12" width="120" height="12"><path d="M0 6H50M70 6H120" stroke="#EBB314" stroke-opacity=".7"/><path d="M60 1l5 5-5 5-5-5z" fill="#EBB314"/></svg></span><span class="cartelera__nombre rotulo"><span class="m">Jhonny Rivera</span></span></h1>
+    <h1 class="cartelera"><span class="cartelera__nombre rotulo"><span class="m">Jhon Alex<br>Castaño</span></span><span class="cartelera__filete" aria-hidden="true"><svg viewBox="0 0 120 12" width="120" height="12"><path d="M0 6H50M70 6H120" stroke="#EBB314" stroke-opacity=".7"/><path d="M60 1l5 5-5 5-5-5z" fill="#EBB314"/></svg></span><span class="cartelera__nombre rotulo"><span class="m">Jhonny<br>Rivera</span></span></h1>
     <p class="hero__fecha"><span class="hero__dia">Sábado</span><span class="hero__num">05 <small>Dic</small></span><span class="hero__anio">2026</span><span class="oculto-v">5 de diciembre</span></p>
     <p class="hero__lugar"><span>Gran Pabellón La Fraguita, Zipaquirá</span><span>Ingreso 5:00&nbsp;p.&nbsp;m. &nbsp;·&nbsp; Show 8:00&nbsp;p.&nbsp;m.</span></p>
     <a class="accion ancha hero__accion" href="https://wa.me/573222045398?text=Hola%2C%20quiero%20apartar%20un%20palco%20para%20Rasca%20Salinera%20%28s%C3%A1bado%205%20de%20diciembre%29.%20%C2%BFCu%C3%A1l%20est%C3%A1%20disponible%3F" target="_blank" rel="noopener" data-wa="Hola, quiero apartar un palco para Rasca Salinera (sábado 5 de diciembre). ¿Cuál está disponible?" data-mide="ClicPalco">Apartar palco por WhatsApp</a>
@@ -1240,7 +1279,7 @@ listo(function(){
     var heroCTA = h.classList.contains("dentro") && h.getBoundingClientRect().bottom > innerHeight * .5;
     b.classList.toggle("vista", !document.documentElement.classList.contains("intro") && !heroCTA && !enRegistro && !enCuenta && !otroDorado); 
   }
-  addEventListener("scroll", mira, {passive: true}); addEventListener("resize", mira); mira();
+  var mpend = false; addEventListener("scroll", function(){ if (!mpend){ mpend = true; requestAnimationFrame(function(){ mpend = false; mira(); }); } }, {passive: true}); addEventListener("resize", mira); mira();
 });
 listo(function(){
   var h = document.getElementById("hero");
@@ -1381,6 +1420,7 @@ function quema(){
 listo(function(){
   var en = document.getElementById("entrada"); if (!en) return;
   function entra(){
+    try { var fv = document.querySelector(".entrada__fuego"); if (fv && fv.pause) fv.pause(); } catch(e){}
     if (!quieto && quema()) { var hh0 = document.getElementById("hero"); if (hh0) hh0.classList.add("revela"); document.documentElement.classList.remove("intro", "entrando"); scrollTo(0, 0); en.hidden = true; return; }
     en.classList.add("sale");
     var hh = document.getElementById("hero"); if (hh) hh.classList.add("revela");
@@ -1538,7 +1578,7 @@ listo(function(){
 <script>
 (function(){var b=document.getElementById("sonido"),h=document.querySelector(".hero"),c=document.querySelector(".cierre");if(!b||!h)return;
 function m(){var vh=innerHeight,hr=h.getBoundingClientRect(),cr=c?c.getBoundingClientRect():null;var ver=hr.bottom>vh*.35||(cr&&cr.top<vh*.6&&cr.bottom>vh*.4);b.classList.toggle("lejos",!ver);}
-addEventListener("scroll",m,{passive:true});addEventListener("resize",m);m();})();
+var sp=false;addEventListener("scroll",function(){if(!sp){sp=true;requestAnimationFrame(function(){sp=false;m();});}},{passive:true});addEventListener("resize",m);m();})();
 </script>
 <script>
 (function(){var f=document.getElementById("f");if(!f)return;
